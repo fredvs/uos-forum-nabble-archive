@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [605, 606, 607, 608, 609, 610, 611, 613, 614, 615, 617, 618, 619, 621, 624]; var allURLs = ["/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-td605.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '605'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Help please: InputSeek with MP3 file (mpg123) on MacOS</title>
+			<META NAME="description" CONTENT="Help please: InputSeek with MP3 file (mpg123) on MacOS. Help please: inputSeek with MP3 file on macOS Hello I'm using UOS (uos_flat) successfully on the Mac, using Lazarus 2.0 and fpc 3.0.4, and..."/>
+			<META NAME="keywords" CONTENT="help, inputseek, with, mp3, file, mpg123, macos, using, uos, flat, successfully, mac, lazarus, 2, 0, fpc, 3, 4, for, cannot, thank, you, enough, thanks, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="605" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="605"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=605" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/uos-on-the-Mac-using-Lazarus-tp612.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Issue-with-uos-LoopProcIn-on-MacOS-blocking-the-playback-tp616.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tc605.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tc605.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip19401" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip19401'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		15 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D605\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(605)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(605)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(605)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(605)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(605)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(605)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost605', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D605\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink605', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=605&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=605" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html',605)">Threaded</a>
+	<div id="tooltip63263" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63263'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown605"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown605", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor605', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D605\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost605', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost605', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost605', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(605)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively605', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(605)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate605', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print605', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D605\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink605', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail605', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D605\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown605');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=605&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow605" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553005249793-490"></span><script type="text/javascript">
+		Nabble.get('d1553005249793-490').innerHTML= Nabble.formatDateLong(new Date(1553005249793));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message605" class="message-text adbayes-content">
+		Help please: inputSeek with MP3 file on macOS
+<br/><br/>Hello
+<br/><br/>I'm using UOS (uos_flat) successfully on the Mac, using Lazarus 2.0 and fpc 3.0.4, and for that I cannot thank you enough, so thanks, thanks and thanks :)
+<br/><br/>There's only one thing that I haven't been able to do: using inputSeek when playing MP3 files.
+<br/><br/>In fact, what happens is a little weird: after I call inputSeek, it looks like it worked, because the information returned by inputPosition reflects the change, but the actual playing of the audio file doesn't
+<br/>change at all.
+<br/><br/>Here is what I do, using uos_flat:
+<br/><br/>1: Load libraries, load file, start playing:
+<br/><br/>(pseudo-code)
+<br/><br/>&nbsp; uos_LoadLib(PortAudioPath, nil, Mpg123Path, nil, nil, nil)
+<br/>&nbsp; uos_CreatePlayer(PlayerIndex)
+<br/>&nbsp; InputIndex := uos_AddFromFile(PlayerIndex, pchar(filename), -1, 0, -1)
+<br/>&nbsp; uos_AddIntoDevOut(PlayerIndex, -1, -1, uos_InputGetSampleRate(PlayerIndex, InputIndex), -1, 0, -1, -1);
+<br/>&nbsp; uos_InputSetPositionEnable(PlayerIndex, InputIndex, 1); // enable tracking of position during playback
+<br/>&nbsp; uos_Play(PlayerIndex);
+<br/><br/>At this point the MP3 audio file starts playing.
+<br/><br/><br/>2. I also have a TTimer event that updates the position every second:
+<br/><br/>&nbsp; sec := uos_InputPositionSeconds(PlayerIndex, InputIndex) // read the current position
+<br/><br/>And this also works fine.
+<br/><br/><br/>3. &nbsp;The part that does not work is when I call Seek.
+<br/><br/>For example, in the middle of playing the audio file, if I call Seek with a parameter of 0, the audio file should start playing from the beginning.
+<br/><br/>But when I call it, for example like this...
+<br/><br/>&nbsp; uos_InputSeek(PlayerIndex, InputIndex, 0);
+<br/><br/>... then 2 things happen:
+<br/><br/>A) From that moment, uos_InputPositionSeconds(...) responds as if playing had indeed restarted from the beginning, and my time indicator indeed starts showing the seconds again starting from 0, 1, 2, etc.
+<br/><br/>B) The actual audio file however, does not restart. It continues playing as if I never called seek at all.
+<br/><br/>And that's where I need your help please...
+<br/><br/>Do you have any idea of what is going on? Did I miss something or did I do something wrong?
+<br/>What should I do to make Seek work?
+<br/><br/>Note 1: I'm using the 32 bit version of the mpg123 libraries.
+<br/><br/>Note 2: I looked in uos_mpg123.pas and I saw that there are 2 seek methods:
+<br/><br/>&nbsp; mpg123_seek: Tmpg123_seek;
+<br/>&nbsp; mpg123_seek_frame: Tmpg123_seek_frame;
+<br/><br/>I saw that UOS uses the first of the two. I tried replacing it with the second, but I got the same results,
+<br/>i.e. InputPosition changes after seek, but the playback does not change at all.
+<br/><br/><br/>Any help will be extremely appreciated.
+<br/><br/>Manny Mazzon
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=606" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a606',606)">Threaded</a>
+	<div id="tooltip46976" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip46976'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown606"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown606", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor606', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D606\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost606', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D606\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost606', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D606\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost606', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(606)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively606', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(606)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate606', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D606\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print606', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D606\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink606', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p606.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail606', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D606\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown606');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=606&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow606" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553011779632-246"></span><script type="text/javascript">
+		Nabble.get('d1553011779632-246').innerHTML= Nabble.formatDateLong(new Date(1553011779632));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message606" class="message-text adbayes-content">
+		Hello Manny and welcome in uos forum.
+<br/><br/>I am totally sorry, I do not have a Mac to test your code. <img class='smiley' src='/images/smiley/smiley_cry.gif' /><br/><br/>So we will try to find a solution together.
+<br/><br/>First of all, did you try the uos SimpePlayer demo, is it working'?
+<br/>SimplePlayer uses inputSeek via the scroll-bar of position.
+<br/><br/>When you run a mp3 with SimpePlayer and change the position with the scroll-bar, is it working?
+<br/><br/>&gt; 2. I also have a TTimer event that updates the position every second: 
+<br/><br/>&nbsp; This is not the right way, please take a look at SimplePlayer code, do not use a timer.
+<br/><br/>IMHO, you should take a look at uos SimplePlayer code, all what you asked is there.
+<br/><br/><br/>&nbsp;
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=607" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a607',607)">Threaded</a>
+	<div id="tooltip36999" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip36999'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown607"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown607", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor607', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D607\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost607', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D607\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost607', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D607\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost607', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(607)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively607', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(607)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate607', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D607\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print607', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D607\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink607', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p607.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail607', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D607\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown607');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=607&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow607" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553014480949-718"></span><script type="text/javascript">
+		Nabble.get('d1553014480949-718').innerHTML= Nabble.formatDateLong(new Date(1553014480949));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message607" class="message-text adbayes-content">
+		Thanks Fred, for the welcome and the fast answer :)
+<br/><br/>I was not able to compile SimplePlayer. Or rather, it was compiling, but when I started it, it was freezing.
+<br/><br/>So I created a new project from scratch, make sure that it ran on the Mac, and then I copy-and-pasted all the uos_*** methods to do things in a similar way, although not exactly in the same way. In this way I was able to play mp3 files like I mentioned.
+<br/><br/>Anyway, now that you mentioned it, I will go back to that project and I will try again to make it run without freezing, and I will let you know the result.
+<br/><br/>(I will also study the code there, so that I can tack the position without using a timer, that was a quick way for me to see what what happening, and it seemed to work. But I'll try to do it the &quot;right&quot; way next time :)
+<br/><br/>Thanks again Fred
+<br/><br/>Manny
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=608" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a608',608)">Threaded</a>
+	<div id="tooltip12682" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip12682'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown608"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown608", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor608', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D608\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost608', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D608\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost608', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D608\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost608', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(608)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively608', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(608)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate608', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D608\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print608', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D608\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink608', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p608.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail608', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D608\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown608');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=608&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow608" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553014864771-713"></span><script type="text/javascript">
+		Nabble.get('d1553014864771-713').innerHTML= Nabble.formatDateLong(new Date(1553014864771));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message608" class="message-text adbayes-content">
+		&gt; I was not able to compile SimplePlayer. Or rather, it was compiling, but when I started it, it was freezing. 
+<br/><br/>Maybe you have to check the path of uos_loadlibrary, with Mac it was set inside the mac-bundle, but you may change it according your bundle-compilation. .
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=609" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a609',609)">Threaded</a>
+	<div id="tooltip98447" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip98447'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown609"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown609", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor609', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D609\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost609', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D609\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost609', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D609\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost609', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(609)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively609', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(609)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate609', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D609\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print609', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D609\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink609', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p609.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail609', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D609\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown609');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=609&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow609" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553015118870-562"></span><script type="text/javascript">
+		Nabble.get('d1553015118870-562').innerHTML= Nabble.formatDateLong(new Date(1553015118870));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message609" class="message-text adbayes-content">
+		I have no Mac so if you could update SimplePlayer demo for Mac, you are welcome.
+<br/><br/>I know that with Mac you may add the libraries in bundle but maybe it is not the right way to do.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=610" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a610',610)">Threaded</a>
+	<div id="tooltip99688" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip99688'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown610"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown610", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor610', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D610\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost610', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D610\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost610', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D610\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost610', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(610)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively610', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(610)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate610', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D610\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print610', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D610\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink610', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p610.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail610', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D610\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown610');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=610&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow610" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553025643328-883"></span><script type="text/javascript">
+		Nabble.get('d1553025643328-883').innerHTML= Nabble.formatDateLong(new Date(1553025643328));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message610" class="message-text adbayes-content">
+		First of all, I have finally been able to run SimplePlayer on the Mac. For those who might want to try the same, I found that I had to do this:
+<br/><br/>1. In Options &gt; Project Options&gt; Application: enable the &quot;Use Application Bundle...&quot; option
+<br/><br/>2. In Options &gt; Project Options&gt; Application: click on [Create Application Bundle] once
+<br/><br/>3. Debugging: Either use Dwarf2 or disable it.
+<br/><br/>4. Custom options: add the following conditional defines:
+<br/>-ddynlink
+<br/>-dnogdiplus
+<br/>-dportaudio
+<br/>-dmpg123
+<br/>-usecthreads
+<br/><br/>After figuring out all of the above I was able to compile and run the demo.
+<br/><br/>(BTW I also learned how to get the playing position in real time, without TTimer (using uos_LoopProcIn(...) as a callback method), thanks for that tip.)
+<br/><br/>The problem with changing position, however, remained the same even on SimplePlayer as it was in my own test app. 
+<br/><br/>in SimplePlayer, when I change the TrackBar2 to a new position:
+<br/><br/>1) The music continues playing without any change
+<br/><br/>2) The position of TrackBar2 changes as if the playing position had changed -- so it is now out of sync with the audio.
+<br/><br/>In fact, if I move TrackBar2 forward in time, the time shown on &quot;lposition.caption&quot; will go even beyond the end of the audio. For example, if the audio has just begun, and I move the Trackbar near the end of the audio, the time shown will soon reach the end of the audio and go beyond it, even though the audio itself is still in the initial portion.
+<br/><br/>I think this looks like the problem is not in your code, but it is in the external library, LibMpg123-32.dylib
+<br/><br/>I don't know if you have the source code for that, or who might be willing and able to look into that?
+<br/><br/>And I think it is a bug rather than a limitation -- I mean, if the library was not supposed to seek/reposition MP3 files, at least it should not change the runtime position. If it accepts the new runtime position, and returns that new position in the callback method, then it looks like it is supposed to be able to do that seek operation after all.
+<br/><br/>Unfortunately for me, this is quite an important feature for my program -- an mp3 player that cannot reposition the track will not make my users very happy. Otherwise UOS is perfect in every way.
+<br/><br/>Any good suggestion or fix would be really appreciated...
+<br/><br/>Thanks
+<br/><br/>Manny
+<br/><br/><br/><br/><br/><br/>Thanks
+<br/><br/>Manny
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=611" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a611',611)">Threaded</a>
+	<div id="tooltip47986" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip47986'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown611"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown611", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor611', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D611\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost611', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D611\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost611', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D611\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost611', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(611)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively611', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(611)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate611', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D611\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print611', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D611\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink611', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p611.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail611', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D611\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown611');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=611&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow611" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553028352327-696"></span><script type="text/javascript">
+		Nabble.get('d1553028352327-696').innerHTML= Nabble.formatDateLong(new Date(1553028352327));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message611" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Could you try this, with your earlier code, add at end:
+<br/><br/>&nbsp; uos_LoadLib(PortAudioPath, nil, Mpg123Path, nil, nil, nil) 
+<br/>&nbsp; uos_CreatePlayer(PlayerIndex) 
+<br/>&nbsp; InputIndex := uos_AddFromFile(PlayerIndex, pchar(filename), -1, 0, -1) 
+<br/>&nbsp; uos_AddIntoDevOut(PlayerIndex, -1, -1, uos_InputGetSampleRate(PlayerIndex, InputIndex), -1, 0, -1, -1); 
+<br/>&nbsp; uos_InputSetPositionEnable(PlayerIndex, InputIndex, 1); // enable tracking of position during playback 
+<br/>&nbsp; uos_Play(PlayerIndex); 
+<br/><br/>&nbsp; // add this
+<br/>&nbsp; uos_InputSeek(PlayerIndex1, InputIndex, 30000);
+<br/><br/>When you start playing, is it changing position?
+<br/><br/>I just retested for Linux, FreeBSD and Windows, it is ok.
+<br/><br/>Maybe LibMpg123-32.dylib is corrupted.
+<br/>You may try to find a other in intenet or compile the source (see in uos credits.txt)
+<br/><br/>Thanks for your tips about Mac-compilation, I did create a topic with it.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=613" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a613',613)">Threaded</a>
+	<div id="tooltip42748" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip42748'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown613"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown613", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor613', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D613\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost613', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D613\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost613', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D613\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost613', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(613)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively613', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(613)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate613', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D613\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print613', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D613\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink613', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p613.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail613', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D613\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown613');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=613&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow613" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553029181761-506"></span><script type="text/javascript">
+		Nabble.get('d1553029181761-506').innerHTML= Nabble.formatDateLong(new Date(1553029181761));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message613" class="message-text adbayes-content">
+		The name of the library for Mac is libmpg123.0.dylib, there are a lot pre-compiled on the web, maybe one will work.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=614" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a614',614)">Threaded</a>
+	<div id="tooltip4177" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip4177'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown614"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown614", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor614', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D614\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost614', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D614\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost614', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D614\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost614', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(614)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively614', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(614)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate614', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D614\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print614', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D614\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink614', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p614.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail614', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D614\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown614');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=614&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow614" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553030728051-713"></span><script type="text/javascript">
+		Nabble.get('d1553030728051-713').innerHTML= Nabble.formatDateLong(new Date(1553030728051));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p611.html" rel="nofollow">this post</a> by fredvs
+			</div>
+	<div id="message614" class="message-text adbayes-content">
+		Like you suggested, I just tried adding uos_InputSeek right after uos_Play, and it has no effect of any kind. 
+<br/><br/>Again, if I call uos_InputSeek while the audio is already playing, then at least the Position gets changed. But if I call it immediately, like you indicated, there is no effect of any kind.
+<br/><br/>I will now try to find some other online copy of that library, and try with that. It really looks like the problem is in the library, not in your code. Your code simply loads the external method from the library, and then calls it. &nbsp;Let's see if I can find a library that works for me... I'll let you know what I find.
+<br/><br/>Thanks!
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=615" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a615',615)">Threaded</a>
+	<div id="tooltip19702" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip19702'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown615"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown615", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor615', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D615\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost615', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D615\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost615', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D615\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost615', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(615)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively615', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(615)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate615', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D615\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print615', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D615\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink615', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p615.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail615', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D615\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown615');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=615&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow615" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553031692026-763"></span><script type="text/javascript">
+		Nabble.get('d1553031692026-763').innerHTML= Nabble.formatDateLong(new Date(1553031692026));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message615" class="message-text adbayes-content">
+		&gt; &nbsp;But if I call it immediately, like you indicated, there is no effect of any kind. 
+<br/><br/>Maybe without any help, but did you try using &quot;application.processmessages&quot; before and after seek, maybe Mac needs it?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=617" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a617',617)">Threaded</a>
+	<div id="tooltip30683" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip30683'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown617"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown617", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor617', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D617\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost617', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D617\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost617', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D617\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost617', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(617)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively617', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(617)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate617', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D617\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print617', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D617\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink617', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p617.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail617', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D617\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown617');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=617&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow617" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553033388591-366"></span><script type="text/javascript">
+		Nabble.get('d1553033388591-366').innerHTML= Nabble.formatDateLong(new Date(1553033388591));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message617" class="message-text adbayes-content">
+		Yes I tried Application.ProcessMessages before and after, no effect.
+<br/><br/>I also tried to call uos_Pause before the seek, and uos_RePlay after the seek, no effect.
+<br/><br/>I looked online for libmpg123.0.dylib files. I found one, tried to download and replace LibMpg123-32.dylib, but I got an error, didn't load. (Perhaps 64 vs 32 bit)
+<br/><br/>I'm still searching, and I see that file mentioned in several places, but I cannot find any other download link for a different version. If you have any idea of where to find another version of libmpg123.0.dylib / LibMpg123-32.dylib please let me know
+<br/><br/>Thanks!
+<br/><br/>(P.S. I created another ticket about a different issue regarding @ShowPosition but that's a minor issue)
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=618" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a618',618)">Threaded</a>
+	<div id="tooltip22683" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip22683'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown618"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown618", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor618', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D618\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost618', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D618\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost618', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D618\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost618', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(618)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively618', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(618)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate618', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D618\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print618', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D618\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink618', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p618.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail618', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D618\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown618');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=618&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow618" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553041314207-314"></span><script type="text/javascript">
+		Nabble.get('d1553041314207-314').innerHTML= Nabble.formatDateLong(new Date(1553041314207));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message618" class="message-text adbayes-content">
+		If you are courageous, you may try to compile mpg123 source. <img class='smiley' src='/images/smiley/smiley_whistling.gif' />
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=619" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a619',619)">Threaded</a>
+	<div id="tooltip50672" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip50672'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown619"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown619", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor619', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D619\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost619', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D619\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost619', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D619\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost619', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(619)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively619', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(619)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate619', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D619\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print619', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D619\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink619', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p619.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail619', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D619\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown619');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=619&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow619" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553041530373-410"></span><script type="text/javascript">
+		Nabble.get('d1553041530373-410').innerHTML= Nabble.formatDateLong(new Date(1553041530373));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message619" class="message-text adbayes-content">
+		Maybe if you install mpg123 application, it will add also the library in the directory.
+<br/><a href="http://macappstore.org/mpg123/" target="_top" rel="nofollow" link="external">http://macappstore.org/mpg123/</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=75">manlio.mazzon</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=621" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a621',621)">Threaded</a>
+	<div id="tooltip57928" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip57928'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown621"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown621", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor621', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D621\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost621', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D621\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost621', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D621\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost621', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(621)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively621', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(621)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate621', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D621\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print621', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D621\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink621', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p621.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail621', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D621\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown621');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=621&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow621" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553097237787-299"></span><script type="text/javascript">
+		Nabble.get('d1553097237787-299').innerHTML= Nabble.formatDateLong(new Date(1553097237787));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=75" rel="nofollow" title="View profile of manlio.mazzon" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="manlio.mazzon" title="manlio.mazzon"/><img src="images/online.png" class="online75 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count75 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message621" class="message-text adbayes-content">
+		OK, finally I managed to make it work :)
+<br/><br/>In the end I had to use the 64 bit compiler and a different dylib file that I downloaded online.
+<br/><br/>Here are all the details if someone needs to do the same:
+<br/><br/>1. Originally I used UOS + mpg123 (32 bit) on the Mac to play mP3 files. It played files OK, but repositioning didn't work.
+<br/><br/>2. Eventually figured that the problem is not with the UOS code but with the library, LibMpg123-32.dylib
+<br/><br/>3. I tried replacing that library with another one I found online, without success.
+<br/><br/>4. I decided to try the 64 bit version. Unfortunately Lazarus for the Mac only comes in 32-bit flavour. So I had to recompile it, using x86_64 as the target CPU. I also had to replace Carbon LCL widgetset with Cocoa. (Carbon only supports 32 bit. Cocoa doesn't work quite as well on Lzarus but it supports 64 bit). Followed the instructions on the Lazarus / Mac wiki and managed to recompile Lazarus for the Mac in 64 bits.
+<br/><br/>5. I recompiled the demo in 64 bits. (Again, had to make sure Target CPU is x86_64, LCLWidgetSet is Cocoa, and any other adjustment that may be necessary when moving to 64 bits).
+<br/><br/>6. Again the MP3 played fine, but repositioning (seek) still didn't work.
+<br/><br/>7. I looked online for other versions of the LibMpg123-64.dylib file, whose common name on the Mac is 
+<br/>libmpg123.0.dylib and I found this on github:
+<br/><br/>&nbsp; <a href="https://github.com/JetForMe/podtique/blob/master/Xcode/libmpg123.0.dylib" target="_top" rel="nofollow" link="external">https://github.com/JetForMe/podtique/blob/master/Xcode/libmpg123.0.dylib</a><br/><br/>8. I downloaded it, used it to replace LibMpg123-64.dylib in UOS, and finally everything works, including repositioning!
+<br/><br/>Bottom line: 
+<br/><br/>I think there's something wrong with the Mac version of the LibMpg123-XX.dylib included in UOS. The &quot;seek&quot; function in both the 32 and 64 bit versions doesn't work. (Everything else works fine, as far as I can tell).
+<br/><br/>Using the above 64-bit library fortunately worked for me. However I could not find a 32-bit library that worked too.
+<br/><br/>Many many thanks to fredvs -- your kind and fast answers kept me going, and your tips about trying other versions of the library pointed me toward a solution that worked :)
+<br/><br/>All the best to everyone
+<br/><br/>M
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=624" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tt605.html#a624',624)">Threaded</a>
+	<div id="tooltip89330" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip89330'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown624"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown624", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor624', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D624\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost624', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D624\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost624', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D624\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost624', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(624)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively624', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(624)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate624', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D624\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print624', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D624\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink624', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Help-please-InputSeek-with-MP3-file-mpg123-on-MacOS-tp605p624.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail624', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D624\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown624');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=624&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow624" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1553121107678-806"></span><script type="text/javascript">
+		Nabble.get('d1553121107678-806').innerHTML= Nabble.formatDateLong(new Date(1553121107678));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Help please: InputSeek with MP3 file (mpg123) on MacOS
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message624" class="message-text adbayes-content">
+		Yep, I am very happy that it works! <img class='smiley' src='/images/smiley/anim_claps.gif' /><br/><br/>It was a big battle but you win, congrats.
+<br/><br/>About the no-working dylib of uos, of course you are welcome to share the good one.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v605" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=605&incViewCount=605&newsflash=&visitorOnline=&avatarOnline=75|1&postCount=75|1&markVisited=624&views=605';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

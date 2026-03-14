@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416]; var allURLs = ["/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-td392.html" ,"/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-td392i20.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '392'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - How to get volume and peak frequency at given location in audio file?</title>
+			<META NAME="description" CONTENT="How to get volume and peak frequency at given location in audio file?. Hi Is there a way to get the volume and peak frequency at a given point in a playing audio stream. I have looked at the wave..."/>
+			<META NAME="keywords" CONTENT="how, get, volume, peak, frequency, given, location, audio, file, way, point, playing, stream, have, looked, wave, example, does, only, whole, uos, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><style type="text/css">
+					span.current-page { padding: .1em .4em; }
+					span.page { padding: .1em; }
+					span.pages a { padding: .1em .4em; }
+					span.current-page { border-width:1px; border-style:solid; }
+					span.pages {
+						float:right;
+						white-space:nowrap;
+						font-weight:normal;
+					}
+				</style><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="392" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="392"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=392" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		How to get volume and peak frequency at given location in audio file?
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/StrumPract-the-Swiss-knife-of-musicians-tp250.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/uos-loopProcin-working-when-sound-first-plays-but-not-if-sound-is-played-again-when-looped-tp386.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tc392.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tc392.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip41393" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip41393'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		25 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D392\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(392)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(392)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(392)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(392)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(392)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(392)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost392', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D392\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink392', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=392&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		<span class="pages" style="padding:0 .2em .5em"><span class="current-page medium-border-color">1</span><span class="page"><a href="How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-td392i20.html" title="Page 2">2</a></span></span>
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=392" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html',392)">Threaded</a>
+	<div id="tooltip13712" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip13712'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown392"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown392", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor392', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D392\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost392', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost392', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost392', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(392)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively392', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(392)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate392', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print392', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D392\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink392', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail392', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D392\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown392');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=392&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow392" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526386248714-984"></span><script type="text/javascript">
+		Nabble.get('d1526386248714-984').innerHTML= Nabble.formatDateLong(new Date(1526386248714));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message392" class="message-text adbayes-content">
+		Hi
+<br/><br/>Is there a way to get the volume and peak frequency at a given point in a playing audio stream.
+<br/><br/>I have looked at the wave example, but this does a volume only on the whole file, and if the file is large it can take some time, I am trying to create the image in a thread; so that the mp3 can be playing, and the image generated in the background; this way the resolution of the image can be larger than visible.
+<br/><br/>Hope you understand.
+<br/><br/>Also is there similar Right and Left Levels available for the Output.
+<br/>and levels for each eq band on a pre and post eq basis?
+<br/><br/>Sorry for lots of questions. 
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=393" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a393',393)">Threaded</a>
+	<div id="tooltip20448" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip20448'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown393"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown393", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor393', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D393\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost393', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D393\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost393', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D393\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost393', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(393)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively393', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(393)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate393', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D393\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print393', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D393\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink393', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p393.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail393', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D393\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown393');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=393&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow393" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526468462349-768"></span><script type="text/javascript">
+		Nabble.get('d1526468462349-768').innerHTML= Nabble.formatDateLong(new Date(1526468462349));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message393" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; Is there a way to get the volume and peak frequency at a given point in a playing audio stream. 
+<br/><br/>i did not try, maybe using a other thread of the song with uos_seek() for the give point + InputGetLevelLeft() + InputGetLevelRight() + uos_stop()... 
+<br/><br/>&gt; &nbsp;I am trying to create the image in a thread; so that the mp3 can be playing, and the image generated in the background; this way the resolution of the image can be larger than visible. 
+<br/><br/>Huh, something like the players of StumPract &nbsp;(<a href="https://github.com/fredvs/strumpract" target="_top" rel="nofollow" link="external">https://github.com/fredvs/strumpract</a>) ? &nbsp;
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=394" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a394',394)">Threaded</a>
+	<div id="tooltip27893" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip27893'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown394"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown394", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor394', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D394\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost394', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D394\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost394', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D394\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost394', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(394)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively394', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(394)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate394', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D394\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print394', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D394\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink394', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p394.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail394', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D394\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown394');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=394&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow394" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526470237878-942"></span><script type="text/javascript">
+		Nabble.get('d1526470237878-942').innerHTML= Nabble.formatDateLong(new Date(1526470237878));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message394" class="message-text adbayes-content">
+		Hi
+<br/>Thanks for your reply.
+<br/>I have experimented with seek and inputgetlevel, this will work for the vu level, I was also after finding the peak frequency at the same given point, this is so the generated wave can show the volume and the peak frequency simultaneously.
+<br/><br/>The image that I will be creating will be 8192px wide by 512pxhigh, this allows for a good enough resolution to allow realtime zooming and scrolling of the wave when playing.
+<br/>The thread can create this, it takes some time, but the thread can also then allow an even higher resolution from a point to allow further detailed analysis to a m/s resolution when playing is paused.
+<br/>Vurrently my routine creates the wave directly on a timage canvas; which has many advantages and also saves the completed image to a file of same name as input source, so as to recall if it has already been created.
+<br/><br/>The realtime eq freq levels is for an equalizer, that has vu meters by each fader showing the vu of both l/r channels of the mid point frequency of the band the fader is adjusting.
+<br/><br/>Can an Equalizer be created for pre and post effects, ie eq the input source before any effects, and then have a post equalizer to fine tweek the output?
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=395" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a395',395)">Threaded</a>
+	<div id="tooltip23441" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip23441'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown395"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown395", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor395', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D395\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost395', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D395\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost395', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D395\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost395', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(395)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively395', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(395)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate395', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D395\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print395', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D395\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink395', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p395.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail395', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D395\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown395');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=395&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow395" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526558808476-197"></span><script type="text/javascript">
+		Nabble.get('d1526558808476-197').innerHTML= Nabble.formatDateLong(new Date(1526558808476));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message395" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; Can an Equalizer be created for pre and post effects, ie eq the input source before any effects, and then have a post equalizer to fine tweek the output? 
+<br/><br/>Sorry, but I am not sure to understand what you want.
+<br/><br/>In theory, you may apply how many DSP's (including equalizer) you want, only you hardware is the limit. 
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=396" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a396',396)">Threaded</a>
+	<div id="tooltip50972" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip50972'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown396"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown396", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor396', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D396\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost396', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D396\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost396', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D396\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost396', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(396)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively396', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(396)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate396', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D396\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print396', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D396\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink396', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p396.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail396', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D396\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown396');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=396&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow396" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526655594739-551"></span><script type="text/javascript">
+		Nabble.get('d1526655594739-551').innerHTML= Nabble.formatDateLong(new Date(1526655594739));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message396" class="message-text adbayes-content">
+		Hi
+<br/><br/>Can I have an equalizer on the Output side.
+<br/><br/>I would need to EQ the input, apply effects, then EQ the ouput
+<br/>Pre EQ-&gt;Effects-&gt;Post EQ ( to remove hi/lo etc from effects added).
+<br/><br/>How can I find out the System Main Out Level, so that I can apply this to the VU Levels.
+<br/>ie if I set Windows Volume to 50% then I need a way to read this value so that I can calculate the Output Levels..
+<br/><br/>I have look through the uos.pas file; are there other functions that are not in this file.
+<br/><br/>Thanks
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=397" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a397',397)">Threaded</a>
+	<div id="tooltip63666" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63666'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown397"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown397", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor397', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D397\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost397', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D397\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost397', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D397\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost397', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(397)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively397', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(397)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate397', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D397\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print397', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D397\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink397', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p397.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail397', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D397\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown397');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=397&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow397" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526655931753-805"></span><script type="text/javascript">
+		Nabble.get('d1526655931753-805').innerHTML= Nabble.formatDateLong(new Date(1526655931753));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message397" class="message-text adbayes-content">
+		ps
+<br/><br/>If I open one app that uses uos which accesses its own dlls in a seperate location and play music
+<br/>If I then open Simple Player then the audio from first app stops.
+<br/><br/>How do I stop this??
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=398" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a398',398)">Threaded</a>
+	<div id="tooltip63182" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63182'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown398"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown398", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor398', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D398\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost398', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D398\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost398', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D398\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost398', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(398)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively398', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(398)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate398', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D398\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print398', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D398\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink398', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p398.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail398', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D398\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown398');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=398&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow398" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526728741798-857"></span><script type="text/javascript">
+		Nabble.get('d1526728741798-857').innerHTML= Nabble.formatDateLong(new Date(1526728741798));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p396.html" rel="nofollow">this post</a> by ic
+			</div>
+	<div id="message398" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; Can I have an equalizer on the Output side. 
+<br/><br/>You may apply effects &nbsp;with InputAddDSP() and/or OutputAddDSP().
+<br/><br/>&gt;How can I find out the System Main Out Level
+<br/><br/>Do you mean the general volume of the OS ?
+<br/>No, uos does not deal this (at the moment). You should use the build-in command of the Windows audio-driver.
+<br/><br/>&gt; If I then open Simple Player then the audio from first app stops. 
+<br/><br/>With what OS (Windows, Unix, Mac) ?
+<br/>I cannot reproduce this, could you give a demo/example ?
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=399" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a399',399)">Threaded</a>
+	<div id="tooltip61263" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip61263'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown399"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown399", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor399', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D399\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost399', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D399\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost399', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D399\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost399', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(399)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively399', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(399)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate399', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D399\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print399', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D399\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink399', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p399.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail399', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D399\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown399');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=399&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow399" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526729671659-69"></span><script type="text/javascript">
+		Nabble.get('d1526729671659-69').innerHTML= Nabble.formatDateLong(new Date(1526729671659));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p397.html" rel="nofollow">this post</a> by ic
+			</div>
+	<div id="message399" class="message-text adbayes-content">
+		&gt;If I open one app that uses uos which accesses its own dlls in a seperate location and play music 
+<br/>&gt; If I then open Simple Player then the audio from first app stops. 
+<br/><br/><br/>Re-hello.
+<br/><br/>I did try with Unix and Windows, but cannot reproduce this.
+<br/><br/>Could you give also the steps how to reproduce it ?
+<br/><br/>Thanks.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=400" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a400',400)">Threaded</a>
+	<div id="tooltip57828" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip57828'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown400"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown400", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor400', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D400\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost400', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D400\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost400', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D400\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost400', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(400)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively400', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(400)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate400', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D400\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print400', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D400\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink400', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p400.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail400', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D400\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown400');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=400&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow400" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526734252246-255"></span><script type="text/javascript">
+		Nabble.get('d1526734252246-255').innerHTML= Nabble.formatDateLong(new Date(1526734252246));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message400" class="message-text adbayes-content">
+		Hi
+<br/><br/>I have played with the add dsp feature, and these work.
+<br/>But I have not worked out how I can get/set eq on both the pre and post effects
+<br/>If I set levels to uos_InputSetLevelEnable (playerindex,inputindex,1) for pre dsp effects
+<br/>how would I set uos_InputSetLevelEnable(...,2) for post dsp on the same player,index?
+<br/>If I try, this overrides the first setting.
+<br/><br/>video showing sound issue..
+<br/><a href="https://www.dropbox.com/s/hexkwjf2uimm8dk/uos_sound_cut.mp4?dl=0" target="_top" rel="nofollow" link="external">https://www.dropbox.com/s/hexkwjf2uimm8dk/uos_sound_cut.mp4?dl=0</a><br/><br/>windows 10 64, 1803
+<br/><br/><br/>Is there a way to make the uos_LoopProcIn more frequent? It seems to lag.
+<br/>If I create a thread that gets the l/r levels at 10ms then it's more in sync with the music playing.
+<br/><br/>It's a shame it has no means of get/set system volume, as my apps go full svreen, so no minimize and no status bar; I would need to exit this mode to get access to windows master volume. It would be nice to have these available.
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=401" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a401',401)">Threaded</a>
+	<div id="tooltip2361" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip2361'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown401"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown401", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor401', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D401\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost401', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D401\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost401', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D401\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost401', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(401)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively401', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(401)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate401', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D401\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print401', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D401\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink401', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p401.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail401', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D401\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown401');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=401&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow401" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526748557431-610"></span><script type="text/javascript">
+		Nabble.get('d1526748557431-610').innerHTML= Nabble.formatDateLong(new Date(1526748557431));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message401" class="message-text adbayes-content">
+		<br/>&quot;Is there a way to make the uos_LoopProcIn more frequent?&quot;
+<br/><br/>If I set the framcount to 8192 instead of -1 then it's much more responsive; I have tried lower figures but this increaes cpu usage; 8192 seems fine for my needs :)
+<br/><br/>Input_Index := uos_AddFromFile(Player_Index, pchar(audio_folder+filename), -1, sample_format, 8192);
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=402" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a402',402)">Threaded</a>
+	<div id="tooltip70602" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip70602'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown402"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown402", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor402', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D402\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost402', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D402\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost402', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D402\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost402', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(402)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively402', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(402)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate402', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D402\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print402', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D402\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink402', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p402.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail402', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D402\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown402');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=402&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow402" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526813211833-446"></span><script type="text/javascript">
+		Nabble.get('d1526813211833-446').innerHTML= Nabble.formatDateLong(new Date(1526813211833));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p400.html" rel="nofollow">this post</a> by ic
+			</div>
+	<div id="message402" class="message-text adbayes-content">
+		&gt; it's a shame it has no means of get/set system volume...
+<br/><br/>It is a shame that not all OS use the same code !
+<br/><br/>To change sound volume in Windows, use WaveOutSetVolume function. 
+<br/>A value of 0xFFFF represents full volume, and a value of 0x0000 is silence.
+<br/><br/>uses mmsystem;
+<br/><br/>procedure TForm1.Button1Click(Sender: TObject);
+<br/>var
+<br/>&nbsp; MyWaveOutCaps: TWaveOutCaps;
+<br/>&nbsp; Volume: Integer;
+<br/>begin
+<br/>&nbsp; Volume:=Scrollbar1.Position;
+<br/>&nbsp; if WaveOutGetDevCaps(
+<br/>&nbsp; &nbsp; WAVE_MAPPER, 
+<br/>&nbsp; &nbsp; @MyWaveOutCaps, 
+<br/>&nbsp; &nbsp; sizeof(MyWaveOutCaps))=MMSYSERR_NOERROR then
+<br/>&nbsp; &nbsp; &nbsp; WaveOutSetVolume(WAVE_MAPPER, MakeLong(Volume, Volume));
+<br/>end;
+<br/><br/>About your video, on my Lenovo + Win10 ---&gt; sorry, I cannot reproduce it.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=403" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a403',403)">Threaded</a>
+	<div id="tooltip73705" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip73705'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown403"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown403", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor403', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D403\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost403', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D403\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost403', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D403\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost403', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(403)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively403', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(403)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate403', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D403\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print403', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D403\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink403', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p403.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail403', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D403\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown403');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=403&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow403" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526884476908-712"></span><script type="text/javascript">
+		Nabble.get('d1526884476908-712').innerHTML= Nabble.formatDateLong(new Date(1526884476908));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1526891469843-413"></span><script type="text/javascript">
+		Nabble.get('d1526891469843-413').innerHTML= Nabble.formatDateLong(new Date(1526891469843));
+	</script>.
+			</div>
+	
+	<div id="message403" class="message-text adbayes-content">
+		Hi
+<br/><br/>The video, I get the same on 2 laptops, my developer desktop, and my DAW workstation, so something odd.
+<br/><br/>Question
+<br/>I have setup a 10 band EQ and when I adjust the Equalizer and let it just play the music, more often than not after a couple of minutes it crashes and points to uos.pas line 3646 with erange error; my frame count is set to 8192, could this be the issue?
+<br/><br/>&nbsp;case Data.SampleFormat of
+<br/>&nbsp; 2:
+<br/>&nbsp; begin
+<br/>&nbsp; if ifbuf = True then
+<br/>------&gt; &nbsp;ps^[i] := trunc((res * 1) + (res2 * fft.gain)) else
+<br/>&nbsp; ps2^[i] := trunc((res * 1) + (res2 * fft.gain));
+<br/>&nbsp; end;
+<br/>&nbsp; 1: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<br/><br/><br/>Question 2
+<br/>i am having a problem trying to getthe values of the filters into array. The code below plays the song, but nothing is in the Level_Array ? Any ideas as to what could be wrong with my code? The Eq_Index Array is populated with 0..9 and When I change the equalizer the sound is changing, so the Filters Must be set and working..
+<br/><br/>Level_Array:array of cfloat;
+<br/>......
+<br/>Player_Index:=0;
+<br/>if uos_CreatePlayer(Player_Index) then
+<br/>begin
+<br/>&nbsp; &nbsp;Input_Index:=-1;
+<br/>&nbsp; &nbsp;Input_Index :=uos_AddFromFile(Player_Index, pchar(audio_folder+'\rhapsody.mp3'), -1, sample_format, audio_frame_count);//-1);
+<br/>&nbsp; &nbsp;sample_rate:=uos_InputGetSampleRate(Player_Index, Input_Index);
+<br/>&nbsp; &nbsp;channels:=uos_InputGetChannels(Player_Index, Input_Index);
+<br/>&nbsp; &nbsp;Output_Index :=uos_AddIntoDevOut(Player_Index, -1, -1, sample_rate,channels,sample_format, -1, -1);
+<br/>&nbsp; &nbsp;uos_InputSetLevelEnable(Player_Index,Input_Index, 2) ;
+<br/>&nbsp; &nbsp;uos_InputSetPositionEnable(Player_Index, Input_Index, 1) ;
+<br/>&nbsp; &nbsp;uos_AddIntoDevOut(Player_Index );
+<br/>&nbsp; &nbsp;uos_EndProc(Player_Index, @ClosePlayer1);
+<br/>&nbsp; &nbsp;uos_LoopProcOut(Player_Index,Output_Index,@LoopProcOutputPlayer1);
+<br/>&nbsp; &nbsp;uos_BeginProc(Player_Index, @BeginPlayer1);
+<br/>&nbsp; &nbsp;uos_LoopProcIn(Player_Index, Input_Index, @LoopProcPlayer1);
+<br/>&nbsp; &nbsp; //setup equalizer
+<br/>&nbsp; &nbsp; For I:=1 to 10 do EQ_Index[I]:= uos_InputAddFilter(Player_Index, Input_Index, Equalizer_Bands[i].lo_freq,Equalizer_Bands[i].hi_freq, 1, 1, true, nil);
+<br/>&nbsp; &nbsp; uos_Play(Player_Index);
+<br/>&nbsp; &nbsp; sleep(2000);
+<br/>&nbsp; &nbsp; Level_Array:=uos_InputFiltersGetLevelArray(Player_Index,Input_Index); &nbsp; &nbsp; &nbsp; &nbsp;
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=404" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a404',404)">Threaded</a>
+	<div id="tooltip6590" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip6590'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown404"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown404", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor404', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D404\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost404', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D404\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost404', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D404\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost404', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(404)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively404', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(404)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate404', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D404\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print404', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D404\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink404', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p404.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail404', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D404\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown404');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=404&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow404" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526893341397-411"></span><script type="text/javascript">
+		Nabble.get('d1526893341397-411').innerHTML= Nabble.formatDateLong(new Date(1526893341397));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message404" class="message-text adbayes-content">
+		&gt; The video, I get the same on 2 laptops, my developer desktop, and my DAW workstation, so something odd. 
+<br/><br/>What OS: 32 or 64 bit ? i did try on Windows 10 64 bit with 2X uos-SimplePlayer 32 + StrumPract 32, all are playing together ok and no stop if a new instance of a uos-demo is loaded.
+<br/><br/>Sorry, I do not have any screen recorder installed, you have to trust me.
+<br/><br/>For the 2 other questions, i will study it asap, I am over-booked this week.
+<br/>At first look: &nbsp;Level_Array gives a array of level of volume, not of level of filter.
+<br/><br/>Could it be possible to give a zip-demo of what you try to do (in this forum-page, click on &quot;More&quot; + &quot;Upload a file&quot;)?
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=405" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a405',405)">Threaded</a>
+	<div id="tooltip4214" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip4214'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown405"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown405", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor405', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D405\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost405', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D405\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost405', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D405\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost405', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(405)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively405', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(405)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate405', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D405\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print405', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D405\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink405', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p405.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail405', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D405\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown405');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=405&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow405" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1526918581797-59"></span><script type="text/javascript">
+		Nabble.get('d1526918581797-59').innerHTML= Nabble.formatDateLong(new Date(1526918581797));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message405" class="message-text adbayes-content">
+		Hi
+<br/><br/>i have created a minimized simple project;
+<br/>this creates a graphic using progressbar of the filter levels, which works for while then crashes out.
+<br/><br/>It uses same folder structure as uos examples; so expects the dlls and extra sources etc.
+<br/><br/>i use an mp3 of rhapsody, but all other I have test Bat out of hell for example also give a sigsev or runerrro 204 after playing for a minute or two.
+<br/><br/>when running its using just under 1% of cpu resources.
+<br/><br/>Extrnal SIGSEV in debug and release mode.
+<br/><br/>points to uos.pas line 3705
+<br/>if ifbuf = false then
+<br/>&nbsp; begin
+<br/>&nbsp; data.levelfilters &nbsp;:= data.levelfilters + '%'+ DSPLevelString(fft.VirtualBuffer, Data.SampleFormat, data.Ratio, levelleft, levelright) ;
+<br/>&nbsp; setlength(Data.levelfiltersar,length(Data.levelfiltersar)+1);
+<br/>&nbsp; ----&gt;Data.levelfiltersar[length(Data.levelfiltersar)-1] := levelleft;
+<br/>&nbsp; setlength(Data.levelfiltersar,length(Data.levelfiltersar)+1);
+<br/>&nbsp; Data.levelfiltersar[length(Data.levelfiltersar)-1] := levelright;
+<br/>&nbsp; end; 
+<br/><br/>runerror 204 points to uos.pas
+<br/>function Tuos_Player.InputFiltersGetLevelArray(InputIndex: cint32): TDArFloat;
+<br/>// InputIndex : InputIndex of existing input
+<br/>// result : array of float of each filter. 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//in format levelfilter0left,levelfilter0right,levelfilter1left,levelfilter2right,...
+<br/>&nbsp;begin
+<br/>-----&gt; &nbsp;if (Status &gt; 0) and (isAssigned = True) then Result := StreamIn[InputIndex].data.Levelfiltersar;
+<br/>end; &nbsp; &nbsp; &nbsp;
+<br/><br/>Hope that helps.
+<br/><br/>ps Runing latest win 10 64 (1803) on all systems. 
+<br/><br/><a href="http://uos-forum.108.s1.nabble.com/file/n405/uos_filter.zip" target="_top" rel="nofollow" link="external">uos_filter.zip</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=406" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a406',406)">Threaded</a>
+	<div id="tooltip86397" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip86397'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown406"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown406", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor406', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D406\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost406', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D406\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost406', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D406\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost406', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(406)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively406', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(406)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate406', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D406\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print406', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D406\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink406', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p406.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail406', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D406\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown406');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=406&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow406" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527167356581-419"></span><script type="text/javascript">
+		Nabble.get('d1527167356581-419').innerHTML= Nabble.formatDateLong(new Date(1527167356581));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message406" class="message-text adbayes-content">
+		Hello.
+<br/><br/>OK, I will (try to) find some time this week-end to check your demo.
+<br/><br/>Write you later.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=407" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a407',407)">Threaded</a>
+	<div id="tooltip56880" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip56880'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown407"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown407", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor407', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D407\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost407', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D407\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost407', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D407\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost407', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(407)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively407', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(407)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate407', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D407\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print407', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D407\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink407', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p407.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail407', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D407\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown407');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=407&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow407" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527171978492-149"></span><script type="text/javascript">
+		Nabble.get('d1527171978492-149').innerHTML= Nabble.formatDateLong(new Date(1527171978492));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message407" class="message-text adbayes-content">
+		Ok that fine.
+<br/><br/>Not sure if you can test/confirm this finding..
+<br/><br/>if I compile for 64bit and &nbsp;run with 64bit dll, the errors vanish.
+<br/><br/>Wondering if latest Windows 10-64 release is having issues running 32bit dll's. Just a thought.
+<br/><br/><br/>i have been playing further and have done something, which hopefuly you can say you need to set this/that.
+<br/><br/>I have managed to get it display the EQ band levels, and I can change the individual levels of the EQ, the bars confirm this as they reduce their intensity, however I am not hearing a change.. I suspect I have forgot to set something.
+<br/><br/>Thanks for your patience.
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=408" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a408',408)">Threaded</a>
+	<div id="tooltip45074" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip45074'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown408"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown408", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor408', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D408\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost408', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D408\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost408', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D408\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost408', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(408)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively408', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(408)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate408', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D408\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print408', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D408\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink408', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p408.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail408', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D408\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown408');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=408&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow408" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527261526350-150"></span><script type="text/javascript">
+		Nabble.get('d1527261526350-150').innerHTML= Nabble.formatDateLong(new Date(1527261526350));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message408" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Indeed, there is a (random) problem with fpc 3.0.x + LCL widget and Thread.Queue() method.
+<br/>Last uos-commit 0f15b08..d7b76fe uses Thread.Synchronize().
+<br/>It seems that the synchro is safe now for LCL.
+<br/><br/>Thanks to note it.
+<br/><br/>Could you try your project with last uos release ?
+<br/><br/>PS: IMHO it is better to use TForm.Activate in place of TForm.Create for all uos init stuff (uos_loadLib(), ...).
+<br/>&nbsp; &nbsp; &nbsp; Also do not forget to call uos_free() when application terminates.
+<br/>&nbsp;
+<br/><br/>Fre;D
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=35">ic</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=409" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a409',409)">Threaded</a>
+	<div id="tooltip1232" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip1232'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown409"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown409", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor409', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D409\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost409', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D409\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost409', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D409\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost409', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(409)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively409', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(409)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate409', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D409\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print409', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D409\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink409', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p409.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail409', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D409\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown409');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=409&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow409" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527263194731-923"></span><script type="text/javascript">
+		Nabble.get('d1527263194731-923').innerHTML= Nabble.formatDateLong(new Date(1527263194731));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=35" rel="nofollow" title="View profile of ic" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="ic" title="ic"/><img src="images/online.png" class="online35 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count35 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message409" class="message-text adbayes-content">
+		Hi
+<br/><br/>Just downloaded latest uos as of today.
+<br/><br/>App compiles and runs, howvever I am getting some audio crackles; mainly in the first 10 seconds.
+<br/><br/>At first I though maybe it was the track, so loaded a much larger mp3 in.
+<br/><br/>Tested compiled version using previous uos src files, no clicks/crackles.
+<br/>New src files I get clicks/crackles.
+<br/><br/>This is using both just updated lazarus/fpc trunk and lazarus/fpc fixes.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=410" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a410',410)">Threaded</a>
+	<div id="tooltip6901" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip6901'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown410"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown410", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor410', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D410\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost410', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D410\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost410', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D410\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost410', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(410)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively410', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(410)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate410', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D410\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print410', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D410\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink410', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p410.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail410', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D410\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown410');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=410&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow410" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527264152442-962"></span><script type="text/javascript">
+		Nabble.get('d1527264152442-962').innerHTML= Nabble.formatDateLong(new Date(1527264152442));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1527533998193-805"></span><script type="text/javascript">
+		Nabble.get('d1527533998193-805').innerHTML= Nabble.formatDateLong(new Date(1527533998193));
+	</script>.
+			</div>
+	
+	<div id="message410" class="message-text adbayes-content">
+		<b>CONTENTS DELETED</b>
+			<div class="weak-color">The author has deleted this message.</div>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=411" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tt392.html#a411',411)">Threaded</a>
+	<div id="tooltip87229" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip87229'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown411"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown411", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor411', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D411\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost411', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D411\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost411', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D411\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost411', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(411)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively411', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(411)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate411', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D411\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print411', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D411\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink411', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-tp392p411.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail411', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D411\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown411');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=411&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow411" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1527281204245-275"></span><script type="text/javascript">
+		Nabble.get('d1527281204245-275').innerHTML= Nabble.formatDateLong(new Date(1527281204245));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: How to get volume and peak frequency at given location in audio file?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message411" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>Huh,... indeed there was a bug in the GetArrayFilter function... 
+<br/><br/>Could you try with the last uos commit &nbsp;d7b76fe..52ca515 ?
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		<span class="pages" style="padding:1em .2em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="How-to-get-volume-and-peak-frequency-at-given-location-in-audio-file-td392i20.html" title="Page 2">2</a></span></span>
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v392" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=392&incViewCount=392&newsflash=&visitorOnline=&avatarOnline=35|1&postCount=35|1&markVisited=411&views=392';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

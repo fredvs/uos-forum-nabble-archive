@@ -1,0 +1,1376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0">
+	
+	<id>tag:uos-forum.108.s1.nabble.com,2006:forum-1</id>
+	<title>Nabble - uos Forum</title>
+	<updated>2025-04-07T07:02:13Z</updated>
+	<link rel="self" type="application/atom+xml" href="http://uos-forum.108.s1.nabble.com/uos-Forum-f1.xml" />
+	<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/" />
+	<subtitle type="html">&lt;img src=&quot;http://uos-forum.108.s1.nabble.com/file/n1/uos2.png&quot; border=&quot;0&quot;/&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href=&quot;https://github.com/fredvs/uos/&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/fredvs/uos/&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;United Open-libraries of Sound&lt;/b&gt;&lt;br/&gt;</subtitle>
+	
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1359</id>
+		<title>Re: How get info about device input MIC (Raspberry/debian11/lazarus)</title>
+		<published>2025-03-21T05:26:08Z</published>
+		<updated>2025-03-21T05:26:08Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;I am a few lost in your code, sorry.
+&lt;br/&gt;&lt;br/&gt;Did you try the uos demo Device Infos ?
+&lt;br/&gt;It should give the list of input devices, including mic.
+&lt;br/&gt;Now if you want to know if a mic was connected to the input device (for example in the input mini-jack) sorry but I dont know how to get this.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357p1359.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1358"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1358</id>
+		<title>Re: How get info about device input MIC (Raspberry/debian11/lazarus)</title>
+		<published>2025-03-21T04:19:46Z</published>
+		<updated>2025-03-21T04:19:46Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			hello,
+&lt;br/&gt;After testing your main_sr.pas program, this program does not detect the absence of a microphone.
+&lt;br/&gt;How can I fix this problem?
+&lt;br/&gt;Thank you.
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357p1358.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1357"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1357</id>
+		<title>How get info about device input MIC (Raspberry/debian11/lazarus)</title>
+		<published>2025-03-21T03:32:39Z</published>
+		<updated>2025-03-21T03:32:39Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello,
+&lt;br/&gt;I want to detect the existence of a microphone and its details before recording.
+&lt;br/&gt;I coded the function below. The problem is, I can't get the device name (e.g., cde linux arecord -l result=&amp;quot;card 1: UM1 [WOODBRASS UM1], device 0: USB Audio [USB Audio]&amp;quot;).
+&lt;br/&gt;one solution ?
+&lt;br/&gt;thanks.
+&lt;br/&gt;&lt;br/&gt;ma fonction:
+&lt;br/&gt;&lt;i&gt;//Ctrl existance input MIC
+&lt;br/&gt;function MIC_lireinfo(var vMicDeviceName,vMicHostAPIName:string;var vmes:string):boolean;
+&lt;br/&gt;var VuosDefaultDeviceIn:cint32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos:Tuos_DeviceInfos; &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; devinf: PPaDeviceInfo;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; apiinf: PPaHostApiInfo;
+&lt;br/&gt;begin
+&lt;br/&gt;result:=false;vmes:='';
+&lt;br/&gt;VuosDefaultDeviceIn:=Pa_GetDefaultInPutDevice ();
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; if VuosDefaultDeviceIn=-1
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; then vmes:='MIC: pas de micro'
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; else begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; result:=true;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.DeviceNum :=VuosDefaultDeviceIn;//x;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; devinf := Pa_GetDeviceInfo (VuosDefaultDeviceIn);//x);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; apiinf := Pa_GetHostApiInfo (devinf^.hostApi);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.DeviceName := UTF8Decode (devinf^._name);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.HostAPIName := UTF8Decode (apiinf^._name);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; vMicDeviceName:=VTuos_DeviceInfos.DeviceName;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; vMicHostAPIName:=VTuos_DeviceInfos.HostAPIName ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;end; &amp;nbsp; &lt;/i&gt;&lt;br/&gt;&lt;br/&gt;Resultat &amp;quot;apiinf^&amp;quot;:
+&lt;br/&gt;&lt;i&gt;record PAHOSTAPIINFO {
+&lt;br/&gt;&amp;nbsp; STRUCTVERSION = 1, 
+&lt;br/&gt;&amp;nbsp; _TYPE = PAALSA, 
+&lt;br/&gt;&amp;nbsp; _NAME = 'ALSA', 
+&lt;br/&gt;&amp;nbsp; DEVICECOUNT = 11, 
+&lt;br/&gt;&amp;nbsp; DEFAULTINPUTDEVICE = 10, 
+&lt;br/&gt;&amp;nbsp; DEFAULTOUTPUTDEVICE = 10}&lt;/i&gt;&lt;br/&gt;&lt;br/&gt;Resultat &amp;quot;devinf^&amp;quot;:
+&lt;br/&gt;&lt;i&gt;record PADEVICEINFO {
+&lt;br/&gt;&amp;nbsp; STRUCTVERSION = 2, 
+&lt;br/&gt;&amp;nbsp; _NAME = 'default', 
+&lt;br/&gt;&amp;nbsp; HOSTAPI = 0, 
+&lt;br/&gt;&amp;nbsp; MAXINPUTCHANNELS = 32, 
+&lt;br/&gt;&amp;nbsp; MAXOUTPUTCHANNELS = 32, 
+&lt;br/&gt;&amp;nbsp; DEFAULTLOWINPUTLATENCY = 0.0086848072562358269, 
+&lt;br/&gt;&amp;nbsp; DEFAULTLOWOUTPUTLATENCY = 0.0086848072562358269, 
+&lt;br/&gt;&amp;nbsp; DEFAULTHIGHINPUTLATENCY = 0.034807256235827665, 
+&lt;br/&gt;&amp;nbsp; DEFAULTHIGHOUTPUTLATENCY = 0.034807256235827665, 
+&lt;br/&gt;&amp;nbsp; DEFAULTSAMPLERATE = 44100}&lt;/i&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1356</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-20T11:34:43Z</published>
+		<updated>2025-03-20T12:19:08Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;Nice that your voice recognition project is working.
+&lt;br/&gt;&lt;br/&gt;To detect silence, a easy way is to update the LoopProcPlayer1.
+&lt;br/&gt;&lt;br/&gt;For example:
+&lt;br/&gt;&lt;br/&gt;// global variable
+&lt;br/&gt;var incbuffer: integer = 0;
+&lt;br/&gt;&lt;br/&gt;// in btn_record_startClick, after adding input add this:
+&lt;br/&gt;procedure Tmainvosk3_for.btn_record_startClick(Sender: TObject); 
+&lt;br/&gt;begin
+&lt;br/&gt;....
+&lt;br/&gt;&amp;nbsp; In1Index := uos_AddFromDevIn(PlayerIndex1,-1, -1, -1, -1, 2, -1, -1); //For intput integer 16 sample:
+&lt;br/&gt;&amp;nbsp; uos_InputSetLevelEnable(PlayerIndex1, InputIndex1, 2); // add this
+&lt;br/&gt;&amp;nbsp; incbuffer := 0; // add this
+&lt;br/&gt;...
+&lt;br/&gt;end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; 
+&lt;br/&gt;// update LoopProcPlayer1
+&lt;br/&gt;procedure Tmainvosk3_for.LoopProcPlayer1; 
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp;if uos_InputGetLevelLeft(PlayerIndex1, InputIndex1) + uos_InputGetLevelRight(PlayerIndex1, InputIndex1) &amp;lt; 0.1 then inc(incbuffer) // adjust the level for silence maybe = 0 is too strict.
+&lt;br/&gt;else &amp;nbsp;incbuffer := 0; &amp;nbsp;// the silence was broken then reinitialize incbuffer = 0
+&lt;br/&gt;&lt;br/&gt;if incbuffer &amp;gt; 10 then uos_stop(PlayerIndex1) // you need do decide how many buffers to be your silent time.
+&lt;br/&gt;else
+&lt;br/&gt;&amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp;// your code for recognition.
+&lt;br/&gt;&amp;nbsp;end;
+&lt;br/&gt;end;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1356.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1355"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1355</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-20T09:49:51Z</published>
+		<updated>2025-03-20T09:49:51Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello, thank you for this advice.
+&lt;br/&gt;The issue has been resolved, and my voice recognition is working fine.
+&lt;br/&gt;Next problem: I want to stop recording after a detected silence of x seconds.
+&lt;br/&gt;Can you help me?
+&lt;br/&gt;I'm getting a bit lost with all the UOS functions.
+&lt;br/&gt;Thanks. 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1355.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1332"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1354</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-20T09:47:01Z</published>
+		<updated>2025-03-20T09:47:01Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello, thank you for this advice.
+&lt;br/&gt;The issue has been resolved. 
+&lt;br/&gt;Next problem: I want to stop recording after a detected silence of x seconds.
+&lt;br/&gt;Can you help me?
+&lt;br/&gt;I'm getting a bit lost with all the UOS functions.
+&lt;br/&gt;Thanks.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1354.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1332"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1353</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-20T09:46:40Z</published>
+		<updated>2025-03-20T10:09:17Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Hello i imagined that so i made a thread that called RecordMic RecordSpeakers and had problems too . I do not know if this was helpfull *(it is included at the demo) 
+&lt;br/&gt;But the great news are that 
+&lt;br/&gt;&lt;b&gt;1) Under Linux you can record mic+speakers with the use virtual inputs pulseaudio using one only input @ any samplerate
+&lt;br/&gt;2) Windows you can record mic+speakers &amp;nbsp;with 2 inputs at Float32 samplerate=0 :)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Important using butt (&lt;a href=&quot;https://danielnoethen.de/butt/&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://danielnoethen.de/butt/&lt;/a&gt;) (the record option-not streaming) with two inputs at Linux i have similar problems with audio rippling and de-synch ... 
+&lt;br/&gt;&lt;br/&gt;Below is a registered audio with butt Linux 
+&lt;br/&gt;trim.uk.to/rec_20250320-185524.mp3
+&lt;br/&gt;&lt;br/&gt;Below is a registered audio with mysimple recorder Linux at Float32 samplerate=0 
+&lt;br/&gt;trim.uk.to/both_25_03_20_18_59_14.ogg
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1353.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1352"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1352</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-20T09:21:03Z</published>
+		<updated>2025-03-20T09:42:23Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			If you have it working but with scratch or bad synchro, you may try to tune the latency and buffer length value.
+&lt;br/&gt;&lt;br/&gt;Note too that LCL widgetset &amp;quot;eats&amp;quot; lot of latency, mainly using GTK widgetset who can work a few time and suddenly stop playing or loose synchro. &amp;nbsp;Maybe try using Qt, I had better result.
+&lt;br/&gt;(MSEgui widgetset does it much better but this is a other story ;-) )
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1352.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1351"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1351</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-20T08:55:18Z</published>
+		<updated>2025-03-20T08:55:18Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Many thanks for this detailed debug.
+&lt;br/&gt;I will check (asap) the int16 and int32 multiple input problems.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1351.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1350"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1350</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-20T07:22:30Z</published>
+		<updated>2025-03-20T07:22:30Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Recapping ... 
+&lt;br/&gt;Here is a simple recorder demo that can record Sound and Mic at the same time
+&lt;br/&gt;&lt;a href=&quot;https://trim.uk.to/my-simple-recorder.zip&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://trim.uk.to/my-simple-recorder.zip&lt;/a&gt;&lt;br/&gt;(Please ignore the threaded test included at the same demo)
+&lt;br/&gt;&lt;br/&gt;********************************************
+&lt;br/&gt;&lt;br/&gt;Linux Speakers Only :
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works , 1:Int32 works, 2:Int16 works&lt;/b&gt;&lt;br/&gt;[use &amp;quot;Record speakers&amp;quot; only demo]
+&lt;br/&gt;&lt;br/&gt;Linux Mic Only :
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works , 1:Int32 works, 2:Int16 works&lt;/b&gt;&lt;br/&gt;[use &amp;quot;Record Mic&amp;quot; only demo]
+&lt;br/&gt;&lt;br/&gt;Linux Speakers + Mic (pulseaudio)
+&lt;br/&gt;Using &amp;quot;Record Both&amp;quot; i get
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works but desynchronizes after a while
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1:Int32 does not work (hiss noise)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2:Int16 does not work (hiss noise)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Solution :
+&lt;br/&gt;[use &amp;quot;Record speakers&amp;quot; only demo]
+&lt;br/&gt;&lt;br/&gt;AND
+&lt;br/&gt;&lt;br/&gt;use the solution above this post
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;***********************************
+&lt;br/&gt;***********************************
+&lt;br/&gt;***********************************
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Windows Speakers Only :
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works , 1:Int32 works, 2:Int16 works&lt;/b&gt;&lt;br/&gt;[use &amp;quot;Record speakers&amp;quot; only demo]
+&lt;br/&gt;&lt;br/&gt;Windows Mic Only :
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works , 1:Int32 works, 2:Int16 works&lt;/b&gt;&lt;br/&gt;[use &amp;quot;Record Mic&amp;quot; only demo]
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Windows Speakers + Mic at the same time
+&lt;br/&gt;[use &amp;quot;Record Both&amp;quot; only demo]
+&lt;br/&gt;&lt;b&gt;sample format 0: Float32 works !
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1:Int32 does not work (hiss noise)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2:Int16 does not work (hiss noise)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;So i can confirm that even at windows (another machine) we have problems with dual input when sampleformat is 1 or 2 BUT if 0 selected then works nicely without synch issues! &lt;/b&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1350.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1348"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1348</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-19T12:27:54Z</published>
+		<updated>2025-03-19T12:27:54Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			I dont know it is clearly not your fault . BUT I HAVE GREAT NEWS 
+&lt;br/&gt;Here is a solution recording sound and mic at the same time on linux-pulseaudio 
+&lt;br/&gt;using your simplerecorder demo unmodifided 
+&lt;br/&gt;Just use one input chanel the default one at -1
+&lt;br/&gt;&lt;br/&gt;Now 
+&lt;br/&gt;&lt;br/&gt;Place your headphones at your back headphone jack of the PC 
+&lt;br/&gt;PulseAudio volume control &amp;gt; Configuration tab &amp;nbsp;&amp;gt; Analog Stereo Duplex
+&lt;br/&gt;&amp;nbsp;
+&lt;br/&gt;&lt;br/&gt;PulseAudio clients can send audio to &amp;quot;sinks&amp;quot; and receive audio from &amp;quot;sources&amp;quot;.
+&lt;br/&gt;So sinks = outputs (audio goes there speakers headphones) 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;sources = inputs (audio comes from there mic)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;
+&lt;br/&gt;&lt;br/&gt;pactl info
+&lt;br/&gt;&lt;br/&gt;a) virtual speaker &amp;quot;recording&amp;quot;
+&lt;br/&gt;&lt;b&gt;pacmd load-module module-null-sink sink_name=recording sink_properties=device.description=recording&lt;/b&gt;&lt;br/&gt;[recording]
+&lt;br/&gt;&lt;br/&gt;b) loopback mirrors microphone to virtual speaker &amp;quot;recording&amp;quot; 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;module-loopback: routes your input(source microphone) to your output(sink speakers) 
+&lt;br/&gt;find your sources using 
+&lt;br/&gt;&lt;b&gt;pacmd list-sources&lt;/b&gt;&lt;br/&gt;*alsa_output.pci-0000_00_1b.0.analog-stereo.monitor
+&lt;br/&gt;*alsa_input.pci-0000_00_1b.0.analog-stereo &amp;nbsp;---&amp;gt; my mic
+&lt;br/&gt;&lt;b&gt;pactl load-module module-loopback source=alsa_input.pci-0000_00_1b.0.analog-stereo sink=recording latency_msec=1&lt;/b&gt;&lt;br/&gt;you get at PulseAudio volume control 
+&lt;br/&gt;tab Playback &amp;nbsp;[Loopback from Build-In Audio Analog Stereo on [recording]]
+&lt;br/&gt;tab Recording [Loopback to recording from [Build-In Audio Analog Stereo]]
+&lt;br/&gt;&lt;br/&gt;c) mirror your speakers to virtual speaker &amp;quot;recording&amp;quot;
+&lt;br/&gt;find your sinks using 
+&lt;br/&gt;&lt;b&gt;pacmd list-sinks&lt;/b&gt;&lt;br/&gt;*alsa_output.pci-0000_00_1b.0.analog-stereo
+&lt;br/&gt;&lt;b&gt;pacmd load-module module-combine-sink sink_name=combined sink_properties=device.description=combined slaves=recording,alsa_output.pci-0000_00_1b.0.analog-stereo&lt;/b&gt;&lt;br/&gt;this sets output of alsa_output.pci-0000_00_1b.0.analog-stereo=recording
+&lt;br/&gt;you get at PulseAudio volume control 
+&lt;br/&gt;tab Playback &amp;nbsp;[Simultaneus output on recording on [recording] ]
+&lt;br/&gt;tab Playback &amp;nbsp;[Simultaneus output on Built-In Audio Analog Stereo on [Built-In Audio Analog Stereo] ]
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Now from PulseAudio volume control select
+&lt;br/&gt;playback set your player with [&lt;b&gt;combined&lt;/b&gt;] 
+&lt;br/&gt;recording set your recorder with [Alsa projectmy simplerecorder [&lt;b&gt;Monitor of recording&lt;/b&gt;]] 
+&lt;br/&gt;This records mic and speakers [The user does not hear himself]
+&lt;br/&gt;&lt;br/&gt;use 
+&lt;br/&gt;pulseaudio -k
+&lt;br/&gt;to clear all modifications and restart pulseaudio &amp;nbsp;
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1348.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1347"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1347</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-19T07:39:05Z</published>
+		<updated>2025-03-19T07:39:05Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			@trustfm: &lt;img class='smiley' src='/images/smiley/anim_claps.gif' /&gt;&amp;nbsp;&lt;img class='smiley' src='/images/smiley/anim_jump.gif' /&gt;&lt;br/&gt;Thanks to find the trick! 
+&lt;br/&gt;But I have to check, asap, why int16 makes problem.
+&lt;br/&gt;Also it seems that int16 is not anymore the &amp;quot;default&amp;quot; format from device-in sound cards.
+&lt;br/&gt;Maybe change the default (-1) format to float32 (0) ?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1347.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1346"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1346</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T14:04:26Z</published>
+		<updated>2025-03-18T14:04:26Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			@edf 
+&lt;br/&gt;i have found another way to fix the clipping of 2 inputs 
+&lt;br/&gt;I had to set 
+&lt;br/&gt;sampleformat:=0; // 0: Float32
+&lt;br/&gt;and not to default value 
+&lt;br/&gt;sampleformat:=-1; //2:Int16
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;***********************
+&lt;br/&gt;procedure TForm1.ButtonRecordSpeakersClick(Sender: TObject);
+&lt;br/&gt;var
+&lt;br/&gt;&amp;nbsp; outformatst: string;
+&lt;br/&gt;&amp;nbsp; sampleformat,outformat, numchan: integer;
+&lt;br/&gt;begin
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; PlayerIndex1 := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : from 0 to what your computer can do ! (depends of ram, cpu, ...)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // If PlayerIndex exists already, it will be overwritten...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_CreatePlayer(PlayerIndex1);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; sampleformat:=0; //0works ! 1 does not work ! &amp;nbsp;2 does not work!
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; if RadioButtonWav.Checked then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformatst := '.wav';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformat := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformatst := '.ogg';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformat := 3;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; EditSpeakersPath.Text := 'rec_' + UTF8Decode(formatdatetime('YY_MM_DD_HH_mm_ss', now)) + outformatst;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //In1Index1 := uos_AddFromDevIn(PlayerIndex1,-1,0.8,44100,-1,0,-1,-1); //-1 is speaker - 18 pulse works
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1, -1 ,-1 &amp;nbsp; ,-1,sampleformat,1024,-1); //-1 is speaker - 18 pulse works
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; LabelSpeakersChannel.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index2 := uos_AddFromDevIn(PlayerIndex2, &amp;nbsp;0, -1 , &amp;nbsp;-1 &amp;nbsp; ,-1,sampleformat,1024,-1); //0 is mic - 18 pulse works
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex2, In1Index2);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; LabelMicChannel.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //mut := uos_AddFromEndlessMuted(PlayerIndex1,2,1024);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetEnable(PlayerIndex1, mut, True);
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_AddIntoFile(PlayerIndex1, PChar(EditSpeakersPath.Text), -1, 2,sampleformat,1024, outformat); //-1
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index1, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index2, 1, 1);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetDSPVolume(PlayerIndex1, In1Index1, TrackBar1.position / 100, TrackBar3.position / 100, True); // Set volume
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_Play(PlayerIndex1); &amp;nbsp;// everything is ready to play...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonRecordSpeakers.Enabled := False;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonStopRecordSpeakers.Enabled := True;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;end; 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1346.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1048"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1345</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T07:24:07Z</published>
+		<updated>2025-03-18T07:24:07Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Perfect!
+&lt;br/&gt;Good luck and have fun. 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1345.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1344"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1344</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T07:20:31Z</published>
+		<updated>2025-03-18T07:20:31Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			yes no worries ! I just writing down the problems because i will loose track me too :) 
+&lt;br/&gt;&lt;img class='smiley' src='/images/smiley/smiley_beam.gif' /&gt;&lt;br/&gt;&lt;br/&gt;If i find something i will let you know ! 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1344.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1343"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1343</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T07:04:42Z</published>
+		<updated>2025-03-18T07:04:42Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Nice that you find a workaround.
+&lt;br/&gt;As already said, I am out of the game for minimum 2 weeks, sorry.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1343.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1342"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1342</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T07:01:05Z</published>
+		<updated>2025-03-18T07:01:05Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Hello thanks for the prompt repliues! 
+&lt;br/&gt;Yes i use the device demo to find my devices 
+&lt;br/&gt;&lt;br/&gt;The setup is easy (this is with only one sound card) 
+&lt;br/&gt;I want to be able to record the main soundcard output + the mic 
+&lt;br/&gt;The soundcard is at -1 and the mic is at 0 
+&lt;br/&gt;Individually work perfectly . simutaneusly not 
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1 ,0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //-1 is speaker 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index2 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;0 ,0.02, -1, &amp;nbsp; -1,2,1024,-1); //0 is mic
+&lt;br/&gt;&lt;br/&gt;The current solution to this problem was to 
+&lt;br/&gt;1) Go to volume control 
+&lt;br/&gt;Set : analog stereo dublex
+&lt;br/&gt;&amp;nbsp;
+&lt;br/&gt;&lt;br/&gt;2) &amp;nbsp;From command line make an audio loop &amp;nbsp;
+&lt;br/&gt;pactl load-module module-loopback latency_msec=1
+&lt;br/&gt;To stop it running, run:
+&lt;br/&gt;pactl unload-module module-loopback
+&lt;br/&gt;&lt;br/&gt;3) Set only one input &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1,0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //-1 is speaker 
+&lt;br/&gt;&lt;br/&gt;This works but the mic loopback at the speakers (obviusly)
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;**************
+&lt;br/&gt;&lt;br/&gt;Adding a second usb card did not solved any problem (i changed the ids ) again same problem 
+&lt;br/&gt;Single input work double input not 
+&lt;br/&gt;&lt;br/&gt;****
+&lt;br/&gt;The other solution could be to record 2 tracks one for the mic one for the speakers and mix them :(
+&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1342.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1341"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1341</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T06:53:42Z</published>
+		<updated>2025-03-18T06:53:42Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			&amp;gt; &amp;nbsp; &amp;nbsp;In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1,0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //-1 is speaker - 18 pulse works
+&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp;numchan := uos_InputGetChannels(PlayerIndex1, In1Index1);
+&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp;label3.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp;In1Index2 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;0,0.02, -1, &amp;nbsp; -1,2,1024,-1); //0 is mic
+&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp;numchan := uos_InputGetChannels(PlayerIndex1, In1Index2);
+&lt;br/&gt;&amp;nbsp;&amp;gt; &amp;nbsp; label8.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Hum, the second uos_AddFromDevIn seems strange and the first should target a input device.
+&lt;br/&gt;There is a demo devicesinfos to see what input device you have.
+&lt;br/&gt;&lt;br/&gt;So it should be something like:
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1,0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //-1 should be the default device in
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; label3.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index2 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;deivicein2, 0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //devicein2 &amp;nbsp;should be the default device in of second card.
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index2);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;label8.Caption:=inttostr(numchan);
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1341.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1339"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1340</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T05:35:01Z</published>
+		<updated>2025-03-18T05:35:01Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			&amp;gt; If you try to add a second inpout you get the intermittent problems
+&lt;br/&gt;&lt;br/&gt;Not sure to understand, you have then 2 sound cards and want to add a second input in your player after adding the fist input from your first sound card, is it that?
+&lt;br/&gt;I never try this but it should work.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1340.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1339"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1339</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T05:30:44Z</published>
+		<updated>2025-03-18T05:30:44Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			yes for that demo i am talking about. 
+&lt;br/&gt;If you try to add a second inpout you get the intermittent problems 
+&lt;br/&gt;&lt;br/&gt;Full code below nothing special (simplerecorder with second input)
+&lt;br/&gt;&lt;br/&gt;procedure TForm1.ButtonRecordClick(Sender: TObject);
+&lt;br/&gt;var
+&lt;br/&gt;&amp;nbsp; outformatst: string;
+&lt;br/&gt;&amp;nbsp; outformat, numchan: integer;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; if (checkbox1.Checked = True) or (checkbox2.Checked = True) then
+&lt;br/&gt;&amp;nbsp; begin
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; PlayerIndex1 := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : from 0 to what your computer can do ! (depends of ram, cpu, ...)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // If PlayerIndex exists already, it will be overwritten...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_CreatePlayer(PlayerIndex1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Create the player.
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : from 0 to what your computer can do !
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // If PlayerIndex exists already, it will be overwriten...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_AddIntoFileFromMem(PlayerIndex1, Pchar(edit3.Text));
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // add Output into wav file (save record) from TMemoryStream &amp;nbsp;with default parameters
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; if bwav.Checked then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformatst := '.wav';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformat := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformatst := '.ogg'; //ogg opus
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformat := 3; // &amp;nbsp; &amp;nbsp; //opus 4
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; edit3.Text := 'rec_' + UTF8Decode(formatdatetime('YY_MM_DD_HH_mm_ss', now)) +
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; outformatst;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //In1Index1 := uos_AddFromDevIn(PlayerIndex1,-1,0.8,44100,-1,0,-1,-1); //-1 is speaker - 18 pulse works
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index1 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;-1,0.02,-1 &amp;nbsp; ,-1,2,1024,-1); //-1 is speaker - 18 pulse works
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; label3.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index2 := uos_AddFromDevIn(PlayerIndex1, &amp;nbsp;0,0.02, -1, &amp;nbsp; -1,2,1024,-1); //0 is mic
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index2);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; label8.Caption:=inttostr(numchan);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_AddFromFile(PlayerIndex0, PChar(Edit11.Text), -1, 0,
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // This for a dummy endless input, set enable to true, must be last input
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Needed to make all input reach the end.
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //mut := uos_AddFromEndlessMuted(PlayerIndex1, 2,1024);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetEnable(PlayerIndex1, mut, True);
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // add input from mic with custom parameters
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Device ( -1 is default Input device )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Latency &amp;nbsp;( -1 is latency suggested ) )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // OutputIndex : OutputIndex of existing Output // -1 : all output, -2: no output, other integer : existing output)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleFormat : -1 default : Int16 : (0: Float32, 1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FramesCount : -1 default : 4096 &amp;nbsp; ( &amp;gt; = safer, &amp;lt; = &amp;nbsp;better latency )
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a file using a File-Stream:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; if CheckBox2.Checked then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; uos_AddIntoFile(PlayerIndex1, PChar(edit3.Text), -1, 2, -1,1024, outformat); //-1
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp; function uos_AddIntoFile(PlayerIndex: cint32; Filename: PChar; SampleRate: cint32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Channels: cint32; SampleFormat: cint32 ; FramesCount: cint32 ; FileFormat: cint32): cint32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Add a Output into audio wav file with custom parameters from TFileStream
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FileName : filename of saved audio wav file
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Channels : delault : -1 (2:stereo) (1:mono, 2:stereo, ...) if 2 it will force to stereo if input is mono
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleFormat : default : -1 (2:Int16) (1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FramesCount : default : -1 (= 65536)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FileFormat : default : -1 (wav) (0:wav, 1:pcm, 2:custom, 3:ogg);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp;saving in a Memory-Buffer:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp;SetLength(thebuffer, 0);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp;uos_AddIntoMemoryBuffer(PlayerIndex1, @thebuffer);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a Memory-Stream: &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // if thememorystream = nil then thememorystream := tmemorystream.create;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // uos_AddIntoMemoryStream(PlayerIndex1, (thememorystream),-1,-1,-1,-1);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a file using a Menory-Stream: &amp;nbsp; 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // uos_AddIntoFileFromMem(PlayerIndex1, Pchar(filenameEdit4.filename));
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // add Output into wav file (save record) &amp;nbsp;with default parameters
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; {$if defined(cpuarm) or defined(cpuaarch64)}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // need a lower latency
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //out1index := uos_AddIntoDevOut(PlayerIndex1, -1, 0.8, -1, numchan, -1, -1, -1) ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; {$else}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //out1index := uos_AddIntoDevOut(PlayerIndex1, -1, -1, -1, numchan, -1, -1, -1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //out1index := uos_AddIntoDevOut(PlayerIndex1, 2, -1, -1, -1, -1, -1, -1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; {$endif}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // function uos_AddIntoDevOut(PlayerIndex: cint32; Device: cint32; Latency: CDouble;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleRate: CDouble; Channels: cint32; SampleFormat: cint32 ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FramesCount: cint32 ; ChunkCount: cint32): cint32;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Add a Output into Device Output
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Device ( -1 is default device )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Latency &amp;nbsp;( -1 is latency suggested )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Channels : delault : -1 (2:stereo) (0: no channels, 1:mono, 2:stereo, ...)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleFormat : default : -1 (2:Int16) (0: Float32, 1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FramesCount : default : -1 (= 65536)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // ChunkCount : default : -1 (= 512)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp;result : &amp;nbsp;Output Index in array &amp;nbsp;-1 = error
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_OutputSetEnable(PlayerIndex1, out1index, checkbox1.Checked);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index1, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetDSPVolume(PlayerIndex1, In1Index1, TrackBar1.position / 100, TrackBar3.position / 100, True); // Set volume
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index2, 0, 0);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetDSPVolume(PlayerIndex1,In1Index2, 0.01,0.01, True);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetDSPVolume(PlayerIndex1, In1Index2, TrackBar1.position / 100, TrackBar3.position / 100, True); // Set volume
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // procedure to execute when stream is terminated
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // &amp;nbsp; uos_EndProc(PlayerIndex1, @ClosePlayer1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Assign the procedure of object to execute at end
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // ClosePlayer1 : procedure of object to execute inside the loop
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_Play(PlayerIndex1); &amp;nbsp;// everything is ready to play...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonRecord.Enabled := False;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; Button3.Enabled := True;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonPlay.Enabled := False;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //CheckBox1.Enabled := False;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; CheckBox2.Enabled := False;
+&lt;br/&gt;&amp;nbsp; end;
+&lt;br/&gt;end; &amp;nbsp; &amp;nbsp;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1339.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1337"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1338</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-18T05:29:32Z</published>
+		<updated>2025-03-18T05:44:57Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;The result is promising, connection to the url seems ok and get tag from the stream ok.
+&lt;br/&gt;But it fails when trying to read using ov_read from uos_vorbisfile.pas, like I had.
+&lt;br/&gt;&lt;br/&gt;Maybe try to use libsndfile to read the buffer instead of libvorbisfile, and so you will need to load the 2 libraries.
+&lt;br/&gt;[EDIT] Or maybe forget all call to uos_vorbisfile in AddFromURL() and use call to libsndfile.
+&lt;br/&gt;Take a look at AddFromMemoryStream() how it is done for libsndfile with sf_open_virtual() and adapt it for AddFromURL(). &amp;nbsp;And to read it, use sf_read vs ov_read.
+&lt;br/&gt;&lt;br/&gt;Sorry I cannot help more before next month.
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1338.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1336"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1337</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T05:06:50Z</published>
+		<updated>2025-03-18T05:06:50Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;Did you try with the uos/examples/simplerecorder demo, is it ok?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1337.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1335"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1336</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-18T05:03:11Z</published>
+		<updated>2025-03-18T05:03:11Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Thank you ! 
+&lt;br/&gt;No woories ! 
+&lt;br/&gt;For reference here is my output from the debug 
+&lt;br/&gt;&lt;br/&gt;**********************************
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;before uosPlayers[PlayerIndex] &amp;lt;&amp;gt; nil 
+&lt;br/&gt;after uosPlayers[PlayerIndex] &amp;lt;&amp;gt; nil 
+&lt;br/&gt;Begin Vorbis test
+&lt;br/&gt;URL: &lt;a href=&quot;http://stream.punkrockers-radio.de:8000/prr.ogg&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://stream.punkrockers-radio.de:8000/prr.ogg&lt;/a&gt;&lt;br/&gt;totsamples: 16384
+&lt;br/&gt;PipeBufferSize: 131072
+&lt;br/&gt;Seekable set to: False for AudioFormat: 3
+&lt;br/&gt;Bytes available after wait: 12946
+&lt;br/&gt;Timeout count: 9
+&lt;br/&gt;PipeBufferSize = 131072
+&lt;br/&gt;InPipe.Read = 131072
+&lt;br/&gt;----------------------------------
+&lt;br/&gt;BufferTMP content: 4F 67 67 53 00 02 00 00 00 00 00 00 00 00 BB 40 52 51 00 00 00 00 0C 90 6D CE 01 1E 01 76 6F 72 62 69 73 00 00 00 00 02 44 AC 00 00 00 EE 02 00 00 EE 02 00 00 EE 02 00 B8 01 4F 67 67 53 00 00 00 00 00 00 00 00 00 00 BB 40 52 51 01 00 00 00 A4 A9 57 43 10 AB FF FF FF FF FF FF FF FF FF FF FF FF FF FF 71 03 76 6F 72 62 69 73 34 00 00 00 58 69 70 68 2E 4F 72 67 20 6C 69 62 56 6F 72 62 
+&lt;br/&gt;OggS start position: 0
+&lt;br/&gt;uos.pas: ov_open_callbacks succeeded, LibOpen = 5
+&lt;br/&gt;StreamIn[x].Data.HandleSt url assigned
+&lt;br/&gt;ov_info raw: channels = 0, rate = 2
+&lt;br/&gt;OK open
+&lt;br/&gt;VorbisTag.comments = 3
+&lt;br/&gt;title=Don't Ever Say Again
+&lt;br/&gt;artist=The Offenders
+&lt;br/&gt;ENCODER=Liquidsoap/2.0.7 (Unix; OCaml 4.14.1)
+&lt;br/&gt;End Tag Vorbis
+&lt;br/&gt;ov_info failed or returned invalid data - forcing channels = 2, samplerate = 44100
+&lt;br/&gt;Info^.channels = 2
+&lt;br/&gt;Info^.rate = 44100
+&lt;br/&gt;StreamIn[x].Data.Wantframes := totsamples
+&lt;br/&gt;SetLength(StreamIn[x].Data.Buffer, StreamIn[x].Data.Wantframes);
+&lt;br/&gt;End Vorbis
+&lt;br/&gt;Channels: 2
+&lt;br/&gt;SampleRate: 44100
+&lt;br/&gt;Title: Don't Ever Say Again
+&lt;br/&gt;Genre: »@RQ»@RQ±
+&lt;br/&gt;AddFromURL Result forced to 0
+&lt;br/&gt;AddFromURL final Result: 0
+&lt;br/&gt;total end vorbis
+&lt;br/&gt;ac StreamIn[x].Data.LibOpen = 5
+&lt;br/&gt;Before result 0
+&lt;br/&gt;error 0
+&lt;br/&gt;StreamIn[x].Data.LibOpen 5
+&lt;br/&gt;Before Length (StreamIn) 1
+&lt;br/&gt;Before for x := 0 to high (StreamIn)
+&lt;br/&gt;DSPin BeforeBufProc 1
+&lt;br/&gt;DSPin BeforeBufProc 2
+&lt;br/&gt;===&amp;gt; Before ov_read for Vorbis
+&lt;br/&gt;Seekable: False
+&lt;br/&gt;Begin Float32 output
+&lt;br/&gt;here stops 
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1336.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1334"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1335</id>
+		<title>Re: using 2 microphones</title>
+		<published>2025-03-18T03:52:46Z</published>
+		<updated>2025-03-18T03:52:46Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Hello i have the same problems using two inputs
+&lt;br/&gt;&lt;br/&gt;this problem goes away only if 1 stream is allowed or by volume like this 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index1, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index2, 0, 0); 
+&lt;br/&gt;&lt;br/&gt;or by InputSetEnable
+&lt;br/&gt;&lt;br/&gt;procedure TForm1.CheckBoxSpeakersChange(Sender: TObject);
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; uos_InputSetEnable(PlayerIndex1, In1Index1, CheckBoxSpeakers.Checked);
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;procedure TForm1.CheckBoxMicChange(Sender: TObject);
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; uos_InputSetEnable(PlayerIndex1, In1Index2, CheckBoxMic.Checked);
+&lt;br/&gt;end; 
+&lt;br/&gt;&lt;br/&gt;When i try to enable both the sound oversaturates i have tried different cards same results ... 
+&lt;br/&gt;&lt;br/&gt;adding uos_AddFromEndlessMuted makes things worse ... 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //mut := uos_AddFromEndlessMuted(PlayerIndex1, 2,1024);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_InputSetEnable(PlayerIndex1, mut, True); &amp;nbsp;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048p1335.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1054"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1334</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-17T12:20:35Z</published>
+		<updated>2025-03-17T12:20:35Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;It was already discussed there: &lt;a href=&quot;https://github.com/libsndfile/libsndfile/pull/457&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/libsndfile/libsndfile/pull/457&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Dont know if there was progress for webstream.
+&lt;br/&gt;Maybe you can take inspiration from uos_addFromMemory() stream and see how to adapt uos_addfromURL() and the readurl() method for reading OGG.
+&lt;br/&gt;&lt;br/&gt;You can use the uos_addfromURL()/readurl() that I gave in uos.pas/uos_flat.pas of previous post zip-attachment and adapt it.
+&lt;br/&gt;&lt;br/&gt;Sorry but I will be out of my computer this month. 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1334.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1333"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1333</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-16T10:47:34Z</published>
+		<updated>2025-03-16T10:47:34Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			i have found that my download first listen after method has this problem 
+&lt;br/&gt;&lt;a href=&quot;https://github.com/libsndfile/libsndfile/issues/421&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/libsndfile/libsndfile/issues/421&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Do we have progress with your streaming approach ? 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1333.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1326"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1332</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T13:44:27Z</published>
+		<updated>2025-03-15T13:57:13Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			In the case your library only accept sample 16 bit from a array of 16 bit (uos uses a array of float, even to store sample 16 bit), you may do something like this:
+&lt;br/&gt;&lt;br/&gt;var
+&lt;br/&gt;arrayofint16 : array of cint16;
+&lt;br/&gt;i : integer;
+&lt;br/&gt;&lt;br/&gt;....
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; FBufRcFromUos:=uos_InputGetBuffer(PlayerIndex1, In1Index);
+&lt;br/&gt;&amp;nbsp; aBufLen:=Length(FBufRcFromUos);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; setlength(arrayofint16,aBufLen).
+&lt;br/&gt;&lt;br/&gt;for i := 0 to aBufLen -1 do
+&lt;br/&gt;arrayofint16[i] := round(FBufRcFromUos[i]);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp;Vfinal := FTVoskRecognizer.AcceptWaveform(@arrayofint16[0],abuflen);
+&lt;br/&gt;&lt;br/&gt;But what will you do next?
+&lt;br/&gt;&lt;br/&gt;If you want to apply the arrayofint16 to the loop of uos, you better to use a DSP, there are demo in Simple Player how to do (for example stereo to mono).
+&lt;br/&gt;&lt;br/&gt;In that case you should re convert arrayofint16 into a array of float:
+&lt;br/&gt;&lt;br/&gt;for i := 0 to aBufLen -1 do
+&lt;br/&gt;Updated_FBufRcFromUos[i] := arrayofint16[i];
+&lt;br/&gt;&lt;br/&gt;But I dont know your library so all this is only from my crystal ball.
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1332.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1331"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1331</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T13:23:44Z</published>
+		<updated>2025-03-15T13:23:44Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Re-hello.
+&lt;br/&gt;&lt;br/&gt;&amp;gt; How can I get an FBufRcFromUos of type Pansichar? 
+&lt;br/&gt;&lt;br/&gt;Not sure to understand, the audio buffer used by uos are samples that can be int16, int32 or float32, so numbers.
+&lt;br/&gt;There are not ansichar.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1331.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1330"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1330</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T13:15:36Z</published>
+		<updated>2025-03-15T13:15:36Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello Lucarnet and welcome to uos forum.
+&lt;br/&gt;&lt;br/&gt;&amp;gt; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index);
+&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp;uosPlayers[PlayerIndex1].StreamIn[In1Index].Data.Channels:=1; //forcage a MONO pour VOSK
+&lt;br/&gt;&lt;br/&gt;You may not force the input device to mono or stereo, it is defined by the harware of your sound card.
+&lt;br/&gt;But you may use a DSP to convert to mono/stereo, see the demo simple player.
+&lt;br/&gt;&lt;br/&gt;&amp;gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; Vfinal := FTVoskRecognizer.AcceptWaveform(Psingle(FBufRcFromUos),abuflen);
+&lt;br/&gt;&lt;br/&gt;Sorry but I dont know that library, where are the source?
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1330.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1329"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1329</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T11:47:13Z</published>
+		<updated>2025-03-15T11:47:13Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Thanks. (first time usage of your forum)
+&lt;br/&gt;le code:
+&lt;br/&gt;....
+&lt;br/&gt;procedure Tmainvosk3_for.btn_record_stopClick(Sender: TObject);
+&lt;br/&gt;begin &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 
+&lt;br/&gt;for_message('=================================================');
+&lt;br/&gt;for_message(FTVoskRecognizer.GetFinalResult);
+&lt;br/&gt;for_message('=================================================');
+&lt;br/&gt;&amp;nbsp; uos_Stop(PlayerIndex1);
+&lt;br/&gt;&amp;nbsp; ClosePlayer1;
+&lt;br/&gt;end; 
+&lt;br/&gt;&lt;br/&gt;procedure Tmainvosk3_for.btn_record_startClick(Sender: TObject);
+&lt;br/&gt;var
+&lt;br/&gt;&amp;nbsp; outformatst: string;
+&lt;br/&gt;&amp;nbsp; outformat, numchan: integer; &amp;nbsp; &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; VFileNomSave:string;
+&lt;br/&gt;&amp;nbsp; vmestmp:string;
+&lt;br/&gt;begin &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //In1Index := uos_AddFromDevIn(PlayerIndex1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //In1Index := uos_AddFromDevIn (PlayerIndex1,-1, -1, -1, -1, -1, -1, -1);//-1); &amp;nbsp; &amp;nbsp; &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //In1Index := uos_AddFromDevIn(PlayerIndex1,-1, -1, -1, -1, 1, -1, -1); //For intput integer 32 sample: &amp;nbsp; &amp;nbsp; 
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; In1Index := uos_AddFromDevIn(PlayerIndex1,-1, -1, -1, -1, 2, -1, -1); //For intput integer 16 sample:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // add input from mic with custom parameters
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Device ( -1 is default Input device )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // Latency &amp;nbsp;( -1 is latency suggested ) )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // OutputIndex : OutputIndex of existing Output // -1 : all output, -2: no output, other integer : existing output)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SampleFormat : -1 default : Int16 : (0: Float32, 1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // FramesCount : -1 default : 4096 &amp;nbsp; ( &amp;gt; = safer, &amp;lt; = &amp;nbsp;better latency )
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; numchan := uos_InputGetChannels(PlayerIndex1, In1Index);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; uosPlayers[PlayerIndex1].StreamIn[In1Index].Data.Channels:=1; //forcage a MONO pour VOSK
+&lt;br/&gt;....
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;procedure Tmainvosk3_for.LoopProcPlayer1;
+&lt;br/&gt;var
+&lt;br/&gt;aBufLen: integer;
+&lt;br/&gt;FBufRcFromUos: TDArFloat; // Mon buffer
+&lt;br/&gt;Vfinal:cardinal;
+&lt;br/&gt;LBuffer:TBytes;//TSingleArrayDyn;
+&lt;br/&gt;i,j:integer;
+&lt;br/&gt;VtbytesTmp:tbytes;
+&lt;br/&gt;Vsingle:cfloat;//single;
+&lt;br/&gt;vind:integer;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;try
+&lt;br/&gt;// &amp;nbsp;ShowPosition;
+&lt;br/&gt;// &amp;nbsp;ShowLevel;
+&lt;br/&gt;&amp;nbsp; FBufRcFromUos:=uos_InputGetBuffer(PlayerIndex1, In1Index);
+&lt;br/&gt;&amp;nbsp; aBufLen:=Length(FBufRcFromUos);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //Traiter LBuffer
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; if FTVoskRecognizer=nil
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; then for_message('FTVoskRecognizer=nil')
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; else begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;b&gt;Vfinal := FTVoskRecognizer.AcceptWaveform(Psingle(FBufRcFromUos),abuflen);&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; // @returns 1 if silence is occured and you can retrieve a new utterance with result method
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; // &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 0 if decoding continues
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; // &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; -1 if exception occured *)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; case Vfinal of
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;1 &amp;nbsp; &amp;nbsp; &amp;nbsp;:for_message(FTVoskRecognizer.GetResult);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;0 &amp;nbsp; &amp;nbsp; &amp;nbsp;:for_message(FTVoskRecognizer.GetPartialResult);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-1 &amp;nbsp; &amp;nbsp; :for_message('exception vosk_recognizer_accept_waveform');
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; except
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; on E:Exception do
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;for_message('LoopProcPlayer1:'+E.message);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;end; &amp;nbsp; &amp;nbsp;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1329.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1327"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1328</id>
+		<title>Re: Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T11:38:45Z</published>
+		<updated>2025-03-15T11:38:45Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello,
+&lt;br/&gt;I'm using UOS for voice recognition input with Vosk.
+&lt;br/&gt;I created a Loopback proc to execute the Vosk procedure &amp;quot;acceptwaveform.&amp;quot;
+&lt;br/&gt;The problem is an error (Vfinal := FTVoskRecognizer.AcceptWaveform(PSingle(FBufRcFromUos), length(FBufRcFromUos)) due to the type.
+&lt;br/&gt;How can I get an FBufRcFromUos of type Pansichar?
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;h2&gt;/ Get current buffer
+&lt;br/&gt;function uos_InputGetBuffer(PlayerIndex: cint32; InputIndex: cint32): TDArFloat;&lt;/h2&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1328.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1327"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1327</id>
+		<title>Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T11:37:19Z</published>
+		<updated>2025-03-15T11:37:19Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello,
+&lt;br/&gt;I'm using UOS for voice recognition input MIC with Vosk (Raspberry3B+ Lazarus).
+&lt;br/&gt;I created a Loopback proc to execute the Vosk procedure &amp;quot;acceptwaveform.&amp;quot;
+&lt;br/&gt;The problem is an error (Vfinal := FTVoskRecognizer.AcceptWaveform(PSingle(FBufRcFromUos), length(FBufRcFromUos)) due to the type.
+&lt;br/&gt;How can I get an FBufRcFromUos of type Pansichar?
+&lt;br/&gt;&amp;lt;nabble_embed&amp;gt;
+/ Get current buffer
+function uos_InputGetBuffer(PlayerIndex: cint32; InputIndex: cint32): TDArFloat;&amp;lt;/nabble_embed&amp;gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1326</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-13T08:47:04Z</published>
+		<updated>2025-03-13T09:35:37Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			here is my demo 
+&lt;br/&gt;&lt;a href=&quot;https://trim.uk.to/ogg-radio-listenver2.zip&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://trim.uk.to/ogg-radio-listenver2.zip&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Has 
+&lt;br/&gt;*the part of your demo simplewebplayer (working except ogg)
+&lt;br/&gt;*the part &lt;a href=&quot;http://uos-forum.108.s1.nabble.com/file/n1309/uos_curl.zip&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://uos-forum.108.s1.nabble.com/file/n1309/uos_curl.zip&lt;/a&gt;&lt;br/&gt;*the libvorbisfile library &lt;a href=&quot;http://uos-forum.108.s1.nabble.com/file/n1310/libvorbisfile-64.zip&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://uos-forum.108.s1.nabble.com/file/n1310/libvorbisfile-64.zip&lt;/a&gt;&lt;br/&gt;*****************
+&lt;br/&gt;and the part The test zone that has 
+&lt;br/&gt;the download stream (working) + DownloadPlay(works only what downloaded) 
+&lt;br/&gt;&lt;br/&gt;It is a codetyphon project 
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;*****************************************
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;PS : One important downside of the OPUS is the fact that works only at 48000 samplerate .
+&lt;br/&gt;&amp;nbsp;I have tried to move from OGG to opus for the recording part but works at 48000 and my card has 44100 so plays accelerated the recording . 
+&lt;br/&gt;&lt;br/&gt;//modded to record opus
+&lt;br/&gt;function Tuos_Player.AddIntoFile (Filenamepath: PChar; SampleRate: CDouble;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Channels: cint32; SampleFormat: cint32; FramesCount: cint32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;FileFormat: cint32): cint32;
+&lt;br/&gt;// Add an Output into audio wav file with custom parameters
+&lt;br/&gt;// FileName : filename of saved audio wav file
+&lt;br/&gt;// SampleRate : default: -1 (44100)
+&lt;br/&gt;// Channels : default: -1 (2:stereo) (0: no channels, 1:mono, 2:stereo, ...)
+&lt;br/&gt;// SampleFormat : default: -1 (2:Int16) ( 1:Int32, 2:Int16)
+&lt;br/&gt;// FramesCount : default: -1 (= 4096)
+&lt;br/&gt;// FileFormat : default: -1 (wav) (0:wav, 1:pcm, 2:custom, 3:ogg, 4:opus);
+&lt;br/&gt;// &amp;nbsp;result : Output Index in array &amp;nbsp;-1 = error
+&lt;br/&gt;// example : OutputIndex1 := AddIntoFile (edit5.Text,-1,-1, 0, -1, -1);
+&lt;br/&gt;var 
+&lt;br/&gt;&amp;nbsp; x: cint32;
+&lt;br/&gt;&amp;nbsp; wChunkSize: cint32;
+&lt;br/&gt;&amp;nbsp; wFileSize: cint32;
+&lt;br/&gt;&amp;nbsp; IDwav: array[0..3] of char;
+&lt;br/&gt;&amp;nbsp; Header: Tuos_WaveHeaderChunk;
+&lt;br/&gt;&amp;nbsp; {$IF DEFINED (sndfile)}
+&lt;br/&gt;&amp;nbsp; sfInfo: TSF_INFO;
+&lt;br/&gt;&amp;nbsp; {$endif}
+&lt;br/&gt;&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; result := -1;
+&lt;br/&gt;&amp;nbsp; x := 0;
+&lt;br/&gt;&amp;nbsp; SetLength (StreamOut, Length (StreamOut) + 1);
+&lt;br/&gt;&amp;nbsp; StreamOut[Length (StreamOut) - 1] := Tuos_OutStream.Create ();
+&lt;br/&gt;&amp;nbsp; x := Length (StreamOut) - 1;
+&lt;br/&gt;&amp;nbsp; StreamOut[x].Data.Enabled := false;
+&lt;br/&gt;&amp;nbsp; StreamOut[x].FileBuffer.ERROR := 0;
+&lt;br/&gt;&amp;nbsp; StreamOut[x].Data.Filename := filenamepath;
+&lt;br/&gt;&amp;nbsp; if (FileFormat = -1) or (FileFormat = 0) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.FileFormat := 0
+&lt;br/&gt;&amp;nbsp; else StreamOut[x].FileBuffer.FileFormat := FileFormat;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; FillChar (StreamOut[x].FileBuffer, sizeof (StreamOut[x].FileBuffer), 0);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; result := x;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if (Channels = -1) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wChannels := 2
+&lt;br/&gt;&amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wChannels := Channels;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; StreamOut[x].Data.Channels := StreamOut[x].FileBuffer.wChannels;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if FramesCount = -1 then &amp;nbsp;StreamOut[x].Data.Wantframes := &amp;nbsp;65536 Div StreamOut[x].Data.Channels
+&lt;br/&gt;&amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].Data.Wantframes := FramesCount;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; SetLength (StreamOut[x].Data.Buffer, StreamOut[x].Data.Wantframes*StreamOut[x].Data.Channels);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if (SampleFormat = -1) or (SampleFormat = 2) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wBitsPerSample := 16;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.SampleFormat := 2;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if (SampleFormat = 1) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wBitsPerSample := 32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.SampleFormat := 1;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if (SampleFormat = 0) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wBitsPerSample := 32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.SampleFormat := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if SampleRate = -1 then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wSamplesPerSec := 44100
+&lt;br/&gt;&amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.wSamplesPerSec := roundmath (samplerate);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; StreamOut[x].Data.Samplerate := StreamOut[x].FileBuffer.wSamplesPerSec;
+&lt;br/&gt;&amp;nbsp; StreamOut[x].LoopProc := Nil;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; if fileformat = 3 then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; // ogg file
+&lt;br/&gt;&amp;nbsp; {$IF DEFINED (sndfile)}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.FileFormat := 3;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.TypePut := 6;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; sfInfo.format := SF_FORMAT_OGG Or SF_FORMAT_VORBIS;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; sfInfo.channels := StreamOut[x].Data.Channels;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; sfInfo.frames := &amp;nbsp;streamOut[x].Data.Wantframes;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; SFinfo.samplerate := StreamOut[x].FileBuffer.wSamplesPerSec;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; SFinfo.seekable := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.Enabled := True;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.HandleSt := sf_open (pchar (FileNamepath), SFM_WRITE, sfInfo);
+&lt;br/&gt;&amp;nbsp; {$endif}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end
+&lt;br/&gt;&amp;nbsp; else if fileformat = 4 then begin &amp;nbsp;//by trustfm
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.FileFormat := 3;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].Data.TypePut := 6;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; sfInfo.format := SF_FORMAT_OGG or SF_FORMAT_OPUS; //SF_FORMAT_OGG Or SF_FORMAT_VORBIS;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; sfInfo.channels := StreamOut[x].Data.Channels;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; sfInfo.frames := &amp;nbsp;streamOut[x].Data.Wantframes;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; sfinfo.samplerate := 48000;// StreamOut[x].FileBuffer.wSamplesPerSec; //48000; &amp;nbsp;OPUS WORKS AT 48000 ONLY :(
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //SFinfo.samplerate := StreamOut[x].FileBuffer.wSamplesPerSec;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; SFinfo.seekable := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].Data.Enabled := True;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; StreamOut[x].Data.HandleSt := sf_open (pchar (FileNamepath), SFM_WRITE, sfInfo);
+&lt;br/&gt;&amp;nbsp; end
+&lt;br/&gt;&amp;nbsp; else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; // wav file
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data := TFileStream.Create (filenamepath,fmCreate);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.Seek (0, soFromBeginning);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.TypePut := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; IDwav := 'RIFF';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (IDwav, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; wFileSize := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (wFileSize, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; IDwav := 'WAVE';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (IDwav, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; IDwav := 'fmt ';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (IDwav, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; wChunkSize := SizeOf (Header);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (wChunkSize, 4);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; case SampleFormat of
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 0: &amp;nbsp; Header.wFormatTag &amp;nbsp; &amp;nbsp; &amp;nbsp;:= 3;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; else Header.wFormatTag &amp;nbsp; &amp;nbsp; &amp;nbsp;:= 1;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //Header.wFormatTag &amp;nbsp; &amp;nbsp; &amp;nbsp;:= 1;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wChannels &amp;nbsp; &amp;nbsp; &amp;nbsp; := StreamOut[x].FileBuffer.wChannels;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wSamplesPerSec &amp;nbsp;:= StreamOut[x].FileBuffer.wSamplesPerSec;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wBitsPerSample &amp;nbsp;:= StreamOut[x].FileBuffer.wBitsPerSample;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wBlockAlign &amp;nbsp; &amp;nbsp; := StreamOut[x].FileBuffer.wChannels * Header.wBitsPerSample Div 8;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wAvgBytesPerSec := StreamOut[x].FileBuffer.wSamplesPerSec * Header.wBlockAlign;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; Header.wcbSize &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; := 0;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (Header, SizeOf (Header));
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; IDwav := 'data';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (IDwav, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; wChunkSize := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].FileBuffer.Data.WriteBuffer (wChunkSize, 4);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; StreamOut[x].Data.Enabled := True;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;end; 
+&lt;br/&gt;&lt;br/&gt;*******************************************************
+&lt;br/&gt;In summary my only working path right now for my project is the following 
+&lt;br/&gt;&lt;br/&gt;[GENERIC PLAYER Like SimplePlayer Example]-&amp;gt;
+&lt;br/&gt;[RECORDER OGG like simplerecorder]-&amp;gt;
+&lt;br/&gt;[BROADCASTER OGG discussed and working in other thread &lt;a href=&quot;http://uos-forum.108.s1.nabble.com/Installing-IceCast-audio-web-server-td184.html&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://uos-forum.108.s1.nabble.com/Installing-IceCast-audio-web-server-td184.html&lt;/a&gt;]-&amp;gt;
+&lt;br/&gt;[OGG LISTENER not working (like simple webplayer) OGG DOWNLOADER WORKING] &amp;nbsp; 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1326.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1325"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1325</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-13T05:32:21Z</published>
+		<updated>2025-03-13T05:32:21Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			OK, thanks. &amp;nbsp;Do you use a uos demo to test or do you test it with your own program?
+&lt;br/&gt;If you use a uos demo, what demo?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1325.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1324"/>
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1324</id>
+		<title>Re: AddFromURL does not support ogg streams</title>
+		<published>2025-03-13T04:59:40Z</published>
+		<updated>2025-03-13T04:59:40Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Great ! 
+&lt;br/&gt;Here is a list of all streams that i test
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; EditURL.text := '&lt;a href=&quot;http://stream-uk1.radioparadise.com/mp3-128';&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://stream-uk1.radioparadise.com/mp3-128';&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //EditURL.text := '&lt;a href=&quot;http://s1.knixx.fm:5347/dein_webradio_vbr.opus';&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://s1.knixx.fm:5347/dein_webradio_vbr.opus';&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //EditURL.text := '&lt;a href=&quot;http://stream.freemusicradio.nl:8100/stream.aac';&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://stream.freemusicradio.nl:8100/stream.aac';&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; //EditURL.text := '&lt;a href=&quot;http://stream.punkrockers-radio.de:8000/prr.ogg';&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://stream.punkrockers-radio.de:8000/prr.ogg';&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;a href=&quot;http://stream.dancewave.online:8080/dance.ogg&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://stream.dancewave.online:8080/dance.ogg&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292p1324.html" />
+		<thr:in-reply-to ref="tag:uos-forum.108.s1.nabble.com,2006:post-1323"/>
+	</entry>
+</feed>

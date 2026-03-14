@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [58, 59, 60, 61, 62, 64, 72, 75, 77, 78, 86, 90, 91, 98, 99, 100, 101, 103, 104, 105, 106, 107, 108, 109, 110, 117, 118, 124, 125, 126, 129, 132]; var allURLs = ["/Strange-issues-with-different-formats-td58.html" ,"/Strange-issues-with-different-formats-td58i20.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '58'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Strange issues with different formats</title>
+			<META NAME="description" CONTENT="Strange issues with different formats. Hi, Fred and everyone. I'm having somes issues with different formats (ogg, mp3 and wav, specifically). For example: using this command: &gt;..."/>
+			<META NAME="keywords" CONTENT="strange, issues, with, different, formats, fred, everyone, having, somes, ogg, mp3, wav, specifically, for, example, using, command, uos, addintodevout, 0, -1, only, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><style type="text/css">
+					span.current-page { padding: .1em .4em; }
+					span.page { padding: .1em; }
+					span.pages a { padding: .1em .4em; }
+					span.current-page { border-width:1px; border-style:solid; }
+					span.pages {
+						float:right;
+						white-space:nowrap;
+						font-weight:normal;
+					}
+				</style><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="58" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="58"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=58" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Strange issues with different formats
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Load-sound-from-TMemoryStream-tp28.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Best-way-to-loop-a-sound-tp39.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Strange-issues-with-different-formats-tc58.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Strange-issues-with-different-formats-tc58.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip93676" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip93676'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		32 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D58\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(58)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(58)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(58)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(58)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(58)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(58)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost58', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D58\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink58', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=58&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		<span class="pages" style="padding:0 .2em .5em"><span class="current-page medium-border-color">1</span><span class="page"><a href="Strange-issues-with-different-formats-td58i20.html" title="Page 2">2</a></span></span>
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=58" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html',58)">Threaded</a>
+	<div id="tooltip46158" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip46158'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown58"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown58", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor58', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D58\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost58', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost58', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost58', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(58)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively58', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(58)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate58', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print58', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D58\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink58', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail58', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D58\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown58');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=58&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow58" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1488915056877-122"></span><script type="text/javascript">
+		Nabble.get('d1488915056877-122').innerHTML= Nabble.formatDateLong(new Date(1488915056877));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message58" class="message-text adbayes-content">
+		Hi, Fred and everyone.
+<br/><br/>I'm having somes issues with different formats (ogg, mp3 and wav, specifically). For example: using this command:
+<br/><br/>&gt; uos_AddIntoDevOut(0, -1, -1, -1, -1, 0, -1); 
+<br/><br/>Only mp3 files play well... Ogg and Wav formats sound very strange (faster play, something like that). But, if I change the Channels parameter:
+<br/><br/>&gt; uos_AddIntoDevOut(0, -1, -1, -1, <b>1</b>, 0, -1); 
+<br/><br/>So, ogg and wav sounds better, but with a kind of cut at the end. Also, mp3 files looks awful with this change.
+<br/><br/>All files (attached) I've tested are <b>stereo</b>, from de same sound (converted by Audacity).
+<br/><br/>Thanks.
+<br/><br/>---------
+<br/>Taking advantage of the post, I also noticed that uos_Play has a small delay to run for the first time. Is it possible to minimize this effect?
+<br/><br/><a href="http://uos-forum.108.s1.nabble.com/file/n58/sound_test.zip" target="_top" rel="nofollow" link="external">sound_test.zip</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=59" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a59',59)">Threaded</a>
+	<div id="tooltip96192" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip96192'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown59"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown59", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor59', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D59\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost59', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D59\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost59', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D59\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost59', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(59)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively59', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(59)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate59', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D59\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print59', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D59\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink59', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p59.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail59', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D59\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown59');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=59&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow59" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1488922743898-236"></span><script type="text/javascript">
+		Nabble.get('d1488922743898-236').innerHTML= Nabble.formatDateLong(new Date(1488922743898));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message59" class="message-text adbayes-content">
+		Hello.
+<br/><br/>I have tested your files with SimplePlayer uos demo for each resolution (int16, int32, float32) and all is perfect.
+<br/>Please take a look a SimplePlayer demo code.
+<br/><br/>&gt; I also noticed that uos_Play has a small delay to run for the first time. Is it possible to minimize this effect?
+<br/>Huh, I can not feel it, could you give a example.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=60" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a60',60)">Threaded</a>
+	<div id="tooltip50024" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip50024'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown60"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown60", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor60', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D60\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost60', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D60\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost60', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D60\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost60', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(60)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively60', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(60)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate60', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D60\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print60', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D60\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink60', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p60.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail60', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D60\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown60');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=60&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow60" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1488925500215-375"></span><script type="text/javascript">
+		Nabble.get('d1488925500215-375').innerHTML= Nabble.formatDateLong(new Date(1488925500215));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1488963556415-710"></span><script type="text/javascript">
+		Nabble.get('d1488963556415-710').innerHTML= Nabble.formatDateLong(new Date(1488963556415));
+	</script>.
+			</div>
+	
+	<div id="message60" class="message-text adbayes-content">
+		&gt; Please take a look a SimplePlayer demo code. 
+<br/><br/>Ooops... sorry for giving you more desnecessary work to do... I had not yet realized the need to use uos_InputGetSampleRate and uos_InputGetChannels inside uos_AddIntoDevOut... They did the trick!
+<br/><br/>About uos_Play, I'm using at least 3 sounds being executed in same time (me and my neverending drum machine, remember, Fred? ahahaha)... It's a small delay, like a half second or less. I realized that when I press a key or button to play, it's not instantly executed (I achieved an &quot;almost real time play&quot; only when I used uos_PlayNoFree and uos_Pause before starts execution -- and, inside the loop, I call uos_PlayNoFree again and again). But we've talked about uos_PlayNoFree before... the out of sync effect when more than one sound is playing at the same time is the big problem.
+<br/><br/>Cheers!
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=61" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a61',61)">Threaded</a>
+	<div id="tooltip91808" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip91808'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown61"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown61", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor61', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D61\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost61', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D61\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost61', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D61\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost61', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(61)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively61', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(61)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate61', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D61\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print61', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D61\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink61', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p61.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail61', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D61\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown61');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=61&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow61" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1488973735399-248"></span><script type="text/javascript">
+		Nabble.get('d1488973735399-248').innerHTML= Nabble.formatDateLong(new Date(1488973735399));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message61" class="message-text adbayes-content">
+		&gt; e and my neverending drum machine, remember, Fred? 
+<br/><br/>Huh, did you see that SimpleDrum.lpi demo was added, maybe there are interesting things for you... ;-)
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=62" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a62',62)">Threaded</a>
+	<div id="tooltip29512" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip29512'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown62"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown62", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor62', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D62\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost62', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D62\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost62', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D62\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost62', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(62)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively62', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(62)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate62', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D62\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print62', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D62\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink62', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p62.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail62', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D62\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown62');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=62&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow62" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1488998541179-949"></span><script type="text/javascript">
+		Nabble.get('d1488998541179-949').innerHTML= Nabble.formatDateLong(new Date(1488998541179));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message62" class="message-text adbayes-content">
+		Yeap, I've tried before. But there are two problems:
+<br/><br/>1) Beats sounds &quot;choppy&quot;. You'll be noticed that the problem is FramesCount parameter. But it's hard to set: with small values, there are a cut in the end (beats should keep sounding); and, increasing the frames number, more out of sync occurs.
+<br/><br/>2) Still there are desynchronization moments with this method, mostly with small times between loops.
+<br/><br/>So far, for me at least, the best method is creating a player and execute it in each loop.
+<br/><br/><br/>PS: In my tests, uos_free always crashes the executable (in windows 10 x64, with LCL gui).
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=64" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a64',64)">Threaded</a>
+	<div id="tooltip58837" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip58837'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown64"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown64", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor64', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D64\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost64', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D64\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost64', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D64\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost64', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(64)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively64', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(64)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate64', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D64\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print64', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D64\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink64', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p64.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail64', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D64\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown64');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=64&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow64" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489018976029-127"></span><script type="text/javascript">
+		Nabble.get('d1489018976029-127').innerHTML= Nabble.formatDateLong(new Date(1489018976029));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message64" class="message-text adbayes-content">
+		&gt; there are a cut in the end (beats should keep sounding); 
+<br/>Demo fixed in last commit.
+<br/><br/>&gt; So far, for me at least, the best method is creating a player and execute it in each loop.
+<br/>Strange, I will investigate one more time.
+<br/><br/>&gt; uos_free always crashes the executable
+<br/>...
+<br/>sleep(50); // add this
+<br/>uos_free();
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=72" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a72',72)">Threaded</a>
+	<div id="tooltip1092" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip1092'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown72"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown72", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor72', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D72\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost72', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D72\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost72', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D72\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost72', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(72)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively72', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(72)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate72', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D72\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print72', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D72\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink72', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p72.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail72', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D72\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown72');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=72&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow72" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489099017051-695"></span><script type="text/javascript">
+		Nabble.get('d1489099017051-695').innerHTML= Nabble.formatDateLong(new Date(1489099017051));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message72" class="message-text adbayes-content">
+		&gt; &gt; there are a cut in the end (beats should keep sounding);
+<br/>&gt; Demo fixed in last commit. 
+<br/><br/>Hum... No changes here. Sounds are still cut off at the end.
+<br/><br/>&gt; &gt; uos_free always crashes the executable
+<br/>...
+<br/>&gt; sleep(50); // add this
+<br/>&gt; uos_free();
+<br/><br/>I still get the same error.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=75" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a75',75)">Threaded</a>
+	<div id="tooltip92326" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip92326'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown75"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown75", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor75', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D75\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost75', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D75\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost75', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D75\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost75', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(75)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively75', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(75)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate75', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D75\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print75', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D75\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink75', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p75.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail75', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D75\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown75');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=75&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow75" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489141503605-366"></span><script type="text/javascript">
+		Nabble.get('d1489141503605-366').innerHTML= Nabble.formatDateLong(new Date(1489141503605));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message75" class="message-text adbayes-content">
+		&gt; Hum... No changes here. Sounds are still cut off at the end. 
+<br/><br/>Strange, here it keep playing.
+<br/>OK, I will re-jump into it.
+<br/><br/>&gt; I still get the same error.
+<br/><br/>Aaargh, sorry but I think that I will need to see your code.
+<br/>Do you get the error with one of uos demos ?
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=77" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a77',77)">Threaded</a>
+	<div id="tooltip12380" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip12380'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown77"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown77", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor77', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D77\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost77', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D77\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost77', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D77\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost77', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(77)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively77', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(77)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate77', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D77\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print77', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D77\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink77', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p77.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail77', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D77\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown77');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=77&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow77" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489168933916-135"></span><script type="text/javascript">
+		Nabble.get('d1489168933916-135').innerHTML= Nabble.formatDateLong(new Date(1489168933916));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message77" class="message-text adbayes-content">
+		&gt; Strange, here it keep playing.
+<br/>&gt; OK, I will re-jump into it. 
+<br/><br/>Well, I imagine that the best way is show to you how it's sounding, and how it should be. I put it in attachment (don't consider the time differences between files).
+<br/><br/><br/>&gt; Aaargh, sorry but I think that I will need to see your code.
+<br/>&gt; Do you get the error with one of uos demos ? 
+<br/><br/>With new release, the error only happens when I tried to close while uos_Play is still playing (maybe there should be a way to force to terminate before call uos_free).
+<br/><br/>Thanks!
+<br/><a href="http://uos-forum.108.s1.nabble.com/file/n77/how_its_sounding.mp3" target="_top" rel="nofollow" link="external">how_its_sounding.mp3</a><br/><a href="http://uos-forum.108.s1.nabble.com/file/n77/how_it_should_be.mp3" target="_top" rel="nofollow" link="external">how_it_should_be.mp3</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=78" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a78',78)">Threaded</a>
+	<div id="tooltip46364" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip46364'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown78"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown78", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor78', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D78\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost78', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D78\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost78', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D78\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost78', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(78)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively78', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(78)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate78', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D78\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print78', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D78\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink78', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p78.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail78', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D78\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown78');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=78&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow78" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489169575304-457"></span><script type="text/javascript">
+		Nabble.get('d1489169575304-457').innerHTML= Nabble.formatDateLong(new Date(1489169575304));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message78" class="message-text adbayes-content">
+		&gt; With new release, the error only happens when I tried to close while uos_Play is still playing (maybe there should be a way to force to terminate before calls uos_free).
+<br/><br/>Ha, ok. Maybe if you add on Form.ondestroy()
+<br/><br/>uos_Stop(0); /// even if player was already stop.
+<br/>uos_FreePlayer(0); // in case of uos_PlayNoFree() was used.
+<br/>sleep(50);
+<br/>uos_Free();
+<br/><br/>But ok, I will see if I can add a &quot;auto-stop&quot; in uos_free().
+<br/><br/>&gt;how_its_sounding.mp3
+<br/>&gt;how_it_should_be.mp3
+<br/><br/>OK, capito, I will check why it does not maintain sound.
+<br/><br/>Write you later.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=86" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a86',86)">Threaded</a>
+	<div id="tooltip41438" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip41438'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown86"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown86", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor86', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D86\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost86', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D86\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost86', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D86\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost86', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(86)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively86', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(86)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate86', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D86\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print86', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D86\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink86', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p86.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail86', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D86\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown86');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=86&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow86" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489251473571-451"></span><script type="text/javascript">
+		Nabble.get('d1489251473571-451').innerHTML= Nabble.formatDateLong(new Date(1489251473571));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p77.html" rel="nofollow">this post</a> by fauri
+			</div>
+	<div id="message86" class="message-text adbayes-content">
+		&gt; &nbsp;tried to close while uos_Play is still playing 
+<br/><br/>Ok, added &quot;auto-stop&quot; of players in uos_Free() in commit c06bc7c..c5642af.
+<br/><br/>About your drums, I will try asap to find something better.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=90" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a90',90)">Threaded</a>
+	<div id="tooltip77670" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip77670'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown90"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown90", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor90', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D90\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost90', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D90\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost90', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D90\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost90', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(90)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively90', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(90)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate90', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D90\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print90', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D90\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink90', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p90.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail90', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D90\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown90');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=90&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow90" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489267659255-659"></span><script type="text/javascript">
+		Nabble.get('d1489267659255-659').innerHTML= Nabble.formatDateLong(new Date(1489267659255));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message90" class="message-text adbayes-content">
+		Thanks a lot, Fred. But remember that creating a player in each loop works fine. The only thing is there are a bit delay before uos_Play first execution (and a musician would expect an &quot;almost&quot; realtime response when press or click to play.
+<br/><br/>PS: uos_PlayNoFree should be the definitive solution in this case, I guess... But will be necessary to find why desynchronism happens when using uos_InputSeek and uos_PlayNoFree if more sounds are executed together.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=91" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a91',91)">Threaded</a>
+	<div id="tooltip70416" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip70416'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown91"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown91", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor91', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D91\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost91', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D91\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost91', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D91\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost91', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(91)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively91', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(91)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate91', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D91\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print91', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D91\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink91', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p91.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail91', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D91\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown91');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=91&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow91" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489270838433-360"></span><script type="text/javascript">
+		Nabble.get('d1489270838433-360').innerHTML= Nabble.formatDateLong(new Date(1489270838433));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message91" class="message-text adbayes-content">
+		Hello Fauri.
+<br/><br/>Thanks for the tips. ;-)
+<br/><br/>OK, I will try to find (lot of) time to explore a better way.
+<br/><br/>Write you later (asap).
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=98" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a98',98)">Threaded</a>
+	<div id="tooltip24635" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip24635'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown98"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown98", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor98', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D98\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost98', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D98\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost98', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D98\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost98', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(98)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively98', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(98)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate98', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D98\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print98', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D98\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink98', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p98.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail98', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D98\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown98');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=98&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow98" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489481359840-229"></span><script type="text/javascript">
+		Nabble.get('d1489481359840-229').innerHTML= Nabble.formatDateLong(new Date(1489481359840));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message98" class="message-text adbayes-content">
+		Hi, Fred! So, I believe I discovered the origin of delay problem with uos_Play: LATENCY.
+<br/><br/>After many tests, changes, and so on, finally I realized how to use the latency parameter with uos_AddIntoDevOut:
+<br/><br/>&gt; uos_AddIntoDevOut(0, -1, <b>0.04</b>, -1, -1, 0, -1)
+<br/><br/>After this change, uos_Play executes very quickly. I imagine that 0.04 = 4ms, am I right?
+<br/><br/>Take advantage of the topic, I noticed that uos_InputGetSampleRate and uos_InputGetChannels don't work when I use uos_AddFromMemoryBuffer. Some like that:
+<br/><br/>&gt; buffer := uos_File2buffer(Pchar(file), 0, buffer); 
+<br/>&gt; input := uos_AddFromMemoryBuffer(0, buffer, -1, -1, -1, 0, 1024);
+<br/>&gt; uos_AddIntoDevOut(0, -1, -1,uos_InputGetSampleRate(0, input),
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputGetChannels(0, input), 0, -1);
+<br/><br/>Am I doing something wrong?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=99" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a99',99)">Threaded</a>
+	<div id="tooltip90401" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip90401'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown99"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown99", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor99', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D99\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost99', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D99\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost99', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D99\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost99', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(99)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively99', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(99)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate99', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D99\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print99', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D99\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink99', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p99.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail99', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D99\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown99');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=99&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow99" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489490822059-192"></span><script type="text/javascript">
+		Nabble.get('d1489490822059-192').innerHTML= Nabble.formatDateLong(new Date(1489490822059));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message99" class="message-text adbayes-content">
+		&gt; Hi, Fred! So, I believe I discovered the origin of delay problem with uos_Play: LATENCY. 
+<br/><br/>Ha, yes, it could be that.
+<br/><br/>&gt; &nbsp;I noticed that uos_InputGetSampleRate and uos_InputGetChannels don't work when I use uos_AddFromMemoryBuffer. : 
+<br/><br/>Ok, I will take a look.
+<br/>I hope to have some time this week to jump back in uos code.
+<br/><br/>Thanks to note it.
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=100" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a100',100)">Threaded</a>
+	<div id="tooltip70124" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip70124'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown100"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown100", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor100', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D100\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost100', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D100\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost100', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D100\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost100', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(100)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively100', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(100)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate100', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D100\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print100', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D100\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink100', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p100.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail100', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D100\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown100');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=100&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow100" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489493313155-294"></span><script type="text/javascript">
+		Nabble.get('d1489493313155-294').innerHTML= Nabble.formatDateLong(new Date(1489493313155));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p98.html" rel="nofollow">this post</a> by fauri
+			</div>
+	<div id="message100" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fauri wrote</div>
+<div class="quote-message shrinkable-quote">Hi, Fred! So, I believe I discovered the origin of delay problem with uos_Play: LATENCY.
+<br/><br/>After many tests, changes, and so on, finally I realized how to use the latency parameter with uos_AddIntoDevOut:
+<br/><br/>&gt; uos_AddIntoDevOut(0, -1, <b>0.04</b>, -1, -1, 0, -1)
+<br/><br/>After this change, uos_Play executes very quickly. I imagine that 0.04 = 4ms, am I right?
+<br/><br/>Take advantage of the topic, I noticed that uos_InputGetSampleRate and uos_InputGetChannels don't work when I use uos_AddFromMemoryBuffer. Some like that:
+<br/><br/>&gt; buffer := uos_File2buffer(Pchar(file), 0, buffer); 
+<br/>&gt; input := uos_AddFromMemoryBuffer(0, buffer, -1, -1, -1, 0, 1024);
+<br/>&gt; uos_AddIntoDevOut(0, -1, -1,uos_InputGetSampleRate(0, input),
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputGetChannels(0, input), 0, -1);
+<br/><br/>Am I doing something wrong?
+</div>
+</div></blockquote>
+Hello.
+<br/><br/>I have taken a fast look and do not see something wrong.
+<br/>Your code is ok.
+<br/><br/>What does not work ?
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=101" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a101',101)">Threaded</a>
+	<div id="tooltip89595" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip89595'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown101"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown101", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor101', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D101\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost101', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D101\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost101', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D101\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost101', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(101)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively101', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(101)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate101', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D101\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print101', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D101\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink101', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p101.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail101', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D101\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown101');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=101&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow101" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489496180176-762"></span><script type="text/javascript">
+		Nabble.get('d1489496180176-762').innerHTML= Nabble.formatDateLong(new Date(1489496180176));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message101" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>Could you try this:
+<br/><br/>&nbsp;buffer := uos_File2buffer(Pchar(file), 0, buffer); 
+<br/>&nbsp;input := uos_AddFromMemoryBuffer(0, buffer, -1, tempchan, tempSamplerate, 0, 1024); 
+<br/>&nbsp;uos_AddIntoDevOut(0, -1, -1, tempSamplerate, tempchan, 0, 1024); 
+<br/><br/>With File2buffer, uos_InputGetSampleRate and uos_InputGetChannels does not work (yet).
+<br/>You should use tempSamplerate and &nbsp;tempchan instead.
+<br/><br/>I will do something more &quot;universal&quot; asap.
+<br/><br/>Fre;D
+<br/>&nbsp;
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=103" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a103',103)">Threaded</a>
+	<div id="tooltip60971" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip60971'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown103"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown103", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor103', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D103\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost103', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D103\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost103', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D103\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost103', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(103)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively103', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(103)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate103', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D103\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print103', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D103\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink103', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p103.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail103', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D103\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown103');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=103&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow103" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489525330393-101"></span><script type="text/javascript">
+		Nabble.get('d1489525330393-101').innerHTML= Nabble.formatDateLong(new Date(1489525330393));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p98.html" rel="nofollow">this post</a> by fauri
+			</div>
+	<div id="message103" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Fixed in last commit 9b1e8b3..f4ffcc7.
+<br/><br/>Thanks to note it.
+<br/><br/>Warning, some methods have new parameters, please take a look at consoleplaymemorybuffer.pas demo.
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=3">fauri</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=104" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a104',104)">Threaded</a>
+	<div id="tooltip7833" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip7833'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown104"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown104", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor104', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D104\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost104', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D104\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost104', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D104\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost104', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(104)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively104', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(104)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate104', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D104\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print104', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D104\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink104', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p104.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail104', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D104\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown104');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=104&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow104" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489567009584-218"></span><script type="text/javascript">
+		Nabble.get('d1489567009584-218').innerHTML= Nabble.formatDateLong(new Date(1489567009584));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=3" rel="nofollow" title="View profile of fauri" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="fauri" title="fauri"/><img src="images/online.png" class="online3 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count3 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message104" class="message-text adbayes-content">
+		Something is wrong in the last commit (revision 169). Some sounds don't play anymore, and others are being cut off at the end (maybe a problem with framecount parameter). When I did a downgrade (revision 168), everything worked fine again.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=105" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Strange-issues-with-different-formats-tt58.html#a105',105)">Threaded</a>
+	<div id="tooltip30907" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip30907'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown105"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown105", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor105', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D105\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost105', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D105\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost105', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D105\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost105', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(105)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively105', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(105)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate105', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D105\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print105', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D105\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink105', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Strange-issues-with-different-formats-tp58p105.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail105', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D105\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown105');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=105&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow105" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1489571722940-768"></span><script type="text/javascript">
+		Nabble.get('d1489571722940-768').innerHTML= Nabble.formatDateLong(new Date(1489571722940));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Strange issues with different formats
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message105" class="message-text adbayes-content">
+		Hello.
+<br/><br/>With what method, AddFromMemoryBuffer or with everything ?
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		<span class="pages" style="padding:1em .2em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="Strange-issues-with-different-formats-td58i20.html" title="Page 2">2</a></span></span>
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v58" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=58&incViewCount=58&newsflash=&visitorOnline=&avatarOnline=3|1&postCount=3|1&markVisited=105&views=58';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

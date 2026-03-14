@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [298, 299, 300, 301, 302, 303, 304, 305, 306, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 325, 326, 327, 328, 329, 330, 332, 333, 334, 336, 339, 340, 344, 345, 347]; var allURLs = ["/Find-a-problem-on-quot-multiplayer-quot-td298.html" ,"/Find-a-problem-on-quot-multiplayer-quot-td298i20.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '298'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Find a problem on &quot;multiplayer&quot;</title>
+			<META NAME="description" CONTENT="Find a problem on &quot;multiplayer&quot;. Hello Even without the bug that I solved today , the &quot;multiplayer&quot; example does not work yet. If I run it in debug mode it hangs on: but if I..."/>
+			<META NAME="keywords" CONTENT="find, problem, quot, multiplayer, even, without, bug, solved, today, example, does, not, work, yet, run, debug, mode, hangs, change, lines, with, uos, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><style type="text/css">
+					span.current-page { padding: .1em .4em; }
+					span.page { padding: .1em; }
+					span.pages a { padding: .1em .4em; }
+					span.current-page { border-width:1px; border-style:solid; }
+					span.pages {
+						float:right;
+						white-space:nowrap;
+						font-weight:normal;
+					}
+				</style><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="298" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="298"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=298" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Find a problem on &quot;multiplayer&quot;
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Equalizer-tp348.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Just-46-bytes-tp253.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Find-a-problem-on-quot-multiplayer-quot-tc298.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Find-a-problem-on-quot-multiplayer-quot-tc298.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip62345" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip62345'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		40 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D298\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(298)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(298)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(298)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(298)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(298)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(298)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost298', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D298\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink298', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=298&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		<span class="pages" style="padding:0 .2em .5em"><span class="current-page medium-border-color">1</span><span class="page"><a href="Find-a-problem-on-quot-multiplayer-quot-td298i20.html" title="Page 2">2</a></span></span>
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=298" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html',298)">Threaded</a>
+	<div id="tooltip80217" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip80217'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown298"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown298", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor298', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D298\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost298', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost298', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost298', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(298)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively298', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(298)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate298', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print298', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D298\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink298', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail298', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D298\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown298');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=298&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow298" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1515776266050-829"></span><script type="text/javascript">
+		Nabble.get('d1515776266050-829').innerHTML= Nabble.formatDateLong(new Date(1515776266050));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message298" class="message-text adbayes-content">
+		Hello
+<br/>Even without the bug that I solved today <img class='smiley' src='/images/smiley/anim_working.gif' />, the &quot;multiplayer&quot; example does not work yet. 
+<br/><br/>If I run it in debug mode it hangs on:
+<br/><br/><pre>
+Tuos_Player.execute
+...
+for x3 := 0 to high(StreamIn[x2].Data.Buffer) do
+  begin
+  StreamOut[x].Data.Buffer[x3] :=
+  cfloat(StreamOut[x].Data.Buffer[x3]) + &lt;-- 'RunError(201)'
+  cfloat(StreamIn[x2].Data.Buffer[x3]);
+  end;  
+...
+</pre><br/>but
+<br/><br/>if I change the lines
+<br/><pre>
+&quot;uos_AddIntoDevOut(PlayerIndex3, -1, -1, -1, -1, 0, 1024);&quot;
+</pre>with
+<br/><pre>
+&quot;uos_AddIntoDevOut(PlayerIndex3, -1, -1, -1, -1, 0, -1);&quot;
+</pre>work!
+<br/><br/>at form closure, memory leaks occur:
+<br/><br/>it simply lacks <pre>BufferBMP.free;</pre>&nbsp;for the logo <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/><br/>Windows 10 64bit 
+<br/>Laz 1.8.0 64bit - FPC 3.0.4
+<br/><br/><br/>&nbsp;Thanks for your job!!
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=299" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a299',299)">Threaded</a>
+	<div id="tooltip89515" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip89515'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown299"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown299", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor299', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D299\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost299', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D299\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost299', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D299\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost299', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(299)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively299', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(299)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate299', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D299\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print299', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D299\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink299', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p299.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail299', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D299\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown299');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=299&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow299" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1515853301414-467"></span><script type="text/javascript">
+		Nabble.get('d1515853301414-467').innerHTML= Nabble.formatDateLong(new Date(1515853301414));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message299" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>Thanks to report this.
+<br/><br/>I will, asap, test it with Windows, I never found problem with multiplayer with unix os.
+<br/><br/>Write you later.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=300" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a300',300)">Threaded</a>
+	<div id="tooltip5310" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip5310'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown300"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown300", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor300', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D300\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost300', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D300\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost300', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D300\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost300', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(300)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively300', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(300)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate300', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D300\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print300', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D300\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink300', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p300.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail300', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D300\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown300');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=300&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow300" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1515855729634-662"></span><script type="text/javascript">
+		Nabble.get('d1515855729634-662').innerHTML= Nabble.formatDateLong(new Date(1515855729634));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1515868127408-468"></span><script type="text/javascript">
+		Nabble.get('d1515868127408-468').innerHTML= Nabble.formatDateLong(new Date(1515868127408));
+	</script>.
+			</div>
+	
+	<div id="message300" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>Well seen !
+<br/><br/>Yes, there was a (big) problem with MultiPlayer demo.
+<br/><br/>Huh, it is my fault, I do not use LCL widgetset for a long time now and did not test all the LCL demos with new uos code.
+<br/><br/>It is fixed now (commit 4ded849).
+<br/><br/>In the future, I will always test the LCL demos too.
+<br/><br/>Thanks to note it and sorry for the inconvenient.
+<br/><br/>Fre;D.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=301" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a301',301)">Threaded</a>
+	<div id="tooltip75882" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip75882'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown301"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown301", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor301', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D301\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost301', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D301\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost301', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D301\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost301', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(301)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively301', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(301)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate301', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D301\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print301', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D301\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink301', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p301.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail301', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D301\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown301');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=301&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow301" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516046341485-417"></span><script type="text/javascript">
+		Nabble.get('d1516046341485-417').innerHTML= Nabble.formatDateLong(new Date(1516046341485));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message301" class="message-text adbayes-content">
+		Hello, Sorry for the delay to reply. 
+<br/>Thank you for making these changes! Now all ok.
+<br/>At the moment I'm checking the uos.pas and uos_flat.pas for find another problems (maybe I'll do another pull request or write here) <img class='smiley' src='/images/smiley/anim_working.gif' />.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=302" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a302',302)">Threaded</a>
+	<div id="tooltip93765" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip93765'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown302"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown302", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor302', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D302\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost302', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D302\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost302', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D302\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost302', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(302)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively302', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(302)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate302', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D302\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print302', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D302\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink302', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p302.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail302', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D302\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown302');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=302&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow302" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516099591098-724"></span><script type="text/javascript">
+		Nabble.get('d1516099591098-724').innerHTML= Nabble.formatDateLong(new Date(1516099591098));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message302" class="message-text adbayes-content">
+		Hello,
+<br/>I just created the pull request that solves various problems. <img class='smiley' src='/images/smiley/smiley_beam.gif' />
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=303" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a303',303)">Threaded</a>
+	<div id="tooltip93377" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip93377'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown303"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown303", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor303', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D303\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost303', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D303\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost303', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D303\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost303', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(303)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively303', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(303)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate303', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D303\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print303', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D303\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink303', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p303.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail303', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D303\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown303');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=303&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow303" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516105381358-806"></span><script type="text/javascript">
+		Nabble.get('d1516105381358-806').innerHTML= Nabble.formatDateLong(new Date(1516105381358));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message303" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>Yep, your changes are committed. <img class='smiley' src='/images/smiley/anim_jump.gif' /><br/><br/>Many thanks for your great contributions.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=304" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a304',304)">Threaded</a>
+	<div id="tooltip56182" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip56182'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown304"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown304", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor304', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D304\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost304', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D304\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost304', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D304\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost304', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(304)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively304', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(304)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate304', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D304\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print304', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D304\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink304', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p304.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail304', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D304\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown304');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=304&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow304" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516106015667-102"></span><script type="text/javascript">
+		Nabble.get('d1516106015667-102').innerHTML= Nabble.formatDateLong(new Date(1516106015667));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message304" class="message-text adbayes-content">
+		Hello,
+<br/>I'am happy!
+<br/><br/>Sorry I was not quick enough to add the last two commits in time <img class='smiley' src='/images/smiley/anim_working.gif' />.
+<br/>So I had to create a new pull request <img class='smiley' src='/images/smiley/smiley_beam.gif' />. 
+<br/>At the moment I have not seen other things.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=305" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a305',305)">Threaded</a>
+	<div id="tooltip79616" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip79616'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown305"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown305", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor305', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D305\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost305', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D305\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost305', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D305\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost305', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(305)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively305', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(305)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate305', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D305\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print305', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D305\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink305', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p305.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail305', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D305\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown305');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=305&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow305" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516133223272-703"></span><script type="text/javascript">
+		Nabble.get('d1516133223272-703').innerHTML= Nabble.formatDateLong(new Date(1516133223272));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message305" class="message-text adbayes-content">
+		Re-hello Phoenix.
+<br/><br/>Huh, I get memory leak with uos_Free() in uos_flat.pas.
+<br/><br/>I did commit code that fix it &nbsp;---&gt; commit 5a10b37.
+<br/><br/>Maybe there is something that I did not catch but now all seems ok, even for console or LCL or fpGUI or MSE...
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=306" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a306',306)">Threaded</a>
+	<div id="tooltip97264" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip97264'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown306"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown306", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor306', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D306\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost306', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D306\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost306', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D306\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost306', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(306)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively306', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(306)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate306', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D306\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print306', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D306\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink306', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p306.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail306', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D306\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown306');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=306&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow306" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516136612579-478"></span><script type="text/javascript">
+		Nabble.get('d1516136612579-478').innerHTML= Nabble.formatDateLong(new Date(1516136612579));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1516138843643-616"></span><script type="text/javascript">
+		Nabble.get('d1516138843643-616').innerHTML= Nabble.formatDateLong(new Date(1516138843643));
+	</script>.
+			</div>
+	
+	<div id="message306" class="message-text adbayes-content">
+		Hello,
+<br/>at the moment I have no memory leak (but you've certainly tested more different cases).
+<br/><br/>Give me some details about the problem or source for test.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=308" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a308',308)">Threaded</a>
+	<div id="tooltip26940" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip26940'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown308"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown308", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor308', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D308\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost308', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D308\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost308', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D308\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost308', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(308)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively308', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(308)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate308', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D308\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print308', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D308\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink308', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p308.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail308', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D308\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown308');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=308&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow308" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516140082528-46"></span><script type="text/javascript">
+		Nabble.get('d1516140082528-46').innerHTML= Nabble.formatDateLong(new Date(1516140082528));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message308" class="message-text adbayes-content">
+		I watched the changes you've restored. 
+<br/><br/><pre>
++  if assigned(uosPlayers) then  (1)
+    if length(uosPlayers) &gt; 0 then
+     for x := 0 to length(uosPlayers) -1 do
++    begin
+       if assigned(uosPlayers[x]) then
+-       uosPlayers[x].FreePlayer;
+
++    begin
++      uosPlayers[x].nofree := false; (2)
++      uos_stop(x); (3)
++      uos_freeplayer(x); (4)
++    end;
++  end;
+</pre><br/>(1) it's useless (it is an initialized dynamic array)
+<br/>(2) assigned up in the FreePlayer method
+<br/>(3) call in the FreePlayer method
+<br/>(4) call FreePlayer
+<br/><br/><pre>
+procedure Tuos_Player.FreePlayer();  // Works only when PlayNoFree() was used: free the player
+begin
+  if isAssigned then
+  begin
+    NLooped := 0;
+    NoFree := False;
+    //if it has never been put into play (= there is no thread for free)..
+    if thethread = nil then
+      Play();
+    Stop;
+  end;
+end;   
+</pre><br/>The differences are few. Perhaps in your test you have a Tuos_Player never executed?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=309" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a309',309)">Threaded</a>
+	<div id="tooltip65116" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip65116'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown309"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown309", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor309', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D309\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost309', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D309\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost309', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D309\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost309', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(309)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively309', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(309)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate309', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D309\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print309', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D309\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink309', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p309.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail309', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D309\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown309');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=309&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow309" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516141504306-728"></span><script type="text/javascript">
+		Nabble.get('d1516141504306-728').innerHTML= Nabble.formatDateLong(new Date(1516141504306));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message309" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>The memory leak appears when using MSE-threads.
+<br/><br/>With the last committed code memory leak disappear.
+<br/><br/>I will investigate more to understand why. 
+<br/><br/>(Maybe a {$IF DEFINED(mse)} is needed in uos_Free() of uos_flat.pas when MSE-threads are used).
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=310" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a310',310)">Threaded</a>
+	<div id="tooltip88846" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip88846'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown310"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown310", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor310', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D310\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost310', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D310\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost310', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D310\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost310', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(310)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively310', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(310)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate310', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D310\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print310', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D310\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink310', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p310.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail310', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D310\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown310');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=310&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow310" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516141774040-2"></span><script type="text/javascript">
+		Nabble.get('d1516141774040-2').innerHTML= Nabble.formatDateLong(new Date(1516141774040));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p306.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message310" class="message-text adbayes-content">
+		&gt; Give me some details about the problem or source for test.
+<br/><br/>In StrumPract ---&gt; <a href="https://github.com/fredvs/strumpract" target="_top" rel="nofollow" link="external">https://github.com/fredvs/strumpract</a><br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=311" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a311',311)">Threaded</a>
+	<div id="tooltip2096" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip2096'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown311"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown311", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor311', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D311\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost311', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D311\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost311', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D311\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost311', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(311)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively311', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(311)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate311', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D311\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print311', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D311\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink311', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p311.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail311', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D311\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown311');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=311&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow311" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516177635747-994"></span><script type="text/javascript">
+		Nabble.get('d1516177635747-994').innerHTML= Nabble.formatDateLong(new Date(1516177635747));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message311" class="message-text adbayes-content">
+		Hello,
+<br/>yesterday evening I was too late, I had some problems with MSEide <img class='smiley' src='/images/smiley/smiley_cry.gif' /><br/>In the end I saw the problem: the player's memory is not freed.
+<br/><br/>Now I understand why with the change goes:
+<br/><br/><pre>
+procedure uos_Stop(PlayerIndex: cint32);  // Stop playing and if uos_Play() was used: free the player
+begin
+  if (length(uosPlayers) &gt; 0) and (PlayerIndex +1 &lt;= length(uosPlayers)) then
+  if  uosPlayersStat[PlayerIndex] = 1 then
+   if assigned(uosPlayers[PlayerIndex]) then
+   begin
+uosPlayers[PlayerIndex].Stop();
+{$IF DEFINED(mse)}  &lt;----------------------
+  freeandnil(uosPlayers[PlayerIndex]);
+  uosPlayersStat[PlayerIndex] := -1 ;
+{$endif}
+end;
+end; 
+</pre><br/>I've never used these libraries.
+<br/>But if you put FreeOnTerminate True and an OnTerminate .. Practically like for the thread in lazarus.
+<br/><br/>In any case freeandnil at Stop () is not ok: if you stop () on a Player with NoFree? 
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=312" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a312',312)">Threaded</a>
+	<div id="tooltip50452" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip50452'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown312"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown312", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor312', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D312\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost312', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D312\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost312', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D312\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost312', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(312)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively312', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(312)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate312', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D312\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print312', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D312\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink312', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p312.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail312', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D312\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown312');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=312&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow312" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516180312785-805"></span><script type="text/javascript">
+		Nabble.get('d1516180312785-805').innerHTML= Nabble.formatDateLong(new Date(1516180312785));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message312" class="message-text adbayes-content">
+		1) remove (this block is an error)
+<br/><br/>procedure uos_Stop(PlayerIndex: cint32); &nbsp;
+<br/>begin
+<br/>&nbsp; ...
+<br/>{$IF DEFINED(mse)} &lt;-------------
+<br/>&nbsp; freeandnil(uosPlayers[PlayerIndex]);
+<br/>&nbsp; uosPlayersStat[PlayerIndex] := -1 ;
+<br/>{$endif}
+<br/>end;
+<br/>end; 
+<br/><br/>2) in uos.pas replace (it is safer to FreeAndNil () or at least Free ())
+<br/>NOTE: I think that in other parts of uos the &quot;.destroy&quot; should be replaced with &quot;.free&quot;!!
+<br/><br/>{$IF DEFINED(mse)}
+<br/>&nbsp; theplayer.destroy; 
+<br/>&nbsp; {$endif} 
+<br/><br/>with
+<br/><br/>{$IF DEFINED(mse)}
+<br/>&nbsp; FreeAndNil(theplayer); 
+<br/>&nbsp; {$endif} 
+<br/><br/>3) For the FreeOnTerminate just add a &quot;True&quot; here
+<br/><br/>...
+<br/>{$IF DEFINED(mse)}
+<br/>&nbsp; thethread:= tmsethread.create(@execute,True);
+<br/>&nbsp; {$else} &nbsp;
+<br/>...
+<br/><br/>4) ??? I do not see OnTerminate or similar in this mse class <img class='smiley' src='/images/smiley/smiley_uh.gif' /><br/><br/>Looking for I found the tthreadcomp class.
+<br/>so it should be replaced tmsethread with this that has onterminate and use as &quot;options&quot; &quot;[tco_autorelease]&quot; for FreeOnTerminate I think (I have not tested). <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/><br/>Or now I have an idea that I do not know if it works but if you use the destructor of tmsethread to create an &quot;OnTerminate&quot;? <img class='smiley' src='/images/smiley/anim_working.gif' />
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=313" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a313',313)">Threaded</a>
+	<div id="tooltip47782" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip47782'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown313"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown313", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor313', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D313\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost313', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D313\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost313', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D313\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost313', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(313)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively313', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(313)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate313', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D313\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print313', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D313\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink313', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p313.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail313', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D313\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown313');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=313&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow313" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516182354970-464"></span><script type="text/javascript">
+		Nabble.get('d1516182354970-464').innerHTML= Nabble.formatDateLong(new Date(1516182354970));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message313" class="message-text adbayes-content">
+		1) + 2) + 3) +
+<br/><br/>4a)
+<br/><br/><pre>
+...
+type 
+{$IF DEFINED(mse)}
+ TuosThreadMse = Class(tmsethread)
+  public
+   theparent : Tobject;
+   procedure DoTerminate; virtual;
+   destructor Destroy; override;
+ end;
+{$else}
+ TuosThread = Class(TThread)
+  protected
+   ....
+</pre><br/>4b)
+<br/><br/><pre>
+...
+ protected
+   {$IF DEFINED(mse)}
+   thethread : TuosThreadMse; 
+   {$else}
+   thethread : TuosThread;
+   {$endif}   
+ ...
+</pre><br/>4c)
+<br/><br/><pre>
+...
+{$IF DEFINED(mse)}
+destructor TuosThreadMse.Destroy;
+begin
+  DoTerminate;
+  inherited;
+end;
+{$else}
+constructor TuosThread.Create(CreateSuspended: boolean; AParent: TObject;
+  const StackSize: SizeUInt);
+... 
+</pre><br/>4d)
+<br/><br/><pre>
+...
+{$IF DEFINED(mse)}
+  thethread:= tuosthreadmse.create(@execute,True);
+  thethread.theparent:= Self;
+  {$else}
+  thethread:= tuosthread.Create(false,self);
+  {$endif}
+...
+</pre><br/>4e)
+<br/><br/><pre>
+...
+{$IF DEFINED(mse)}
+procedure TuosThreadMse.DoTerminate;
+begin
+ //notice that is no longer valid (for safe destroy event of theparent)
+ Tuos_Player(theparent).thethread:= nil;
+ //execute player destroy
+ FreeAndNil(theparent);
+end;
+{$else}
+procedure TuosThread.DoTerminate;
+begin       
+...
+</pre><br/>4f) Delete this block (if thread not closed = never call Player destroy)
+<br/><br/><pre>
+...
+destructor Tuos_Player.Destroy;
+var
+  x: cint32;
+begin
+
+if thethread &lt;&gt; nil then begin &lt;----------------------------
+   {$ifdef mse} 
+    thethread.terminate();
+   application.waitforthread(thethread);
+    //calls unlockall()/relockall in order to avoid possible deadlock
+    thethread.destroy();
+  {$endif}
+    
+  end;
+...
+</pre><br/>Ok, I think the idea is good! <img class='smiley' src='/images/smiley/smiley_good.gif' /><br/><br/>Can you test it?
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=314" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a314',314)">Threaded</a>
+	<div id="tooltip2289" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip2289'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown314"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown314", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor314', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D314\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost314', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D314\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost314', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D314\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost314', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(314)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively314', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(314)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate314', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D314\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print314', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D314\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink314', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p314.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail314', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D314\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown314');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=314&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow314" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516205233900-365"></span><script type="text/javascript">
+		Nabble.get('d1516205233900-365').innerHTML= Nabble.formatDateLong(new Date(1516205233900));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p311.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message314" class="message-text adbayes-content">
+		&gt; But if you put FreeOnTerminate True and an OnTerminate
+<br/><br/>FreeOnTerminate does not exist with MSE-threads.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=315" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a315',315)">Threaded</a>
+	<div id="tooltip23195" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip23195'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown315"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown315", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor315', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D315\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost315', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D315\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost315', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D315\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost315', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(315)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively315', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(315)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate315', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D315\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print315', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D315\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink315', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p315.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail315', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D315\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown315');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=315&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow315" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516205985509-169"></span><script type="text/javascript">
+		Nabble.get('d1516205985509-169').innerHTML= Nabble.formatDateLong(new Date(1516205985509));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p313.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message315" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>Wow, lot of good ideas.
+<br/><br/>I will study it deeply.
+<br/><br/>By the way, after many test, including closing application while some PlayerNoFree are still playing, this is needed in uos_free():
+<br/><br/>if length(uosPlayers) &gt; 0 then
+<br/>&nbsp;for x := 0 to length(uosPlayers) -1 do
+<br/>&nbsp; begin
+<br/>&nbsp; uosPlayers[x].nofree := false;
+<br/>&nbsp; uos_stop(x);
+<br/>&nbsp; end;
+<br/><br/>Now I cannot find any memory leak with both MSE-threads and FPC-threads.
+<br/><br/>It was changed in commit 8e46ad1 
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=316" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a316',316)">Threaded</a>
+	<div id="tooltip87950" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip87950'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown316"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown316", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor316', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D316\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost316', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D316\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost316', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D316\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost316', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(316)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively316', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(316)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate316', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D316\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print316', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D316\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink316', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p316.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail316', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D316\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown316');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=316&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow316" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516206201459-876"></span><script type="text/javascript">
+		Nabble.get('d1516206201459-876').innerHTML= Nabble.formatDateLong(new Date(1516206201459));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p314.html" rel="nofollow">this post</a> by fredvs
+			</div>
+	<div id="message316" class="message-text adbayes-content">
+		Hello,
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">FreeOnTerminate does not exist with MSE-threads.
+</div>
+</div></blockquote>
+thethread:= tuosthreadmse.create(@execute,True);
+<br/><br/>There is: TRUE represents that <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=317" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a317',317)">Threaded</a>
+	<div id="tooltip14522" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip14522'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown317"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown317", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor317', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D317\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost317', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D317\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost317', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D317\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost317', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(317)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively317', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(317)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate317', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D317\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print317', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D317\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink317', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p317.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail317', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D317\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown317');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=317&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow317" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516206488852-974"></span><script type="text/javascript">
+		Nabble.get('d1516206488852-974').innerHTML= Nabble.formatDateLong(new Date(1516206488852));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message317" class="message-text adbayes-content">
+		Ok, in case if I find any problem I write here.
+<br/>Thank you! <img class='smiley' src='/images/smiley/smiley_beam.gif' />
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=318" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Find-a-problem-on-quot-multiplayer-quot-tt298.html#a318',318)">Threaded</a>
+	<div id="tooltip80340" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip80340'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown318"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown318", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor318', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D318\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost318', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D318\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost318', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D318\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost318', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(318)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively318', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(318)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate318', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D318\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print318', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D318\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink318', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p318.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail318', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D318\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown318');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=318&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow318" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1516207127397-790"></span><script type="text/javascript">
+		Nabble.get('d1516207127397-790').innerHTML= Nabble.formatDateLong(new Date(1516207127397));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Find a problem on &quot;multiplayer&quot;
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Find-a-problem-on-multiplayer-tp298p316.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message318" class="message-text adbayes-content">
+		&gt; thethread:= tuosthreadmse.create(@execute,True); 
+<br/><br/>Ooops ---&gt; tmsethread = class
+<br/>...
+<br/>&nbsp;constructor create(const athreadproc: threadprocty;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const afreeonterminate: boolean = false;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const astacksizekb: integer = 0); overload; virtual;
+<br/>...
+<br/><br/>Indeed. ( IMO, Martin should give more infos in his examples (and me look more at source ).
+<br/><br/>Well seen, I will study-test-commit this asap.
+<br/><br/>Many thanks.
+<br/><br/>Fre;D
+<br/><br/>&nbsp; 
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		<span class="pages" style="padding:1em .2em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="Find-a-problem-on-quot-multiplayer-quot-td298i20.html" title="Page 2">2</a></span></span>
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v298" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=298&incViewCount=298&newsflash=&visitorOnline=&avatarOnline=2|1&postCount=2|1&markVisited=318&views=298';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

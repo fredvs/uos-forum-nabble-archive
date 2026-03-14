@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="/nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="/template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="/assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="/util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="/template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249]; var allURLs = ["/Execute-Beep-td238.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '238'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Execute Beep</title>
+			<META NAME="description" CONTENT="Execute Beep. Hello, you can implement a method like &quot;Beep (frequency, duration, volume)&quot; that works by creating the sound directly in the buffer without having any audio files. Also is there a chance..."/>
+			<META NAME="keywords" CONTENT="execute, beep, you, can, implement, method, like, frequency, duration, volume, works, creating, sound, directly, buffer, without, having, any, audio, files, also, chance, run, midi, uos, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="/">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="238" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="238"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="/template/NamlServlet.jtp?macro=adv_search_page&amp;node=238" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Execute Beep
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/independent-sine-wave-generators-on-left-and-right-channel-of-a-sound-device-with-uos-synthesizer-tp258.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Sporadic-error-Invalid-pointer-operation-tp232.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="/images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Execute-Beep-tc238.html',null)"><img src="/images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Execute-Beep-tc238.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html',null)"><img src="/images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="/images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip26156" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip26156'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="/images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		12 messages
+	</span>
+	<img src="/images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D238\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(238)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(238)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(238)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(238)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(238)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(238)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost238', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D238\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink238', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=238&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=238" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html',238)">Threaded</a>
+	<div id="tooltip39110" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip39110'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown238"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown238", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor238', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D238\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost238', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost238', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost238', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(238)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively238', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(238)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate238', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print238', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D238\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink238', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail238', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D238\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown238');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=238&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow238" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496412021281-773"></span><script type="text/javascript">
+		Nabble.get('d1496412021281-773').innerHTML= Nabble.formatDateLong(new Date(1496412021281));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="/images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message238" class="message-text adbayes-content">
+		Hello,
+<br/>you can implement a method like &quot;Beep (frequency, duration, volume)&quot; that works by creating the sound directly in the buffer without having any audio files.
+<br/>Also is there a chance to run Midi files with UOS?
+<br/><br/>&nbsp;Thanks in any case
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=239" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a239',239)">Threaded</a>
+	<div id="tooltip63032" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63032'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown239"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown239", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor239', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D239\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost239', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D239\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost239', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D239\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost239', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(239)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively239', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(239)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate239', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D239\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print239', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D239\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink239', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p239.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail239', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D239\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown239');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=239&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow239" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496487555621-912"></span><script type="text/javascript">
+		Nabble.get('d1496487555621-912').innerHTML= Nabble.formatDateLong(new Date(1496487555621));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message239" class="message-text adbayes-content">
+		&gt; <blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">Hello,
+<br/>you can implement a method like &quot;Beep (frequency, duration, volume)&quot; that works by creating the sound directly in the buffer without having any audio files.
+</div>
+</div></blockquote>
+Hello.
+<br/><br/>Do you want a new method Beep(frequency, duration, volume) ?
+<br/>It is possible to do it with AddFromSynth().
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">Also is there a chance to run Midi files with UOS?
+</div>
+</div></blockquote>
+It is in the todo list.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=240" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a240',240)">Threaded</a>
+	<div id="tooltip9818" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip9818'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown240"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown240", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor240', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D240\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost240', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D240\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost240', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D240\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost240', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(240)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively240', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(240)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate240', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D240\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print240', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D240\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink240', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p240.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail240', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D240\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown240');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=240&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow240" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496519242267-540"></span><script type="text/javascript">
+		Nabble.get('d1496519242267-540').innerHTML= Nabble.formatDateLong(new Date(1496519242267));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="/images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message240" class="message-text adbayes-content">
+		Hello,
+<br/><br/>ok thanks, <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/>i did not see AddFromSynth () <img class='smiley' src='/images/smiley/smiley_blush.gif' /><br/><br/>meantime.. i was inspired by seeing these:
+<br/><a href="http://openal.996291.n3.nabble.com/Waveform-and-queued-buffers-td5047.html" target="_top" rel="nofollow" link="external">http://openal.996291.n3.nabble.com/Waveform-and-queued-buffers-td5047.html</a><br/><a href="https://gitlab.vanderhoning.net/mvdhoning/doal/blob/master/Tutorials/17/Unit1.pas" target="_top" rel="nofollow" link="external">https://gitlab.vanderhoning.net/mvdhoning/doal/blob/master/Tutorials/17/Unit1.pas</a><br/><br/>I was thinking of something like that:
+<br/><br/>&nbsp;procedure TTestClass.LoadBeep;
+<br/>&nbsp; Const
+<br/>&nbsp; &nbsp;dim = 22050;
+<br/>&nbsp; Var
+<br/>&nbsp; &nbsp;i, input,output: Integer;
+<br/>&nbsp; &nbsp;thebuffer: array of cfloat;
+<br/>&nbsp; &nbsp;thebufferinfos: TuosF_BufferInfos;
+<br/>&nbsp; begin
+<br/>&nbsp; &nbsp;SetLength(thebuffer,dim);
+<br/>&nbsp; &nbsp;for i:= 0 to dim-1 do
+<br/>&nbsp; &nbsp; thebuffer[i]:= Round(100 * Sin(i * (2 * pi) / 50.0) + 128);
+<br/><br/>&nbsp; &nbsp;with thebufferinfos do
+<br/>&nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; SampleRate &nbsp; &nbsp; &nbsp;:= 44100;//44100 div 4
+<br/>&nbsp; &nbsp; SampleRateRoot &nbsp;:= SampleRate;
+<br/>&nbsp; &nbsp; SampleFormat &nbsp; &nbsp;:= 0;//float
+<br/>&nbsp; &nbsp; Channels &nbsp; &nbsp; &nbsp; &nbsp;:= 1;//mono
+<br/>&nbsp; &nbsp; Filename &nbsp; &nbsp; &nbsp; &nbsp;:= '';
+<br/>&nbsp; &nbsp; Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; := '';
+<br/>&nbsp; &nbsp; Copyright &nbsp; &nbsp; &nbsp; := '';
+<br/>&nbsp; &nbsp; Software &nbsp; &nbsp; &nbsp; &nbsp;:= '';
+<br/>&nbsp; &nbsp; Artist &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:= '';
+<br/>&nbsp; &nbsp; Comment &nbsp; &nbsp; &nbsp; &nbsp; := '';
+<br/>&nbsp; &nbsp; Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:= '';
+<br/>&nbsp; &nbsp; //Tag &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; := ;
+<br/>&nbsp; &nbsp; Album &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; := '';
+<br/>&nbsp; &nbsp; //Genre &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; := ;
+<br/>&nbsp; &nbsp; //HDFormat &nbsp; &nbsp; &nbsp; &nbsp;:= ;
+<br/>&nbsp; &nbsp; //Sections &nbsp; &nbsp; &nbsp; &nbsp;:= ;
+<br/>&nbsp; &nbsp; //Encoding &nbsp; &nbsp; &nbsp; &nbsp;:= ;
+<br/>&nbsp; &nbsp; //bitrate &nbsp; &nbsp; &nbsp; &nbsp; := 192*1000;
+<br/>&nbsp; &nbsp; //Length &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:= ;
+<br/>&nbsp; &nbsp; LibOpen &nbsp; &nbsp; &nbsp; &nbsp; := 0;
+<br/>&nbsp; &nbsp; Ratio &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; := 2;
+<br/>&nbsp; &nbsp;end;
+<br/><br/>&nbsp; &nbsp;input:= uos_AddFromMemoryBuffer(line,thebuffer,thebufferinfos, -1, -1);
+<br/>&nbsp; &nbsp;if input = -1 then
+<br/>&nbsp; &nbsp; raise Exception.Create('');
+<br/><br/>&nbsp; &nbsp;output:= uos_AddIntoDevOut(line,-1,-1,
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputGetSampleRate(line,input),
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputGetChannels(line,input), 0,-1);
+<br/>&nbsp; &nbsp;if output = -1 then
+<br/>&nbsp; &nbsp; raise Exception.Create('');
+<br/><br/>&nbsp; &nbsp;uos_InputSetLevelEnable(line,input, 2);
+<br/>&nbsp; &nbsp;//uos_InputAddDSPVolume(line,input, 1,1); ???
+<br/>&nbsp; end; &nbsp; &nbsp;
+<br/><br/>But i can not change the volume (maybe there is a mistake): if you enable the line &quot;???&quot; i do not hear the sound properly (on Windows 10).
+<br/>Also there is probably something that can be improved (thebufferinfos values, ..)
+<br/><br/>Can you do something like using AddFromSynth ()?
+<br/>The idea would be to avoid Sleep () for the duration of the beep (seen in the example &quot;consolesynth&quot; that uses AddFromSynth ()).
+<br/><br/>&nbsp;PS. Using a Beep () method you could use the &quot;morseTL&quot; example without audio files
+<br/><br/>&nbsp; Thank You
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=241" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a241',241)">Threaded</a>
+	<div id="tooltip92451" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip92451'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown241"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown241", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor241', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D241\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost241', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D241\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost241', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D241\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost241', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(241)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively241', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(241)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate241', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D241\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print241', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D241\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink241', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p241.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail241', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D241\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown241');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=241&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow241" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496590385666-117"></span><script type="text/javascript">
+		Nabble.get('d1496590385666-117').innerHTML= Nabble.formatDateLong(new Date(1496590385666));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message241" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">i did not see AddFromSynth () <img class='smiley' src='/images/smiley/smiley_blush.gif' /></div>
+</div></blockquote>
+Hello.
+<br/><br/>There is <b>consolesynth.pas</b>&nbsp;demo to show how to use it.
+<br/><br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">But i can not change the volume (maybe there is a mistake): if you enable the line &quot;???&quot; i do not hear the sound properly (on Windows 10).
+</div>
+</div></blockquote>
+Did you try with the &nbsp;<b>consolesynth.pas</b>&nbsp;demo ?
+<br/>Here no problems. 
+<br/><br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=242" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a242',242)">Threaded</a>
+	<div id="tooltip55888" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip55888'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown242"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown242", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor242', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D242\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost242', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D242\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost242', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D242\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost242', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(242)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively242', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(242)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate242', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D242\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print242', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D242\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink242', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p242.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail242', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D242\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown242');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=242&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow242" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496606452845-566"></span><script type="text/javascript">
+		Nabble.get('d1496606452845-566').innerHTML= Nabble.formatDateLong(new Date(1496606452845));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="/images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message242" class="message-text adbayes-content">
+		Hello,
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">Did you try with the &nbsp;<b>consolesynth.pas</b>&nbsp;demo ?
+</div>
+</div></blockquote>
+It is ok. <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/>I would like to try a solution without using &quot;sleep ()&quot; for the duration of the sound.
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">Here no problems. 
+</div>
+</div></blockquote>
+I tested LoadBeep; In linux it does not output the beep then with or without the line &quot;uos_InputAddDSPVolume&quot; you get the same result.
+<br/><br/>In Windows 10 without &quot;uos_InputAddDSPVolume&quot; I get the correct beep while with &quot;uos_InputAddDSPVolume&quot; fails (like linux).
+<br/><br/>Is this a bug? <img class='smiley' src='/images/smiley/anim_confused.gif' /><br/><br/>&nbsp; Thanks
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=243" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a243',243)">Threaded</a>
+	<div id="tooltip67033" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip67033'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown243"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown243", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor243', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D243\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost243', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D243\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost243', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D243\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost243', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(243)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively243', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(243)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate243', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D243\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print243', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D243\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink243', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p243.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail243', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D243\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown243');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=243&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow243" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496655017601-479"></span><script type="text/javascript">
+		Nabble.get('d1496655017601-479').innerHTML= Nabble.formatDateLong(new Date(1496655017601));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message243" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">I tested LoadBeep; In linux it does not output the beep then with or without the line &quot;uos_InputAddDSPVolume&quot; you get the same result.
+<br/><br/>In Windows 10 without &quot;uos_InputAddDSPVolume&quot; I get the correct beep while with &quot;uos_InputAddDSPVolume&quot; fails (like linux).
+<br/><br/>Is this a bug? <img class='smiley' src='/images/smiley/anim_confused.gif' /><br/><br/>&nbsp; Thanks
+</div>
+</div></blockquote>
+Hello.
+<br/><br/>OK, I will test it asap (I am overbooked now <img class='smiley' src='/images/smiley/smiley_cry.gif' />).
+<br/><br/>Thanks to note it.
+<br/><br/>Fre;D
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=244" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a244',244)">Threaded</a>
+	<div id="tooltip87307" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip87307'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown244"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown244", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor244', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D244\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost244', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D244\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost244', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D244\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost244', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(244)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively244', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(244)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate244', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D244\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print244', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D244\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink244', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p244.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail244', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D244\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown244');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=244&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow244" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496754235843-592"></span><script type="text/javascript">
+		Nabble.get('d1496754235843-592').innerHTML= Nabble.formatDateLong(new Date(1496754235843));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p242.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message244" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">I tested LoadBeep; In linux it does not output the beep then with or without the line &quot;uos_InputAddDSPVolume&quot; you get the same result.
+<br/><br/>&nbsp; Thanks
+</div>
+</div></blockquote>
+I did not try yet to use uos_InputAddDSPVolume() for synthesizer but why not using simply :
+<br/><br/>InputSetSynth(InputIndex: cint32; Frequency: float; VolumeL: float; VolumeR: float; Enable : boolean);
+<br/>&nbsp; // Frequency : in Hertz (-1 = do not change)
+<br/>&nbsp; // VolumeL : &nbsp;from 0 to 1 (-1 = do not change)
+<br/>&nbsp; // VolumeR : &nbsp;from 0 to 1 (-1 = do not change)
+<br/>&nbsp; // Enabled : true or false ;
+<br/><br/>If you only want to change the volume, just do:
+<br/><br/>InputSetSynth(InputIndex, <b>-1</b>, VolumeL, VolumeR, true);
+<br/><br/>PS: I will chek uos_InputAddDSPVolume() for synthetizer ASAP.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=245" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a245',245)">Threaded</a>
+	<div id="tooltip43409" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip43409'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown245"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown245", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor245', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D245\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost245', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D245\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost245', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D245\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost245', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(245)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively245', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(245)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate245', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D245\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print245', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D245\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink245', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p245.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail245', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D245\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown245');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=245&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow245" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496765425273-5"></span><script type="text/javascript">
+		Nabble.get('d1496765425273-5').innerHTML= Nabble.formatDateLong(new Date(1496765425273));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="/images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message245" class="message-text adbayes-content">
+		Hello.
+<br/>Certainly, as a second alternative i will use InputSetSynth().
+<br/>Changing volume does not cause any problems. <img class='smiley' src='/images/smiley/smiley_beam.gif' /><br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">I did not try yet to use uos_InputAddDSPVolume() for <b>synthesizer</b>..
+</div>
+</div></blockquote>
+<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">I will check uos_InputAddDSPVolume() for <b>synthetizer</b>&nbsp;ASAP
+</div>
+</div></blockquote>
+Note: in my &quot;LoadBeep&quot;, uos_InputAddDSPVolume() is for <b>uos_AddFromMemoryBuffer</b>() not for uos_AddFromSynth()
+<br/><br/>Thanks
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=246" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a246',246)">Threaded</a>
+	<div id="tooltip64201" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip64201'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown246"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown246", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor246', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D246\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost246', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D246\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost246', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D246\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost246', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(246)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively246', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(246)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate246', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D246\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print246', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D246\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink246', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p246.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail246', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D246\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown246');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=246&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow246" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496782378308-189"></span><script type="text/javascript">
+		Nabble.get('d1496782378308-189').innerHTML= Nabble.formatDateLong(new Date(1496782378308));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message246" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">Note: in my &quot;LoadBeep&quot;, uos_InputAddDSPVolume() is for <b>uos_AddFromMemoryBuffer</b>() not for uos_AddFromSynth()
+</div>
+</div></blockquote>
+Ha, OK. (I did not understood that <img class='smiley' src='/images/smiley/smiley_blush.gif' />&nbsp;)
+<br/><br/>Huh... asap.
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=247" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a247',247)">Threaded</a>
+	<div id="tooltip75169" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip75169'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown247"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown247", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor247', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D247\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost247', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D247\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost247', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D247\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost247', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(247)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively247', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(247)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate247', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D247\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print247', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D247\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink247', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p247.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail247', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D247\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown247');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=247&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow247" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496925259534-503"></span><script type="text/javascript">
+		Nabble.get('d1496925259534-503').innerHTML= Nabble.formatDateLong(new Date(1496925259534));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1497090559468-773"></span><script type="text/javascript">
+		Nabble.get('d1497090559468-773').innerHTML= Nabble.formatDateLong(new Date(1497090559468));
+	</script>.
+			</div>
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p240.html" rel="nofollow">this post</a> by Phoenix
+			</div>
+	<div id="message247" class="message-text adbayes-content">
+		Hello Phoenix.
+<br/><br/>In your code:
+<br/><br/>thebuffer[i]:= <b>Round</b>(100 * Sin(i * (2 * pi) / 50.0) + 128); 
+<br/><br/>---&gt; you rounded the data (to get integer ?).
+<br/><br/>But in thebufferinfos:
+<br/><br/>SampleFormat := 0;//float
+<br/><br/>So it could not work. 
+<br/><br/>Try to use float data (from -1 to 1) or SampleFormat &gt; 0 &nbsp; (int32 --&gt;.SampleFormat = 1, int16 --&gt;.SampleFormat = 2) 
+<br/><br/>PS: In last commit 3e05121..698958b , added <b>Duration</b>&nbsp;parameter for <b>AddFromSynth() / InputSetSynth()</b>. You may define now the duration of the synth sound.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=2">Phoenix</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=248" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a248',248)">Threaded</a>
+	<div id="tooltip81981" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip81981'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown248"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown248", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor248', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D248\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost248', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D248\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost248', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D248\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost248', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(248)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively248', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(248)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate248', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D248\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print248', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D248\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink248', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p248.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail248', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D248\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown248');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=248&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow248" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496934551302-209"></span><script type="text/javascript">
+		Nabble.get('d1496934551302-209').innerHTML= Nabble.formatDateLong(new Date(1496934551302));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=2" rel="nofollow" title="View profile of Phoenix" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Phoenix" title="Phoenix"/><img src="/images/online.png" class="online2 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count2 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message248" class="message-text adbayes-content">
+		Hello,
+<br/>I did not control the range for audio data: my stupid error. <img class='smiley' src='/images/smiley/smiley_blush.gif' /><br/>Windows 10 also works with incorrect data: it's sad <img class='smiley' src='/images/smiley/smiley_sad.gif' /><br/><br/>I've changed scale [-1..1] is now working,
+<br/>thanks for the added &quot;duration&quot; parameter. <img class='smiley' src='/images/smiley/smiley_happy.gif' /><br/><br/>Thanks so much!!
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=249" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Execute-Beep-tt238.html#a249',249)">Threaded</a>
+	<div id="tooltip62530" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip62530'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown249"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown249", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor249', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D249\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost249', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D249\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost249', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D249\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost249', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(249)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively249', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(249)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate249', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D249\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print249', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D249\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink249', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Execute-Beep-tp238p249.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail249', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D249\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown249');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=249&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow249" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1496950120990-387"></span><script type="text/javascript">
+		Nabble.get('d1496950120990-387').innerHTML= Nabble.formatDateLong(new Date(1496950120990));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Execute Beep
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message249" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Phoenix wrote</div>
+<div class="quote-message">I've changed scale [-1..1] is now working,
+<br/>thanks for the added &quot;duration&quot; parameter. <img class='smiley' src='/images/smiley/smiley_happy.gif' /></div>
+</div></blockquote>
+Yep, I am happy that it works. <img class='smiley' src='/images/smiley/anim_jump.gif' /><br/><br/>In very last commit 698958b..b6e8af7, if duration = 0 ---&gt; endless wave.
+<br/><br/>Fre;D 
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="/">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v238" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="/template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=238&incViewCount=238&newsflash=&visitorOnline=&avatarOnline=2|1&postCount=2|1&markVisited=249&views=238';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

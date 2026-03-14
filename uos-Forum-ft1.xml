@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0">
+	
+	<id>tag:uos-forum.108.s1.nabble.com,2006:forum-1</id>
+	<title>Nabble - uos Forum</title>
+	<updated>2025-04-07T09:04:04Z</updated>
+	<link rel="self" type="application/atom+xml" href="http://uos-forum.108.s1.nabble.com/uos-Forum-ft1.xml" />
+	<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/" />
+	<subtitle type="html">&lt;img src=&quot;http://uos-forum.108.s1.nabble.com/file/n1/uos2.png&quot; border=&quot;0&quot;/&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href=&quot;https://github.com/fredvs/uos/&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/fredvs/uos/&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;United Open-libraries of Sound&lt;/b&gt;&lt;br/&gt;</subtitle>
+	
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1357</id>
+		<title>How get info about device input MIC (Raspberry/debian11/lazarus)</title>
+		<published>2025-03-21T03:32:39Z</published>
+		<updated>2025-03-21T03:32:39Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello,
+&lt;br/&gt;I want to detect the existence of a microphone and its details before recording.
+&lt;br/&gt;I coded the function below. The problem is, I can't get the device name (e.g., cde linux arecord -l result=&amp;quot;card 1: UM1 [WOODBRASS UM1], device 0: USB Audio [USB Audio]&amp;quot;).
+&lt;br/&gt;one solution ?
+&lt;br/&gt;thanks.
+&lt;br/&gt;&lt;br/&gt;ma fonction:
+&lt;br/&gt;&lt;i&gt;//Ctrl existance input MIC
+&lt;br/&gt;function MIC_lireinfo(var vMicDeviceName,vMicHostAPIName:string;var vmes:string):boolean;
+&lt;br/&gt;var VuosDefaultDeviceIn:cint32;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos:Tuos_DeviceInfos; &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; devinf: PPaDeviceInfo;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; apiinf: PPaHostApiInfo;
+&lt;br/&gt;begin
+&lt;br/&gt;result:=false;vmes:='';
+&lt;br/&gt;VuosDefaultDeviceIn:=Pa_GetDefaultInPutDevice ();
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; if VuosDefaultDeviceIn=-1
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; then vmes:='MIC: pas de micro'
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; else begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; result:=true;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.DeviceNum :=VuosDefaultDeviceIn;//x;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; devinf := Pa_GetDeviceInfo (VuosDefaultDeviceIn);//x);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; apiinf := Pa_GetHostApiInfo (devinf^.hostApi);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.DeviceName := UTF8Decode (devinf^._name);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; VTuos_DeviceInfos.HostAPIName := UTF8Decode (apiinf^._name);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; vMicDeviceName:=VTuos_DeviceInfos.DeviceName;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; vMicHostAPIName:=VTuos_DeviceInfos.HostAPIName ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;end; &amp;nbsp; &lt;/i&gt;&lt;br/&gt;&lt;br/&gt;Resultat &amp;quot;apiinf^&amp;quot;:
+&lt;br/&gt;&lt;i&gt;record PAHOSTAPIINFO {
+&lt;br/&gt;&amp;nbsp; STRUCTVERSION = 1, 
+&lt;br/&gt;&amp;nbsp; _TYPE = PAALSA, 
+&lt;br/&gt;&amp;nbsp; _NAME = 'ALSA', 
+&lt;br/&gt;&amp;nbsp; DEVICECOUNT = 11, 
+&lt;br/&gt;&amp;nbsp; DEFAULTINPUTDEVICE = 10, 
+&lt;br/&gt;&amp;nbsp; DEFAULTOUTPUTDEVICE = 10}&lt;/i&gt;&lt;br/&gt;&lt;br/&gt;Resultat &amp;quot;devinf^&amp;quot;:
+&lt;br/&gt;&lt;i&gt;record PADEVICEINFO {
+&lt;br/&gt;&amp;nbsp; STRUCTVERSION = 2, 
+&lt;br/&gt;&amp;nbsp; _NAME = 'default', 
+&lt;br/&gt;&amp;nbsp; HOSTAPI = 0, 
+&lt;br/&gt;&amp;nbsp; MAXINPUTCHANNELS = 32, 
+&lt;br/&gt;&amp;nbsp; MAXOUTPUTCHANNELS = 32, 
+&lt;br/&gt;&amp;nbsp; DEFAULTLOWINPUTLATENCY = 0.0086848072562358269, 
+&lt;br/&gt;&amp;nbsp; DEFAULTLOWOUTPUTLATENCY = 0.0086848072562358269, 
+&lt;br/&gt;&amp;nbsp; DEFAULTHIGHINPUTLATENCY = 0.034807256235827665, 
+&lt;br/&gt;&amp;nbsp; DEFAULTHIGHOUTPUTLATENCY = 0.034807256235827665, 
+&lt;br/&gt;&amp;nbsp; DEFAULTSAMPLERATE = 44100}&lt;/i&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1327</id>
+		<title>Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</title>
+		<published>2025-03-15T11:37:19Z</published>
+		<updated>2025-03-15T11:37:19Z</updated>
+		<author>
+			<name>lucarnet</name>
+		</author>
+		<content type="html">
+			Hello,
+&lt;br/&gt;I'm using UOS for voice recognition input MIC with Vosk (Raspberry3B+ Lazarus).
+&lt;br/&gt;I created a Loopback proc to execute the Vosk procedure &amp;quot;acceptwaveform.&amp;quot;
+&lt;br/&gt;The problem is an error (Vfinal := FTVoskRecognizer.AcceptWaveform(PSingle(FBufRcFromUos), length(FBufRcFromUos)) due to the type.
+&lt;br/&gt;How can I get an FBufRcFromUos of type Pansichar?
+&lt;br/&gt;&amp;lt;nabble_embed&amp;gt;
+/ Get current buffer
+function uos_InputGetBuffer(PlayerIndex: cint32; InputIndex: cint32): TDArFloat;&amp;lt;/nabble_embed&amp;gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1048</id>
+		<title>using 2 microphones</title>
+		<published>2023-11-19T21:22:52Z</published>
+		<updated>2023-11-19T21:22:52Z</updated>
+		<author>
+			<name>edf</name>
+		</author>
+		<content type="html">
+			Hi
+&lt;br/&gt;I am trying to use 2 usb microphones writting to a file (on windows 11 home 64 bits).
+&lt;br/&gt;each of the microphones work one at a time, but when you try to use both it does not work.
+&lt;br/&gt;&lt;br/&gt;Error is 
+&lt;br/&gt;&lt;br/&gt;as soon as use 2 usb mics &amp;nbsp; /not enough controller resources. usb
+&lt;br/&gt;the record stop &amp;nbsp;seems ok. 
+&lt;br/&gt;on application halt
+&lt;br/&gt;gives raised exception class 'External: ACCESS VIOLATION' with message Access violation reading from address $FFFFFFFFFFF.
+&lt;br/&gt;&lt;br/&gt;The directory of the file is
+&lt;br/&gt;20/11/2023 &amp;nbsp;11:31 AM &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;46 rec23_11_20_11_31_03.wav
+&lt;br/&gt;46 bytes (46 bytes)
+&lt;br/&gt;it &amp;nbsp;wont play
+&lt;br/&gt;&lt;br/&gt;The code is based on the example simple recorder. My appologies if I have not understood the use of uos.
+&lt;br/&gt;Using 1 PlayerIndex and uos_AddIntoFile(PlayerIndex1, PChar(FileSaveOutoutName), -1, -1, -1, 4096, outformat);
+&lt;br/&gt;code snip (InDev1 =1, InDev2=2, which are devices found by devinfo.) Both work 1 at a time.
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;PlayerIndex1 := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // PlayerIndex : from 0 to what your computer can do ! (depends of ram, cpu, ...)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // If PlayerIndex exists already, it will be overwritten...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_CreatePlayer(PlayerIndex1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// Create the player.
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// PlayerIndex : from 0 to what your computer can do !
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// If PlayerIndex exists already, it will be overwriten...
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //uos_AddIntoFileFromMem(PlayerIndex1, Pchar(edit3.Text));
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// add Output into wav file (save record) from TMemoryStream &amp;nbsp;with default parameters
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; bwav := true; // make it simple
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; wantSpeakerOut := False ; // no speaker . make it simple
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; if bwav then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; outformatst := '.wav';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; outformat := 0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; outformatst := '.ogg';
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; outformat := 3;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; FileSaveOutoutName := FileSaveBaseName + 'rec' + &amp;nbsp;UTF8Decode(formatdatetime('YY_MM_DD_HH_mm_ss', now)) + outformatst ;
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;// saving in a file using a File-Stream:
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;uos_AddIntoFile(PlayerIndex1, PChar(FileSaveOutoutName), -1, -1, -1, 4096, outformat);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp;// &amp;nbsp; function uos_AddIntoFile(PlayerIndex: cint32; Filename: PChar; SampleRate: cint32;
+&lt;br/&gt;&amp;nbsp;// Channels: cint32; SampleFormat: cint32 ; FramesCount: cint32 ; FileFormat: cint32): cint32;
+&lt;br/&gt;// Add a Output into audio wav file with custom parameters from TFileStream
+&lt;br/&gt;// PlayerIndex : Index of a existing Player
+&lt;br/&gt;// FileName : filename of saved audio wav file
+&lt;br/&gt;// SampleRate : delault : -1 (44100)
+&lt;br/&gt;// Channels : delault : -1 (2:stereo) (1:mono, 2:stereo, ...)
+&lt;br/&gt;// SampleFormat : default : -1 (2:Int16) (1:Int32, 2:Int16)
+&lt;br/&gt;// FramesCount : default : -1 (= 65536)
+&lt;br/&gt;// FileFormat : default : -1 (wav) (0:wav, 1:pcm, 2:custom, 3:ogg);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// add Output into wav or ogg file (save record) from TFileStream
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a Memory-Buffer:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // SetLength(thebuffer, 0);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // uos_AddIntoMemoryBuffer(PlayerIndex1, @thebuffer);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a Memory-Stream:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // if thememorystream = nil then thememorystream := tmemorystream.create;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // uos_AddIntoMemoryStream(PlayerIndex1, (thememorystream),-1,-1,-1,-1);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; // saving in a file using a Menory-Stream:
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // uos_AddIntoFileFromMem(PlayerIndex1, Pchar(filenameEdit4.filename));
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// add Output into wav file (save record) &amp;nbsp;with default parameters
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; {$if defined(cpuarm) or defined(cpuaarch64)} &amp;nbsp;// need a lower latency
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; out1index := uos_AddIntoDevOut(PlayerIndex1, -1, 0.8, -1, -1, -1, -1) ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{$else}
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; out1index := uos_AddIntoDevOut(PlayerIndex1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;{$endif}
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_outputsetenable(PlayerIndex1, out1index, wantSpeakerOut);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;// uos_AddIntoDevOut(PlayerIndex1, -1, -1, 8000, -1, -1,65536, -1); &amp;nbsp; //// add a Output into device with custom parameters
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// Device ( -1 is default Output device )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// Latency &amp;nbsp;( -1 is latency suggested ) )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// Channels : delault : -1 (2:stereo) (0: no channels, 1:mono, 2:stereo, ...)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// SampleFormat : -1 default : Int16 : (0: Float32, 1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// FramesCount : -1 default : 65536
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; // ChunkCount : default : -1 (= 512)
+&lt;br/&gt;&amp;nbsp;// these are global variables setup in ini file
+&lt;br/&gt;&amp;nbsp;// InDev1: &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Integer;
+&lt;br/&gt;&amp;nbsp;// InDev2: &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Integer;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;useInDevDefault &amp;nbsp;:= true; //default
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;useInDev1 := (CheckBoxChan1.Checked) ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;useInDev2 := (CheckBoxChan2.Checked) ;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;if ( useInDev1) then &amp;nbsp; useInDevDefault := false;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;if ( useInDev2) then &amp;nbsp; useInDevDefault := false;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;// we want useInDevDefault or one or both of &amp;nbsp; useInDev1 &amp;nbsp;useInDev2
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;if (useInDevDefault) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; In1IndexD := uos_AddFromDevIn(PlayerIndex1); &amp;nbsp; &amp;nbsp; &amp;nbsp; // default
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;if (useInDev1) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;EditCh1.Text := &amp;nbsp;InDev1.ToString;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;In1Index1 := uos_AddFromDevIn(PlayerIndex1, InDev1,-1,-1,-1,-1,-1,-1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;if (useInDev2) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;EditCh2.Text := &amp;nbsp;InDev2.ToString;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;In1Index2 := uos_AddFromDevIn(PlayerIndex1, InDev2,-1,-1,-1,-1,-1,-1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; //// add input from mic with custom parameters
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// Device ( -1 is default Input device )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// Latency &amp;nbsp;( -1 is latency suggested ) )
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// SampleRate : delault : -1 (44100)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// OutputIndex : OutputIndex of existing Output // -1 : all output, -2: no output, other integer : existing output)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// SampleFormat : -1 default : Int16 : (0: Float32, 1:Int32, 2:Int16)
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// FramesCount : -1 default : 4096 &amp;nbsp; ( &amp;gt; = safer, &amp;lt; = &amp;nbsp;better latency )
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; ////////// VolLeft : Left volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ////////// VolRight : Right volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; volLeft &amp;nbsp;:= 1.0;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; volRight := 1.0;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; if (useInDevDefault) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1IndexD, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;uos_InputSetDSPVolume(PlayerIndex1, &amp;nbsp;In1IndexD, volLeft,volRight, True); /// Set volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;if (useInDev1) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index1, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;uos_InputSetDSPVolume(PlayerIndex1, &amp;nbsp;In1Index1, volLeft,volRight, True); /// Set volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;if (useInDev2) then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; uos_InputAddDSPVolume(PlayerIndex1, In1Index2, 1, 1);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;uos_InputSetDSPVolume(PlayerIndex1, &amp;nbsp;In1Index2, volLeft,volRight, True); /// Set volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; ///// DSP Volume changer
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; //////////// PlayerIndex : Index of a existing Player
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ////////// In1Index : InputIndex of a existing input
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ////////// VolLeft : Left volume
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ////////// VolRight : Right volume
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; uos_Play(PlayerIndex1); &amp;nbsp;/////// everything is ready to play...
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonStart.Enabled:= false ; &amp;nbsp;// wait till stop
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; ButtonStop.Enabled:= true ; &amp;nbsp;// allow stop
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/using-2-microphones-tp1048.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1292</id>
+		<title>AddFromURL does not support ogg streams</title>
+		<published>2025-03-08T19:57:54Z</published>
+		<updated>2025-03-08T19:57:54Z</updated>
+		<author>
+			<name>trustfm</name>
+		</author>
+		<content type="html">
+			Hello again the AddFromURL seems to not work with ogg streams . I have tried setting AudioFormat = 1
+&lt;br/&gt;but this does not work either. 
+&lt;br/&gt;Is it possible to be implemented ? 
+&lt;br/&gt;&lt;br/&gt;Thanks 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/AddFromURL-does-not-support-ogg-streams-tp1292.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-176</id>
+		<title>Questions about internet radio streaming</title>
+		<published>2017-04-12T13:52:10Z</published>
+		<updated>2017-04-12T13:52:10Z</updated>
+		<author>
+			<name>Dibo</name>
+		</author>
+		<content type="html">
+			Hi Fred,
+&lt;br/&gt;&lt;br/&gt;First of all, congratulations for your work. 2 years has passed since I used UOS last time. You made a big step since then. I'm really impressed. I see that UOS has now support for internet radio streaming. This functionality was missing 2 years ago and I migrated to Bass library because it was major extension for my player. Now I'm consider back to UOS. I have few questions about web streaming:
+&lt;br/&gt;1. Is it optimized? I mean, I see that it call TFPHTTPClient.Get() . Does it mean that it continuously download more data into memory than he needs for playing? Or such things are limited on server site and radio station send only small packets enough for play?
+&lt;br/&gt;2. How it behave with bad connection? Does it have something like buffering and when network is really slow it can handle it instead of disconnect?
+&lt;br/&gt;3. Some radio stations emits meta data (current playing title / artist). Is it possible to read it?
+&lt;br/&gt;&lt;br/&gt;Regards
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Questions-about-internet-radio-streaming-tp176.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-184</id>
+		<title>Installing IceCast audio web server.</title>
+		<published>2017-04-14T13:23:29Z</published>
+		<updated>2025-01-23T13:15:14Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;Icecast is a audio stream server.
+&lt;br/&gt;&lt;a href=&quot;http://icecast.org&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://icecast.org&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;It can deal Opus files encapsulated in Ogg format.
+&lt;br/&gt;&lt;a href=&quot;https://opus-codec.org&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://opus-codec.org&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Opus files can be encoded for voip (voice over ip) or for web-radios (sound
+&lt;br/&gt;over ip).
+&lt;br/&gt;&lt;br/&gt;To communicate with IceCast, libshout and his fpc header will be used.
+&lt;br/&gt;&lt;a href=&quot;https://github.com/xiph/Icecast-libshout&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/xiph/Icecast-libshout&lt;/a&gt;&amp;nbsp;
+&lt;br/&gt;&lt;br/&gt;Today we will install and test the server on Unix 64 bit systems.
+&lt;br/&gt;&lt;br/&gt;1) Installing IceCast + libshout.so.
+&lt;br/&gt;&lt;br/&gt;- Linux : 
+&lt;br/&gt;&amp;nbsp; # sudo apt-get install icecast2
+&lt;br/&gt;&amp;nbsp; # sudo apt-get install libshout3
+&lt;br/&gt;&lt;br/&gt;- FreeBSD : 
+&lt;br/&gt;&amp;nbsp; # sudo pkg install icecast2
+&lt;br/&gt;&amp;nbsp; # sudo pkg install shout
+&lt;br/&gt;&lt;br/&gt;2) Downloading libshout fpc header + demo from here:
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;&lt;a href=&quot;https://github.com/user-attachments/files/18526459/shout_demo.zip&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/user-attachments/files/18526459/shout_demo.zip&lt;/a&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;Uncompress it somewhere.
+&lt;br/&gt;&lt;br/&gt;3) Testing the audio server on localhost: 
+&lt;br/&gt;&lt;br/&gt;# cd /directory/of/shout_demo
+&lt;br/&gt;&lt;br/&gt;# sudo uos_icecast2 start // for linux
+&lt;br/&gt;&lt;br/&gt;# sudo uos_icecast2_freebsd start // for freebsd
+&lt;br/&gt;&lt;br/&gt;If connection is ok, you may check it that way:
+&lt;br/&gt;&lt;br/&gt;In your favorite web-browser, enter as url: &lt;a href=&quot;http://localhost:8000&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;http://localhost:8000&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Enter login: admin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;password: hackme
+&lt;br/&gt;&lt;br/&gt;This should load the IceCast Status page.
+&lt;br/&gt;&lt;br/&gt;Now run the fpc demo opus_shout_demo.pas to assign a mount-point on the
+&lt;br/&gt;server:
+&lt;br/&gt;&amp;nbsp;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;# cd /directory/of/shout_demo
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;# fpc opus_shout_demo.pas
+&lt;br/&gt;&amp;nbsp; &amp;nbsp;# ./opus_shout_demo
+&lt;br/&gt;&lt;br/&gt;If all ok, in the IceCast Status web-page, after refresh, a new mount-point
+&lt;br/&gt;will be added.
+&lt;br/&gt;&lt;br/&gt;Congratulations, your IceCast server is working and you have assigned your
+&lt;br/&gt;first mount-point.
+&lt;br/&gt;&lt;br/&gt;Fre;D
+&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Installing-IceCast-audio-web-server-tp184.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1246</id>
+		<title>Echo effect</title>
+		<published>2024-10-12T13:39:12Z</published>
+		<updated>2024-10-12T13:39:12Z</updated>
+		<author>
+			<name>NeedUOS</name>
+		</author>
+		<content type="html">
+			How would you proceed to program an echo effect? Like this with feedback, time (cathedral, room, ...).
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Echo-effect-tp1246.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1166</id>
+		<title>Windows 11: simplerecorder error</title>
+		<published>2024-10-07T12:15:47Z</published>
+		<updated>2024-10-07T12:15:47Z</updated>
+		<author>
+			<name>NeedUOS</name>
+		</author>
+		<content type="html">
+			Hello Fred,
+&lt;br/&gt;&lt;br/&gt;I am using the latest commit and trying out the simplerecorder. This is working, but on closing the program I got the following error:
+&lt;br/&gt;&lt;img src=&quot;http://uos-forum.108.s1.nabble.com/file/n1166/Invalid_Handle.png&quot; border=&quot;0&quot;/&gt;&lt;br/&gt;This stops the execution in &lt;b&gt;uos.pas&lt;/b&gt;&amp;nbsp;in &lt;b&gt;procedure Tuos_Init.unloadlib&lt;/b&gt;&amp;nbsp;at &lt;b&gt;Pa_Unload();&lt;/b&gt;&amp;nbsp;in line 11640. 
+&lt;br/&gt;The same error I have for simpleplayer and deviceinfo.
+&lt;br/&gt;&lt;br/&gt;Before trying the examples, I already let an AI write a program to play a file with your library, &amp;nbsp;which was not working, since there was the need for PortAudioFileName. So I searched and found the dll on the PortAudio website. I didn't get an error!
+&lt;br/&gt;&lt;br/&gt;So I was trying simpleplayer with the new libportaudio64bit.dll - no error anymore. Then simplerecorder: no error on close! But:
+&lt;br/&gt;&lt;br/&gt;When recording with &lt;i&gt;Listen MIC&lt;/i&gt;&amp;nbsp;I hear myself as Micky Mouse (double speed) and this is also audible in the resulting file.
+&lt;br/&gt;&lt;br/&gt;Then I started experimenting with your functions with the custom parameters. Setting &lt;i&gt;channels&lt;/i&gt;&amp;nbsp;in &lt;b&gt;uos_AddIntoFile&lt;/b&gt;&amp;nbsp;and &lt;b&gt;uos_AddIntoDevOut&lt;/b&gt;&amp;nbsp;to 1 helped in getting normal speed while recording (leaving the other parameters -1). But the resulting file contains only zeros, but has the right length (shown in wave editor)!
+&lt;br/&gt;&lt;br/&gt;With other parameter combinations the resulting file contains some or combinations of this: crackling, noise, beeping, choppy Micky, distortion.
+&lt;br/&gt;&lt;br/&gt;What can I do? Or just live with the error by now?
+&lt;br/&gt;&lt;br/&gt;Greetings &lt;img class='smiley' src='/images/smiley/smiley_cry.gif' /&gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Windows-11-simplerecorder-error-tp1166.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1003</id>
+		<title>Display the memory buffer in a chart (oscilloscope)</title>
+		<published>2023-03-04T03:17:55Z</published>
+		<updated>2023-03-04T03:17:55Z</updated>
+		<author>
+			<name>Loic</name>
+		</author>
+		<content type="html">
+			Dear all,
+&lt;br/&gt;&lt;br/&gt;I am trying to use UOS library.
+&lt;br/&gt;The objective is to record the sound from my microphone.
+&lt;br/&gt;To store the sound in a buffer.
+&lt;br/&gt;Then to display the signal in a chart (like an oscilloscope).
+&lt;br/&gt;Theres is a problem in the code below.
+&lt;br/&gt;The values in the buffer are for example -2.03E27 or 2.33E-37 and a display in a chart does not show wave forms.
+&lt;br/&gt;I have exactly the same issue when I store in a buffer a *wav file (which was properly recorded).
+&lt;br/&gt;If anyone can help me?
+&lt;br/&gt;&lt;br/&gt;uos_CreatePlayer(SoundPlayerIndex);
+&lt;br/&gt;&lt;br/&gt;SampleRate := 44100;
+&lt;br/&gt;SampleFormat := 2; // Int16
+&lt;br/&gt;Channels := 1; // Mono
+&lt;br/&gt;FramesCount := 65536;
+&lt;br/&gt;&lt;br/&gt;// saving in a Memory-Buffer:
+&lt;br/&gt;SetLength(SoundBuffer, 0);
+&lt;br/&gt;uos_AddIntoMemoryBuffer(SoundPlayerIndex, @SoundBuffer, SampleRate, SampleFormat, Channels, FramesCount);
+&lt;br/&gt;&lt;br/&gt;uos_AddFromDevIn(SoundPlayerIndex);
+&lt;br/&gt;uos_Play(SoundPlayerIndex);
+&lt;br/&gt;&lt;br/&gt;sleep(3000); // Duration of recording (I don't know?)
+&lt;br/&gt;uos_Stop(SoundPlayerIndex);
+&lt;br/&gt;ShowMessage('Recording done');
+&lt;br/&gt;&lt;br/&gt;// Diplaying in a chart
+&lt;br/&gt;ChartSignalLine.Clear;
+&lt;br/&gt;for p := Low(SoundBuffer) to High(SoundBuffer) do
+&lt;br/&gt;&amp;nbsp; ChartSignalLine.AddXY(p/SampleRate*1e3, SoundBuffer[p]);
+&lt;br/&gt;&lt;br/&gt;Other question, how can I do that if the recording has 2 channels?
+&lt;br/&gt;Many thanks in advance for your reply
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Display-the-memory-buffer-in-a-chart-oscilloscope-tp1003.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1139</id>
+		<title>How to obtain exclusive access to a microphone?</title>
+		<published>2024-04-24T22:34:18Z</published>
+		<updated>2024-04-24T22:34:18Z</updated>
+		<author>
+			<name>volenrog</name>
+		</author>
+		<content type="html">
+			Is this possible?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-to-obtain-exclusive-access-to-a-microphone-tp1139.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1122</id>
+		<title>Demos &quot;Simple recorder&quot; not work in Windows 7</title>
+		<published>2024-04-23T05:13:01Z</published>
+		<updated>2024-04-23T05:13:01Z</updated>
+		<author>
+			<name>volenrog</name>
+		</author>
+		<content type="html">
+			&lt;img src=&quot;http://uos-forum.108.s1.nabble.com/file/n1122/2024-04-23-170855362.png&quot; border=&quot;0&quot;/&gt;&lt;br/&gt;Tested on two systems (Win7)... in Windows 10 - Ok. Help!
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Demos-Simple-recorder-not-work-in-Windows-7-tp1122.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1112</id>
+		<title>Run Example files</title>
+		<published>2024-04-20T16:12:57Z</published>
+		<updated>2024-04-20T16:12:57Z</updated>
+		<author>
+			<name>CatMasterDad</name>
+		</author>
+		<content type="html">
+			I just copied and pasted to my new lazarus project and got error stating 
+&lt;br/&gt;&lt;br/&gt;Compile Project, Target: project1.exe: Exit code 1, Errors: 1
+&lt;br/&gt;test.pas(8,56) Fatal: Cannot find uos used by test of the Project Inspector.
+&lt;br/&gt;Codetools, Errors: 1
+&lt;br/&gt;test.pas(8,59) Error: unit not found: uos
+&lt;br/&gt;&lt;br/&gt;anyone have a clue?
+&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Run-Example-files-tp1112.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-979</id>
+		<title>local build of binaries</title>
+		<published>2022-10-14T02:36:05Z</published>
+		<updated>2022-10-14T02:36:05Z</updated>
+		<author>
+			<name>myos</name>
+		</author>
+		<content type="html">
+			Hi, 
+&lt;br/&gt;&lt;br/&gt;It is a bit unclear from readme.md what is on offer here. 
+&lt;br/&gt;&lt;br/&gt;Is this a laz/fpc wrapper for closed source binaries or are the prebuilt .so files just a convenience? 
+&lt;br/&gt;&lt;br/&gt;I looked at the example files and projects and they all use the prebuilt ./lib tree. &amp;nbsp; 
+&lt;br/&gt;&lt;br/&gt;What do I need to do to build and include these in my own project ?
+&lt;br/&gt;&lt;br/&gt;TIA. 
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/local-build-of-binaries-tp979.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1105</id>
+		<title>A few simple questions</title>
+		<published>2024-03-28T06:59:45Z</published>
+		<updated>2024-03-28T06:59:45Z</updated>
+		<author>
+			<name>jon bondy</name>
+		</author>
+		<content type="html">
+			I had to add &amp;quot;Uses Math&amp;quot; in uos_bs2b at line 240 to get the player to compile.
+&lt;br/&gt;&lt;br/&gt;I am running on Windows 11 with freshly installed Lazarus and UOS.
+&lt;br/&gt;&lt;br/&gt;When the sample player runs, a big black window appears and then the actual application appears. &amp;nbsp;It is almost as if a DOS window pops up and the application runs from the DOS window. &amp;nbsp;Is there any way to eliminate the big black window?
+&lt;br/&gt;&lt;br/&gt;Every time I run the player, it shows me all of the library paths and asks me if that is OK. &amp;nbsp;Is there any way to eliminate that pop-up?
+&lt;br/&gt;&lt;br/&gt;Thank you!
+&lt;br/&gt;&lt;br/&gt;Jon
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/A-few-simple-questions-tp1105.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1070</id>
+		<title>Problem with signal generation by two players</title>
+		<published>2024-01-22T06:06:47Z</published>
+		<updated>2024-01-22T08:03:47Z</updated>
+		<author>
+			<name>Andrey</name>
+		</author>
+		<content type="html">
+			Hello fred.
+&lt;br/&gt;&lt;br/&gt;I have two usb sound cards connected. 
+&lt;br/&gt;I create two players and generate an audio signal for each usb card.
+&lt;br/&gt;If I run only one player, everything works fine.
+&lt;br/&gt;If I run both players, they interfere with each other. 
+&lt;br/&gt;What am I doing wrong?
+&lt;br/&gt;&lt;br/&gt;Program code:
+&lt;br/&gt;&lt;br/&gt;//Func for DSP (analog for two player)
+&lt;br/&gt;function DSPAfter1,2(var Data: Tuos_Data; var fft: Tuos_FFT): TDArFloat;
+&lt;br/&gt;var aArfl: TDArFloat;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;i: integer;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; setlength(aArfl,Data.OutFrames);
+&lt;br/&gt;&amp;nbsp; //generate signal
+&lt;br/&gt;&amp;nbsp; for i:=0 to Data.OutFrames-1 do
+&lt;br/&gt;&amp;nbsp; aArfl[i]:=0.01*sin(2*pi*1000*i/12000);
+&lt;br/&gt;&amp;nbsp; //
+&lt;br/&gt;&amp;nbsp; result:=aArfl;
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;//create player
+&lt;br/&gt;Function CreatePlayer(aPlayer: integer; aFunc: TFunc)
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; uos_CreatePlayer(aIndex);
+&lt;br/&gt;&amp;nbsp; InputIndex:=uos_AddFromEndlessMuted(aPlayer, 2, 480);
+&lt;br/&gt;&amp;nbsp; if inputIndex&amp;lt;&amp;gt;-1 then DSPIndex:= uos_InputAddDSP(aPlayer, InputIndex,nil,aFunc, nil,nil);
+&lt;br/&gt;&amp;nbsp; if DSPIndex&amp;lt;&amp;gt;-1 then uos_InputeSetDSP(aPlayer, InputIndex. DSPIndex, true);
+&lt;br/&gt;&amp;nbsp; OutputIndex:=uos_AddIntoDevOut(aPlayer, -1, -1, 12000, 2, 0, 480, 512);
+&lt;br/&gt;&amp;nbsp; if OutputIndex&amp;lt;&amp;gt;-1 then uos_OutputAddDSPVolume(aPlayer, OutputIndex, 1, 1);
+&lt;br/&gt;&amp;nbsp;&lt;b&gt;&amp;nbsp;if &amp;quot;not Problems&amp;quot; then uos_play(aPlayer);&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&amp;nbsp; //Redirecting sound card outputs 
+&lt;br/&gt;&amp;nbsp; runcommand('pactl move-sink-input (client index) (usb card out-port index)')
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;//
+&lt;br/&gt;Procedure RunPlayers;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; CreatePlayer(0,DSPAfter1);
+&lt;br/&gt;&amp;nbsp; CreatePlayer(1,DSPAfter2);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; //A loop for the console
+&lt;br/&gt;&amp;nbsp; while not Terminated do
+&lt;br/&gt;&amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;CheckSynchronize(10);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;sleep(5);
+&lt;br/&gt;&amp;nbsp; end;
+&lt;br/&gt;&amp;nbsp; //
+&lt;br/&gt;&amp;nbsp; uos_FreePlayer(0);
+&lt;br/&gt;&amp;nbsp; uos_FreePlayer(1);
+&lt;br/&gt;end;
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Problem-with-signal-generation-by-two-players-tp1070.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1059</id>
+		<title>Problem initializing the uos library in the service</title>
+		<published>2023-12-25T01:09:19Z</published>
+		<updated>2023-12-27T01:28:59Z</updated>
+		<author>
+			<name>Andrey</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;I created a console program using the uos library. If I run the program as a console, then the program works. If I run the program as a Linux service, the &amp;quot;Access Denied&amp;quot; error occurs when executing uos_LoadLib(&amp;quot;LibPortaudio-64.so&amp;quot;,nil,nil,nil,nil).
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Problem-initializing-the-uos-library-in-the-service-tp1059.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1040</id>
+		<title>The LoopProc does not work in the console program</title>
+		<published>2023-09-14T02:14:13Z</published>
+		<updated>2023-09-14T02:14:13Z</updated>
+		<author>
+			<name>Andrey</name>
+		</author>
+		<content type="html">
+			Hello, I'm doing an audio input analysis service. I run it in a graphical application, Loop Proc is triggered. I try to run the same thing in the console, Loop Proc does not work. Please tell me what am I doing wrong?
+&lt;br/&gt;(Lazarus 2.0.2 Linux Debian)
+&lt;br/&gt;&lt;br/&gt;Text function 
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;//My LoopProc 
+&lt;br/&gt;procedure TApp.InLoopMemRs;
+&lt;br/&gt;var
+&lt;br/&gt;&amp;nbsp; aBufLen: Integer;
+&lt;br/&gt;&amp;nbsp; FBufRcFromUos: TDArFloat; &amp;nbsp; &amp;nbsp; &amp;nbsp; // My buffer
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; FBufRcFromUos:=uos_InputGetBuffer(FPlayerRs, FInputIndexRs);
+&lt;br/&gt;&amp;nbsp; aBufLen:=Length(FBufRcFromUos);
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; {My Work}
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;procedure TApp.StartPlay;
+&lt;br/&gt;var
+&lt;br/&gt;&amp;nbsp; aAllBad: Boolean = False;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; //
+&lt;br/&gt;&amp;nbsp; FPlayerRs:=0;
+&lt;br/&gt;&amp;nbsp; //
+&lt;br/&gt;&amp;nbsp; if uos_CreatePlayer(FPlayerRs) then
+&lt;br/&gt;&amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; FInputIndexRs := uos_AddFromDevIn(FPlayerRs, DefaultDeviceIn, -1, cSampleRate,
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; cChannels, cSampleFormat, cFramesCount, cChunkCount);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; if FInputIndexRs&amp;lt;&amp;gt;-1 then
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; uos_LoopProcIn(FPlayerRs, FInputIndexRs, @InLoopMemRs);
+&lt;br/&gt;&amp;nbsp; end else
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; aAllBad:=True;
+&lt;br/&gt;&amp;nbsp; aAllBad:=aAllBad or (FInputIndexRs=-1);
+&lt;br/&gt;&amp;nbsp; if aAllBad then
+&lt;br/&gt;&amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; Exit;
+&lt;br/&gt;&amp;nbsp; end;
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; {Create My Class for Math}
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; //Start Play
+&lt;br/&gt;&amp;nbsp; uos_Play(FPlayerRs);
+&lt;br/&gt;end;
+&lt;br/&gt;&lt;br/&gt;procedure TApp.StopPlay;
+&lt;br/&gt;begin
+&lt;br/&gt;&amp;nbsp; uos_Stop(FPlayerRs);
+&lt;br/&gt;&amp;nbsp; sleep(300);
+&lt;br/&gt;end; &amp;nbsp;
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/The-LoopProc-does-not-work-in-the-console-program-tp1040.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-909</id>
+		<title>Audio File Tags</title>
+		<published>2022-03-15T14:34:53Z</published>
+		<updated>2022-03-15T14:34:53Z</updated>
+		<author>
+			<name>JoeJoeTV</name>
+		</author>
+		<content type="html">
+			Hi there!
+&lt;br/&gt;&lt;br/&gt;Is it possible to read audio file tags like &amp;quot;Track&amp;quot; &amp;quot;Disc&amp;quot; and also arbitrary fields from FLAC files using uos?
+&lt;br/&gt;&lt;br/&gt;Thanks in Advance!
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Audio-File-Tags-tp909.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1028</id>
+		<title>i compile simplayer to win app and linux app, and linux app only play 60s then stop?</title>
+		<published>2023-06-14T18:05:04Z</published>
+		<updated>2023-06-14T18:05:04Z</updated>
+		<author>
+			<name>hao</name>
+		</author>
+		<content type="html">
+			The simplayer &amp;nbsp;demo , win app can play all time well, and the linux app only play 1 minite from begin, and then end. &amp;nbsp;I could not relocate the position after 60's . why?
+&lt;br/&gt;thank you!
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/i-compile-simplayer-to-win-app-and-linux-app-and-linux-app-only-play-60s-then-stop-tp1028.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-324</id>
+		<title>uos show spectrum / FFT</title>
+		<published>2018-01-17T12:24:40Z</published>
+		<updated>2018-01-17T12:24:40Z</updated>
+		<author>
+			<name>jur</name>
+		</author>
+		<content type="html">
+			Hi, 
+&lt;br/&gt;&lt;br/&gt;I would like to produce a simple (real time) graph of the spectrum of a sound that i record with uos. 
+&lt;br/&gt;I am using an Raspberry 3 (Raspbian Jessie sept 2017) and a usb sound card. All examples work perfect.
+&lt;br/&gt;&lt;br/&gt;I cant find a way to assess the freq data during recording. 
+&lt;br/&gt;&lt;br/&gt;Any help is appreciated,
+&lt;br/&gt;&lt;br/&gt;regards Jur 
+&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/uos-show-spectrum-FFT-tp324.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-1006</id>
+		<title>synth:  how to generate more than 2 tones simultaneously</title>
+		<published>2023-04-12T13:02:53Z</published>
+		<updated>2023-04-12T13:02:53Z</updated>
+		<author>
+			<name>Brian Berge</name>
+		</author>
+		<content type="html">
+			i'm able to produce 2 tones through one playerindex variable (&amp; one inindex variable), via left &amp; right channels...but i need more than 2 tones at once.
+&lt;br/&gt;&lt;br/&gt;i turned playerindex &amp; inindex into arrays [0..15]. &amp;nbsp;each of these 16 voices work normally in itself, but as soon as i ask to sound a second one, the previous one turns silent.
+&lt;br/&gt;&lt;br/&gt;how can i get more than 1 of these 16 voices to sound at once?
+&lt;br/&gt;&lt;br/&gt;(thank you!)
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/synth-how-to-generate-more-than-2-tones-simultaneously-tp1006.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-984</id>
+		<title>Updates devices in uos_GetInfoDevice</title>
+		<published>2022-11-03T11:32:31Z</published>
+		<updated>2022-11-03T11:32:31Z</updated>
+		<author>
+			<name>sudiv</name>
+		</author>
+		<content type="html">
+			Hello all
+&lt;br/&gt;When used repeatedly, the function does not populate the uosDeviceInfos array with fresh information
+&lt;br/&gt;in the deviceinfos example, when, for example, the microphone is disconnected and the reload button is pressed, the values ​​with the microphone connected are returned.
+&lt;br/&gt;Maybe I'm doing something wrong?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Updates-devices-in-uos-GetInfoDevice-tp984.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-980</id>
+		<title>simplest to play a wav file  a la sndplaysound()  ?</title>
+		<published>2022-10-14T02:46:54Z</published>
+		<updated>2022-10-14T02:46:54Z</updated>
+		<author>
+			<name>myos</name>
+		</author>
+		<content type="html">
+			I have compiled and run the console demo and simpleplayer_noflat projects. &amp;nbsp; It seems to do the job nicely. 
+&lt;br/&gt;&lt;br/&gt;Now I want to integrate a minimal ammount of code into my project to initially just provide a Linux equivalent for the old sndplaysound() windows API. 
+&lt;br/&gt;&lt;br/&gt;If I add laz_uos it gets found OK, but this does not provide access to uos_LoadLib, uos_CreatePlayer, etc. I need to adapt the guts of the console project. 
+&lt;br/&gt;&lt;br/&gt;If I add uos_flat to my uses clause it is not found. 
+&lt;br/&gt;&lt;br/&gt;How can I use this in my project. &amp;nbsp; It looks very good. 
+&lt;br/&gt;&lt;br/&gt;Thanks. 
+&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/simplest-to-play-a-wav-file-a-la-sndplaysound-tp980.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-971</id>
+		<title>Detect and record the voice onset time from the beginning of an audio recorded file</title>
+		<published>2022-10-08T08:59:28Z</published>
+		<updated>2022-10-08T08:59:28Z</updated>
+		<author>
+			<name>gio</name>
+		</author>
+		<content type="html">
+			Dear uos Forum,
+&lt;br/&gt;&lt;br/&gt;I would like to measure Voice Ressponse Times (RTs), such as the time in milliseconds from the beginning of an audio recorded file (.wav or ogg) from MIC to the onset of the voice (i.e., the moment in time when there is a significant increase of audio signal from background baseline noise).
+&lt;br/&gt;&lt;br/&gt;Unfortunately, I have limited knowledge about recorded audio files. I've just downloaded today the amazing uos library and compiled SimpleRecorder. Would you of any of the expert programmers of uos's community interested to help me, please?
+&lt;br/&gt;&lt;br/&gt;How to implement the idea
+&lt;br/&gt;&lt;br/&gt;After a .wav or .ogg file has been recorded from the MIC using for example SimpleRecorder, it would be necessary to create a simple program in Lazarus free Pascal that loads the newly recorded audio file and automatically detects the voice onset time in milliseconds (e.g. 847) from the beginning of the audio file. I guess there should be a formula (algorithm) in place that if from the background noise of the audio recording there is a great increase of signal level, then that is the voice onset time. 
+&lt;br/&gt;&lt;br/&gt;Thus, the new Lazarus code should:
+&lt;br/&gt;1) load a recorded audio file (.wav or .ogg), 
+&lt;br/&gt;2) detect the voice onset time from the very beginning of the audio file and 
+&lt;br/&gt;3) write the voice onset time on a simple text file (i.e. voice RTs) or diplays the value on screen if a GUI is used. &amp;nbsp;
+&lt;br/&gt;&lt;br/&gt;I hope you would be able to help me. 
+&lt;br/&gt;&lt;br/&gt;Many thanks,
+&lt;br/&gt;Giorgio
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Detect-and-record-the-voice-onset-time-from-the-beginning-of-an-audio-recorded-file-tp971.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-938</id>
+		<title>consoleplay example doesn't work on Raspberry Pi</title>
+		<published>2022-05-01T00:34:22Z</published>
+		<updated>2022-05-01T00:34:22Z</updated>
+		<author>
+			<name>Dim Tim</name>
+		</author>
+		<content type="html">
+			Subj. &amp;nbsp;It gives the following diags on Bullseye; on Buster diags are similar, some details differ. &amp;nbsp;No sound is output. &amp;nbsp;I fixed a minor error in the &lt;b&gt;consoleplay.pas&lt;/b&gt;&amp;nbsp;(it was &amp;quot;&lt;i&gt;SF_FileName := ordir + ordir + 'lib/Linux/arm_raspberrypi/libsndfile-arm.so';&lt;/i&gt;&amp;quot;, so it seems that the code wasn't tested at RasPi).
+&lt;br/&gt;&lt;br/&gt;---
+&lt;br/&gt;&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround21
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround21
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround40
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround41
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround50
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround51
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround71
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+&lt;br/&gt;ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+&lt;br/&gt;ALSA lib conf.c:4745:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+&lt;br/&gt;ALSA lib conf.c:5233:(snd_config_expand) Evaluate error: No such file or directory
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM hdmi
+&lt;br/&gt;ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+&lt;br/&gt;ALSA lib conf.c:4745:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+&lt;br/&gt;ALSA lib conf.c:5233:(snd_config_expand) Evaluate error: No such file or directory
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM hdmi
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+&lt;br/&gt;Cannot connect to server socket err = No such file or directory
+&lt;br/&gt;Cannot connect to server request channel
+&lt;br/&gt;jack server is not running or cannot be started
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;Cannot connect to server socket err = No such file or directory
+&lt;br/&gt;Cannot connect to server request channel
+&lt;br/&gt;jack server is not running or cannot be started
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+&lt;br/&gt;ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+&lt;br/&gt;ALSA lib pcm_a52.c:823:(_snd_pcm_a52_open) a52 is only for playback
+&lt;br/&gt;ALSA lib conf.c:5200:(snd_config_expand) Unknown parameters {AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 &amp;nbsp;CARD 0}
+&lt;br/&gt;ALSA lib pcm.c:2660:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 &amp;nbsp;CARD 0}
+&lt;br/&gt;ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+&lt;br/&gt;ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+&lt;br/&gt;Cannot connect to server socket err = No such file or directory
+&lt;br/&gt;Cannot connect to server request channel
+&lt;br/&gt;jack server is not running or cannot be started
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+&lt;br/&gt;&lt;br/&gt;Libraries are loaded.
+&lt;br/&gt;&lt;br/&gt;InputIndex1 = 0
+&lt;br/&gt;OutputIndex1 = -1
+&lt;br/&gt;Ciao...
+&lt;br/&gt;&lt;br/&gt;&lt;b&gt;vlc&lt;/b&gt;&amp;nbsp;and &lt;b&gt;omxplayer&lt;/b&gt;&amp;nbsp;do work.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/consoleplay-example-doesn-t-work-on-Raspberry-Pi-tp938.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-962</id>
+		<title>Lazarus UOS and Linux 22.04 Bluetooth Issue</title>
+		<published>2022-06-04T10:02:39Z</published>
+		<updated>2022-06-04T10:02:39Z</updated>
+		<author>
+			<name>Gary Messick</name>
+		</author>
+		<content type="html">
+			UOS 1.0.0.0
+&lt;br/&gt;Lazarus 2.0.12
+&lt;br/&gt;FPC 3.2.0
+&lt;br/&gt;POP_OS 22.04 (Ubuntu 22.04)
+&lt;br/&gt;&lt;br/&gt;Problem 
+&lt;br/&gt;My app using UOS works properly playing to my desktop speakers. When I connect to &amp;nbsp;a bluetooth speaker the app still plays to my speakers. Looking at the sound settings and testing the bluetooth speakers play the left and right correctly on the bluetooth speaker, but the app plays to the computer speakers. Looking at the Volume Levels in Settings, the app does not show in the list. &amp;nbsp;Running pavucontrol, the app does not show in the playback tab. Therefore, there is no way to direct the my UOS app to play to the bluetooth speaker. I &amp;nbsp;tried the simpleplayer app in Examples and it performs the same as my program. Any suggestions?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Lazarus-UOS-and-Linux-22-04-Bluetooth-Issue-tp962.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-932</id>
+		<title>Queueing tracks on the fly</title>
+		<published>2022-04-22T21:23:35Z</published>
+		<updated>2022-04-22T21:23:35Z</updated>
+		<author>
+			<name>Dim Tim</name>
+		</author>
+		<content type="html">
+			Please excuse my questions, but I did'nt find any documentation or FAQ on &lt;b&gt;uos&lt;/b&gt;, besides examples. :)
+&lt;br/&gt;&lt;br/&gt;I need to implement a voice feedback/diagnostics for a technological system based on a headless Raspberry Pi. &amp;nbsp;For that, I need a queue of audio tracks and an ability to add to the queue tracks on the fly. &amp;nbsp;So, does &lt;b&gt;uos&lt;/b&gt;&amp;nbsp;create players in separate threads? &amp;nbsp;Can I enqueue tracks with an existing lib functions (&lt;b&gt;uos_AddFromFile&lt;/b&gt;?), or should I create a queue myself? &amp;nbsp;Can I add pauses to the queue?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Queueing-tracks-on-the-fly-tp932.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-931</id>
+		<title>Last release of libsndfile has mp3 decoder now!</title>
+		<published>2022-03-27T06:03:56Z</published>
+		<updated>2022-03-27T06:03:56Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;With last release of libsndfile, you may decode mp3 too.
+&lt;br/&gt;So with libsndfile you may decode mp3 too.
+&lt;br/&gt;&lt;br/&gt;&lt;a href=&quot;https://github.com/libsndfile/libsndfile/releases/tag/1.1.0&quot; target=&quot;_top&quot; rel=&quot;nofollow&quot; link=&quot;external&quot;&gt;https://github.com/libsndfile/libsndfile/releases/tag/1.1.0&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Fre;D
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Last-release-of-libsndfile-has-mp3-decoder-now-tp931.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-907</id>
+		<title>Playing MIDI format files</title>
+		<published>2022-01-30T07:23:43Z</published>
+		<updated>2022-01-30T07:23:43Z</updated>
+		<author>
+			<name>darekdarek</name>
+		</author>
+		<content type="html">
+			Hello, 
+&lt;br/&gt;is it possible to play MIDI files with UOS? Or planned?
+&lt;br/&gt;&lt;br/&gt;Darek
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Playing-MIDI-format-files-tp907.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-903</id>
+		<title>How to modify an output sample rate while playing ?</title>
+		<published>2021-12-08T10:10:44Z</published>
+		<updated>2021-12-08T10:10:44Z</updated>
+		<author>
+			<name>Lulu</name>
+		</author>
+		<content type="html">
+			Hi Fred,
+&lt;br/&gt;I started playing with uos_flat, but for my need, I can find a way to modify the output sample rate while the audio is playing. I don't want to use SoundTouch like in one uos demo, but if it's possible, I would like to modify directly the record field:
+&lt;br/&gt;&lt;br/&gt;Tuos_Player.StreamOut[].Data.SampleRate
+&lt;br/&gt;&lt;br/&gt;How could I an access to the record 'Data' ?
+&lt;br/&gt;&lt;br/&gt;Thanks you
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/How-to-modify-an-output-sample-rate-while-playing-tp903.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-901</id>
+		<title>It freezes before the sound plays</title>
+		<published>2021-11-28T04:22:59Z</published>
+		<updated>2021-11-28T04:22:59Z</updated>
+		<author>
+			<name>RadekXxX</name>
+		</author>
+		<content type="html">
+			Hi,
+&lt;br/&gt;the code is written in CodeTyphon for Raspberry CM4, I use the latest version of the UOS library, the system library and the UOS library (libSnd..so, ...) are identical. When I call UOS_Play, the audio file starts playing in about 4 minutes. The file being played is about 3 seconds.
+&lt;br/&gt;&lt;br/&gt;&lt;b&gt;This is the code:&lt;/b&gt;&lt;br/&gt;uos_CreatePlayer (0);
+&lt;br/&gt;uos_AddIntoDevOut (0, fDevice, 0.3, -1, 1, -1, -1, -1);
+&lt;br/&gt;uos_AddFromFile (0, PChar (FileName), -1, -1, -1);
+&lt;br/&gt;uos_Play (0);
+&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Debug listing:&lt;/b&gt;&lt;br/&gt;StreamIn [x] .Data.status = 1
+&lt;br/&gt;Getting the level before DSP procedure
+&lt;br/&gt;DSPin AfterBuffProcBefore
+&lt;br/&gt;DSPin AfterBuffProcAfter
+&lt;br/&gt;The synchro main loop procedure before
+&lt;br/&gt;Getting the level after DSP procedure
+&lt;br/&gt;End level after DSP procedure
+&lt;br/&gt;Seeking if StreamIn is terminated
+&lt;br/&gt;status = 1
+&lt;br/&gt;Give Buffer to Output
+&lt;br/&gt;Buffer [x2]: = cfloat (0.0)
+&lt;br/&gt;length (StreamIn [x2] .Data.Buffer) = 37882
+&lt;br/&gt;length (StreamOut [x] .Data.Buffer) = 65536
+&lt;br/&gt;for x3: = 0 to high (StreamIn [x2] .Data.Buffer) do
+&lt;br/&gt;high (StreamIn [x2] .Data.Buffer) = 37881
+&lt;br/&gt;StreamOut [x] .Data.Buffer ------------------------------
+&lt;br/&gt;for x3: = 0 to high (StreamIn [x2] .Data.Buffer) done
+&lt;br/&gt;copy buffer-in into buffer-out
+&lt;br/&gt;&amp;nbsp;if (length (Plugin)&amp;gt; 0) then
+&lt;br/&gt;Convert Input format into Output
+&lt;br/&gt;Finally give buffer to output
+&lt;br/&gt;Give to output device
+&lt;br/&gt;length (StreamOut [x] .Data.Buffer) = 65536
+&lt;br/&gt;OUTPUT DATA into portaudio ------------------------------
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;=========&amp;gt; IN THIS POINT IT WILL FREEZE FOR 4 MINUTES, THEN THE SOUND PLAYS&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;give to output device 1
+&lt;br/&gt;End give to output device 2
+&lt;br/&gt;Before LoopEndProc ------------------------------
+&lt;br/&gt;Before if (nofree = true) and (status = 0) -----
+&lt;br/&gt;Before until status = 0; ----
+&lt;br/&gt;Before for x: = 0 to high (StreamIn)
+&lt;br/&gt;Before StreamIn [x] .Data.Seekable = True
+&lt;br/&gt;DSPin BeforeBufProc 1
+&lt;br/&gt;DSPin BeforeBufProc 2
+&lt;br/&gt;Before sf_read 65536 length (StreamIn [x] .Data.Buffer 65536
+&lt;br/&gt;0
+&lt;br/&gt;after sf_read
+&lt;br/&gt;OUTPUT DATA sf_read_ () ---------------------------
+&lt;br/&gt;StreamIn [x] .Data.outframes = 0
+&lt;br/&gt;StreamIn [x] .Data.status = 0
+&lt;br/&gt;Seeking if StreamIn is terminated
+&lt;br/&gt;status = 0
+&lt;br/&gt;Before LoopEndProc ------------------------------
+&lt;br/&gt;Before if (nofree = true) and (status = 0) -----
+&lt;br/&gt;Before until status = 0; ----
+&lt;br/&gt;Before Terminate Thread ---
+&lt;br/&gt;Status = 0
+&lt;br/&gt;Destroy DSP In
+&lt;br/&gt;Destroy DSP Out
+&lt;br/&gt;EndProc ---
+&lt;br/&gt;EndProc All
+&lt;br/&gt;This is the end ...
+&lt;br/&gt;&lt;br/&gt;Can you please advise me where I am making a mistake?
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/It-freezes-before-the-sound-plays-tp901.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-885</id>
+		<title>Change/Control volume of current application.</title>
+		<published>2021-10-24T03:15:50Z</published>
+		<updated>2021-10-24T03:15:50Z</updated>
+		<author>
+			<name>Weps</name>
+		</author>
+		<content type="html">
+			Hi there,
+&lt;br/&gt;&lt;br/&gt;is there a way to control the volume of the current application? 
+&lt;br/&gt;&lt;br/&gt;Just to clarify, I have like 60 or so players, all 
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp;uos_CreatePlayer( aPlayer);
+&lt;br/&gt;&amp;nbsp;in_index := uos_AddFromMemoryStream( aPlayer, ms, 1, 0, -1, -1);
+&lt;br/&gt;&amp;nbsp;output_index := uos_AddIntoDevOut( aPlayer, -1, 0.03, uos_InputGetSampleRate( aPlayer, in_index), -1, 0, -1, -1);
+&lt;br/&gt;&lt;br/&gt;These functions seem to control the volume:
+&lt;br/&gt;&amp;nbsp;uos_InputAddDSPVolume
+&lt;br/&gt;&amp;nbsp;uos_OutputAddDSPVolume
+&lt;br/&gt;&lt;br/&gt;but they require a player... 
+&lt;br/&gt;&lt;br/&gt;Isn't there a way to control just/only the volume of the device-out?
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Change-Control-volume-of-current-application-tp885.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-844</id>
+		<title>Simple Recorder format settings?</title>
+		<published>2021-06-12T22:23:57Z</published>
+		<updated>2021-06-12T22:23:57Z</updated>
+		<author>
+			<name>MrJohn</name>
+		</author>
+		<content type="html">
+			Good evening.... I am new to UOS and have been trying to make a sound recorder, &amp;nbsp;I want long duration records of a AM radio channel. &amp;nbsp;I would really like records to be 24 hours, or as long as I can make them and the channel to be recorded is quite low fidelity.
+&lt;br/&gt;&lt;br/&gt;I am using SimpleRecorder &amp;nbsp;unit main_sr which is headed 'Demo how to use United Openlib of Sound'. There is this line around about line 290 in the file. &amp;nbsp; 
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;uos_AddIntoFile(PlayerIndex1, PChar(edit3.Text), -1, -1, -1, 4096, outformat); &lt;/b&gt;&lt;br/&gt;&lt;br/&gt;By following the remarks in the file I have been able to change to mono &amp;nbsp;(which is what I want) but I cannot change sample rate or sample format.
+&lt;br/&gt;&lt;br/&gt;I would like to have &amp;nbsp;11025 sample rate, mono channel, 16bit. &amp;nbsp;I think this format would allow me to record 24 hours into a 2Gb file.
+&lt;br/&gt;&lt;br/&gt;Can you please tell me how to set these parameters and please confirm this part of the code is the place to do it?
+&lt;br/&gt;&lt;br/&gt;Thank you
+&lt;br/&gt;John Hill
+&lt;br/&gt;New Zealand
+&lt;br/&gt;&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Simple-Recorder-format-settings-tp844.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-840</id>
+		<title>Problems with Multiinput UOS example.</title>
+		<published>2021-05-09T03:09:49Z</published>
+		<updated>2021-05-09T03:09:49Z</updated>
+		<author>
+			<name>darekdarek</name>
+		</author>
+		<content type="html">
+			I have a problem with the Multiinput.lpi example (from the Examples directory).
+&lt;br/&gt;Except for the malfunctioning buttons: Load, Play All Together and Stop, not all files in the example are played.
+&lt;br/&gt;&lt;br/&gt;Additionally, I have 2 questions:
+&lt;br/&gt;- Is it possible to play several sounds simultaneously in one Player in Mp3 format (using LibMpg123-32.dll)?
+&lt;br/&gt;- How to control which file (in case of several files loaded into one Player with different InputIndex) is currently played?
+&lt;br/&gt;&lt;br/&gt;DB
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Problems-with-Multiinput-UOS-example-tp840.html" />
+		
+	</entry>
+	<entry>
+		<id>tag:uos-forum.108.s1.nabble.com,2006:post-839</id>
+		<title>Redirect message in terminal to a log file.</title>
+		<published>2021-04-25T10:15:28Z</published>
+		<updated>2021-04-25T10:15:28Z</updated>
+		<author>
+			<name>fredvs</name>
+		</author>
+		<content type="html">
+			Hello.
+&lt;br/&gt;&lt;br/&gt;PortAudio and Mpg123 libraries produces lot of debug message if you run a application via terminal.
+&lt;br/&gt;&lt;br/&gt;Here how to do to redirect all those messages to a log file:
+&lt;br/&gt;&lt;br/&gt;program mytmessage_redirect;
+&lt;br/&gt;&amp;nbsp; uses &amp;nbsp; ..., &amp;nbsp;Classes, BaseUnix;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; ...
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;var
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; fs: TFileStream;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; begin
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fs := TFileStream.Create('error.log', fmOpenReadWrite or fmCreate);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;FpDup2(fs.Handle, StdErrorHandle);
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ...
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Application.run;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;fs.free;
+&lt;br/&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; end.
+
+	
+	
+	
+			
+		</content>
+		<link rel="alternate" type="text/html" href="http://uos-forum.108.s1.nabble.com/Redirect-message-in-terminal-to-a-log-file-tp839.html" />
+		
+	</entry>
+</feed>

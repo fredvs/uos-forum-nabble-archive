@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786]; var allURLs = ["/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-td775.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '775'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...</title>
+			<META NAME="description" CONTENT="Playing with uos_PlayNoFreePaused and adding file to PlayerIndex... UOS is running on Ubuntu MATE 18.04 64bit and Windows10 64-bit (both with Lazarus 2.0) Something I doing wrong... - UOS libraries..."/>
+			<META NAME="keywords" CONTENT="playing, with, uos, playnofreepaused, adding, file, playerindex, running, ubuntu, mate, 18, 04, 64bit, windows10, 64-bit, both, lazarus, 2, 0, something, doing, wrong, -, libraries, loaded, ok, code, isn, needed, audiofile, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="775" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="775"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=775" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Difference-between-uos-and-uoslib-Delphi-tp787.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/How-to-save-WAV-file-from-buffer-tp764.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tc775.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tc775.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip10133" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip10133'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		12 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D775\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(775)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(775)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(775)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(775)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(775)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(775)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost775', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D775\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink775', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=775&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=94">Robi</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=775" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html',775)">Threaded</a>
+	<div id="tooltip8460" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip8460'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown775"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown775", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor775', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D775\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost775', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost775', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost775', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(775)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively775', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(775)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate775', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print775', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D775\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink775', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail775', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D775\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown775');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=775&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow775" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607259490718-372"></span><script type="text/javascript">
+		Nabble.get('d1607259490718-372').innerHTML= Nabble.formatDateLong(new Date(1607259490718));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=94" rel="nofollow" title="View profile of Robi" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Robi" title="Robi"/><img src="images/online.png" class="online94 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count94 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message775" class="message-text adbayes-content">
+		UOS is running on Ubuntu &nbsp;MATE 18.04 64bit and Windows10 64-bit (both with Lazarus 2.0)
+<br/>Something I doing wrong... 
+<br/>- UOS libraries are loaded ok (code isn't needed - audiofile is playing)
+<br/>- Loading audiofile is ok, I load audiofile like this:
+<br/><i>&nbsp; &nbsp; 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.PlayerCreated:= uos_CreatePlayer(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.OutputIndex:=uos_AddIntoDevOut(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.InputIndex:=-1; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.InputIndex:=uos_AddFromFile( Player.PlayerIndex, PChar(FileName) ); 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (Player.InputIndex&gt;-1) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_EndProc(Player.PlayerIndex,@EndOfSongPlaying);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_LoopProcIn(Player.PlayerIndex, Player.InputIndex,@LoopProcPlayer);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputSetPositionEnable(Player.PlayerIndex, Player.InputIndex, 1); 
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyForm.tbPosition.Max:=uos_InputLength(Player.PlayerIndex,Player.InputIndex);
+<br/>&nbsp; &nbsp; 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;temptime := uos_InputLengthTime(Player.PlayerIndex, Player.InputIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DecodeTime(temptime, ho, mi, se, ms);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyForm.ed_SongLength.Text:=format('%.2d:%.2d:%.2d.%.3d', [ho, mi, se, ms]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyForm.tbPosition.Position:=0;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_PlayNoFreePaused(Player.PlayerIndex);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Player.PlayingPaused:=True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ChangeButtonNamePlayPause;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end; </i><br/><br/>- My problem is in procedure EndOfSongPlaying (calling when player is at the end of audiofile). I want to PAUSE playing at the end of audiofile and I want to have a chance for scroll audiofile to any time-position and play it. In procedure EndOfSongPlaying is something like this: 
+<br/><i><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Pause(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.PlayingPaused:=True;</i><br/><br/>When I get player status (by uos_GetStatus) in this procedure, status is 0 - stopped. This is problem for me - &nbsp;replay audiofile in this state from any time position by uos_Replay is impossible (or I don't know how), because 
+<br/><i>&nbsp; &nbsp; &nbsp; uos_InputSeek(Player.PlayerIndex, Player.InputIndex, tbPosition.position);</i><br/>is not work. I suppose, when I use
+<br/><i>&nbsp; &nbsp; &nbsp;uos_PlayNoFreePaused(Player.PlayerIndex);</i><br/>audiofile is not freed from memory and status can not be 0 - stopped. <b>My first question: Is this assumption is correct?</b><br/><br/>- In example SimplePlayer included in UOS library is follewing sentence: &quot;If PlayerIndex exists already, it will be overwritten...&quot;. When first audiofile is added with 
+<br/><i>uos_AddFromFile( 0, PChar(FirstAudioFileName) ); </i><br/>and after playing first audiofile I add second audiofile with the same PlayerIndex like this:
+<br/><i>uos_AddFromFile( 0, PChar(SecondAudioFileName) ); </i><br/>When I press play - player playing mixed music from both audiofiles. 
+<br/><b>My Second question: Is there any function for remove first audiofile from player before loading second audiofile in the same PlayerIndex? </b><br/><br/>/I'm sorry for my english/
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=776" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a776',776)">Threaded</a>
+	<div id="tooltip97049" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip97049'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown776"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown776", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor776', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D776\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost776', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D776\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost776', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D776\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost776', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(776)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively776', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(776)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate776', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D776\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print776', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D776\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink776', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p776.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail776', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D776\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown776');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=776&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow776" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607265352307-647"></span><script type="text/javascript">
+		Nabble.get('d1607265352307-647').innerHTML= Nabble.formatDateLong(new Date(1607265352307));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message776" class="message-text adbayes-content">
+		Hello and welcome to uos forum.
+<br/><br/>&gt; I want to PAUSE playing at the end of audiofile and I want to have a chance for scroll audiofile to any time-position and play it. In procedure EndOfSongPlaying is something like this: ...
+<br/><br/>Hum, I think that using EndProc will not work for pausing because EndProc is called when the thread has finished.
+<br/><br/>But you may use your LoopProcPlayer method to do it (and dont use EndProc anymore):
+<br/>&nbsp; &nbsp;
+<br/>Example:
+<br/><br/>var:
+<br/>delay_before_end : integer = 1000; // you should choose a delay before end. 
+<br/><br/>Procedure Myform.LoopProcPlayer();
+<br/>begin
+<br/>// Your previous code 
+<br/>...
+<br/><br/>// Adding this:
+<br/>&nbsp;
+<br/>&nbsp; &nbsp;if &nbsp;(uos_InputPosition(Player.PlayerIndex, Player.InputIndex) &gt; MyForm.tbPosition.Max - delay_before_end) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_Pause(Player.PlayerIndex); 
+<br/>end;
+<br/>&nbsp; 
+<br/>&gt; &nbsp;Is there any function for remove first audiofile from player before loading second audiofile in the same PlayerIndex?
+<br/><br/>Not sure to understand.
+<br/>When you create a audio-thread with uos_CreatePlayer(Player.PlayerIndex), if Player.PlayerIndex was already used to create a previous thread, it will stop + remove this thread and create a new one using the same Player.PlayerIndex.
+<br/><br/>But be careful, if you want to do loops, like play a file when previous has finished, you need to use 2 threads and do a kind of &quot;ping-pong&quot;.
+<br/><br/>Please take a look at /uos/examples/morseTL.lpi (Morse Translator), it uses the &quot;ping-pong&quot; feature.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=777" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a777',777)">Threaded</a>
+	<div id="tooltip81149" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip81149'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown777"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown777", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor777', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D777\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost777', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D777\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost777', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D777\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost777', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(777)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively777', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(777)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate777', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D777\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print777', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D777\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink777', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p777.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail777', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D777\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown777');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=777&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow777" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607268540116-527"></span><script type="text/javascript">
+		Nabble.get('d1607268540116-527').innerHTML= Nabble.formatDateLong(new Date(1607268540116));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message777" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>In previous post:
+<br/><br/>&gt; delay_before_end : integer = 1000; // you should choose a delay before end.
+<br/><br/>If you want to pause just before the last buffer, you may use the FramesCount you used for uos_AddIntoDevOut().
+<br/><br/>The default parameter, it is 65536 div channels.
+<br/>If you want more control, please use uos_AddFromFile(...) and &nbsp;uos_AddIntoDevOut(...) with custom parameters.
+<br/><br/>For example:
+<br/>buffersize := 1024 * 8;
+<br/><br/>uos_AddIntoDevOut(Player.PlayerIndex,-1,-1,-1,-1,-1,buffersize,-1); 
+<br/>uos_AddFromFile(Player.PlayerIndex, PChar(FileName), -1, -1, buffersize);
+<br/><br/><br/>delay_before_end := buffersize; 
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=94">Robi</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=778" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a778',778)">Threaded</a>
+	<div id="tooltip8454" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip8454'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown778"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown778", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor778', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D778\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost778', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D778\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost778', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D778\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost778', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(778)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively778', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(778)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate778', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D778\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print778', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D778\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink778', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p778.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail778', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D778\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown778');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=778&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow778" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607269539995-959"></span><script type="text/javascript">
+		Nabble.get('d1607269539995-959').innerHTML= Nabble.formatDateLong(new Date(1607269539995));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=94" rel="nofollow" title="View profile of Robi" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Robi" title="Robi"/><img src="images/online.png" class="online94 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count94 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p776.html" rel="nofollow">this post</a> by fredvs
+			</div>
+	<div id="message778" class="message-text adbayes-content">
+		Hello, thank you for your replies.
+<br/><br/>I wrote something like you in LoopProcPlayer, but I thought - when I want to scroll playing audiofile to any time-position and play it - I have to watch playing position for interval from <i>0</i>&nbsp;to <i>(AudiofileLength - delay_before_end)</i>. I wanted to know if there is a cleaner solution. 
+<br/>Something, what pause playing before thread is finished (for example in the last milisecond of audiofile) - because I am using <i>uos_PlayNoFreePaused</i>&nbsp;(I think, that <i>uos_PlayNoFree</i>&nbsp;not ending thread automatically) and then I would be able to scroll audiofile to any time-position and play audiofile from this position.
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">Please take a look at /uos/examples/morseTL.lpi (Morse Translator), it uses the &quot;ping-pong&quot; feature.
+</div>
+</div></blockquote>
+I know what you mean, I saw that example... And that's exactly what I wanted to avoid... <img class='smiley' src='/images/smiley/smiley_blush.gif' />&nbsp; <img class='smiley' src='/images/smiley/smiley_happy.gif' /><br/>I want to do: 
+<br/>First audiofile is playing in player with Player.Index = 0. Now I pause this player and then I want to player with the same Player.Index (Player.Index = 0) add an another audiofile and play it (old audiofile is not longer interesting to me). 
+<br/>When I do this, player played both audiofiles at the same time with some noises - so so I thought that the old audiofile was not removed from thread. 
+<br/>Next I do - the new audiofile I add to a new player with (Player.Index = 1). Now I don't know, how I remove old Player with Player.Index = 0 from memory. &nbsp; &nbsp;
+<br/><br/>In your second reply you wrote:
+<br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">If you want more control, please use uos_AddFromFile(...) and &nbsp;uos_AddIntoDevOut(...) with custom parameters.
+</div>
+</div></blockquote>
+I have to learn to work with the buffer size - now I don't know if is this solution for me...
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=779" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a779',779)">Threaded</a>
+	<div id="tooltip7131" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip7131'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown779"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown779", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor779', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D779\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost779', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D779\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost779', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D779\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost779', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(779)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively779', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(779)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate779', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D779\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print779', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D779\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink779', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p779.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail779', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D779\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown779');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=779&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow779" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607270162336-772"></span><script type="text/javascript">
+		Nabble.get('d1607270162336-772').innerHTML= Nabble.formatDateLong(new Date(1607270162336));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775.html" rel="nofollow">this post</a> by Robi
+			</div>
+	<div id="message779" class="message-text adbayes-content">
+		&gt; My Second question: Is there any function for remove first audiofile from player before loading second audiofile in the same PlayerIndex?
+<br/><br/>If you use uos_PlayNoFree() (instead of uos_Play()) you have to use uos_FreePlayer(theplayer) before to create the new one.
+<br/><br/>PS: Note that, like explained in previous post, it is better to use the &quot;ping-pong&quot; &nbsp;feature (2 players that switch one to other), this to avoid a delay between end and play.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=780" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a780',780)">Threaded</a>
+	<div id="tooltip63418" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63418'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown780"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown780", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor780', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D780\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost780', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D780\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost780', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D780\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost780', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(780)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively780', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(780)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate780', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D780\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print780', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D780\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink780', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p780.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail780', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D780\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown780');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=780&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow780" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607270800897-86"></span><script type="text/javascript">
+		Nabble.get('d1607270800897-86').innerHTML= Nabble.formatDateLong(new Date(1607270800897));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p778.html" rel="nofollow">this post</a> by Robi
+			</div>
+	<div id="message780" class="message-text adbayes-content">
+		&gt; I want to do:
+<br/>&gt; First audiofile is playing in player with Player.Index = 0.
+<br/><br/>OK.
+<br/><br/>&gt; Now I pause this player
+<br/><br/>OK.
+<br/><br/>&gt; and then I want to player with the same Player.Index (Player.Index = 0) 
+<br/>&gt; add an another audiofile and play it (old audiofile is not longer interesting to me).
+<br/><br/>Why not simply stop the player ( and use &nbsp;uos_FreePlayer(theplayer) if PlayNoFree() was used) and re-create a new one?
+<br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=781" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a781',781)">Threaded</a>
+	<div id="tooltip24297" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip24297'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown781"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown781", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor781', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D781\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost781', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D781\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost781', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D781\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost781', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(781)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively781', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(781)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate781', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D781\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print781', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D781\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink781', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p781.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail781', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D781\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown781');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=781&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow781" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607271651217-853"></span><script type="text/javascript">
+		Nabble.get('d1607271651217-853').innerHTML= Nabble.formatDateLong(new Date(1607271651217));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p778.html" rel="nofollow">this post</a> by Robi
+			</div>
+	<div id="message781" class="message-text adbayes-content">
+		&gt; Next I do - the new audiofile I add to a new player with (Player.Index = 1). Now I don't know, how I remove old Player with &gt; Player.Index = 0 from memory. &nbsp; &nbsp;
+<br/><br/>If you use uos_PlayNoFree(0), to remove from memory just add uos_FreePlayer(0) when player = 0 has stopped and when you want to re-create a player using player = 0.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=782" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a782',782)">Threaded</a>
+	<div id="tooltip8567" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip8567'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown782"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown782", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor782', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D782\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost782', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D782\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost782', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D782\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost782', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(782)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively782', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(782)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate782', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D782\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print782', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D782\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink782', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p782.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail782', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D782\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown782');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=782&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow782" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607272074630-821"></span><script type="text/javascript">
+		Nabble.get('d1607272074630-821').innerHTML= Nabble.formatDateLong(new Date(1607272074630));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1607279381142-549"></span><script type="text/javascript">
+		Nabble.get('d1607279381142-549').innerHTML= Nabble.formatDateLong(new Date(1607279381142));
+	</script>.
+			</div>
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p778.html" rel="nofollow">this post</a> by Robi
+			</div>
+	<div id="message782" class="message-text adbayes-content">
+		&gt; I have to learn to work with the buffer size - now I don't know if is this solution for me... 
+<br/><br/>I think that if you use the code from previous post, it should be ok:
+<br/><br/><i>buffersize := 1024 * 8;
+<br/>...
+<br/>uos_AddIntoDevOut(Player.PlayerIndex,-1,-1,-1,-1,-1,buffersize,-1);
+<br/>uos_AddFromFile(Player.PlayerIndex, PChar(FileName), -1, -1, buffersize);
+<br/>uos_LoopProcIn(Player.PlayerIndex, Player.InputIndex,@LoopProcPlayer); 
+<br/><br/>delay_before_end := buffersize div 8; </i><br/><br/>And for your LoopProcPlayer:
+<br/><br/><i>Procedure Myform.LoopProcPlayer();
+<br/>begin
+<br/>// Your previous code
+<br/>...
+<br/><br/>// Adding this:
+<br/>&nbsp;
+<br/>&nbsp; &nbsp;if &nbsp;(uos_InputPosition(Player.PlayerIndex, Player.InputIndex) &gt; MyForm.tbPosition.Max - delay_before_end) then
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_Pause(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputSeek(Player.PlayerIndex, Player.InputIndex, MyForm.tbPosition.Max - (delay_before_end));
+<br/>&nbsp; &nbsp;
+<br/>end;
+<br/>end; </i><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=94">Robi</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=783" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a783',783)">Threaded</a>
+	<div id="tooltip12039" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip12039'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown783"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown783", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor783', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D783\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost783', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D783\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost783', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D783\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost783', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(783)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively783', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(783)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate783', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D783\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print783', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D783\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink783', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p783.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail783', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D783\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown783');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=783&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow783" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607273619685-492"></span><script type="text/javascript">
+		Nabble.get('d1607273619685-492').innerHTML= Nabble.formatDateLong(new Date(1607273619685));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=94" rel="nofollow" title="View profile of Robi" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Robi" title="Robi"/><img src="images/online.png" class="online94 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count94 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				In reply to <a href="http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p780.html" rel="nofollow">this post</a> by fredvs
+			</div>
+	<div id="message783" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">Why not simply stop the player ( and use &nbsp;uos_FreePlayer(theplayer) if PlayNoFree() was used) and re-create a new one?
+</div>
+</div></blockquote>
+A want to do like this:
+<br/><i><br/>procedure Free_player();
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (uos_GetStatus(Player.PlayerIndex) &gt;=0) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_FreePlayer(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Player with Player.Index is still created, only audiofile has been freed from memory 
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.PlayerCreated:=True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else Player.PlayerCreated:=False;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; Player.SongLoaded:=False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; PlayerEnabling(Player.SongLoaded); 
+<br/>end; 
+<br/>// ----------------------------------------------
+<br/>procedure TMyForm.Load_song(FileName:string; PlayFromZero:boolean);
+<br/>var temptime:ttime;
+<br/>&nbsp; &nbsp; ho, mi, se, ms: word;
+<br/>begin
+<br/>&nbsp;if (uos_lib_OK) then
+<br/>// if UOS libraries wad loaded successfully: &nbsp;uos_lib_OK = True
+<br/>&nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Free_player;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if not(Player.PlayerCreated) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.PlayerCreated:= uos_CreatePlayer(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.OutputIndex:=uos_AddIntoDevOut(Player.PlayerIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Player.InputIndex:=-1;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp;Player.InputIndex:=uos_AddFromFile( Player.PlayerIndex, PChar(FileName) );
+<br/>&nbsp; &nbsp; &nbsp; &nbsp;if (Player.InputIndex&gt;-1) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Player.SongLoaded:=True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PlayerEnabling(Player.SongLoaded);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_LoopEndProc(Player.PlayerIndex, @EndOfSongPlaying);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_LoopProcIn(Player.PlayerIndex, Player.InputIndex,@LoopProcPlayer);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_InputSetPositionEnable(Player.PlayerIndex, Player.InputIndex, 1); &nbsp;// 1 je ze ma pocitat poziciu
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyForm.tbPosition.Max:=uos_InputLength(Player.PlayerIndex,Player.InputIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;temptime := uos_InputLengthTime(Player.PlayerIndex, Player.InputIndex);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DecodeTime(temptime, ho, mi, se, ms);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyForm.ed_SongLength.Text:=format('%.2d:%.2d:%.2d.%.3d', [ho, mi, se, ms]);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Player.SongEndPauseTime:=IncMilliSecond(temptime,DefaultEndSongPauseDelay);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_PlayNoFreePaused(Player.PlayerIndex); // 0 je pocet sluciek
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Player.PlayingPaused:=True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ChangeButtonNamePlayPause; &nbsp; &nbsp; &nbsp;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<br/></i><br/><br/>Result - after Adding second audiofile (first added and played audiofile was correctly ended by procedure Free_Player), Player is playing some artefacts from first audiofile and noises at the same time as is playing second audiofile. 
+<br/>This is no way for me - I don't know how to do simply. Probably I must do it by &quot;ping-pong&quot;.
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=784" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a784',784)">Threaded</a>
+	<div id="tooltip28257" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip28257'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown784"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown784", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor784', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D784\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost784', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D784\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost784', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D784\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost784', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(784)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively784', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(784)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate784', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D784\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print784', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D784\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink784', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p784.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail784', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D784\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown784');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=784&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow784" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607274541458-338"></span><script type="text/javascript">
+		Nabble.get('d1607274541458-338').innerHTML= Nabble.formatDateLong(new Date(1607274541458));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message784" class="message-text adbayes-content">
+		Hello.
+<br/><br/>I think the problem comes from:
+<br/><br/>procedure Free_player();
+<br/>begin
+<br/>... &nbsp; &nbsp; 
+<br/>&nbsp; &nbsp; uos_FreePlayer(Player.PlayerIndex); // This
+<br/>&nbsp;...
+<br/>end; 
+<br/><br/>Because you assigned Free_player() to EndProc of the player-self.
+<br/><br/>So you ask to the player to execute a method to free_himself.
+<br/><br/>I fear that you should think about the ping-pong solution (or avoid to ask to the player to free-himself in a EndProc).
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=785" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a785',785)">Threaded</a>
+	<div id="tooltip41031" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip41031'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown785"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown785", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor785', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D785\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost785', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D785\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost785', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D785\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost785', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(785)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively785', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(785)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate785', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D785\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print785', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D785\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink785', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p785.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail785', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D785\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown785');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=785&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow785" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607275620205-296"></span><script type="text/javascript">
+		Nabble.get('d1607275620205-296').innerHTML= Nabble.formatDateLong(new Date(1607275620205));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1607279572666-654"></span><script type="text/javascript">
+		Nabble.get('d1607279572666-654').innerHTML= Nabble.formatDateLong(new Date(1607279572666));
+	</script>.
+			</div>
+	
+	<div id="message785" class="message-text adbayes-content">
+		&gt; This is no way for me - I don't know how to do simply
+<br/><br/>Maybe not use uos_PlayNoFree() but uos_Play().
+<br/><br/>And, if you dont want that the file reach to the end, use procedure Myform.LoopProcPlayer() like explained in previous post to automatically set to pause at last buffer.
+<br/><br/>[EDIT] Updated the code of previous post about LoopProcPlayer(). And tested, it works ok here.
+<br/><br/>When you want to stop and create a new player with same index, on button.click:
+<br/><br/>procedure button.click;
+<br/>begin
+<br/>uos_Stop(Player.PlayerIndex);
+<br/>uos_CreatePlayer(Player.PlayerIndex);
+<br/>end;
+<br/><br/>If you want to create the player with EndProc, you must use the ping-pong feature, otherwise it will have problems for the thread to first free-himself and then re-create himself.
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=94">Robi</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=786" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tt775.html#a786',786)">Threaded</a>
+	<div id="tooltip1913" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip1913'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown786"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown786", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor786', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D786\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost786', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D786\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost786', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D786\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost786', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(786)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively786', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(786)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate786', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D786\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print786', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D786\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink786', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Playing-with-uos-PlayNoFreePaused-and-adding-file-to-PlayerIndex-tp775p786.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail786', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D786\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown786');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=786&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow786" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1607283177616-241"></span><script type="text/javascript">
+		Nabble.get('d1607283177616-241').innerHTML= Nabble.formatDateLong(new Date(1607283177616));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Playing with uos_PlayNoFreePaused and adding file to PlayerIndex...
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=94" rel="nofollow" title="View profile of Robi" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Robi" title="Robi"/><img src="images/online.png" class="online94 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count94 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message786" class="message-text adbayes-content">
+		Thanks again for the help. 
+<br/>I'll try to do it according to your suggestions. I'll let you know if I've been successful.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v775" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=775&incViewCount=775&newsflash=&visitorOnline=&avatarOnline=94|1&postCount=94|1&markVisited=786&views=775';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

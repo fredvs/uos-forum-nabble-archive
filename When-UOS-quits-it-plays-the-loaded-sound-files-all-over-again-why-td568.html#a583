@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="/nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="/template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="/assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="/util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="/template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [568, 569, 570, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583]; var allURLs = ["/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-td568.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '568'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - When UOS quits, it plays the loaded sound files all over again, why?</title>
+			<META NAME="description" CONTENT="When UOS quits, it plays the loaded sound files all over again, why?. When UOS quits, it plays the loaded sound files all over again, why? Program parts cannot unfortunately not be enclosed, because..."/>
+			<META NAME="keywords" CONTENT="when, uos, quits, plays, loaded, sound, files, all, over, again, why, program, parts, cannot, unfortunately, not, enclosed, because, project, just, way, too, big, both, wave, ogg, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="/">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="568" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="568"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="/template/NamlServlet.jtp?macro=adv_search_page&amp;node=568" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		When UOS quits, it plays the loaded sound files all over again, why?
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Level-Meter-recording-from-Mic-It-possible-tp584.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Noise-cancelling-radio-tp523.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="/images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tc568.html',null)"><img src="/images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tc568.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html',null)"><img src="/images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="/images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip59182" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip59182'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="/images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		15 messages
+	</span>
+	<img src="/images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D568\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(568)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(568)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(568)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(568)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(568)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(568)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost568', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D568\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink568', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=568&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=568" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html',568)">Threaded</a>
+	<div id="tooltip68230" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip68230'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown568"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown568", "More","Click for more options");
+		
+		
+		dropdown.add('editPost568', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost568', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost568', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(568)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively568', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(568)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate568', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print568', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D568\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink568', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail568', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D568\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown568');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=568&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow568" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543106515240-517"></span><script type="text/javascript">
+		Nabble.get('d1543106515240-517').innerHTML= Nabble.formatDateLong(new Date(1543106515240));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message568" class="message-text adbayes-content">
+		When UOS quits, it plays the loaded sound files all over again, why?
+<br/><br/>Program parts cannot unfortunately not be enclosed,
+<br/>because the project is just way too big.
+<br/><br/>But both Wave and OGG files are used.
+<br/>The wave files are loaded into the memory. Then at the end of the
+<br/>programs they are properly released. And right here when releasing, all smaller sound files will be played one after the other without that being intended! The only thing that helps is to set the DSPVolume down to zero. The program uses only PortAudio & LibSndFile, all under Linux Ubuntu 18.04 Mate and Debian (Testing) Mate.
+<br/>It seems that when releasing, the error occurs that a sound is replayed without it being supposed to.
+<br/><br/>It seems to me to be a bug in UOS.
+<br/><br/>I don't have a lot of time to get involved with this forum, just once in a while, once in a while, but it would be nice to have a solution.
+<br/><br/>- I don't speak English very well and so I have everything translated by one program.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=569" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a569',569)">Threaded</a>
+	<div id="tooltip28966" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip28966'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown569"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown569", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor569', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D569\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost569', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D569\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost569', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D569\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost569', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(569)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively569', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(569)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate569', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D569\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print569', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D569\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink569', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p569.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail569', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D569\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown569');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=569&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow569" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543157564155-90"></span><script type="text/javascript">
+		Nabble.get('d1543157564155-90').innerHTML= Nabble.formatDateLong(new Date(1543157564155));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message569" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Could you give only part of your code, when you create the player when you play it.
+<br/><br/>I really want to help you but you do no give enough details.
+<br/><br/>&gt; It seems to me to be a bug in UOS. 
+<br/><br/>Maybe but without code or more detail I cannot do anything.
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=570" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a570',570)">Threaded</a>
+	<div id="tooltip25865" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip25865'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown570"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown570", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor570', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D570\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost570', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D570\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost570', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D570\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost570', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(570)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively570', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(570)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate570', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D570\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print570', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D570\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink570', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p570.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail570', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D570\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown570');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=570&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow570" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543181505943-900"></span><script type="text/javascript">
+		Nabble.get('d1543181505943-900').innerHTML= Nabble.formatDateLong(new Date(1543181505943));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message570" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>Did you call uos_Free() before to close the application?
+<br/><br/>Did you use PlayNoFree() ?
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=572" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a572',572)">Threaded</a>
+	<div id="tooltip97312" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip97312'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown572"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown572", "More","Click for more options");
+		
+		
+		dropdown.add('editPost572', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D572\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost572', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D572\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost572', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(572)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively572', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(572)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate572', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D572\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print572', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D572\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink572', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p572.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail572', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D572\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown572');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=572&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow572" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543454600707-129"></span><script type="text/javascript">
+		Nabble.get('d1543454600707-129').innerHTML= Nabble.formatDateLong(new Date(1543454600707));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message572" class="message-text adbayes-content">
+		Translation program used to translate from German to English.
+<br/><br/>Thanks for the help.
+<br/><br/>Here is a small summary as an excerpt,
+<br/>from my game. I really can't contribute more, unfortunately.
+<br/><br/>As mentioned, the workaround is a DSPVolume reduction to zero a solution, but not really.
+<br/><br/>The problem is that when releasing (uos_Free() & ....) the UOS resources at the program end,
+<br/>the smaller sounds played with PlayNoFree,
+<br/>replayed, for whatever reason I don't understand.
+<br/><br/>Independent of everything: Thanks for UOS, this is currently the only suitable sound package for Lazarus, which is easy to use under Linux!
+<br/>Please continue, thank you, and all the best.
+<br/><br/>(Little question, is PortAudio still under active development? I don't know?)
+<br/><br/>Please keep in mind that I can only visit the forum sometimes when the time allows it, unfortunately there is no other way.
+<br/><br/>Excerpt:
+<br/><br/>----
+<br/><br/>unit Main;
+<br/><br/>{$mode objfpc}{$H+}
+<br/><br/>interface
+<br/><br/>uses
+<br/>&nbsp; &nbsp; Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
+<br/>&nbsp; &nbsp; LCLType, Types, IntfGraphics, ComCtrls, fpImage,
+<br/>&nbsp; &nbsp; math, uos_flat{, LCLIntf};
+<br/><br/>type
+<br/><br/>&nbsp; &nbsp; { TGameDlg }
+<br/><br/>&nbsp; &nbsp; TGameDlg = class(TForm)
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; GameArea: TPanel;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Game_EventHandler: TTimer;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure FormCreate(Sender: TObject);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure FormDestroy(Sender: TObject);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure FormChangeBounds(Sender: TObject);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure GameAreaPaint(Sender: TObject);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; procedure Game_EventHandlerTimer(Sender: TObject);
+<br/>&nbsp; &nbsp; private
+<br/>&nbsp; &nbsp; public
+<br/>&nbsp; &nbsp; end;
+<br/><br/>// SOUND CATEGORYS
+<br/>&nbsp; &nbsp; cSC_None &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= -1;
+<br/>&nbsp; &nbsp; cSC_Event &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0;
+<br/>&nbsp; &nbsp; cSC_Atmosphere &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 1;
+<br/>&nbsp; &nbsp; cSC_Music &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 2;
+<br/><br/>&nbsp; &nbsp; // SOUNDS : EVENT
+<br/>&nbsp; &nbsp; cSES_None &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1;
+<br/>&nbsp; &nbsp; cSES_S_NStep &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 0;
+<br/>&nbsp; &nbsp; cSES_M_NStep &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 1;
+<br/>&nbsp; &nbsp; cSES_M_LStep &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 2;
+<br/>&nbsp; &nbsp; cSES_ChangeTool &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 3;
+<br/>&nbsp; &nbsp; cSES_ChangeKeyMode &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 4;
+<br/>&nbsp; &nbsp; cSES_Shipping &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 5;
+<br/>&nbsp; &nbsp; cSES_Woodenaxe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 6;
+<br/>&nbsp; &nbsp; cSES_Pickaxe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 7;
+<br/>&nbsp; &nbsp; cSES_Build &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 8;
+<br/>&nbsp; &nbsp; cSES_Remove &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 9;
+<br/>&nbsp; &nbsp; cSES_Harvest &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 10;
+<br/>&nbsp; &nbsp; cSES_Seeding &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 11;
+<br/><br/>&nbsp; &nbsp; // SOUNDS : ATMOSPHERE
+<br/>&nbsp; &nbsp; cSAS_None &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1;
+<br/>&nbsp; &nbsp; cSAS_S_Atmosphere &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0;
+<br/>&nbsp; &nbsp; cSAS_S_Rainfall &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 1;
+<br/><br/>&nbsp; &nbsp; // SOUNDS : MUSIC
+<br/>&nbsp; &nbsp; cSMC_None &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1;
+<br/>&nbsp; &nbsp; cSMC_Music1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 0;
+<br/>&nbsp; &nbsp; cSMC_Music2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 1;
+<br/>&nbsp; &nbsp; cSMC_Music3 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 2;
+<br/>&nbsp; &nbsp; cSMC_Music4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 3;
+<br/>&nbsp; &nbsp; cSMC_Music5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 4;
+<br/>&nbsp; &nbsp; cSMC_Music6 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 5;
+<br/>&nbsp; &nbsp; cSMC_Music7 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 6;
+<br/>&nbsp; &nbsp; cSMC_Music8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 7;
+<br/>&nbsp; &nbsp; cSMC_Music9 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 8;
+<br/>&nbsp; &nbsp; cSMC_Music10 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 9;
+<br/>&nbsp; &nbsp; cSMC_Music11 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 10;
+<br/>&nbsp; &nbsp; cSMC_Music12 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= 11;
+<br/><br/>....
+<br/><br/>TG_Game = class
+<br/>&nbsp; &nbsp; private
+<br/>&nbsp; &nbsp; public
+<br/>&nbsp; &nbsp; // AREA: SOUNDS.
+<br/>&nbsp; &nbsp; UOS_LibraryPortAudio: String;
+<br/>&nbsp; &nbsp; UOS_LibrarySndFile: String;
+<br/><br/>&nbsp; &nbsp; UOS_Device_Usable: Boolean;
+<br/>&nbsp; &nbsp; UOS_Sounds_Usable: Boolean;
+<br/><br/>&nbsp; &nbsp; S_ES: array of Integer;
+<br/>&nbsp; &nbsp; S_AS: array of Integer;
+<br/>&nbsp; &nbsp; S_MC: array of Integer;
+<br/>&nbsp; &nbsp; S_MCFN: array of String;
+<br/>&nbsp; &nbsp; S_MCNow: Integer;
+<br/><br/>&nbsp; &nbsp; // AREA: SOUND.
+<br/>&nbsp; &nbsp; function LoadUOS(): Boolean;
+<br/>&nbsp; &nbsp; function LoadASound(pCategory: Integer; pFileName: String): Boolean; // Add A Sound to S_ES (Sound Event : Category)
+<br/>&nbsp; &nbsp; procedure CallOn_SMCAllEnd();
+<br/>&nbsp; &nbsp; function SetVolumeASound(pCategory: Integer; pID: Integer; pVolume: Integer): Boolean;
+<br/>&nbsp; &nbsp; function LoadAllSounds(): Boolean;
+<br/>&nbsp; &nbsp; function PlayASound(pCategory: Integer; pID: Integer): Boolean;
+<br/>&nbsp; &nbsp; function PauseASound(pCategory: Integer; pID: Integer): Boolean;
+<br/>&nbsp; &nbsp; function ResumeASound(pCategory: Integer; pID: Integer): Boolean;
+<br/><br/>&nbsp; &nbsp; // AREA: GAME QUIT.
+<br/>&nbsp; &nbsp; function Quit(): Boolean;
+<br/><br/>&nbsp; &nbsp; function Game_CleaningPower(): Boolean;
+<br/>end;
+<br/><br/>....
+<br/><br/>procedure TGameDlg.FormCreate(Sender: TObject);
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; // Create Game Class!!!!
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Game := TG_Game.Create;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //....
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;writeln('Initialize Error!');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;GameDlg.Close();
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Application.Terminate;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function Game_Initialize(): Boolean; // GLOBAL!
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; ....
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game_CleaningPower();
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>procedure TGameDlg.FormDestroy(Sender: TObject);
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Game_CleaningPower();
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game_CleaningPower();
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>// GAME QUIT.
+<br/>function TG_Game.Quit(): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; // ToDo....
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>....
+<br/><br/>function Game_CleaningPower(): Boolean;
+<br/>var
+<br/>&nbsp; &nbsp;tCnt: Integer;
+<br/>begin
+<br/>&nbsp; &nbsp; // Free Sound Resources
+<br/>&nbsp; &nbsp; if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then
+<br/>&nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Music, cSMC_Music1, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Music, cSMC_Music2, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Music, cSMC_Music3, 0);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Atmosphere, cSAS_S_Atmosphere, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Atmosphere, cSAS_S_Rainfall, 0);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_S_NStep, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_M_NStep, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_M_LStep, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_ChangeTool, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_ChangeKeyMode, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Shipping, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Woodenaxe, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Pickaxe, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Build, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Remove, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Harvest, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.SetVolumeASound(cSC_Event, cSES_Seeding, 0);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for tCnt := High(Game.S_MC) downto 0 do
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_BeginProc(Game.S_MC[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_EndProc(Game.S_MC[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopBeginProc(Game.S_MC[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopEndProc(Game.S_MC[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for tCnt := High(Game.S_AS) downto 0 do
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_BeginProc(Game.S_AS[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_EndProc(Game.S_AS[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopBeginProc(Game.S_AS[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopEndProc(Game.S_AS[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for tCnt := High(Game.S_ES) downto 0 do
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_BeginProc(Game.S_ES[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_EndProc(Game.S_ES[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopBeginProc(Game.S_ES[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_LoopEndProc(Game.S_ES[tCnt], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Device_Usable := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Sounds_Usable := False;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SetLength(Game.S_MC, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SetLength(Game.S_MCFN, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SetLength(Game.S_AS, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SetLength(Game.S_ES, 0);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_Free();
+<br/>&nbsp; &nbsp; end;
+<br/>end;
+<br/><br/>// AREA: SOUND.
+<br/><br/>function TG_Game.LoadUOS(): Boolean;
+<br/>{var
+<br/>&nbsp; &nbsp;tPath: String;}
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //{$IFDEF Windows} // DON'T FUNC! BUT DON'T REQUIRED
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//{$if defined(cpu64)}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/Windows/64bit/LibPortaudio-64.dll';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/Windows/64bit/LibSndFile-64.dll';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//{$else}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/Windows/32bit/LibPortaudio-32.dll';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/Windows/32bit/LibSndFile-32.dll';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//{$endif}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //{$ENDIF}
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; {$IFDEF Darwin} // DONT REQUIRED
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tPath := Application.Location;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;tPath := copy(tPath, 1, Pos('/uos', tPath) - 1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_LibraryPortAudio := tPath + 'uos-master/lib/Mac/32bit/LibPortaudio-32.dylib';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_LibrarySndFile := tPath + 'uos-master/lib/Mac/32bit/LibSndFile-32.dylib';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; {$ENDIF}
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; {$IFDEF linux} // Ok.
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$if defined(cpu64)}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/Linux/64bit/LibPortaudio-64.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/Linux/64bit/LibSndFile-64.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$else}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/Linux/32bit/LibPortaudio-32.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/Linux/32bit/LibSndFile-32.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$endif}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; {$ENDIF}
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; {$IFDEF freebsd} // DONT REQUIRED TO TIME BUT IN FUTURE....
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$if defined(cpu64)}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/FreeBSD/64bit/libportaudio-64.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/FreeBSD/64bit/libsndfile-64.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$else}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibraryPortAudio := Application.Location + 'uos-master/lib/FreeBSD/32bit/libportaudio-32.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_LibrarySndFile := Application.Location + 'uos-master/lib/FreeBSD/32bit/libsndfile-32.so';
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$endif}
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; {$ENDIF}
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; if uos_LoadLib(PChar(Game.UOS_LibraryPortAudio), PChar(Game.UOS_LibrarySndFile), nil, nil, nil, nil) = 0 then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Device_Usable := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; else
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Device_Usable := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if uosLoadResult.PAloaderror = 1 then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowMessage(Game.UOS_LibraryPortAudio + ' do not exist!');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if uosLoadResult.PAloaderror = 2 then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowMessage(Game.UOS_LibraryPortAudio + ' do not load!');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if uosLoadResult.SFloaderror = 1 then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowMessage(Game.UOS_LibrarySndFile + ' do not exist!');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if uosLoadResult.SFloaderror = 2 then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowMessage(Game.UOS_LibrarySndFile + ' do not load!');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/><br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Device_Usable := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_free();
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.LoadASound(pCategory: Integer; pFileName: String): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (pCategory &gt;= cSC_Event) And (pCategory &lt;= cSC_Music) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case pCategory of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cSC_Event:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (FileExists(Application.Location + cP_StdSounds + pFileName + cX_WAV) = True) Or (FileExists(Application.Location + cP_StdSounds + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetLength(Game.S_ES, (Length(Game.S_ES) + 1));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_ES[High(Game.S_ES)] := Game.S_Count;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_CreatePlayer(Game.S_ES[High(Game.S_ES)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (FileExists(Application.Location + cP_StdSounds + pFileName + cX_WAV) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_AddFromFile(Game.S_ES[High(Game.S_ES)], PChar(Application.Location + cP_StdSounds + pFileName + cX_WAV));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else if (FileExists(Application.Location + cP_StdSounds + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_AddFromFile(Game.S_ES[High(Game.S_ES)], PChar(Application.Location + cP_StdSounds + pFileName + cX_OGG));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputAddDSPVolume(Game.S_ES[High(Game.S_ES)], 0, 0, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_AddIntoDevOut(Game.S_ES[High(Game.S_ES)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_PlayNoFree(Game.S_ES[High(Game.S_ES)], 1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Stop(Game.S_ES[High(Game.S_ES)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputSetDSPVolume(Game.S_ES[High(Game.S_ES)], 0, 1, 1, True);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //uos_flat.uos_InputSeek ;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_Count := (Game.S_Count + 1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cSC_Atmosphere:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (FileExists(Application.Location + cP_StdAtmosphere + pFileName + cX_WAV) = True) Or (FileExists(Application.Location + cP_StdSounds + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetLength(Game.S_AS, (Length(Game.S_AS) + 1));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_AS[High(Game.S_AS)] := Game.S_Count;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_CreatePlayer(Game.S_AS[High(Game.S_AS)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (FileExists(Application.Location + cP_StdAtmosphere + pFileName + cX_WAV) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_AddFromFile(Game.S_AS[High(Game.S_AS)], PChar(Application.Location + cP_StdAtmosphere + pFileName + cX_WAV));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else if (FileExists(Application.Location + cP_StdAtmosphere + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uos_AddFromFile(Game.S_AS[High(Game.S_AS)], PChar(Application.Location + cP_StdAtmosphere + pFileName + cX_OGG));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputAddDSPVolume(Game.S_AS[High(Game.S_AS)], 0, 0, 0);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_AddIntoDevOut(Game.S_AS[High(Game.S_AS)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_PlayNoFree(Game.S_AS[High(Game.S_AS)], 1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Stop(Game.S_AS[High(Game.S_AS)]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputSetDSPVolume(Game.S_AS[High(Game.S_AS)], 0, 1, 1, True);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_Count := (Game.S_Count + 1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cSC_Music:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (FileExists(Application.Location + cP_StdMusics + pFileName + cX_WAV) = True) Or (FileExists(Application.Location + cP_StdMusics + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetLength(Game.S_MC, (Length(Game.S_MC) + 1));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SetLength(Game.S_MCFN, (Length(Game.S_MCFN) + 1));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_MC[High(Game.S_MC)] := Game.S_Count;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (FileExists(Application.Location + cP_StdMusics + pFileName + cX_WAV) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.S_MCFN[High(Game.S_MCFN)] := Application.Location + cP_StdMusics + pFileName + cX_WAV;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else if (FileExists(Application.Location + cP_StdMusics + pFileName + cX_OGG) = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.S_MCFN[High(Game.S_MCFN)] := Application.Location + cP_StdMusics + pFileName + cX_OGG;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_MCNow := 0;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.S_Count := (Game.S_Count + 1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>// This Callback is for Music Play List....
+<br/>procedure TG_Game.CallOn_SMCAllEnd();
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.S_MCNow &lt; 2) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.PauseASound(cSC_Music, Game.S_MCNow);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.S_MCNow := (Game.S_MCNow + 1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; else
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.S_MCNow := 0;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; case Game.S_MCNow of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.PlayASound(cSC_Music, cSMC_Music1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.PlayASound(cSC_Music, cSMC_Music2);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.PlayASound(cSC_Music, cSMC_Music3);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.SetVolumeASound(pCategory: Integer; pID: Integer; pVolume: Integer): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (pCategory &gt;= cSC_Event) And (pCategory &lt;= cSC_Music) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case pCategory of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Event:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_ES)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_ES[pID] &gt;= 0) And (Game.S_ES[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputSetDSPVolume(Game.S_ES[pID], 0, pVolume, pVolume, True);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Atmosphere:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_AS)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_AS[pID] &gt;= 0) And (Game.S_AS[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputSetDSPVolume(Game.S_AS[pID], 0, pVolume, pVolume, True);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Music:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_MC)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_MC[pID] &gt;= 0) And (Game.S_MC[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputSetDSPVolume(Game.S_MC[pID], 0, pVolume, pVolume, True);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.LoadAllSounds(): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_Device_Usable := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Game.UOS_Sounds_Usable := False;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; Game.LoadUOS();
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.UOS_Device_Usable = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'S_NStep');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'M_NStep');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'M_LStep');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'ChTool');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'ChKeyMode');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Shipping');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Woodenaxe');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Pickaxe');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Build');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Remove');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Harvest');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Event, 'Seeding');
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Atmosphere, 'S_Atmosphere');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Atmosphere, 'S_Rainfall');
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Music, 'MrBkDreaming');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Music, 'MrBkAsia');
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.LoadASound(cSC_Music, 'MrBkAdventure');
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.UOS_Sounds_Usable := True;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Game.PlayASound(cSC_Atmosphere, cSAS_S_Atmosphere);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.PlayASound(pCategory: Integer; pID: Integer): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (pCategory &gt;= cSC_Event) And (pCategory &lt;= cSC_Music) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case pCategory of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Event:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_ES)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_ES[pID] &gt;= 0) And (Game.S_ES[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_PlayNoFree(Game.S_ES[pID], 1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // No Loops Allowed!!!!
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Atmosphere:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_AS)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_AS[pID] &gt;= 0) And (Game.S_AS[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_PlayNoFree(Game.S_AS[pID], -1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Every Time loops!!!!
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Music:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_MC)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_MC[pID] &gt;= 0) And (Game.S_MC[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_CreatePlayer(Game.S_MC[pID]);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_AddFromFile(Game.S_MC[pID], PChar(Game.S_MCFN[pID]));
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_InputAddDSPVolume(Game.S_MC[pID], 0, 1, 1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_AddIntoDevOut(Game.S_MC[pID]);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_EndProc(Game.S_MC[pID], @Game.CallOn_SMCAllEnd);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Play(Game.S_MC[pID], 1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // No Loops Allowed!!!!
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.PauseASound(pCategory: Integer; pID: Integer): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (pCategory &gt;= cSC_Event) And (pCategory &lt;= cSC_Music) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case pCategory of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Event:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_ES)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_ES[pID] &gt;= 0) And (Game.S_ES[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Pause & Resume Not Allowed!!!!
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Atmosphere:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_AS)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_AS[pID] &gt;= 0) And (Game.S_AS[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Stop(Game.S_AS[pID]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Music:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_MC)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_MC[pID] &gt;= 0) And (Game.S_MC[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_EndProc(Game.S_MC[Game.S_MCNow], nil);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_Stop(Game.S_MC[Game.S_MCNow]);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_FreePlayer(Game.S_MC[Game.S_MCNow]);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>function TG_Game.ResumeASound(pCategory: Integer; pID: Integer): Boolean;
+<br/>begin
+<br/>&nbsp; &nbsp; &nbsp;try
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (pCategory &gt;= cSC_Event) And (pCategory &lt;= cSC_Music) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case pCategory of
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Event:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_ES)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_ES[pID] &gt;= 0) And (Game.S_ES[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Pause & Resume Not Allowed!!!!
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Atmosphere:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_AS)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_AS[pID] &gt;= 0) And (Game.S_AS[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; uos_PlayNoFree(Game.S_MC[pID], -1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cSC_Music:
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (pID &gt;= 0) And (pID &lt;= High(Game.S_MC)) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (Game.S_MC[pID] &gt;= 0) And (Game.S_MC[pID] &lt;= Game.S_Count) then
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Game.PlayASound(pCategory, Game.S_MCNow);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Result := True;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; end;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Exit;
+<br/>&nbsp; &nbsp; &nbsp;except
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Result := False;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Exit;
+<br/>&nbsp; &nbsp; &nbsp;end;
+<br/>end;
+<br/><br/>....
+<br/><br/>Game.S_Count := 0;
+<br/>Game.S_IsIDPYMusic := False;
+<br/>Game.S_IsPlayMusic := False;
+<br/>Game.LoadAllSounds();
+<br/><br/>&nbsp; &nbsp; ....
+<br/>&nbsp; &nbsp; Game.PlayASound(cSC_Event, cSES_Build); // All only Examples....
+<br/><br/>&nbsp; &nbsp; ....
+<br/><br/>....
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=573" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a573',573)">Threaded</a>
+	<div id="tooltip86976" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip86976'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown573"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown573", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor573', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D573\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost573', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D573\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost573', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D573\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost573', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(573)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively573', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(573)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate573', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D573\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print573', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D573\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink573', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p573.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail573', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D573\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown573');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=573&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow573" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543494962447-196"></span><script type="text/javascript">
+		Nabble.get('d1543494962447-196').innerHTML= Nabble.formatDateLong(new Date(1543494962447));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message573" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Huh, that is more than &quot;few part of your code&quot;!
+<br/><br/>OK, I will check your code this week-end, write you later.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=574" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a574',574)">Threaded</a>
+	<div id="tooltip48158" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip48158'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown574"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown574", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor574', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D574\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost574', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D574\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost574', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D574\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost574', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(574)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively574', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(574)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate574', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D574\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print574', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D574\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink574', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p574.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail574', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D574\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown574');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=574&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow574" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543596431013-181"></span><script type="text/javascript">
+		Nabble.get('d1543596431013-181').innerHTML= Nabble.formatDateLong(new Date(1543596431013));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1543602062596-70"></span><script type="text/javascript">
+		Nabble.get('d1543602062596-70').innerHTML= Nabble.formatDateLong(new Date(1543602062596));
+	</script>.
+			</div>
+	
+	<div id="message574" class="message-text adbayes-content">
+		Hello.
+<br/><br/>OK, I did try part of your code using PlayNoFee().
+<br/><br/>I could not reproduce the problem (some chunk played when application close).
+<br/><br/>Anyway, in last commits 88aec9e , there are filters in uos_free() method.
+<br/><a href="https://github.com/fredvs/uos/" target="_top" rel="nofollow" link="external">https://github.com/fredvs/uos/</a><br/><br/>Maybe it solves your problems.
+<br/><br/>Could you try it with this code?
+<br/><br/>function Game_CleaningPower(): Boolean; 
+<br/>begin 
+<br/>&nbsp; &nbsp; // To free uos resources, use only this: 
+<br/>&nbsp;if (Game.UOS_Device_Usable = True) And (Game.UOS_Sounds_Usable = True) then uos_Free(); 
+<br/>end; 
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=575" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a575',575)">Threaded</a>
+	<div id="tooltip86165" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip86165'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown575"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown575", "More","Click for more options");
+		
+		
+		dropdown.add('editPost575', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D575\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost575', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D575\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost575', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(575)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively575', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(575)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate575', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D575\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print575', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D575\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink575', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p575.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail575', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D575\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown575');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=575&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow575" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543802908141-176"></span><script type="text/javascript">
+		Nabble.get('d1543802908141-176').innerHTML= Nabble.formatDateLong(new Date(1543802908141));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message575" class="message-text adbayes-content">
+		Translated with DeepL translation program from German to English!
+<br/><br/>Many thanks for the extensive help.
+<br/><br/>That's exactly what I tried! But unfortunately all sound elements that were played with &quot;uos_PlayNoFree(....);&quot; will be played again at the end of the game/program when calling &quot;uos_Free();&quot;. 
+<br/>It's only &quot;Wave Files&quot;, but I can't rule out that it would be the same with OGGs. Amazing is, that even longer &quot;Wave Files&quot; are only played for the length of the shorter pieces. So it takes less than one second.
+<br/>As an example, atmospheres sounds that I implemented as &quot;Wave Files&quot; in the length of 4 minutes are used here. These are played at the end of the program when calling &quot;uos_Free();&quot;, at the same time with the other shorter &quot;Wave Files&quot;, also only under one second.
+<br/>Please note that some short event sounds are only played for about 0.190 seconds. I don't need longer event sounds usually.
+<br/>And only for this time, at the end, all things will be played again at the same time when calling &quot;uos_Free();&quot;. I suspect that UOS might have problems in the &quot;uos_PlayNoFree(); / Wave&quot; area with short sounds of less than 1 second, maybe only in combination with longer sounds or not. Or simultaneously in &quot;uos_Free();&quot; &nbsp;Later.
+<br/><br/>Ps. The &quot;reCaptcha&quot; doesn't work properly, even if you select everything right, you often can't get any further.
+<br/>The thing doesn't seem to understand what traffic light, bus, car, or zebra crossing means. Can you improve that somehow?
+<br/><br/>As mentioned, unfortunately I can only drop by here in the forum sometimes,
+<br/>that can vary from time.
+<br/>But really many thanks.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=576" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a576',576)">Threaded</a>
+	<div id="tooltip74764" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip74764'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown576"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown576", "More","Click for more options");
+		
+		
+		dropdown.add('editPost576', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D576\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost576', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D576\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost576', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(576)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively576', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(576)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate576', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D576\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print576', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D576\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink576', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p576.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail576', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D576\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown576');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=576&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow576" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543814449440-812"></span><script type="text/javascript">
+		Nabble.get('d1543814449440-812').innerHTML= Nabble.formatDateLong(new Date(1543814449440));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message576" class="message-text adbayes-content">
+		Small addition to the last post.
+<br/><br/>I also have longer event sounds than 0,190 seconds.
+<br/>Some also longer than 1 second, as well as longer atmosphere sounds, all &quot;Wave-Files&quot; and &quot;uos_PlayNoFree();&quot;, except for the music (which goes around the 3 minutes, each (PlayList)), and is OGG (music with &quot;uos_Play();&quot;).
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=577" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a577',577)">Threaded</a>
+	<div id="tooltip2658" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip2658'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown577"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown577", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor577', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D577\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost577', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D577\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost577', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D577\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost577', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(577)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively577', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(577)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate577', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D577\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print577', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D577\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink577', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p577.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail577', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D577\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown577');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=577&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow577" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543828513450-711"></span><script type="text/javascript">
+		Nabble.get('d1543828513450-711').innerHTML= Nabble.formatDateLong(new Date(1543828513450));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1543837050782-158"></span><script type="text/javascript">
+		Nabble.get('d1543837050782-158').innerHTML= Nabble.formatDateLong(new Date(1543837050782));
+	</script>.
+			</div>
+	
+	<div id="message577" class="message-text adbayes-content">
+		Hello.
+<br/><br/>Before that I investigate more, to be sure, did you try with last commits of uos ?
+<br/><br/>[EDIT] Google translation:
+<br/><br/>Vorher untersuche ich mehr, um sicherzugehen, haben Sie mit den letzten Änderungen an UOS-Code versucht?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=578" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a578',578)">Threaded</a>
+	<div id="tooltip64400" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip64400'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown578"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown578", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor578', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D578\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost578', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D578\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost578', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D578\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost578', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(578)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively578', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(578)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate578', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D578\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print578', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D578\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink578', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p578.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail578', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D578\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown578');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=578&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow578" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543829717374-277"></span><script type="text/javascript">
+		Nabble.get('d1543829717374-277').innerHTML= Nabble.formatDateLong(new Date(1543829717374));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1543837025007-925"></span><script type="text/javascript">
+		Nabble.get('d1543837025007-925').innerHTML= Nabble.formatDateLong(new Date(1543837025007));
+	</script>.
+			</div>
+	
+	<div id="message578" class="message-text adbayes-content">
+		&gt; Ps. The &quot;reCaptcha&quot; doesn't work properly, even if you select everything right, you often can't get any further. 
+<br/>&gt; The thing doesn't seem to understand what traffic light, bus, car, or zebra crossing means. Can you improve that somehow? 
+<br/><br/>Sorry, I do not understand. What is &quot;reCaptcha&quot; ? 
+<br/><br/>[EDIT] Are you talking about the &quot;robot tester&quot; of uos-forum?
+<br/>If yes, I have no power on this, it is a nabble.com feature.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=579" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a579',579)">Threaded</a>
+	<div id="tooltip79658" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip79658'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown579"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown579", "More","Click for more options");
+		
+		
+		dropdown.add('editPost579', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D579\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost579', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D579\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost579', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(579)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively579', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(579)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate579', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D579\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print579', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D579\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink579', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p579.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail579', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D579\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown579');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=579&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow579" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543885564778-1"></span><script type="text/javascript">
+		Nabble.get('d1543885564778-1').innerHTML= Nabble.formatDateLong(new Date(1543885564778));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message579" class="message-text adbayes-content">
+		Yeah, &quot;reCaptcha&quot; is the robot check, that's what I meant.
+<br/>Ok, if you can't do anything about it, no problem.
+<br/><br/>So I tried a lot of things around now,
+<br/>and it's still not really going any better with the new commit.
+<br/>But, I managed not to play everything at the end of the program!
+<br/><br/>I have to say, that I had done it in my own &quot;LoadASound&quot; function, that all Event & Atmosphere sounds were started in &quot;LoadAllSounds&quot;, once with &quot;uos_PlayNoFree&quot; (volume 0%) and stopped directly with &quot;uos_Stop&quot; (then again to volume 100%), so that they are already in RAM when starting the program.
+<br/>Then an atmosphere sound was created with &quot;uos_PlayNoFree&quot; using the
+<br/>(-1=Endless Loop Parameter), played to repeat.
+<br/>And if necessary, rain sounds are also played in the same way.
+<br/><br/>As one of the tests, I took out the loading of all sounds into memory by an initial &quot;uos_PlayNoFree & uos_Stop&quot;, and set the loop parameter of the atmosphere sound to play all at once.
+<br/>And then the error almost didn't occur anymore.
+<br/>But if it did, then only the step (go) sound (0.190 seconds/wave) became,
+<br/>played at the end.
+<br/><br/>Very strange. I may be wrong, but if I understand it correctly, the error could be in connection with the loop parameter &quot;-1&quot; (atmosphere 4 minutes wave file) of &quot;uos_PlayNoFree&quot; and the 0.190 seconds long &quot;step&quot; sound.
+<br/>Even with the new UOS (Commit) not everything could be solved.
+<br/>I found out that the problems are strongest at the beginning,
+<br/>if very shortly after the program & UOS start, several or even only one sound is played with &quot;uos_PlayNoFree&quot;.
+<br/><br/>I know this seems crazy, but I just don't know what else to do to narrow down the error.
+<br/>The short play is, always under one second at the end of the program, i.e. when unloading UOS with &quot;uos_Free&quot;.
+<br/><br/>Short sound structure info about my game:
+<br/><br/>Surface:
+<br/>-&gt; Event Sounds (Wave Files - &quot;uos_PlayNoFree&quot;).
+<br/>&nbsp; &nbsp; -&gt; Action Sounds over days (as short as possible).
+<br/>-&gt; Atmospheric noises (Wave Files - &quot;uos_PlayNoFree&quot;).
+<br/>&nbsp; &nbsp; -&gt; Wind (Endless).
+<br/>&nbsp; &nbsp; -&gt; Rain (Sometimes).
+<br/><br/>Mine:
+<br/>-&gt; Event Sounds (Wave Files - &quot;uos_PlayNoFree&quot;).
+<br/>&nbsp; &nbsp; -&gt; Action sounds underground (as short as possible).
+<br/>-&gt; Atmospheric noises (Wave Files - &quot;uos_PlayNoFree&quot;).
+<br/>&nbsp; &nbsp; -&gt; mine caves noises.
+<br/><br/>&nbsp;In general:
+<br/>-&gt; music (playlist) (&quot;uos_Play&quot; - with &quot;EndProc&quot; function call)
+<br/>(Only Ogg files Music files with a length up to 3-4 minutes)
+<br/><br/>The ID numbers of the players (sounds) of the UOS are managed in three integer arrays (event, atmosphere & music).
+<br/><br/>It can't be ruled out that the error might be in my program, but it seems to work out of my reach so far.
+<br/>You don't have to do all the work to keep looking for the problem, of course I have full understanding!
+<br/>But if they do, then perhaps it could be valuable for others who use UOS,
+<br/>if the bug is actually in UOS and not in my game, which is not sure.
+<br/><br/>In any case, many thanks for the very frequent and extensive help so far. 
+<br/><br/>For permanent health reasons I can unfortunately not be constantly occupied with the project, always only when it is possible.
+<br/>This can mean that I cannot always react promptly to new suggestions.
+<br/>And so far other users seem strangely not to have this problem with UOS.
+<br/><br/>I would still have a theoretical question, but this is not important!
+<br/>Would it be conceivable or even sensible to develop UOS in this way?
+<br/>1. that all sounds are loaded at the beginning of the program.
+<br/>2. that, if necessary, the sounds will be played.
+<br/>3. and that at the end of the program the sounds are unloaded again.
+<br/>So a different structure.
+<br/><br/>Just a simple example:
+<br/><br/>// Program : Start
+<br/>tEventSound1 := uos_LoadSound('EventSound.wav');
+<br/>tEventSound2 := uos_LoadSound('EventSound.wav');
+<br/>tMusic := uos_LoadSound('Music.ogg');'
+<br/><br/>// Program : Application
+<br/>uos_PlaySound(tMusic, -1) // Endless loop (until program end)
+<br/><br/>for tCnt := 0 to 12 do
+<br/>beginning
+<br/>&nbsp; &nbsp; uos_PlaySound(tEventSound1, 1);
+<br/>&nbsp; &nbsp; Sleep(uos_GetLength(tEventSound1));
+<br/>end;
+<br/><br/>for tCnt := 0 to 12 do
+<br/>beginning
+<br/>&nbsp; &nbsp; uos_PlaySound(tEventSound2, 1);
+<br/>&nbsp; &nbsp; Sleep(uos_GetLength(tEventSound2));
+<br/>end;
+<br/><br/>// Program : End
+<br/>uos_Free();
+<br/><br/>Ps. Thank you for pre-translating with Google Translate in German.
+<br/>But I use among other things the Chromium Browser, you can set it to automatically translate every possible language into German without any addons, in the language settings.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=580" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a580',580)">Threaded</a>
+	<div id="tooltip64356" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip64356'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown580"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown580", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor580', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D580\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost580', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D580\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost580', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D580\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost580', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(580)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively580', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(580)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate580', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D580\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print580', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D580\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink580', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p580.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail580', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D580\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown580');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=580&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow580" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543923112872-206"></span><script type="text/javascript">
+		Nabble.get('d1543923112872-206').innerHTML= Nabble.formatDateLong(new Date(1543923112872));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message580" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; 1. that all sounds are loaded at the beginning of the program. 
+<br/><br/>Why dont you use uos_AddFromMemoryStream()?
+<br/>Take a look at consoleplaymemorystream demo.
+<br/><br/>&gt; 2. that, if necessary, the sounds will be played. 
+<br/><br/>With uos_playnofree() it should work.
+<br/><br/>&gt; 3. and that at the end of the program the sounds are unloaded again. 
+<br/><br/>You may use uos_playpaused + uos_stop for this.
+<br/><br/>All what you explained, IMHO, can be done by uos.
+<br/><br/>It is sad that I do not have more of your code to understand why it does not work with your code.
+<br/><br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=581" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a581',581)">Threaded</a>
+	<div id="tooltip96581" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip96581'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown581"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown581", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor581', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D581\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost581', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D581\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost581', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D581\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost581', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(581)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively581', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(581)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate581', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D581\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print581', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D581\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink581', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p581.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail581', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D581\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown581');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=581&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow581" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1543924310202-716"></span><script type="text/javascript">
+		Nabble.get('d1543924310202-716').innerHTML= Nabble.formatDateLong(new Date(1543924310202));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message581" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>Did you try with mp3 files?
+<br/>It seems that you use .ogg and .wav files.
+<br/><br/>Normally mp3 and ogg files should give same result but maybe it is a problem of libsoundfile (ogg and wav use libsndfile, mp3 use libmpg123).
+<br/><br/>Of course if you could give code that reproduce your problem i would be **much** easier to fix it.
+<br/><br/>Other thing, what OS are you using?
+<br/>It seems that you are using Linux.
+<br/>But what Linux, 32 or 64 bit?
+<br/>Did you try to compile your prog for Windows?
+<br/>If yes, do you have still the problem with Windows?
+<br/><br/>[EDIT] Do you have plan to give your program on GitHUB (and so much easier to debug) ?
+<br/><br/>Fre;D 
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer">Little_Game_Developer</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=582" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a582',582)">Threaded</a>
+	<div id="tooltip13388" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip13388'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown582"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown582", "More","Click for more options");
+		
+		
+		dropdown.add('editPost582', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D582\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost582', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D582\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost582', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(582)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively582', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(582)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate582', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D582\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print582', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D582\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink582', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p582.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail582', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D582\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown582');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=582&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow582" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1544153275494-939"></span><script type="text/javascript">
+		Nabble.get('d1544153275494-939').innerHTML= Nabble.formatDateLong(new Date(1544153275494));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=a15241%7ELittle_Game_Developer" rel="nofollow" title="View profile of Little_Game_Developer" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/images/avatar100.png" height="100" width="100" alt="Little_Game_Developer" title="Little_Game_Developer"/><img src="/images/online.png" class="onlinea15241 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-counta15241_Little_Game_Developer avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message582" class="message-text adbayes-content">
+		Hello again. Unfortunately I don't have much time at the moment!
+<br/><br/>INFO:
+<br/>Operating system:
+<br/>2x Linux Ubuntu 18.04 (64Bit) Mate and Debian Testing (64Bit) Mate, so GTK Gnome Direction/Category.
+<br/>(No Windows &quot;to test projects&quot;, no Mac OS, and no FreeBSD yet, maybe later).
+<br/>The PCs are about 11-12 years old computers, one with Intel Duo Core (8 GB Ram) and one with AMD (4 GB Ram). 
+<br/><br/>With Wine I tried it a long time ago, without this project, to test it in a clean project only for UOS, under Linux, that led unfortunately to memory errors (Leaks). Do you have to use backslashes for &quot;Wine&quot; filenames or is it possible like with Linux with slashes, I'm not sure?
+<br/><br/>IMPORTANT!
+<br/>I'm not using a GitHub, and the project is a family internal project, so guaranteed not intended for publishing, really! 
+<br/>But everything about UOS I showed in the post the other day.
+<br/>(Info: The project uses except UOS only the normal scope of delivery of Lazarus for Linux Ubuntu)
+<br/>To test everything in MP3, unfortunately I don't have time for that at the moment, and it wouldn't be so good for the project, because I want to do without codecs for MP3. Therefore I only use PortAudio & LibSndFile from UOS,
+<br/>because they only know wave and OGG.
+<br/><br/>INTEREST:
+<br/>Now I've found out something!
+<br/>If you want to play an Atmosphere track, I use &quot;uos_PlayNoFree&quot; with parameter Loop=-1 (Wave, 39 seconds - a rain sound).
+<br/>And so far I've used &quot;uos_Stop&quot; to stop it. 
+<br/>Now I thought that uos_Stop might not be suitable for &quot;uos_PlayNoFree&quot; before you're done with the whole program. So I built in &quot;uos_Pause&quot;, and with &quot;uos_RePlay&quot; I tried to make the (Rain) Atmosphere piece work again, and it can't be started under any circumstances.
+<br/><br/>1ST EXAMPLE:
+<br/>&quot;uos_PlayNoFree(&lt;RainSoundWaveID&gt;, -1)&quot; = Starts the track endlessly.
+<br/>&quot;uos_Pause(&lt;RainSoundWaveID&gt;) = Pauses the track.
+<br/>&quot;uos_RePlay(&lt;RainSoundWaveID&gt;) = Should let the track continue, but not!
+<br/><br/>QUESTION?
+<br/>Can &quot;uos_Stop&quot; be used without hesitation on a &quot;uos_PlayNoFree&quot; track in an endless loop? And can then, again with &quot;uos_PlayNoFree&quot;, the track be restarted, so that the duration loop (-1) remains, without memory error or other errors?
+<br/><br/>2ND EXAMPLE:
+<br/>&quot;uos_PlayNoFree(&lt;RainSoundWaveID&gt;, -1)&quot; = Starts the track endlessly.
+<br/>&quot;uos_Stop(&lt;RainSoundWaveID&gt;) = Stops the track.
+<br/>&quot;uos_PlayNoFree(&lt;RainSoundWaveID&gt;, -1) = Starts the track from the beginning, with endless loop.
+<br/><br/>Or does this lead to memory errors? I always had the second EXAMPLE before, until now. The first EXAMPLE, however, would also be a conceivable variant if it would work, which unfortunately it doesn't, why?
+<br/><br/>I now think that the problem is in the Atmosphere Loop area, so a &quot;uos_PlayNoFree&quot; with parameter Loop=-1 is a &quot;uos_PlayNoFree&quot; that will cause the rest to go into problems, maybe because of the &quot;uos_Stop&quot; and then calling &quot;uos_PlayNoFree&quot; again (Loop=-1 endless).
+<br/><br/>Thanks again for the tip with &quot;uos_AddFromMemoryStream&quot;, I think I'll try to implement it soon when there's more time.
+<br/><br/>As I said, I don't have much time, but I would be happy if you could answer the questions on occasion.
+<br/><br/>Thanks a lot!
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="/template/NamlServlet.jtp?macro=reply&amp;node=583" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tt568.html#a583',583)">Threaded</a>
+	<div id="tooltip46679" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip46679'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown583"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown583", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor583', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D583\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost583', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D583\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost583', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D583\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost583', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(583)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively583', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(583)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate583', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D583\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print583', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D583\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink583', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/When-UOS-quits-it-plays-the-loaded-sound-files-all-over-again-why-tp568p583.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail583', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D583\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown583');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=583&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow583" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="/images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1544178475004-352"></span><script type="text/javascript">
+		Nabble.get('d1544178475004-352').innerHTML= Nabble.formatDateLong(new Date(1544178475004));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: When UOS quits, it plays the loaded sound files all over again, why?
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="/file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="/images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message583" class="message-text adbayes-content">
+		&gt; Unfortunately I don't have much time at the moment! 
+<br/><br/>Same for me!
+<br/><br/>Sorry but I cannot help you more.
+<br/>The only way would be that you give a simple example how to reproduce your problems.
+<br/><br/>Sorry but my crystal ball is not working good those last time.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="/">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v568" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="/template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=568&incViewCount=568&newsflash=&visitorOnline=&avatarOnline=a15241|1&postCount=a15241%257ELittle_Game_Developer|1&markVisited=583&views=568';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

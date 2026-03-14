@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<title>uos Forum</title>
+			<style type="text/css">
+	table.main {
+		width:100%;
+		border-width: 1px;
+		border-style: solid;
+		border-collapse:collapse;
+	}
+	table.main td {
+		padding:.1em;
+		height:2.2em;
+	}
+	tr.header-row td {
+		font-weight:bold;
+		padding: .1em .2em;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+	}
+	@media (max-width: 600px) {
+		table.main td{padding-left:0 !important;font-size:95%}
+		tr.header-row td{font-size:80%}
+		td.column{white-space:normal !important}
+		span.column.nowrap{white-space:normal}
+		span.pages{margin: 2em 0}
+		span.pages a{padding:.2em .6em}
+		img.avatar{display:none}
+		img.online{opacity:0}
+	}
+	</style>
+			<META NAME="description" CONTENT="uos Forum.  https://github.com/fredvs/uos/ United Open-libraries of Sound "/>
+			<META NAME="keywords" CONTENT="uos, forum, https, github, com, fredvs, united, open-libraries, sound, board, community"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				
+			});
+		</script><style type="text/css">
+			div.action-link {
+				float:left;
+				white-space:nowrap;
+				margin:.7em .3em;
+			}
+		</style><style type="text/css">
+					span.current-page { padding: .1em .4em; }
+					span.page { padding: .1em; }
+					span.pages a { padding: .1em .4em; }
+					span.current-page { border-width:1px; border-style:solid; }
+					span.pages {
+						float:right;
+						white-space:nowrap;
+						font-weight:normal;
+					}
+				</style><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_view_standard" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			if (Nabble.appnotice) {
+				$('#creation-ad').slideDown();
+				Nabble.setVar('appnotice',null);
+			}
+		});
+	</script>
+
+	
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="admin-notice" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="forum-header">
+			<h1 id="forum-title" class="app-title-1 adbayes-content">uos Forum</h1>
+			<div id="description-box" class="adbayes-content">
+				<img src="http://uos-forum.108.s1.nabble.com/file/n1/uos2.png" border="0"/><br/><br/><a href="https://github.com/fredvs/uos/" target="_top" rel="nofollow" link="external">https://github.com/fredvs/uos/</a><br/><br/><b>United Open-libraries of Sound</b><br/>
+
+	
+	
+			</div>
+			<div id="search-box" class="search-box">
+				<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="1" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=1" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+			</div>
+		</div>
+			<div class="action-link">
+		<img src="images/icon_post_message.png" class="image16" />
+		<a href="template/NamlServlet.jtp?macro=new_topic&amp;node=1" title="Post new message in uos Forum" rel="nofollow">New Topic</a>
+	</div>
+			
+			<div class="action-link" style="margin-left:.6em">
+				<img src="images/people_sm.png" class="image16"/>
+				<a href="template/NamlServlet.jtp?macro=app_people&amp;node=1" rel="nofollow">People</a>
+			</div>
+			<div class="action-link" style="margin-left:.6em">
+		<img src="images/gear.png" class="image16"/>
+		<span id="dd_appdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("appdropdown", "Options","Click for more options");
+		
+		dropdown.add('subscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D1\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+
+		dropdown.addSeparator();
+
+		dropdown.startGroup('Application');
+	dropdown.add('editNameDescription', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EEdit name & description\x3C/a\x3E', 'display:none');
+			dropdown.add('changeType', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_app_type&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange application type\x3C/a\x3E', 'display:none');
+			dropdown.add('changeAppearance', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_appearance\" rel\x3D\"nofollow\"\x3EChange appearance\x3C/a\x3E', 'display:none');
+			dropdown.add('changeDomainName', '\x3Ca href\x3D\"/forum/ChangeDomainName.jtp?site\x3D108\" rel\x3D\"nofollow\"\x3EChange domain name\x3C/a\x3E', 'display:none');
+			dropdown.add('changeLanguage', '\x3Ca href\x3D\"/app/Languages.jtp\" rel\x3D\"nofollow\"\x3EChange language\x3C/a\x3E', 'display:none');
+			dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+			dropdown.add('addons', '\x3Ca href\x3D\"/app/Addons.jtp\" rel\x3D\"nofollow\"\x3EExtras & add-ons\x3C/a\x3E', 'display:none');
+			dropdown.add('useGoogleAnalytics', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Duse_google_analytics\" rel\x3D\"nofollow\"\x3EUse Google Analytics\x3C/a\x3E', 'display:none');
+	dropdown.endGroup();
+
+		dropdown.startGroup('Structure');
+	dropdown.add('createChildForum', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dcreate_sub_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3ECreate new sub-forum\x3C/a\x3E', 'display:none');
+			dropdown.add('managePinnedTopics', '\x3Ca href\x3D\"/catalog/ChangePinOrder.jtp?forum\x3D1&amp;what\x3Dthreads\" rel\x3D\"nofollow\"\x3EManage pinned topics\x3C/a\x3E', 'display:none');
+			dropdown.add('manageSubApps', '\x3Ca href\x3D\"/catalog/ChangePinOrder.jtp?forum\x3D1&amp;what\x3Dforums\" rel\x3D\"nofollow\"\x3EManage sub-forums\x3C/a\x3E', 'display:none');
+			dropdown.add('parentOptions', '\x3Ca href\x3D\"/catalog/ChangeParent.jtp?forum\x3D1\" rel\x3D\"nofollow\"\x3EChange parent\x3C/a\x3E', 'display:none');
+	dropdown.endGroup();
+
+		dropdown.startGroup('Users');
+	dropdown.add('changePermissions', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_permissions&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange permissions\x3C/a\x3E', 'display:none');
+			dropdown.add('manageGroups', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_users_and_groups\" rel\x3D\"nofollow\"\x3EManage users & groups\x3C/a\x3E', 'display:none');
+			dropdown.add('manageSubscribers', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_subscribers&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EManage subscribers\x3C/a\x3E', 'display:none');
+			dropdown.add('manageBannedUsers', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_banned_users\" rel\x3D\"nofollow\"\x3EManage banned users\x3C/a\x3E', 'display:none');
+	dropdown.endGroup();
+
+		dropdown.addSeparator();
+
+		dropdown.add('embeddingOptions', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D1\" rel\x3D\"nofollow\"\x3EEmbedding options\x3C/a\x3E', 'display:none');
+		dropdown.add('downloadBackup', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Ddownload_backup_page\" rel\x3D\"nofollow\"\x3EDownload backup\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteApp', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Ddelete_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EDelete\x3C/a\x3E', 'display:none');
+
+		
+
+		dropdown.add('openShell', null, 'display:none');
+		dropdown.build('dd_appdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=app_dropdown_later&node=1&_=' + Math.floor(Math.random()*999999));
+	</script>
+	</div>
+
+			<span class="pages" style="padding:.8em .3em .5em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="uos-Forum-f1i35.html" title="Page 2">2</a></span><span class="page"><a href="uos-Forum-f1i70.html" title="Page 3">3</a></span><span class="page"><a href="uos-Forum-f1i105.html" title="Page 4">4</a></span></span>
+			<div style="clear:both"></div>
+	<table class="main medium-border-color">
+		<tr class="header-row shaded-bg-color">
+				<td class="medium-border-color pin-column nowrap" style="width:24px"></td>
+	<td class="medium-border-color topics-column nowrap" style="">
+				<table class="avatar-table">
+					<tr>
+						<td class="nowrap" style="font-weight:bold;border:none">
+							Topics
+							<span class="weak-color" style="font-size:80%;margin-right:1.7em">(116)</span>
+						</td>
+					</tr>
+				</table>
+			</td>
+	<td class="medium-border-color replies-column nowrap" align="center" style="">
+				Replies
+			</td>
+	<td class="medium-border-color nowrap last-post-column" style="">
+				Last Post
+			</td>
+	<td class="medium-border-color views-column nowrap" align="center">
+				Views
+			</td>
+			</tr>
+		<tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Possible-bug-on-AddIntoMemoryStream-tp1482.html" class=" post-link1482" node-id="1482">Possible bug on AddIntoMemoryStream</a>
+			
+										<span class="weak-color">
+											by rnd_j
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">2</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Possible-bug-on-AddIntoMemoryStream-tp1482p1485.html" class=" post-link1482" node-id="1485"><span id="d1759580359292-7"></span><script type="text/javascript">
+		Nabble.get('d1759580359292-7').innerHTML= Nabble.formatDateShort(new Date(1759580359292));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by rnd_j
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1482" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Playing-only-the-beginning-of-a-recording-tp1476.html" class=" post-link1476" node-id="1476">Playing only the beginning of a recording</a>
+			
+										<span class="weak-color">
+											by Sc0li0sis
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">5</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Playing-only-the-beginning-of-a-recording-tp1476p1481.html" class=" post-link1476" node-id="1481"><span id="d1759175059949-137"></span><script type="text/javascript">
+		Nabble.get('d1759175059949-137').innerHTML= Nabble.formatDateShort(new Date(1759175059949));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1476" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Raspberry-pi3-error-tp1432.html" class=" post-link1432" node-id="1432">Raspberry pi3 error</a>
+			
+										<span class="weak-color">
+											by vtrx2
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">14</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Raspberry-pi3-error-tp1432p1446.html" class=" post-link1432" node-id="1446"><span id="d1750261135779-407"></span><script type="text/javascript">
+		Nabble.get('d1750261135779-407').innerHTML= Nabble.formatDateShort(new Date(1750261135779));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1432" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Encoder-simple-demo-tp1418.html" class=" post-link1418" node-id="1418">Encoder simple demo</a>
+			
+										<span class="weak-color">
+											by trustfm
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">7</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Encoder-simple-demo-tp1418p1428.html" class=" post-link1418" node-id="1428"><span id="d1746285517875-324"></span><script type="text/javascript">
+		Nabble.get('d1746285517875-324').innerHTML= Nabble.formatDateShort(new Date(1746285517875));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1418" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="AddFromURL-does-not-support-ogg-streams-tp1292.html" class=" post-link1292" node-id="1292">AddFromURL does not support ogg streams</a>
+			
+										<span class="weak-color">
+											by trustfm
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">85</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="AddFromURL-does-not-support-ogg-streams-tp1292p1417.html" class=" post-link1292" node-id="1417"><span id="d1745682441693-203"></span><script type="text/javascript">
+		Nabble.get('d1745682441693-203').innerHTML= Nabble.formatDateShort(new Date(1745682441693));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by trustfm
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1292" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="New-Simple-recorder-with-MP3-recording-support-tp1394.html" class=" post-link1394" node-id="1394">New Simple recorder with MP3 recording support</a>
+			
+										<span class="weak-color">
+											by trustfm
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">3</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="New-Simple-recorder-with-MP3-recording-support-tp1394p1397.html" class=" post-link1394" node-id="1397"><span id="d1744903406011-237"></span><script type="text/javascript">
+		Nabble.get('d1744903406011-237').innerHTML= Nabble.formatDateShort(new Date(1744903406011));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1394" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357.html" class=" post-link1357" node-id="1357">How get info about device input MIC (Raspberry/debian11/lazarus)</a>
+			
+										<span class="weak-color">
+											by lucarnet
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">2</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="How-get-info-about-device-input-MIC-Raspberry-debian11-lazarus-tp1357p1359.html" class=" post-link1357" node-id="1359"><span id="d1742559968609-226"></span><script type="text/javascript">
+		Nabble.get('d1742559968609-226').innerHTML= Nabble.formatDateShort(new Date(1742559968609));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1357" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327.html" class=" post-link1327" node-id="1327">Probleme cast  array FBufRcFromUos:TDArFloat dans loopprocPlayer</a>
+			
+										<span class="weak-color">
+											by lucarnet
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">8</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Probleme-cast-array-FBufRcFromUos-TDArFloat-dans-loopprocPlayer-tp1327p1356.html" class=" post-link1327" node-id="1356"><span id="d1742495683266-579"></span><script type="text/javascript">
+		Nabble.get('d1742495683266-579').innerHTML= Nabble.formatDateShort(new Date(1742495683266));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1327" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="using-2-microphones-tp1048.html" class=" post-link1048" node-id="1048">using 2 microphones</a>
+			
+										<span class="weak-color">
+											by edf
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">22</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="using-2-microphones-tp1048p1353.html" class=" post-link1048" node-id="1353"><span id="d1742489200552-566"></span><script type="text/javascript">
+		Nabble.get('d1742489200552-566').innerHTML= Nabble.formatDateShort(new Date(1742489200552));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by trustfm
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1048" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Questions-about-internet-radio-streaming-tp176.html" class=" post-link176" node-id="176">Questions about internet radio streaming</a>
+			
+										<span class="weak-color">
+											by Dibo
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">41</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Questions-about-internet-radio-streaming-tp176p1288.html" class=" post-link176" node-id="1288"><span id="d1740103250996-931"></span><script type="text/javascript">
+		Nabble.get('d1740103250996-931').innerHTML= Nabble.formatDateShort(new Date(1740103250996));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v176" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Installing-IceCast-audio-web-server-tp184.html" class=" post-link184" node-id="184">Installing IceCast audio web server.</a>
+			
+										<span class="weak-color">
+											by fredvs
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">19</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Installing-IceCast-audio-web-server-tp184p1283.html" class=" post-link184" node-id="1283"><span id="d1738488577833-808"></span><script type="text/javascript">
+		Nabble.get('d1738488577833-808').innerHTML= Nabble.formatDateShort(new Date(1738488577833));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by trustfm
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v184" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Echo-effect-tp1246.html" class=" post-link1246" node-id="1246">Echo effect</a>
+			
+										<span class="weak-color">
+											by NeedUOS
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">1</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Echo-effect-tp1246p1247.html" class=" post-link1246" node-id="1247"><span id="d1728765803556-261"></span><script type="text/javascript">
+		Nabble.get('d1728765803556-261').innerHTML= Nabble.formatDateShort(new Date(1728765803556));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1246" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Windows-11-simplerecorder-error-tp1166.html" class=" post-link1166" node-id="1166">Windows 11: simplerecorder error</a>
+			
+										<span class="weak-color">
+											by NeedUOS
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">78</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Windows-11-simplerecorder-error-tp1166p1245.html" class=" post-link1166" node-id="1245"><span id="d1728763938029-701"></span><script type="text/javascript">
+		Nabble.get('d1728763938029-701').innerHTML= Nabble.formatDateShort(new Date(1728763938029));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by NeedUOS
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1166" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Display-the-memory-buffer-in-a-chart-oscilloscope-tp1003.html" class=" post-link1003" node-id="1003">Display the memory buffer in a chart (oscilloscope)</a>
+			
+										<span class="weak-color">
+											by Loic
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">3</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Display-the-memory-buffer-in-a-chart-oscilloscope-tp1003p1145.html" class=" post-link1003" node-id="1145"><span id="d1717951624432-957"></span><script type="text/javascript">
+		Nabble.get('d1717951624432-957').innerHTML= Nabble.formatDateShort(new Date(1717951624432));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1003" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="How-to-obtain-exclusive-access-to-a-microphone-tp1139.html" class=" post-link1139" node-id="1139">How to obtain exclusive access to a microphone?</a>
+			
+										<span class="weak-color">
+											by volenrog
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">4</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="How-to-obtain-exclusive-access-to-a-microphone-tp1139p1143.html" class=" post-link1139" node-id="1143"><span id="d1714063298952-701"></span><script type="text/javascript">
+		Nabble.get('d1714063298952-701').innerHTML= Nabble.formatDateShort(new Date(1714063298952));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by volenrog
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1139" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Demos-Simple-recorder-not-work-in-Windows-7-tp1122.html" class=" post-link1122" node-id="1122">Demos &quot;Simple recorder&quot; not work in Windows 7</a>
+			
+										<span class="weak-color">
+											by volenrog
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">16</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Demos-Simple-recorder-not-work-in-Windows-7-tp1122p1138.html" class=" post-link1122" node-id="1138"><span id="d1714021935632-938"></span><script type="text/javascript">
+		Nabble.get('d1714021935632-938').innerHTML= Nabble.formatDateShort(new Date(1714021935632));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by volenrog
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1122" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Run-Example-files-tp1112.html" class=" post-link1112" node-id="1112">Run Example files</a>
+			
+										<span class="weak-color">
+											by CatMasterDad
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">8</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Run-Example-files-tp1112p1121.html" class=" post-link1112" node-id="1121"><span id="d1713663323437-495"></span><script type="text/javascript">
+		Nabble.get('d1713663323437-495').innerHTML= Nabble.formatDateShort(new Date(1713663323437));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by CatMasterDad
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1112" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="local-build-of-binaries-tp979.html" class=" post-link979" node-id="979">local build of binaries</a>
+			
+										<span class="weak-color">
+											by myos
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">2</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="local-build-of-binaries-tp979p1114.html" class=" post-link979" node-id="1114"><span id="d1713656375557-222"></span><script type="text/javascript">
+		Nabble.get('d1713656375557-222').innerHTML= Nabble.formatDateShort(new Date(1713656375557));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by CatMasterDad
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v979" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="A-few-simple-questions-tp1105.html" class=" post-link1105" node-id="1105">A few simple questions</a>
+			
+										<span class="weak-color">
+											by jon bondy
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">6</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="A-few-simple-questions-tp1105p1111.html" class=" post-link1105" node-id="1111"><span id="d1711656137672-708"></span><script type="text/javascript">
+		Nabble.get('d1711656137672-708').innerHTML= Nabble.formatDateShort(new Date(1711656137672));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1105" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Problem-with-signal-generation-by-two-players-tp1070.html" class=" post-link1070" node-id="1070">Problem with signal generation by two players</a>
+			
+										<span class="weak-color">
+											by Andrey
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">11</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Problem-with-signal-generation-by-two-players-tp1070p1104.html" class=" post-link1070" node-id="1104"><span id="d1706511873047-233"></span><script type="text/javascript">
+		Nabble.get('d1706511873047-233').innerHTML= Nabble.formatDateShort(new Date(1706511873047));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by Andrey
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1070" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Problem-initializing-the-uos-library-in-the-service-tp1059.html" class=" post-link1059" node-id="1059">Problem initializing the uos library in the service</a>
+			
+										<span class="weak-color">
+											by Andrey
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">31</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Problem-initializing-the-uos-library-in-the-service-tp1059p1103.html" class=" post-link1059" node-id="1103"><span id="d1706284907591-85"></span><script type="text/javascript">
+		Nabble.get('d1706284907591-85').innerHTML= Nabble.formatDateShort(new Date(1706284907591));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1059" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="The-LoopProc-does-not-work-in-the-console-program-tp1040.html" class=" post-link1040" node-id="1040">The LoopProc does not work in the console program</a>
+			
+										<span class="weak-color">
+											by Andrey
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">7</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="The-LoopProc-does-not-work-in-the-console-program-tp1040p1062.html" class=" post-link1040" node-id="1062"><span id="d1703524248691-422"></span><script type="text/javascript">
+		Nabble.get('d1703524248691-422').innerHTML= Nabble.formatDateShort(new Date(1703524248691));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1040" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Audio-File-Tags-tp909.html" class=" post-link909" node-id="909">Audio File Tags</a>
+			
+										<span class="weak-color">
+											by JoeJoeTV
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">23</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Audio-File-Tags-tp909p1047.html" class=" post-link909" node-id="1047"><span id="d1696778293869-80"></span><script type="text/javascript">
+		Nabble.get('d1696778293869-80').innerHTML= Nabble.formatDateShort(new Date(1696778293869));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v909" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="i-compile-simplayer-to-win-app-and-linux-app-and-linux-app-only-play-60s-then-stop-tp1028.html" class=" post-link1028" node-id="1028">i compile simplayer to win app and linux app, and linux app only play 60s then stop?</a>
+			
+										<span class="weak-color">
+											by hao
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">1</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="i-compile-simplayer-to-win-app-and-linux-app-and-linux-app-only-play-60s-then-stop-tp1028p1029.html" class=" post-link1028" node-id="1029"><span id="d1686798334662-741"></span><script type="text/javascript">
+		Nabble.get('d1686798334662-741').innerHTML= Nabble.formatDateShort(new Date(1686798334662));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1028" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="uos-show-spectrum-FFT-tp324.html" class=" post-link324" node-id="324">uos show spectrum / FFT</a>
+			
+										<span class="weak-color">
+											by jur
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">7</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="uos-show-spectrum-FFT-tp324p1027.html" class=" post-link324" node-id="1027"><span id="d1686136573284-314"></span><script type="text/javascript">
+		Nabble.get('d1686136573284-314').innerHTML= Nabble.formatDateShort(new Date(1686136573284));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by aolopatin
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v324" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="synth-how-to-generate-more-than-2-tones-simultaneously-tp1006.html" class=" post-link1006" node-id="1006">synth:  how to generate more than 2 tones simultaneously</a>
+			
+										<span class="weak-color">
+											by Brian Berge
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">9</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="synth-how-to-generate-more-than-2-tones-simultaneously-tp1006p1015.html" class=" post-link1006" node-id="1015"><span id="d1681351997136-541"></span><script type="text/javascript">
+		Nabble.get('d1681351997136-541').innerHTML= Nabble.formatDateShort(new Date(1681351997136));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v1006" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Updates-devices-in-uos-GetInfoDevice-tp984.html" class=" post-link984" node-id="984">Updates devices in uos_GetInfoDevice</a>
+			
+										<span class="weak-color">
+											by sudiv
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">16</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Updates-devices-in-uos-GetInfoDevice-tp984p1000.html" class=" post-link984" node-id="1000"><span id="d1668515883770-212"></span><script type="text/javascript">
+		Nabble.get('d1668515883770-212').innerHTML= Nabble.formatDateShort(new Date(1668515883770));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by sudiv
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v984" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="simplest-to-play-a-wav-file-a-la-sndplaysound-tp980.html" class=" post-link980" node-id="980">simplest to play a wav file  a la sndplaysound()  ?</a>
+			
+										<span class="weak-color">
+											by myos
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">2</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="simplest-to-play-a-wav-file-a-la-sndplaysound-tp980p983.html" class=" post-link980" node-id="983"><span id="d1665760347421-688"></span><script type="text/javascript">
+		Nabble.get('d1665760347421-688').innerHTML= Nabble.formatDateShort(new Date(1665760347421));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v980" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Detect-and-record-the-voice-onset-time-from-the-beginning-of-an-audio-recorded-file-tp971.html" class=" post-link971" node-id="971">Detect and record the voice onset time from the beginning of an audio recorded file</a>
+			
+										<span class="weak-color">
+											by gio
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">7</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Detect-and-record-the-voice-onset-time-from-the-beginning-of-an-audio-recorded-file-tp971p978.html" class=" post-link971" node-id="978"><span id="d1665384762780-441"></span><script type="text/javascript">
+		Nabble.get('d1665384762780-441').innerHTML= Nabble.formatDateShort(new Date(1665384762780));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by gio
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v971" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="consoleplay-example-doesn-t-work-on-Raspberry-Pi-tp938.html" class=" post-link938" node-id="938">consoleplay example doesn't work on Raspberry Pi</a>
+			
+										<span class="weak-color">
+											by Dim Tim
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">24</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="consoleplay-example-doesn-t-work-on-Raspberry-Pi-tp938p965.html" class=" post-link938" node-id="965"><span id="d1655250915742-643"></span><script type="text/javascript">
+		Nabble.get('d1655250915742-643').innerHTML= Nabble.formatDateShort(new Date(1655250915742));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v938" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Lazarus-UOS-and-Linux-22-04-Bluetooth-Issue-tp962.html" class=" post-link962" node-id="962">Lazarus UOS and Linux 22.04 Bluetooth Issue</a>
+			
+										<span class="weak-color">
+											by Gary Messick
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">1</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Lazarus-UOS-and-Linux-22-04-Bluetooth-Issue-tp962p963.html" class=" post-link962" node-id="963"><span id="d1654442987616-540"></span><script type="text/javascript">
+		Nabble.get('d1654442987616-540').innerHTML= Nabble.formatDateShort(new Date(1654442987616));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v962" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Queueing-tracks-on-the-fly-tp932.html" class=" post-link932" node-id="932">Queueing tracks on the fly</a>
+			
+										<span class="weak-color">
+											by Dim Tim
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">5</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Queueing-tracks-on-the-fly-tp932p937.html" class=" post-link932" node-id="937"><span id="d1650712960530-529"></span><script type="text/javascript">
+		Nabble.get('d1650712960530-529').innerHTML= Nabble.formatDateShort(new Date(1650712960530));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v932" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Last-release-of-libsndfile-has-mp3-decoder-now-tp931.html" class=" post-link931" node-id="931">Last release of libsndfile has mp3 decoder now!</a>
+			
+										<span class="weak-color">
+											by fredvs
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">0</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Last-release-of-libsndfile-has-mp3-decoder-now-tp931.html" class=" post-link931" node-id="931"><span id="d1648386236793-660"></span><script type="text/javascript">
+		Nabble.get('d1648386236793-660').innerHTML= Nabble.formatDateShort(new Date(1648386236793));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v931" style="display:none"></span>
+	
+	</td>
+				</tr>
+				<tr class="light-bg-color main-row">
+							<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="Playing-MIDI-format-files-tp907.html" class=" post-link907" node-id="907">Playing MIDI format files</a>
+			
+										<span class="weak-color">
+											by darekdarek
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">1</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="Playing-MIDI-format-files-tp907p908.html" class=" post-link907" node-id="908"><span id="d1643556075223-246"></span><script type="text/javascript">
+		Nabble.get('d1643556075223-246').innerHTML= Nabble.formatDateShort(new Date(1643556075223));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by fredvs
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v907" style="display:none"></span>
+	
+	</td>
+						</tr><tr class=" main-row">
+					<td class="medium-border-color pin-column" style="padding-left:.2em">
+					
+				</td>
+	<td class="medium-border-color">
+					<table>
+						<tr>
+							
+							<td class="adbayes-content" style="width:100%;padding-left:.3em;border:none;word-break:break-word">
+								<a href="How-to-modify-an-output-sample-rate-while-playing-tp903.html" class=" post-link903" node-id="903">How to modify an output sample rate while playing ?</a>
+			
+										<span class="weak-color">
+											by Lulu
+										</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+	<td class="medium-border-color" align="center">3</td>
+	<td class="medium-border-color weak-color">
+					<table class="avatar-table">
+									<tr>
+										
+										<td class="column" style="width:100%;padding:0;border:none;white-space:nowrap">
+											<a href="How-to-modify-an-output-sample-rate-while-playing-tp903p906.html" class=" post-link903" node-id="906"><span id="d1638990048017-115"></span><script type="text/javascript">
+		Nabble.get('d1638990048017-115').innerHTML= Nabble.formatDateShort(new Date(1638990048017));
+	</script></a>
+			
+											<span class="weak-color column nowrap" style="padding-left:.2em">
+												by Lulu
+											</span>
+										</td>
+									</tr>
+								</table>
+				</td>
+	<td class="weak-color medium-border-color" align="center"><span id="v903" style="display:none"></span>
+	
+	</td>
+				</tr>
+				
+		
+	</table>
+	<div style="clear:both"></div>
+			<span class="pages" style="padding:.8em .3em .5em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="uos-Forum-f1i35.html" title="Page 2">2</a></span><span class="page"><a href="uos-Forum-f1i70.html" title="Page 3">3</a></span><span class="page"><a href="uos-Forum-f1i105.html" title="Page 4">4</a></span></span>
+			<div id="forum-footer" class="forum-footer nowrap">
+			<img src="images/feeds.png" width="16" height="16" align="absmiddle" alt="feeds"/>
+			<a href="template/NamlServlet.jtp?macro=feeds&amp;node=1" rel="nofollow">Feeds</a>
+			<span class="weak-color" style="padding-left:.5em">|</span>
+			Created by <a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar light-border-color" src="file/a1/avatar24.png" height="24" width="24" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+	<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+			<span class="weak-color" style="padding-left:.5em">|</span>
+			<span id="v1" style="display:none">1 view|%1 views</span>
+	
+	
+		</div>
+			
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=view_standard%21nabble%3Aview_standard.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&incViewCount=1&newsflash=&adminNotice=&markUnreadTopics=1482|1476|1432|1418|1292|1394|1357|1327|1048|176|184|1246|1166|1003|1139|1122|1112|979|1105|1070|1059|1040|909|1028|324|1006|984|980|971|938|962|932|931|907|903&views=1482|1476|1432|1418|1292|1394|1357|1327|1048|176|184|1246|1166|1003|1139|1122|1112|979|1105|1070|1059|1040|909|1028|324|1006|984|980|971|938|962|932|931|907|903|1&visitorOnline=&avatarOnline=1';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>

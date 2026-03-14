@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
+	<link rel="stylesheet" href="template/NamlServlet.jtp?macro=site_style" type="text/css" />
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script src="assets/jquery/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822]; var allURLs = ["/Memory-is-not-cleared-td805.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '805'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Memory is not cleared</title>
+			<META NAME="description" CONTENT="Memory is not cleared. Hello freq. I once asked you how to implement reading the write buffer and then clearing it..."/>
+			<META NAME="keywords" CONTENT="memory, not, cleared, freq, once, asked, you, how, implement, reading, write, buffer, then, clearing, uos, forum"/>
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page" />
+		<input type="hidden" name="node" value="805" />
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color"/>
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br/>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="true"/>
+					<label for="search-root-node">everywhere</label><br/>
+
+					<input id="search-this-node" type="radio" name="n" value="805"/>
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search"/>
+			<a href="template/NamlServlet.jtp?macro=adv_search_page&amp;node=805" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Memory is not cleared
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">&lsaquo;</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Playing-mp3-file-to-multiple-devices-tp823.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Playing-the-stream-on-the-fly-tcp-udp-tp791.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">&rsaquo;</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tr>
+			<td style="padding-right:.1em">
+		<img src="images/view-classic.gif" width="18" height="18" style="border:none" alt="classic"/>
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Memory-is-not-cleared-tc805.html',null)"><img src="images/view-list.gif" width="18" height="18" style="border:none" alt="list"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Memory-is-not-cleared-tc805.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html',null)"><img src="images/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"/></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="images/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;"/>
+		<div id="tooltip77947" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip77947'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="images/lock_sm.png" width="10" height="15" style="vertical-align:middle"/> Locked
+	</span>
+	<span style="padding-right:1em">
+		18 messages
+	</span>
+	<img src="images/gear.png" class="image16" alt="Options"/>
+	<span id="dd_topicdropdown"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D805\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(805)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(805)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(805)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(805)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(805)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(805)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost805', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D805\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink805', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=805&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=805" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html',805)">Threaded</a>
+	<div id="tooltip59936" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip59936'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown805"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown805", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor805', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D805\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost805', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost805', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost805', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(805)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively805', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(805)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate805', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print805', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D805\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink805', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail805', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D805\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown805');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=805&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow805" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613371386156-206"></span><script type="text/javascript">
+		Nabble.get('d1613371386156-206').innerHTML= Nabble.formatDateLong(new Date(1613371386156));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1613383525235-581"></span><script type="text/javascript">
+		Nabble.get('d1613383525235-581').innerHTML= Nabble.formatDateLong(new Date(1613383525235));
+	</script>.
+			</div>
+	
+	<div id="message805" class="message-text adbayes-content">
+		Hello freq. I once asked you how to implement reading the write buffer and then clearing it (<a href="http://uos-forum.2369694.n4.nabble.com/How-to-record-from-a-microphone-without-output-to-the-speakers-tp739p744.html" target="_top" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/How-to-record-from-a-microphone-without-output-to-the-speakers-tp739p744.html</a>). You have advised a two-player algorithm with alternating start and stop. The algorithm works, but there is a memory problem. For some reason, memory began to grow, although I destroy and recreate the players.
+<br/><br/>Listing
+<br/><br/>//Create Player number &quot;aPlayer&quot;
+<br/>function StartMediaPlayer(aPlayer:integer;MemBuf:PDArFloat):boolean;
+<br/>var MediaInput:integer;
+<br/>&nbsp; &nbsp; s:string;
+<br/>begin
+<br/>&nbsp; result:=false;
+<br/>&nbsp; //Free buffer for Player &quot;aPlayer&quot;
+<br/>&nbsp; if aPlayer=MediaPlayer1
+<br/>&nbsp; then
+<br/>&nbsp; &nbsp; SetLength(MemBuf1, 0)
+<br/>&nbsp; else
+<br/>&nbsp; &nbsp; SetLength(MemBuf2, 0);
+<br/><br/>&nbsp; //Если плейер был остановлен, очищаем его
+<br/>&nbsp; if uos_GetStatus(aPlayer)=0
+<br/>&nbsp; then
+<br/>&nbsp; &nbsp; uos_FreePlayer(aPlayer);
+<br/>&nbsp; //
+<br/>&nbsp; if not uos_CreatePlayer(aPlayer) then exit;
+<br/>&nbsp; //
+<br/>&nbsp; uos_AddIntoMemoryBuffer(aPlayer,MemBuf);
+<br/>&nbsp; MediaInput:=uos_AddFromDevIn(aPlayer,-1, -1, 8192, 0, 0, 1024, 256);
+<br/>&nbsp; //
+<br/>&nbsp; if MediaInput&lt;0
+<br/>&nbsp; then
+<br/>&nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; uos_Stop(aPlayer);
+<br/>&nbsp; &nbsp; &nbsp; //uos_FreePlayer(aPlayer);
+<br/>&nbsp; &nbsp; &nbsp; exit;
+<br/>&nbsp; &nbsp; end;
+<br/>&nbsp; //
+<br/>&nbsp; uos_InputAddDSPVolume(aPlayer,MediaInput,1,1);
+<br/>&nbsp; uos_InputSetDSPVolume(aPlayer,MediaInput,1,1,true);
+<br/>&nbsp; //
+<br/>&nbsp; result:=true;
+<br/>end; 
+<br/><br/>procedure Execute;
+<br/>var cnt : Integer;
+<br/>&nbsp; &nbsp; i:Integer;
+<br/>&nbsp; &nbsp; PleerNum : Integer; &nbsp;//select Player
+<br/>begin
+<br/>&nbsp; //
+<br/>&nbsp; PleerNum:=2;
+<br/>&nbsp; SetLength(MemBuf2, 0); //Free Buf2
+<br/>&nbsp; //If start Player2
+<br/>&nbsp; if StartMediaPlayer(MediaPlayer2,@MemBuf2)
+<br/>&nbsp; then
+<br/>&nbsp; &nbsp; //play Player2
+<br/>&nbsp; &nbsp; uos_Play(MediaPlayer2)
+<br/>&nbsp; else
+<br/>&nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; //exit
+<br/>&nbsp; &nbsp; end;
+<br/>&nbsp; //
+<br/>&nbsp; while (not Terminated) do
+<br/>&nbsp; begin
+<br/><br/>&nbsp; &nbsp; if PleerNum=2 then
+<br/>&nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; sleep(1);
+<br/>&nbsp; &nbsp; &nbsp; while (Length(MemBuf2)&lt;8192*2) and (not Terminated) do begin Sleep(1); end;
+<br/><br/>&nbsp; &nbsp; &nbsp; //Start Player1 
+<br/>&nbsp; &nbsp; &nbsp; while (not Terminated) and (not StartMediaPlayer(MediaPlayer1,@MemBuf1)) do
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; sleep(2);
+<br/>&nbsp; &nbsp; &nbsp; //
+<br/>&nbsp; &nbsp; &nbsp; if Terminated then Break;
+<br/><br/>&nbsp; &nbsp; &nbsp; //stop Player2
+<br/>&nbsp; &nbsp; &nbsp; uos_Stop(MediaPlayer2);
+<br/>&nbsp; &nbsp; &nbsp; //uos_FreePlayer(MediaPlayer2);
+<br/>&nbsp; &nbsp; &nbsp; //play Player1
+<br/>&nbsp; &nbsp; &nbsp; uos_Play(MediaPlayer1);
+<br/><br/>&nbsp; &nbsp; &nbsp; //Read Data from buf2
+<br/>&nbsp; &nbsp; &nbsp; ReadDataFromBuff(MemBuf2);
+<br/><br/>&nbsp; &nbsp; &nbsp; //Select Player1
+<br/>&nbsp; &nbsp; &nbsp; PleerNum:=1;
+<br/>&nbsp; &nbsp; end else
+<br/>&nbsp; &nbsp; &nbsp; if PleerNum=1 then
+<br/>&nbsp; &nbsp; &nbsp; begin
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; sleep(1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; while (Length(MemBuf1)&lt;8192*2) and (not Terminated) do begin Sleep(1);end;
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; //start Player2
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; while (not Terminated) and (not StartMediaPlayer(MediaPlayer2,@MemBuf2)) do
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sleep(2);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; if Terminated then Break;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //stop Player1
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; uos_Stop(MediaPlayer1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //uos_FreePlayer(MediaPlayer1);
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //play Player2
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; uos_Play(MediaPlayer2);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; //Read Data from buf1
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; ReadDataFromBuff(MemBuf1);
+<br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; //SelectPlayer2
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; PleerNum:=2;
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; //
+<br/>&nbsp; &nbsp; &nbsp; &nbsp; Sleep(1);
+<br/>&nbsp; &nbsp; end;
+<br/>&nbsp; end;
+<br/><br/>&nbsp; //Останавливаем плейеры
+<br/>&nbsp; try
+<br/>&nbsp; &nbsp; uos_Stop(MediaPlayer1);
+<br/>&nbsp; &nbsp; uos_FreePlayer(MediaPlayer1);
+<br/>&nbsp; &nbsp; uos_Stop(MediaPlayer2);
+<br/>&nbsp; &nbsp; uos_FreePlayer(MediaPlayer2);
+<br/>&nbsp; finally
+<br/>&nbsp; end;
+<br/>&nbsp; sleep(2);
+<br/>&nbsp; //Free buffers
+<br/>&nbsp; SetLength(MemBuf1, 0);
+<br/>&nbsp; SetLength(MemBuf2, 0);
+<br/>end; 
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=806" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a806',806)">Threaded</a>
+	<div id="tooltip21038" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip21038'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown806"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown806", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor806', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D806\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost806', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D806\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost806', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D806\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost806', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(806)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively806', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(806)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate806', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D806\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print806', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D806\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink806', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p806.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail806', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D806\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown806');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=806&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow806" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613393901320-447"></span><script type="text/javascript">
+		Nabble.get('d1613393901320-447').innerHTML= Nabble.formatDateLong(new Date(1613393901320));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message806" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; For some reason, memory began to grow, although I destroy and recreate the players.
+<br/><br/>Sorry I dont understand.
+<br/>When do you assign the size of the buffer?
+<br/>It cannot grow if you dont do setlength(thebuffer).
+<br/><br/>&gt; procedure Execute;
+<br/><br/>When do you call it?
+<br/><br/>&gt; while (not Terminated) do &nbsp;begin
+<br/><br/>Why dont you use LoopProc like explained before?
+<br/>Please re-take a look at morseTL.lpi demo how to use &quot;ping-pong&quot; players and loopproc.
+<br/><br/><br/>Fre;D
+<br/><br/><br/><br/><br/><br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=807" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a807',807)">Threaded</a>
+	<div id="tooltip96734" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip96734'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown807"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown807", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor807', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D807\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost807', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D807\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost807', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D807\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost807', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(807)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively807', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(807)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate807', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D807\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print807', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D807\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink807', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p807.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail807', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D807\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown807');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=807&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow807" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613406040160-786"></span><script type="text/javascript">
+		Nabble.get('d1613406040160-786').innerHTML= Nabble.formatDateLong(new Date(1613406040160));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message807" class="message-text adbayes-content">
+		Re-hello.
+<br/><br/>I cannot reproduce your problem.
+<br/><br/>Please attach a zip file of a simple project that shows the problem.
+<br/><br/>Thanks.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=808" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a808',808)">Threaded</a>
+	<div id="tooltip15453" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip15453'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown808"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown808", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor808', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D808\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost808', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D808\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost808', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D808\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost808', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(808)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively808', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(808)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate808', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D808\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print808', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D808\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink808', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p808.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail808', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D808\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown808');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=808&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow808" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613464241000-948"></span><script type="text/javascript">
+		Nabble.get('d1613464241000-948').innerHTML= Nabble.formatDateLong(new Date(1613464241000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[2]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message808" class="message-text adbayes-content">
+		
+<div><div><span lang="en"><span><span>Hello</span></span><span><span> </span></span></span></div><div><span lang="en"><span><span>There is no time now.</span></span> <span><span>Once again, I will carefully look at what I have written, I will check it myself again.</span></span> <span><span>Then I'll unsubscribe, maybe I'm not clearing the buffer correctly.</span></span></span><br>&nbsp;</div><blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Понедельник, 15 февраля 2021, 21:20 +05:00 от fredvs [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=808&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16134060450870911485_BODY"><div class="cl_479244">Re-hello.<br><br>I cannot reproduce your problem.<br><br>Please attach a zip file of a simple project that shows the problem.<br><br>Thanks.<br><br>Fre;D<br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p807.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p807.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=808&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=809" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a809',809)">Threaded</a>
+	<div id="tooltip54300" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip54300'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown809"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown809", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor809', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D809\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost809', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D809\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost809', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D809\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost809', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(809)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively809', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(809)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate809', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D809\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print809', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D809\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink809', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p809.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail809', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D809\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown809');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=809&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow809" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613747762000-730"></span><script type="text/javascript">
+		Nabble.get('d1613747762000-730').innerHTML= Nabble.formatDateLong(new Date(1613747762000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[3]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message809" class="message-text adbayes-content">
+		
+<div><div><span lang="en"><span><span>Hello Fred.</span></span></span></div><div><span lang="en"><span><span>I want to formulate the task correctly.</span></span></span></div><div><span lang="en"><span><span>I need to extract data blocks of a certain size from the active recording stream for analysis. In this case, it is necessary that the stream itself or on command clears the buffer so that it does not overflow. I present the algorithm, but I cannot determine which function from the library I should use. Examples in demo versions are mainly focused on reading ready-made records.</span></span></span></div><div><span lang="en"><span><span>I have a working example (not mine) on two players. If the problem can be solved with one player without interrupting the recording? My example is in the attachment.</span></span></span><br>&nbsp;</div><blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Вторник, 16 февраля 2021, 13:30 +05:00 от Andrey [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=809&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16134642501814233508_BODY"><div class="cl_777094"><div><div><span lang="en"><span><span>Hello</span></span><span><span> </span></span></span></div><div><span lang="en"><span><span>There is no time now.</span></span> <span><span>Once again, I will carefully look at what I have written, I will check it myself again.</span></span> <span><span>Then I'll unsubscribe, maybe I'm not clearing the buffer correctly.</span></span></span><br>&nbsp;</div><div class="mail-quote-collapse"><blockquote style="border-left:2px solid #CCCCCC;padding:0 1em"><span>Понедельник, 15 февраля 2021, 21:20 +05:00 от fredvs [via uos Forum] &lt;<a target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;</span><div><div id=""><div class="js-helper_mr_css_attr js-readmsg-msg_mr_css_attr"><div><div id="style_16134060450870911485_BODY_mr_css_attr"><div class="cl_479244_mr_css_attr">Re-hello.<br><br>I cannot reproduce your problem.<br><br>Please attach a zip file of a simple project that shows the problem.<br><br>Thanks.<br><br>Fre;D<br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p807.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p807.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_top" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></div></blockquote></div>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p808.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p808.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=809&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div><!-- _mr_hide_start cloudstock -->
+<br>
+<br>
+<!-- FILES_ID 6ivPjW9kpxas5CdUi3GPv9VE:1629299742 -->
+К этому письму приложены ссылки на следующие файлы:
+
+<br><br>
+
+<b>1. prDecoderAM_test[1].tar</b> (34.6 Мб)<br>
+
+<br>
+Ссылка для скачивания файлов:
+<a href="https://cloud.mail.ru/stock/6ivPjW9kpxas5CdUi3GPv9VE" target="_top" rel="nofollow" link="external">https://cloud.mail.ru/stock/6ivPjW9kpxas5CdUi3GPv9VE</a>
+<br>
+<br>
+<font size="-1" color="#676A73">Файлы будут храниться до 18.08.2021</font>
+
+<!-- _mr_hide_end cloudstock -->
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=810" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a810',810)">Threaded</a>
+	<div id="tooltip16300" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip16300'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown810"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown810", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor810', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D810\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost810', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D810\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost810', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D810\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost810', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(810)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively810', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(810)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate810', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D810\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print810', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D810\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink810', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p810.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail810', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D810\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown810');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=810&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow810" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613748187447-124"></span><script type="text/javascript">
+		Nabble.get('d1613748187447-124').innerHTML= Nabble.formatDateLong(new Date(1613748187447));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[3]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message810" class="message-text adbayes-content">
+		Hello Andrey.
+<br/><br/>OK, I will check your code this week-end.
+<br/><br/>Write you later.
+<br/><br/>Fre;D
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=811" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a811',811)">Threaded</a>
+	<div id="tooltip7265" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip7265'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown811"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown811", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor811', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D811\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost811', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D811\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost811', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D811\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost811', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(811)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively811', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(811)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate811', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D811\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print811', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D811\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink811', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p811.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail811', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D811\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown811');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=811&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow811" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613764995347-571"></span><script type="text/javascript">
+		Nabble.get('d1613764995347-571').innerHTML= Nabble.formatDateLong(new Date(1613764995347));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[3]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1613782787851-639"></span><script type="text/javascript">
+		Nabble.get('d1613782787851-639').innerHTML= Nabble.formatDateLong(new Date(1613782787851));
+	</script>.
+			</div>
+	
+	<div id="message811" class="message-text adbayes-content">
+		<b>CONTENTS DELETED</b>
+			<div class="weak-color">The author has deleted this message.</div>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=812" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a812',812)">Threaded</a>
+	<div id="tooltip63997" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip63997'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown812"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown812", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor812', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D812\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost812', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D812\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost812', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D812\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost812', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(812)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively812', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(812)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate812', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D812\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print812', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D812\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink812', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p812.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail812', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D812\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown812');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=812&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow812" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613775038412-142"></span><script type="text/javascript">
+		Nabble.get('d1613775038412-142').innerHTML= Nabble.formatDateLong(new Date(1613775038412));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[3]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1613782815468-180"></span><script type="text/javascript">
+		Nabble.get('d1613782815468-180').innerHTML= Nabble.formatDateLong(new Date(1613782815468));
+	</script>.
+			</div>
+	
+	<div id="message812" class="message-text adbayes-content">
+		<b>CONTENTS DELETED</b>
+			<div class="weak-color">The author has deleted this message.</div>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=813" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a813',813)">Threaded</a>
+	<div id="tooltip24314" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip24314'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown813"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown813", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor813', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D813\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost813', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D813\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost813', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D813\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost813', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(813)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively813', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(813)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate813', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D813\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print813', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D813\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink813', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p813.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail813', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D813\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown813');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=813&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow813" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613781081977-445"></span><script type="text/javascript">
+		Nabble.get('d1613781081977-445').innerHTML= Nabble.formatDateLong(new Date(1613781081977));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[3]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1613782556066-681"></span><script type="text/javascript">
+		Nabble.get('d1613782556066-681').innerHTML= Nabble.formatDateLong(new Date(1613782556066));
+	</script>.
+			</div>
+	
+	<div id="message813" class="message-text adbayes-content">
+		Hello.
+<br/><br/>In attachment your project with only one player.
+<br/>I hope it is what you want.
+<br/><br/>Fre;D
+<br/><br/><a href="http://uos-forum.108.s1.nabble.com/file/n813/prDecoderAM_test_oneplayer.zip" target="_top" rel="nofollow" link="external">prDecoderAM_test_oneplayer.zip</a><br/><br/>procedure ListenMedia(WorkFreqL, WorkFreqR:Integer);
+<br/>begin
+<br/>&nbsp; MediaPlayer:=0;
+<br/>&nbsp; SetLength(MemBuf, 0);
+<br/>&nbsp; uos_CreatePlayer(MediaPlayer);
+<br/>&nbsp; uos_AddIntoMemoryBuffer(MediaPlayer, @MemBuf);
+<br/>&nbsp; uos_AddFromDevIn(MediaPlayer, -1, -1, 8192, -1, 0, 1024, 256);
+<br/><br/>&nbsp; uos_LoopProcIn(MediaPlayer, 0, @form1.LoopProc); // This to change the size and do what you want
+<br/><br/>&nbsp; uos_Play(MediaPlayer);
+<br/>end; &nbsp;
+<br/><br/>&nbsp;// And the LoopProc in unmain:
+<br/><br/>procedure TForm1.LoopProc();
+<br/>begin
+<br/>&nbsp;if Length(MemBuf)&gt;8192*2 then
+<br/>&nbsp; begin
+<br/><br/>&nbsp; &nbsp; // your analyses ...
+<br/><br/>&nbsp; &nbsp; setlength(MemBuf,0); // release buffer
+<br/>&nbsp; end; &nbsp;
+<br/>end;
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=814" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a814',814)">Threaded</a>
+	<div id="tooltip8804" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip8804'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown814"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown814", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor814', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D814\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost814', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D814\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost814', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D814\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost814', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(814)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively814', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(814)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate814', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D814\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print814', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D814\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink814', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p814.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail814', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D814\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown814');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=814&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow814" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613805318000-249"></span><script type="text/javascript">
+		Nabble.get('d1613805318000-249').innerHTML= Nabble.formatDateLong(new Date(1613805318000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[5]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message814" class="message-text adbayes-content">
+		
+<div><div><span lang="en"><span><span>Hello.</span></span><span><span> </span></span></span></div><div><span lang="en"><span><span>As they say, all ingenious is simple.</span></span><span><span> </span></span></span></div><div><span lang="en"><span><span>Only an error appeared:</span></span></span></div><div>&nbsp;</div><div><span lang="en"><span><span>« External:SIGSEGV</span></span></span></div><div><span lang="en"><span><span>&nbsp; In file ‘uos/uos.pas’ in line 8710:</span></span></span></div><div><span lang="en"><span><span>Streamout[x].Data.BufferOut^[Streamout[x].Data.posmem+x2]:=StreamOut[x].Data.Buffer[x2]»</span></span></span></div><div>&nbsp;</div><div><span lang="en"><span><span>I tried to remove the setlength(MemBuf), the error disappears.</span></span></span></div><div>&nbsp;</div><blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Суббота, 20 февраля 2021, 5:31 +05:00 от fredvs [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=814&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16137810861160910590_BODY"><div class="cl_822395">Hello.<br><br>In attachment your project with only one player.<br>I hope it is what you want.<br><br>Fre;D<a href="http://uos-forum.2369694.n4.nabble.com/file/n813/prDecoderAM_test_oneplayer.zip" target="_blank" rel="nofollow" link="external">prDecoderAM_test_oneplayer.zip</a><br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p813.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p813.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=814&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=815" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a815',815)">Threaded</a>
+	<div id="tooltip60592" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip60592'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown815"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown815", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor815', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D815\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost815', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D815\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost815', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D815\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost815', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(815)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively815', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(815)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate815', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D815\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print815', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D815\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink815', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p815.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail815', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D815\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown815');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=815&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow815" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613825612563-334"></span><script type="text/javascript">
+		Nabble.get('d1613825612563-334').innerHTML= Nabble.formatDateLong(new Date(1613825612563));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[5]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message815" class="message-text adbayes-content">
+		Hello.
+<br/><br/>&gt; External:SIGSEGV
+<br/>&gt; &nbsp;In file ‘uos/uos.pas’ in line 8710:
+<br/>&gt;Streamout[x].Data.BufferOut^[Streamout[x].Data.posmem+x2]:=StreamOut[x].Data.Buffer[x2]»
+<br/><br/>I have seen that you used a old version of &nbsp;uos.
+<br/><br/>Do you have problems with the last commit?
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=816" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a816',816)">Threaded</a>
+	<div id="tooltip57518" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip57518'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown816"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown816", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor816', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D816\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost816', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D816\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost816', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D816\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost816', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(816)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively816', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(816)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate816', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D816\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print816', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D816\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink816', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p816.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail816', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D816\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown816');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=816&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow816" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613826614000-901"></span><script type="text/javascript">
+		Nabble.get('d1613826614000-901').innerHTML= Nabble.formatDateLong(new Date(1613826614000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[7]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message816" class="message-text adbayes-content">
+		
+<div><br><span lang="en"><span><span>You can link to the latest version?</span></span></span><br>&nbsp;<blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Суббота, 20 февраля 2021, 17:53 +05:00 от fredvs [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=816&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16138256171532872505_BODY"><div class="cl_854001">Hello.<br><br>&gt; External:SIGSEGV<br>&gt; &nbsp;In file ‘uos/uos.pas’ in line 8710:<br>&gt;Streamout[x].Data.BufferOut^[Streamout[x].Data.posmem+x2]:=StreamOut[x].Data.Buffer[x2]»<br><br>I have seen that you used a old version of &nbsp;uos.<br><br>Do you have problems with the last commit?<br><br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p815.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p815.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=816&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=817" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a817',817)">Threaded</a>
+	<div id="tooltip974" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip974'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown817"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown817", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor817', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D817\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost817', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D817\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost817', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D817\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost817', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(817)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively817', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(817)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate817', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D817\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print817', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D817\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink817', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p817.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail817', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D817\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown817');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=817&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow817" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613828898176-771"></span><script type="text/javascript">
+		Nabble.get('d1613828898176-771').innerHTML= Nabble.formatDateLong(new Date(1613828898176));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[7]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message817" class="message-text adbayes-content">
+		<br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Andrey wrote</div>
+<div class="quote-message">You can link to the latest version?
+</div>
+</div></blockquote>
+<a href="https://github.com/fredvs/uos" target="_top" rel="nofollow" link="external">https://github.com/fredvs/uos</a><br/><br/>Click on the green button &nbsp;[Code] then &quot;Download ZIP&quot;.
+<br/><br/>Please tell me if you have still problems.
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=818" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a818',818)">Threaded</a>
+	<div id="tooltip31180" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip31180'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown818"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown818", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor818', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D818\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost818', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D818\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost818', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D818\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost818', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(818)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively818', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(818)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate818', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D818\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print818', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D818\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink818', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p818.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail818', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D818\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown818');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=818&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow818" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613829775596-64"></span><script type="text/javascript">
+		Nabble.get('d1613829775596-64').innerHTML= Nabble.formatDateLong(new Date(1613829775596));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[7]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1614170433188-309"></span><script type="text/javascript">
+		Nabble.get('d1614170433188-309').innerHTML= Nabble.formatDateLong(new Date(1614170433188));
+	</script>.
+			</div>
+	
+	<div id="message818" class="message-text adbayes-content">
+		Re-re....re hello Andrey.
+<br/><br/>&gt; External:SIGSEGV
+<br/>&gt; &nbsp;In file ‘uos/uos.pas’ in line 8710:
+<br/>&gt;Streamout[x].Data.BufferOut^[Streamout[x].Data.posmem+x2]:=StreamOut[x].Data.Buffer[x2]»
+<br/><br/>Ok, I see the problem.
+<br/><br/>Please give me one hour, I will fix it and then, please re-download the last commit.
+<br/><br/>Thanks.
+<br/><br/>Fre;D
+<br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=819" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a819',819)">Threaded</a>
+	<div id="tooltip5407" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip5407'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown819"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown819", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor819', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D819\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost819', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D819\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost819', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D819\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost819', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(819)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively819', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(819)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate819', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D819\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print819', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D819\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink819', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p819.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail819', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D819\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown819');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=819&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow819" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613831308903-869"></span><script type="text/javascript">
+		Nabble.get('d1613831308903-869').innerHTML= Nabble.formatDateLong(new Date(1613831308903));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[7]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1613832463661-325"></span><script type="text/javascript">
+		Nabble.get('d1613832463661-325').innerHTML= Nabble.formatDateLong(new Date(1613832463661));
+	</script>.
+			</div>
+	
+	<div id="message819" class="message-text adbayes-content">
+		Hello.
+<br/><br/>OK, I did commit e445df3 with fix buffer-length change at run time..
+<br/><br/>Could you try with last changes and say the result?
+<br/><br/><a href="https://github.com/fredvs/uos" target="_top" rel="nofollow" link="external">https://github.com/fredvs/uos</a><br/><br/>Thanks.
+<br/><br/>[EDIT]
+<br/><br/>Maybe you have to test also the synchronize of &quot;LoopProc&quot;.
+<br/>With last fpc 3.2.0. it seems that thread.synchronize is not working well and it is better to use thread.queue.
+<br/><br/>So you may configure it depending on your system.
+<br/>For that, just edit /uos/define.inc
+<br/>and un-comment (remove the &quot;.&quot; before &quot;$&quot;) of that line:
+<br/><br/>{.$DEFINE usequeue} &nbsp; // uncomment to use Thread.Queue instead of Thread.Synchronize for fpc threads, better for LCL widgets.
+<br/><br/>Maybe uos should define usequeue as default now.
+<br/><br/>Note also that when you are ready you may comment all the define that your project will not use.
+<br/>Doing this, at compilation, only what your project need will be compiled.
+<br/>Fre;D
+<br/><br/>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=820" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a820',820)">Threaded</a>
+	<div id="tooltip76388" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip76388'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown820"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown820", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor820', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D820\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost820', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D820\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost820', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D820\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost820', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(820)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively820', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(820)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate820', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D820\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print820', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D820\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink820', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p820.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail820', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D820\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown820');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=820&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow820" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1613911237000-472"></span><script type="text/javascript">
+		Nabble.get('d1613911237000-472').innerHTML= Nabble.formatDateLong(new Date(1613911237000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[9]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message820" class="message-text adbayes-content">
+		
+<div><div><br>Hello, Fred.</div><div>&nbsp;</div><div><span lang="en"><span><span>I can only try on Wednesday.</span></span> <span><span>I'll write right away.</span></span></span></div><div>&nbsp;</div><blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Суббота, 20 февраля 2021, 19:28 +05:00 от fredvs [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=820&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16138313140345185871_BODY"><div class="cl_933784">Hello.<br><br>OK, I did commit e445df3 with fix buffer-length change at run time..<br><br>Could you try with last changes and say the result?<br><br><a href="https://github.com/fredvs/uos" target="_blank" rel="nofollow" link="external">https://github.com/fredvs/uos</a><br><br>Thanks.<br><br>Fre;D<br><br><br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p819.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p819.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=820&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=85">Andrey</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=821" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a821',821)">Threaded</a>
+	<div id="tooltip94276" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip94276'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown821"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown821", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor821', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D821\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost821', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D821\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost821', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D821\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost821', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(821)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively821', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(821)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate821', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D821\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print821', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D821\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink821', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p821.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail821', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D821\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown821');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=821&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow821" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1614148181000-83"></span><script type="text/javascript">
+		Nabble.get('d1614148181000-83').innerHTML= Nabble.formatDateLong(new Date(1614148181000));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re[10]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=85" rel="nofollow" title="View profile of Andrey" class="nowrap no-decoration"><img class="avatar medium-border-color" src="images/avatar100.png" height="100" width="100" alt="Andrey" title="Andrey"/><img src="images/online.png" class="online85 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count85 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message821" class="message-text adbayes-content">
+		
+<div><div>Hello, Fred!</div><div>&nbsp;</div><div><span lang="en"><span><span>I checked it works.</span></span> <span><span>The memory does not grow, there are no errors.</span></span> </span></div><div><span lang="en"><span><span>Thank you so much.</span></span><span><span> </span></span><span><span>I will continue to test if I find anything I will write.</span></span></span></div><div>&nbsp;</div><blockquote style="border-left:1px solid #0857A6; margin:10px; padding:0 0 0 10px;">Воскресенье, 21 февраля 2021, 17:40 +05:00 от Andrey [via uos Forum] &lt;<a href="user/SendEmail.jtp?type=node&node=821&i=0" target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;<div id=""><div class="js-helper js-readmsg-msg"><div><div id="style_16139112512146897583_BODY"><div class="cl_156641"><div><div><br>Hello, Fred.</div><div>&nbsp;</div><div><span lang="en"><span><span>I can only try on Wednesday.</span></span> <span><span>I'll write right away.</span></span></span></div><div>&nbsp;</div><div class="mail-quote-collapse"><blockquote style="border-left:2px solid #CCCCCC;padding:0 1em"><span>Суббота, 20 февраля 2021, 19:28 +05:00 от fredvs [via uos Forum] &lt;<a target="_top" rel="nofollow" link="external">[hidden email]</a>&gt;:<br>&nbsp;</span><div><div id=""><div class="js-helper_mr_css_attr js-readmsg-msg_mr_css_attr"><div><div id="style_16138313140345185871_BODY_mr_css_attr"><div class="cl_933784_mr_css_attr">Hello.<br><br>OK, I did commit e445df3 with fix buffer-length change at run time..<br><br>Could you try with last changes and say the result?<br><br><a href="https://github.com/fredvs/uos" target="_blank" rel="nofollow" link="external">https://github.com/fredvs/uos</a><br><br>Thanks.<br><br>Fre;D<br><br><br>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p819.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p819.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_top" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></div></blockquote></div>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>&nbsp;<hr size="1" noshade="noshade" color="#cccccc"><div style="color:#444444; font:12px tahoma,geneva,helvetica,arial,sans-serif"><div style="font-weight:bold">If you reply to this email, your message will be added to the discussion below:</div><a href="http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p820.html" target="_blank" rel="nofollow" link="external">http://uos-forum.2369694.n4.nabble.com/Memory-is-not-cleared-tp805p820.html</a></div><div style="color:#666666; font:11px tahoma,geneva,helvetica,arial,sans-serif; line-height:1.5em; margin-top:.4em">To unsubscribe from Memory is not cleared, <a href="" target="_blank" rel="nofollow" link="external">click here</a>.<br><a style="font:9px serif" href="http://uos-forum.2369694.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=instant_html%21nabble%3Aemail.naml&amp;base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&amp;breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml" target="_blank" rel="nofollow" link="external">NAML</a></div></div></div></div></div></div></blockquote>&nbsp;<div>&nbsp;</div><div data-signature-widget="container"><div data-signature-widget="content"><div>С уважением,<br>Андрей Батраков<br><a href="user/SendEmail.jtp?type=node&node=821&i=1" target="_top" rel="nofollow" link="external">[hidden email]</a></div></div></div><div>&nbsp;</div></div>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="template/NamlServlet.jtp?macro=reply&amp;node=822" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Memory-is-not-cleared-tt805.html#a822',822)">Threaded</a>
+	<div id="tooltip27632" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">&diams;</div>
+			<div class="d2">&diams;</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip27632'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown822"></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown822", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor822', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D822\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost822', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D822\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost822', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D822\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost822', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(822)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively822', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(822)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate822', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D822\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print822', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D822\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink822', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Memory-is-not-cleared-tp805p822.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail822', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D822\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown822');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=822&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow822" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="images/arrow.png" alt="Selected post"/>
+	</span>
+					<span class="post-date float-left">
+		<span id="d1614170239406-538"></span><script type="text/javascript">
+		Nabble.get('d1614170239406-538').innerHTML= Nabble.formatDateLong(new Date(1614170239406));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Re[10]: Memory is not cleared
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="file/a1/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"/><img src="images/online.png" class="online1 online invisible" title="User is online" alt="online"/></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color"></div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message822" class="message-text adbayes-content">
+		Hello Andrey.
+<br/><br/>I am happy that it works for you.
+<br/><br/>By the way, did you see the [EDIT] of my last post?
+<br/>It was this:
+<br/><br/><blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">Fredvs wrote</div>
+<div class="quote-message shrinkable-quote">[EDIT]
+<br/><br/>Maybe you have to test also the synchronize of &quot;LoopProc&quot;.
+<br/>With last fpc 3.2.0. it seems that thread.synchronize is not working well and it is better to use thread.queue.
+<br/><br/>So you may configure it depending on your system.
+<br/>For that, just edit /uos/define.inc
+<br/>and un-comment (remove the &quot;.&quot; before &quot;$&quot;) of that line:
+<br/><br/>{.$DEFINE usequeue} &nbsp; // uncomment to use Thread.Queue instead of Thread.Synchronize for fpc threads, better for LCL widgets.
+<br/><br/>Maybe uos should define usequeue as default now.
+<br/><br/>Note also that when you are ready you may comment all the define that your project will not use.
+<br/>Doing this, at compilation, only what your project need will be compiled.
+<br/> 
+</div>
+</div></blockquote>
+
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		&laquo;
+		<a href="">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v805" style="display:none">1 view|%1 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</table>
+			<script type='text/javascript'>
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=805&incViewCount=805&newsflash=&visitorOnline=&avatarOnline=85|1&postCount=85|1&markVisited=822&views=805';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					</div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				</body>
+			</html>
