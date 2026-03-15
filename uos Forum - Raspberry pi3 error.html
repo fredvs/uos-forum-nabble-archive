@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html><head>
+					<meta name="viewport" content="width=device-width,initial-scale=1.0">
+					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+					<link rel="stylesheet" href="uos%20Forum%20-%20Raspberry%20pi3%20error_files/nabble.css" type="text/css">
+	<link rel="stylesheet" href="uos%20Forum%20-%20Raspberry%20pi3%20error_files/NamlServlet.css" type="text/css">
+<style type="text/css">
+@media (max-width: 600px) {
+#search-box,#topic-search-box{margin:1em 0}
+td.pin-column img{display:none}
+}
+</style>
+					<script type="text/javascript" async="" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/js"></script><script async="" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/analytics.js"></script><script src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/jquery-1.9.1.min.js"></script>
+	<script>$.browser = {}</script>
+	<script src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+	<script src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/NamlServlet.js" type="text/javascript"></script>
+					<script type="text/javascript">
+		var terms = Nabble.getSearchTerms();
+		var hasTurnOff = false;
+		Nabble.searchHighlight = function($elem) {
+			if (terms != null && terms.length > 0) {
+				$elem.each(function() {
+					Nabble.highlightSearchTerms(terms, this);
+				});
+				if (Nabble.hasHighlightedTerms && !hasTurnOff) {
+					var turnOffLink = '<span id="turn-off-highlight-control"><span class="highlight">&nbsp;X&nbsp;</span> ';
+					turnOffLink += '<a href="javascript:void(0)" onclick="Nabble.turnOffHighlight()">Turn off highlighting</a></span>';
+					$('#topics-controls-right').prepend(turnOffLink);
+					hasTurnOff = true;
+				}
+			}
+		};
+		Nabble.turnOffHighlight = function() {
+			Nabble.deleteCookie("query");
+			Nabble.deleteCookie("searchuser");
+			Nabble.deleteCookie("searchterms");
+			$('span.search-highlight').removeClass('bold highlight');
+			$('#turn-off-highlight-control').hide();
+		};
+	</script>
+	<script type="text/javascript">
+		Nabble.messageTextWidth();
+	</script>
+	<style>
+		@media (max-width: 600px) {
+			div.topics-controls-wrapper{margin:1.2em 0 7em !important}
+			div.root-text img,div.message-text img{max-width:100%}
+		}
+	</style>
+			<script type="text/javascript"> $(document).ready(function() { Nabble.searchHighlight($('h2.post-subject,div.message-text')); }); </script> <script type="text/javascript"> var _hash = Nabble.hash(); if (_hash) { (function(){ var post = _hash.substr(2); var allPosts = [1432, 1433, 1434, 1435, 1436, 1437, 1438, 1439, 1440, 1441, 1442, 1443, 1444, 1445, 1446]; var allURLs = ["/Raspberry-pi3-error-td1432.html"]; var iPost = allPosts.indexOf(parseInt(post)); var lower = 0; var upper = lower + 20; if (iPost != -1 && (iPost < lower || iPost >= upper)) location.replace(allURLs[Math.floor(iPost/20)]+_hash); })(); } $(document).ready(function() { var rootId = '1432'; var currentPostId = rootId; var isChangingViews = _hash == '#none'; if (_hash && !isChangingViews) currentPostId = _hash.substr(2); Nabble.hideQuotes(); function scrollToSelectedPost() { var $arrow = $('#red-arrow'+currentPostId).show(); if ($arrow.size() > 0) { var isRootPost = currentPostId == rootId; if (Nabble.isEmbedded) { if (Nabble.canScroll()) scrollTo(0, 0); var y = isChangingViews? null : isRootPost? 1 : $arrow.parents('div.classic-row').offset().top; Nabble.resizeFrames('', y); } else if (Nabble.canScroll() && !isRootPost) { var yPos = $arrow.offset().top; scrollTo(0,yPos-20); } } else { if (Nabble.isEmbedded && Nabble.canScroll()) { Nabble.resizeFrames('', 1); } else { var tb = $('div.top-bar').get(0); if (tb) tb.scrollIntoView(); } } }; $(window).load(scrollToSelectedPost); if (Nabble.isEmbedded) { $('div.message-text img').load(Nabble.resizeFrames); } }); </script> <script type="text/javascript"> $(document).ready(function() { $('a[link="external"]').each(function() { $(this).attr('target','_blank'); }); }); </script> <style type="text/css"> div.classic-header { height:2.2em; clear:both; overflow:hidden; } div.classic-author-name { float:left; width: 140px; overflow: hidden; text-align:center; font-weight:bold; } div.classic-subject-line { left:.5em; overflow:hidden; height:1.3em; position:relative; } div.classic-right-menu { float:right; padding-left:1em; } div.classic-bar { padding:.5em .3em; clear:both; height:1.8em; } table.classic-body { border-collapse:collapse; margin-bottom:1em; table-layout: fixed; width:100%; } td.classic-author { vertical-align: top; text-align:center; width:140px; padding-bottom:1em; } td.classic-message { vertical-align:top; padding:1em; } div.message-text { cursor:text; overflow-x:auto; } div.avatar-inner { margin-left:20px; } div.avatar-outer { width:140px; text-align:left; } div.avatar-label { white-space:nowrap; font-size:80%; } </style> <style type="text/css"> @media (max-width: 600px) { #topic-search-box{float:none} img.avatar{width:30%;height:30%} td.classic-author{width:55px;font-size:11px;overflow:hidden} div.avatar-inner{margin:5px} div.classic-author-name{width:auto} div.ad > div,div.ad > ins{float:none !important;margin-left:-70px !important} div.classic-header{overflow:visible} div.classic-bar{height:3.5em} div.classic-subject-line{margin:2em 0;left:0;overflow-x:hidden;overflow-y:visible} table.classic-body{margin-top:2em} } </style>
+
+	<title>uos Forum - Raspberry pi3 error</title>
+			<meta name="description" content="Raspberry pi3 error. This is the first time i've tried to use uos. I compiled some examples to be used on the Raspberry Pi 3 but when I try to load the libs i get an error. I used compiled examples to...">
+			<meta name="keywords" content="raspberry, pi3, error, first, time, ve, tried, use, uos, compiled, some, examples, used, pi, 3, when, try, load, libs, get, check, forum">
+			<style type="text/css">
+			#search-box-dropdown {
+				text-align:left;
+				position:absolute;
+				display:none;
+				z-index:1000;
+				overflow:hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var $sdd = $('#search-box-dropdown');
+				var $sb = $('#search-input');
+				var $form = $sb.parent();
+				var timeout;
+				$(document).click(function(o){
+					var $target = $(o.target);
+					if ($target.parents().hasClass('search-box-dropdown')) {
+						clearTimeout(timeout);
+						$sb.focus();
+					}
+				});
+				$sb.focusin(function(e) {
+					$sdd.css('left', $sb.position().left - 5);
+					$sdd.width($sb.outerWidth() + 10);
+					$sdd.show();
+				});
+				$sb.focusout(function() {
+					timeout = setTimeout(function() {
+						$sdd.hide();
+					},250);
+				});
+				$('input[type=radio]', $sdd).change(function() {
+					var nodeId = $(this).val();
+					$('input[name="node"]', $form).val(nodeId);
+				});
+				$('input[name="node"]', $form).val(1);
+			});
+		</script><script type="text/javascript">
+			Nabble.setView = function(view,url,post) {
+				Nabble.setVar("tview",view);
+				if (url.indexOf('#') == -1)
+					url += '#none';
+				location.replace(url);
+			};
+		</script><style type="text/css"> div.nabble-tooltip, div.nabble-tooltip * { color: #EEE; font-weight:bold; } div.nabble-tooltip { background: #000; font-size:90%; line-height:normal; display: none; position: absolute; z-index: 88888; padding: .5em; border: 1px solid #FFF; white-space:normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; } div.nabble-tooltip-small-row, div.nabble-tooltip-small-row * { color:#D0EAF2; } div.nabble-tooltip-small-row { font-size:80%; font-weight:normal; padding-top: .4em; } div.nabble-tooltip-arrow { font: 40px Arial, Sans-serif; line-height:1em; left:15px; position:absolute; bottom:-15px; height:15px; width:30px; overflow:hidden; } div.nabble-tooltip-arrow div { position:absolute; } div.nabble-tooltip-arrow div.d1 { top:-22px; color: #FFF; } div.nabble-tooltip-arrow div.d2 { top:-25px; color: #000; } </style> <script type="text/javascript"> Nabble.startTooltip = function(e, position, delay) { if (e.nabbletooltip) return; e.nabbletooltip = true; var $this = $(e); var $arrow = $this.children().last(); var $elem = $this.prev(); $elem.hover( function() { setTip(); setTimer(); }, function() { stopTimer(); $this.hide(); } ); function setTimer() { $this.showTipTimer = setTimeout(function() { $('div.nabble-tooltip').hide(); stopTimer(); $this.fadeTo('fast', .8); }, delay); }; function stopTimer() { clearInterval($this.showTipTimer); }; function setTip(){ if ($this.parent().get() != document.body) $(document.body).append($this); var useTitle = $this.attr('use_title') == 'true'; if (useTitle) { var title = $elem.attr('title'); if (title != '') { $arrow.remove(); $this.html(title); $elem.attr('title',''); $this.append($arrow); } } var win = $(window).width(); if (position == 'up') { var w = $this.outerWidth(); if (w > 250) { w = 250; $this.width(w); } var xMid = $elem.offset().left + $elem.outerWidth()/2; var xTip = xMid - w/2; if (xTip+w > win-5) xTip = win-w-5; if (xTip < 0) xTip = 0; var xArrow = xMid-xTip-11; var yTip = $elem.offset().top-$this.outerHeight()-12; $arrow.css('left', xArrow); $this.css({'top' : yTip, 'left' : xTip}); } else if (position == 'right') { var h = $this.outerHeight(); var yMid = $elem.offset().top + $elem.outerHeight()/2; var yTip = yMid - h/2; var xTip = $elem.offset().left + $elem.outerWidth() + 10; $arrow.width(8).height(24).css({bottom:0,left:-8}); var yArrow = (h - 24)/2; $arrow.css({top:yArrow}); var $d1 = $arrow.children().first(); var $d2 = $arrow.children().last(); $d1.css({top:-11}); $d2.css({top:-11,left:1}); $this.css({'top' : yTip, 'left' : xTip}); } }; }; </script><script type="text/javascript">
+			Nabble.pinTopic = function(id) {
+				var call = '/' + 'template/NamlServlet.jtp?macro=pin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').show();
+					NabbleDropdown.show('unpinTopic');
+					NabbleDropdown.hide('pinTopic');
+					alert('This topic has been pinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unpinTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unpin_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#pin-icon').hide();
+					NabbleDropdown.hide('unpinTopic');
+					NabbleDropdown.show('pinTopic');
+					alert('This topic has been unpinned.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.lockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=lock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').show();
+					NabbleDropdown.show('unlockTopic');
+					NabbleDropdown.hide('lockTopic');
+					alert('This topic has been locked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.unlockTopic = function(id) {
+				var call = '/'+'template/NamlServlet.jtp?macro=unlock_topic&node=' + id;
+				$.getScript(call, function() {
+					$('#lock-icon').hide();
+					NabbleDropdown.hide('unlockTopic');
+					NabbleDropdown.show('lockTopic');
+					alert('This topic has been unlocked.');
+				});
+			};
+		</script><script type="text/javascript">
+			Nabble.nViews = function(id, views) {
+				var $v = $('#v'+id);
+				var pos = views=='1'?0:1;
+				var t = $v.html()? $v.html().split('|')[pos]:'';
+				$v.html(t == ''? views : t.replace(/%1/g,views)).show();
+			};
+		</script>
+					<script type="text/javascript">
+		Nabble.setFontSize();
+		
+	</script>
+	<script type="text/javascript">
+		if (Nabble.analytics) Nabble.analytics();
+	</script>
+	<!-- Start Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-91855-9', 'auto', 'nabble');
+		ga('nabble.send', 'pageview');
+	</script>
+	<!-- End Google Analytics -->
+    <script>
+        (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+            $(document).ready(function() {
+                if (jQuery.browser.mobile) {
+                    $('a').each(function(){
+                        var href = $(this).attr('href');
+                        if (href.indexOf('/template/NamlServlet.jtp?macro=new_topic&') >= 0) {
+                            $(this).attr('href',href.replace(/=new_topic&/, '=new_topic5&')).attr('target','top');
+                        } else if (href.indexOf('/template/NamlServlet.jtp?macro=reply&') >= 0) {
+                            $(this).attr('href',href.replace(/=reply&/, '=reply5&')).attr('target','top');;
+                        }
+                    });
+                }
+            });
+    </script>
+				</head>
+				<body>
+					<div id="notice" class="notice rounded-bottom"></div>
+					<div class="nabble macro_classic_forum_topic" id="nabble">
+						
+			
+			<div class="top-bar">
+		<div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+		
+				<a href="http://uos-forum.108.s1.nabble.com/">uos Forum</a>
+	</span>
+		</div>
+		<div style="text-align:right;">
+			<span style="white-space:nowrap;" id="nabble-user-header"><span id="user-dd"><span id="usrdd" class="dropdown"><a href="javascript:void(0)">fredvs</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingusrdd" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanusrdd">Loading...</span></td></tr><tr id="myPosts"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">My posts</a></td></tr><tr id="personalSettings"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_profile">Account settings</a></td></tr><tr id="adminNotice" style="display:none"><td style="border:none"><a href="javascript: void Nabble.showAdminNotice()">Show Nabble notice</a></td></tr><tr id="logout"><td style="border:none"><a href="javascript: void Nabble.logout()">Log out</a></td></tr></tbody></table></span></span></span>
+	<script type="text/javascript">Nabble.userHeader();</script>
+		</div>
+	</div>
+			
+			<div id="nabble-newsflash" class="info-message" style="display:none;padding:.5em;margin-bottom:.5em"></div>
+	
+			<div id="topic-search-box" class="search-box float-right" style="padding:.5em 0">
+		<form action="/template/NamlServlet.jtp">
+		<input type="hidden" name="macro" value="search_page">
+		<input type="hidden" name="node" value="1">
+		
+		
+		
+		<input id="search-input" name="query" size="18" class="medium-border-color">
+		<div id="search-box-dropdown" class="search-box-dropdown light-bg-color drop-shadow border1 medium-border-color rounded-bottom">
+		<div style="margin:.5em .5em 0 .5em">
+					<b>Search</b><br>
+					<input id="search-root-node" type="radio" name="n" value="1" checked="checked">
+					<label for="search-root-node">everywhere</label><br>
+
+					<input id="search-this-node" type="radio" name="n" value="1432">
+					<label for="search-this-node">
+						only in this topic
+					</label>
+				</div>
+		<div style="margin:.5em;line-height:2em">
+			<input class="toolbar action-button float-right" type="submit" value="Search">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=adv_search_page&amp;node=1432" rel="nofollow" style="font-size:80%">Advanced Search</a>
+		</div>
+	</div>
+	</form>
+	</div>
+
+	<h1 id="post-title" class="adbayes-content" style="margin:0.25em 0 .8em">
+		Raspberry pi3 error
+	</h1>
+	<div style="margin:-1em 0 2em">
+		<span style="float:left;white-space:nowrap">
+					<sub class="weak-color" style="font-size:180%">‹</sub>
+					<a href="http://uos-forum.108.s1.nabble.com/Playing-only-the-beginning-of-a-recording-tp1476.html">Previous Topic</a>
+				</span>
+
+		<span style="float:right;white-space:nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/Encoder-simple-demo-tp1418.html">Next Topic</a>
+					<sub class="weak-color" style="font-size:180%">›</sub>
+				</span>
+		<div style="clear:both;height:0">&nbsp;</div>
+	</div>
+			<div class="topics-controls-wrapper" style="margin:1.2em 0 5em">
+		<div id="topics-controls-left" class="float-left nowrap">
+			<table>
+		<tbody><tr>
+			<td style="padding-right:.1em">
+		<img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/view-classic.gif" width="18" height="18" style="border:none" alt="classic">
+	</td>
+
+	<td style="padding-right:1.1em">
+		Classic
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Raspberry-pi3-error-tc1432.html',null)"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/view-list.gif" width="18" height="18" style="border:none" alt="list"></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('list', '/Raspberry-pi3-error-tc1432.html',null)">List</a>
+	</td>
+
+			<td style="padding-right:.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html',null)"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/view-threaded.gif" width="18" height="18" style="border:none" alt="threaded"></a>
+	</td>
+
+	<td style="padding-right:1.1em">
+		<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html',null)">Threaded</a>
+	</td>
+		</tr>
+	</tbody></table>
+		</div>
+		<div id="topics-controls-right" class="float-right nowrap" style="padding-top:.3em">
+			<span style="padding-right:1em;height:21px">
+		<img id="pin-icon" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/pin.png" width="20" height="21" title="This topic has been pinned in uos Forum." style="vertical-align:middle;display:none;">
+		<div id="tooltip95827" class="nabble-tooltip" use_title="true">
+		
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip95827'), 'up', 400);
+	</script>
+	</span>
+	<span id="lock-icon" class="weak-color" style="padding:0 .5em;margin-right:.5em;display:none;">
+		<img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/lock_sm.png" width="10" height="15" style="vertical-align:middle"> Locked
+	</span>
+	<span style="padding-right:1em">
+		15 messages
+	</span>
+	<img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/gear.png" class="image16" alt="Options">
+	<span id="dd_topicdropdown"><span id="topicdropdown" class="dropdown"><a href="javascript:void(0)" title="Click for more options">Options</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingtopicdropdown" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpantopicdropdown">Loading...</span></td></tr><tr id="topicSubscriptionLink"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=subscribe&amp;node=1432" rel="nofollow">Subscribe via email</a></td></tr><tr class="dropdown-separator"><td class="action-separator medium-border-color">&nbsp;</td></tr><tr id="moveTopic" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1432" rel="nofollow">Move topic</a></td></tr><tr id="pinTopic" style="display:none"><td style="border:none"><a href="javascript: void Nabble.pinTopic(1432)" rel="nofollow">Pin topic</a></td></tr><tr id="unpinTopic" style="display:none"><td style="border:none"><a href="javascript: void Nabble.unpinTopic(1432)" rel="nofollow">Unpin topic</a></td></tr><tr id="lockTopic" style="display:none"><td style="border:none"><a href="javascript: void Nabble.lockTopic(1432)" rel="nofollow">Lock topic</a></td></tr><tr id="unlockTopic" style="display:none"><td style="border:none"><a href="javascript: void Nabble.unlockTopic(1432)" rel="nofollow">Unlock topic</a></td></tr><tr id="deleteRecursively" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1432)" rel="nofollow">Delete this topic</a></td></tr><tr id="deletePost" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1432)" rel="nofollow">Delete this topic</a></td></tr><tr id="changeMetaTags" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_title_and_meta_tags&amp;node=1432" rel="nofollow">Change title and meta tags</a></td></tr><tr id="embedPost1432"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/embed/EmbedOptions.jtp?node=1432" rel="nofollow">Embed post</a></td></tr><tr id="permalink1432"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432.html')">Permalink</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("topicdropdown", "Options","Click for more options");
+		
+		dropdown.add('topicSubscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
+		dropdown.addSeparator();
+		dropdown.add('moveTopic', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EMove topic\x3C/a\x3E', 'display:none');
+		dropdown.add('pinTopic', '\x3Ca href\x3D\"javascript: void Nabble.pinTopic(1432)\" rel\x3D\"nofollow\"\x3EPin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unpinTopic', '\x3Ca href\x3D\"javascript: void Nabble.unpinTopic(1432)\" rel\x3D\"nofollow\"\x3EUnpin topic\x3C/a\x3E', 'display:none');
+		dropdown.add('lockTopic', '\x3Ca href\x3D\"javascript: void Nabble.lockTopic(1432)\" rel\x3D\"nofollow\"\x3ELock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('unlockTopic', '\x3Ca href\x3D\"javascript: void Nabble.unlockTopic(1432)\" rel\x3D\"nofollow\"\x3EUnlock topic\x3C/a\x3E', 'display:none');
+		dropdown.add('deleteRecursively', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1432)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+			dropdown.add('deletePost', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1432)\" rel\x3D\"nofollow\"\x3EDelete this topic\x3C/a\x3E', 'display:none');
+		dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
+		dropdown.add('embedPost1432', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D1432\" rel\x3D\"nofollow\"\x3EEmbed post\x3C/a\x3E');
+		dropdown.add('permalink1432', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.build('dd_topicdropdown');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=topic_dropdown_later&node=1432&_=' + Math.floor(Math.random()*999999));
+	</script>
+		</div>
+	</div>
+			<div id="topic-contents" style="margin-top:1em;clear:both">
+		<div id="classic-contents">
+		
+		<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1432" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html',1432)">Threaded</a>
+	<div id="tooltip11062" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip11062'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1432"><span id="postdropdown1432" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1432" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1432">Loading...</span></td></tr><tr id="replyToAuthor1432" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1432" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1432" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1432" rel="nofollow">Edit post</a></td></tr><tr id="movePost1432" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1432" rel="nofollow">Move post</a></td></tr><tr id="deletePost1432" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1432)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1432" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1432)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1432" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1432" rel="nofollow">Change post date</a></td></tr><tr id="print1432"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1432" rel="nofollow">Print post</a></td></tr><tr id="permalink1432"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432.html')">Permalink</a></td></tr><tr id="rawMail1432" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1432" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1432", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1432', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1432\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1432', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1432', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1432', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1432)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1432', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1432)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1432', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1432', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1432', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1432', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1432\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1432');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1432&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1432" class="float-left invisible" style="margin-top: 0.2em; display: inline;">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749693517412-489">Jun 12, 2025; 3:58am</span><script type="text/javascript">
+		Nabble.get('d1749693517412-489').innerHTML= Nabble.formatDateLong(new Date(1749693517412));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					<div class="weak-color" style="font-size:80%;padding-bottom:1em">
+				This post was updated on <span id="d1749725899296-404">Jun 12, 2025; 12:58pm</span><script type="text/javascript">
+		Nabble.get('d1749725899296-404').innerHTML= Nabble.formatDateLong(new Date(1749725899296));
+	</script>.
+			</div>
+	
+	<div id="message1432" class="message-text adbayes-content">
+		This is the first time i've tried to use uos.
+<br>I compiled some examples to be used on the Raspberry Pi 3 but when I try to load the libs i get an error.
+<br>I used compiled examples to check if it was something with the code but I also can't load the libs.
+<br>I use Raspberry Pi 32 bits OS, latest version, from the website <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="nofollow" link="external">https://www.raspberrypi.com/software/operating-systems/</a>, first link.
+<br>I used the 'simpleplayer' and 'formspectrum' projects as a test,Both show an error when loading the libs, the paths are correct.
+<br>What could be happening?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1433" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1433',1433)">Threaded</a>
+	<div id="tooltip84876" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip84876'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1433"><span id="postdropdown1433" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1433" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1433">Loading...</span></td></tr><tr id="replyToAuthor1433" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1433" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1433" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1433" rel="nofollow">Edit post</a></td></tr><tr id="movePost1433" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1433" rel="nofollow">Move post</a></td></tr><tr id="deletePost1433" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1433)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1433" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1433)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1433" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1433" rel="nofollow">Change post date</a></td></tr><tr id="print1433"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1433" rel="nofollow">Print post</a></td></tr><tr id="permalink1433"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1433.html')">Permalink</a></td></tr><tr id="rawMail1433" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1433" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1433", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1433', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1433\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1433', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1433\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1433', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1433\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1433', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1433)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1433', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1433)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1433', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1433\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1433', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1433\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1433', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1433.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1433', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1433\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1433');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1433&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1433" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749743952218-32">Jun 12, 2025; 5:59pm</span><script type="text/javascript">
+		Nabble.get('d1749743952218-32').innerHTML= Nabble.formatDateLong(new Date(1749743952218));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1433" class="message-text adbayes-content">
+		Solved.
+<br>I replaced the project's lib 'libsndfile-arm.so' with 'system'.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1434" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1434',1434)">Threaded</a>
+	<div id="tooltip98838" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip98838'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1434"><span id="postdropdown1434" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1434" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1434">Loading...</span></td></tr><tr id="replyToAuthor1434" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1434" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1434" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1434" rel="nofollow">Edit post</a></td></tr><tr id="movePost1434" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1434" rel="nofollow">Move post</a></td></tr><tr id="deletePost1434" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1434)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1434" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1434)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1434" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1434" rel="nofollow">Change post date</a></td></tr><tr id="print1434"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1434" rel="nofollow">Print post</a></td></tr><tr id="permalink1434"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1434.html')">Permalink</a></td></tr><tr id="rawMail1434" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1434" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1434", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1434', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1434\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1434', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1434\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1434', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1434\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1434', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1434)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1434', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1434)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1434', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1434\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1434', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1434\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1434', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1434.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1434', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1434\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1434');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1434&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1434" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749762110442-284">Jun 12, 2025; 11:01pm</span><script type="text/javascript">
+		Nabble.get('d1749762110442-284').innerHTML= Nabble.formatDateLong(new Date(1749762110442));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1434" class="message-text adbayes-content">
+		Hello.
+<br><br>Welcome to uos forum.
+<br><br>&gt;I use Raspberry Pi 32 bits OS, latest version, from the website <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="nofollow" link="external">https://www.raspberrypi.com/software/operating-systems/</a>, first link.
+<br><br>&gt;I replaced the project's lib 'libsndfile-arm.so' with 'system'. 
+<br><br>Ok, thanks to note it, I will update libsndfile with last Raspberry Pi 32 bits OS.
+<br>(Or, if it is possible for you, could you give the zipped libsndfile.so installed on your system here as attchment?...)
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1435" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1435',1435)">Threaded</a>
+	<div id="tooltip87723" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip87723'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1435"><span id="postdropdown1435" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1435" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1435">Loading...</span></td></tr><tr id="replyToAuthor1435" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1435" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1435" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1435" rel="nofollow">Edit post</a></td></tr><tr id="movePost1435" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1435" rel="nofollow">Move post</a></td></tr><tr id="deletePost1435" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1435)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1435" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1435)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1435" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1435" rel="nofollow">Change post date</a></td></tr><tr id="print1435"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1435" rel="nofollow">Print post</a></td></tr><tr id="permalink1435"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1435.html')">Permalink</a></td></tr><tr id="rawMail1435" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1435" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1435", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1435', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1435\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1435', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1435\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1435', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1435\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1435', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1435)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1435', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1435)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1435', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1435\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1435', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1435\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1435', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1435.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1435', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1435\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1435');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1435&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1435" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749762740033-427">Jun 12, 2025; 11:12pm</span><script type="text/javascript">
+		Nabble.get('d1749762740033-427').innerHTML= Nabble.formatDateLong(new Date(1749762740033));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1435" class="message-text adbayes-content">
+		Could you replace libsndfile-arm.so of uos package 
+(/uos/examples/lib/Linux/arm_raspberrypi/libsndfile-arm.so) with the one
+ in attachment and see if it is &nbsp;working on your RPi?
+<br><a href="http://uos-forum.108.s1.nabble.com/file/n1435/libsndfile-arm.zip" target="_blank" rel="nofollow" link="external">libsndfile-arm.zip</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1436" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1436',1436)">Threaded</a>
+	<div id="tooltip61159" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip61159'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1436"><span id="postdropdown1436" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1436" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1436">Loading...</span></td></tr><tr id="replyToAuthor1436" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1436" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1436" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1436" rel="nofollow">Edit post</a></td></tr><tr id="movePost1436" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1436" rel="nofollow">Move post</a></td></tr><tr id="deletePost1436" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1436)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1436" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1436)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1436" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1436" rel="nofollow">Change post date</a></td></tr><tr id="print1436"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1436" rel="nofollow">Print post</a></td></tr><tr id="permalink1436"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1436.html')">Permalink</a></td></tr><tr id="rawMail1436" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1436" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1436", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1436', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1436\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1436', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1436\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1436', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1436\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1436', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1436)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1436', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1436)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1436', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1436\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1436', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1436\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1436', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1436.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1436', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1436\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1436');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1436&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1436" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749944300950-199">Jun 15, 2025; 1:38am</span><script type="text/javascript">
+		Nabble.get('d1749944300950-199').innerHTML= Nabble.formatDateLong(new Date(1749944300950));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1436" class="message-text adbayes-content">
+		New problem.
+<br>Compiling projects for raspberry os 64 (aarch64) does not load the libs.
+<br>I did not find which libs to use.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1437" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1437',1437)">Threaded</a>
+	<div id="tooltip90994" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip90994'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1437"><span id="postdropdown1437" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1437" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1437">Loading...</span></td></tr><tr id="replyToAuthor1437" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1437" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1437" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1437" rel="nofollow">Edit post</a></td></tr><tr id="movePost1437" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1437" rel="nofollow">Move post</a></td></tr><tr id="deletePost1437" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1437)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1437" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1437)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1437" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1437" rel="nofollow">Change post date</a></td></tr><tr id="print1437"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1437" rel="nofollow">Print post</a></td></tr><tr id="permalink1437"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1437.html')">Permalink</a></td></tr><tr id="rawMail1437" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1437" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1437", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1437', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1437\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1437', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1437\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1437', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1437\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1437', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1437)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1437', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1437)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1437', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1437\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1437', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1437\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1437', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1437.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1437', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1437\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1437');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1437&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1437" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749989900216-277">Jun 15, 2025; 2:18pm</span><script type="text/javascript">
+		Nabble.get('d1749989900216-277').innerHTML= Nabble.formatDateLong(new Date(1749989900216));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1437" class="message-text adbayes-content">
+		It works with these libs.
+<br><a href="http://uos-forum.108.s1.nabble.com/file/n1437/arm_aarch64.rar" target="_blank" rel="nofollow" link="external">arm_aarch64.rar</a><br>&nbsp;and
+<br><a href="http://uos-forum.108.s1.nabble.com/file/n1437/libopus.rar" target="_blank" rel="nofollow" link="external">libopus.rar</a>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1438" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1438',1438)">Threaded</a>
+	<div id="tooltip16648" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip16648'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1438"><span id="postdropdown1438" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1438" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1438">Loading...</span></td></tr><tr id="replyToAuthor1438" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1438" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1438" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1438" rel="nofollow">Edit post</a></td></tr><tr id="movePost1438" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1438" rel="nofollow">Move post</a></td></tr><tr id="deletePost1438" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1438)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1438" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1438)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1438" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1438" rel="nofollow">Change post date</a></td></tr><tr id="print1438"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1438" rel="nofollow">Print post</a></td></tr><tr id="permalink1438"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1438.html')">Permalink</a></td></tr><tr id="rawMail1438" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1438" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1438", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1438', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1438\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1438', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1438\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1438', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1438\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1438', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1438)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1438', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1438)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1438', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1438\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1438', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1438\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1438', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1438.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1438', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1438\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1438');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1438&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1438" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749993007999-12">Jun 15, 2025; 3:10pm</span><script type="text/javascript">
+		Nabble.get('d1749993007999-12').innerHTML= Nabble.formatDateLong(new Date(1749993007999));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1438" class="message-text adbayes-content">
+		Perfect, many thanks for the files.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1439" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1439',1439)">Threaded</a>
+	<div id="tooltip25029" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip25029'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1439"><span id="postdropdown1439" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1439" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1439">Loading...</span></td></tr><tr id="replyToAuthor1439" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1439" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1439" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1439" rel="nofollow">Edit post</a></td></tr><tr id="movePost1439" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1439" rel="nofollow">Move post</a></td></tr><tr id="deletePost1439" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1439)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1439" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1439)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1439" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1439" rel="nofollow">Change post date</a></td></tr><tr id="print1439"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1439" rel="nofollow">Print post</a></td></tr><tr id="permalink1439"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1439.html')">Permalink</a></td></tr><tr id="rawMail1439" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1439" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1439", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1439', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1439\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1439', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1439\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1439', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1439\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1439', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1439)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1439', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1439)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1439', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1439\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1439', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1439\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1439', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1439.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1439', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1439\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1439');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1439&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1439" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1749993157082-172">Jun 15, 2025; 3:12pm</span><script type="text/javascript">
+		Nabble.get('d1749993157082-172').innerHTML= Nabble.formatDateLong(new Date(1749993157082));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1439" class="message-text adbayes-content">
+		Hum, the files you gave are for aarch64, so thanks I will update it.
+<br>But for arm 32, is libsndfile that I posted in previous post ok?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1440" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1440',1440)">Threaded</a>
+	<div id="tooltip67788" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip67788'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1440"><span id="postdropdown1440" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1440" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1440">Loading...</span></td></tr><tr id="replyToAuthor1440" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1440" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1440" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1440" rel="nofollow">Edit post</a></td></tr><tr id="movePost1440" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1440" rel="nofollow">Move post</a></td></tr><tr id="deletePost1440" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1440)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1440" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1440)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1440" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1440" rel="nofollow">Change post date</a></td></tr><tr id="print1440"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1440" rel="nofollow">Print post</a></td></tr><tr id="permalink1440"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1440.html')">Permalink</a></td></tr><tr id="rawMail1440" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1440" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1440", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1440', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1440\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1440', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1440\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1440', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1440\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1440', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1440)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1440', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1440)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1440', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1440\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1440', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1440\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1440', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1440.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1440', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1440\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1440');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1440&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1440" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750019130887-771">Jun 15, 2025; 10:25pm</span><script type="text/javascript">
+		Nabble.get('d1750019130887-771').innerHTML= Nabble.formatDateLong(new Date(1750019130887));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1440" class="message-text adbayes-content">
+		yes.
+<br>I changed to Raspberry Pi 64 because I need to run a program using 
+Xorg and on the 32-bit system the VLC player is slow with Xorg in full 
+screen, even changing the options in the player.
+<br>These libs work perfectly on raspberry pi os 64.
+<br>In 64-bit it is great.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1441" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1441',1441)">Threaded</a>
+	<div id="tooltip55281" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip55281'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1441"><span id="postdropdown1441" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1441" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1441">Loading...</span></td></tr><tr id="replyToAuthor1441" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1441" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1441" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1441" rel="nofollow">Edit post</a></td></tr><tr id="movePost1441" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1441" rel="nofollow">Move post</a></td></tr><tr id="deletePost1441" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1441)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1441" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1441)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1441" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1441" rel="nofollow">Change post date</a></td></tr><tr id="print1441"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1441" rel="nofollow">Print post</a></td></tr><tr id="permalink1441"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1441.html')">Permalink</a></td></tr><tr id="rawMail1441" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1441" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1441", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1441', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1441\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1441', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1441\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1441', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1441\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1441', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1441)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1441', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1441)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1441', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1441\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1441', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1441\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1441', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1441.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1441', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1441\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1441');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1441&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1441" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750074370062-216">Jun 16, 2025; 1:46pm</span><script type="text/javascript">
+		Nabble.get('d1750074370062-216').innerHTML= Nabble.formatDateLong(new Date(1750074370062));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1441" class="message-text adbayes-content">
+		Ha, ok.
+<br>But is libSoundTouch.so working? &nbsp;Usually, for fpc or Delphi, it is libSoundTouchDLL.so.
+<br><br>Sorry but I dont have a Rpi for testing at the moment.
+<br>
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1442" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1442',1442)">Threaded</a>
+	<div id="tooltip28284" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip28284'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1442"><span id="postdropdown1442" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1442" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1442">Loading...</span></td></tr><tr id="replyToAuthor1442" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1442" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1442" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1442" rel="nofollow">Edit post</a></td></tr><tr id="movePost1442" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1442" rel="nofollow">Move post</a></td></tr><tr id="deletePost1442" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1442)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1442" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1442)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1442" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1442" rel="nofollow">Change post date</a></td></tr><tr id="print1442"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1442" rel="nofollow">Print post</a></td></tr><tr id="permalink1442"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1442.html')">Permalink</a></td></tr><tr id="rawMail1442" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1442" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1442", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1442', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1442\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1442', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1442\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1442', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1442\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1442', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1442)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1442', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1442)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1442', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1442\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1442', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1442\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1442', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1442.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1442', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1442\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1442');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1442&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1442" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750093401398-308">Jun 16, 2025; 7:03pm</span><script type="text/javascript">
+		Nabble.get('d1750093401398-308').innerHTML= Nabble.formatDateLong(new Date(1750093401398));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1442" class="message-text adbayes-content">
+		<blockquote class="quote dark-border-color"><div class="quote light-border-color">
+<div class="quote-author" style="font-weight: bold;">fredvs wrote</div>
+<div class="quote-message">Ha, ok.
+<br>But is libSoundTouch.so working? &nbsp;Usually, for fpc or Delphi, it is libSoundTouchDLL.so.
+<br><br>Sorry but I dont have a Rpi for testing at the moment.
+</div>
+</div></blockquote>
+Yes.
+<br>I compiled the 'multiplayer' example and it worked without errors (raspberry pi3 os 64)
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1443" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1443',1443)">Threaded</a>
+	<div id="tooltip94561" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip94561'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1443"><span id="postdropdown1443" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1443" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1443">Loading...</span></td></tr><tr id="replyToAuthor1443" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1443" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1443" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1443" rel="nofollow">Edit post</a></td></tr><tr id="movePost1443" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1443" rel="nofollow">Move post</a></td></tr><tr id="deletePost1443" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1443)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1443" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1443)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1443" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1443" rel="nofollow">Change post date</a></td></tr><tr id="print1443"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1443" rel="nofollow">Print post</a></td></tr><tr id="permalink1443"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1443.html')">Permalink</a></td></tr><tr id="rawMail1443" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1443" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1443", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1443', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1443\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1443', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1443\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1443', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1443\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1443', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1443)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1443', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1443)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1443', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1443\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1443', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1443\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1443', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1443.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1443', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1443\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1443');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1443&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1443" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750109567817-699">Jun 16, 2025; 11:32pm</span><script type="text/javascript">
+		Nabble.get('d1750109567817-699').innerHTML= Nabble.formatDateLong(new Date(1750109567817));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1443" class="message-text adbayes-content">
+		Ok, many, many thanks.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1444" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1444',1444)">Threaded</a>
+	<div id="tooltip36511" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip36511'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1444"><span id="postdropdown1444" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1444" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1444">Loading...</span></td></tr><tr id="replyToAuthor1444" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1444" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1444" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1444" rel="nofollow">Edit post</a></td></tr><tr id="movePost1444" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1444" rel="nofollow">Move post</a></td></tr><tr id="deletePost1444" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1444)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1444" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1444)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1444" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1444" rel="nofollow">Change post date</a></td></tr><tr id="print1444"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1444" rel="nofollow">Print post</a></td></tr><tr id="permalink1444"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1444.html')">Permalink</a></td></tr><tr id="rawMail1444" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1444" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1444", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1444', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1444\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1444', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1444\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1444', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1444\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1444', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1444)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1444', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1444)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1444', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1444\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1444', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1444\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1444', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1444.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1444', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1444\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1444');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1444&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1444" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750109828549-131">Jun 16, 2025; 11:37pm</span><script type="text/javascript">
+		Nabble.get('d1750109828549-131').innerHTML= Nabble.formatDateLong(new Date(1750109828549));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1444" class="message-text adbayes-content">
+		Hum, multiplayer demo does not use SoundTouch pluggin (to change tempo and pitch).
+<br>SoundTouch pluggin is enabled in Simple Player demo.
+<br><br>Are you shure it is libSoundTouh.so and not libSndFile.so that you tested?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193">vtrx2</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1445" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1445',1445)">Threaded</a>
+	<div id="tooltip81519" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip81519'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1445"><span id="postdropdown1445" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1445" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1445">Loading...</span></td></tr><tr id="replyToAuthor1445" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1445" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1445" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1445" rel="nofollow">Edit post</a></td></tr><tr id="movePost1445" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1445" rel="nofollow">Move post</a></td></tr><tr id="deletePost1445" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1445)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1445" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1445)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1445" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1445" rel="nofollow">Change post date</a></td></tr><tr id="print1445"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1445" rel="nofollow">Print post</a></td></tr><tr id="permalink1445"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1445.html')">Permalink</a></td></tr><tr id="rawMail1445" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1445" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1445", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1445', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1445\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1445', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1445\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1445', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1445\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1445', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1445)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1445', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1445)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1445', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1445\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1445', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1445\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1445', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1445.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1445', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1445\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1445');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1445&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1445" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750192013698-414">Jun 17, 2025; 10:26pm</span><script type="text/javascript">
+		Nabble.get('d1750192013698-414').innerHTML= Nabble.formatDateLong(new Date(1750192013698));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=193" rel="nofollow" title="View profile of vtrx2" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100_002.png" height="100" width="100" alt="vtrx2" title="vtrx2"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online193 online invisible" title="User is online" alt="online"></a>
+
+	
+	
+		</div>
+	</div>
+	
+	
+	<div class="post-count193 avatar-label weak-color">7 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1445" class="message-text adbayes-content">
+		I compiled all the examples.
+<br>Is there any way to play wav format sound faster?
+<br>I wanted to click the play button several times and the sound 
+repeats faster, sometimes the audio repeats with a delay between clicks.
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="classic-row">
+		<div class="classic-header">
+			<div class="classic-bar shaded-bg-color rounded-top">
+				<div class="classic-author-name nowrap">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1">fredvs</a>
+				</div>
+				<div class="classic-right-menu shaded-bg-color weak-color">
+					<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=reply&amp;node=1446" rel="nofollow">Reply</a> |
+					<a href="javascript:void(0)" onclick="Nabble.setView('threaded', '/Raspberry-pi3-error-tt1432.html#a1446',1446)">Threaded</a>
+	<div id="tooltip96834" class="nabble-tooltip" use_title="false">
+		Open this post in threaded view
+		<div class="nabble-tooltip-arrow">
+			<div class="d1">♦</div>
+			<div class="d2">♦</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		Nabble.startTooltip(Nabble.get('tooltip96834'), 'up', 400);
+	</script> |
+					<span id="dd_postdropdown1446"><span id="postdropdown1446" class="dropdown"><a href="javascript:void(0)" title="Click for more options">More</a> <img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/more.png" width="10" height="10"><table class="light-bg-color medium-border-color drop-shadow" style="margin-top:1px;"><tbody><tr id="_loadingpostdropdown1446" style="display:none"><td class="dropdown-simple-row"><span id="_loadingSpanpostdropdown1446">Loading...</span></td></tr><tr id="replyToAuthor1446" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/user/SendEmail.jtp?type=pm&amp;post=1446" rel="nofollow">Reply to author</a></td></tr><tr id="editPost1446" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=edit_post&amp;node=1446" rel="nofollow">Edit post</a></td></tr><tr id="movePost1446" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=move_node&amp;node=1446" rel="nofollow">Move post</a></td></tr><tr id="deletePost1446" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deletePost(1446)" rel="nofollow">Delete this post</a></td></tr><tr id="deleteRecursively1446" style="display:none"><td style="border:none"><a href="javascript: void(0)" onclick="Nabble.deleteFromSite(1446)" rel="nofollow">Delete this post and replies</a></td></tr><tr id="changePostDate1446" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=change_post_date&amp;node=1446" rel="nofollow">Change post date</a></td></tr><tr id="print1446"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=print_post&amp;node=1446" rel="nofollow">Print post</a></td></tr><tr id="permalink1446"><td style="border:none"><a href="javascript: void(0)" onclick="prompt('Copy this:','http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1446.html')">Permalink</a></td></tr><tr id="rawMail1446" style="display:none"><td style="border:none"><a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=raw_mail&amp;node=1446" rel="nofollow">Raw mail</a></td></tr></tbody></table></span></span>
+	<script type="text/javascript">
+		var dropdown = new NabbleDropdown("postdropdown1446", "More","Click for more options");
+		
+		dropdown.add('replyToAuthor1446', '\x3Ca href\x3D\"/user/SendEmail.jtp?type\x3Dpm&amp;post\x3D1446\" rel\x3D\"nofollow\"\x3EReply to author\x3C/a\x3E', 'display:none');
+		dropdown.add('editPost1446', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_post&amp;node\x3D1446\" rel\x3D\"nofollow\"\x3EEdit post\x3C/a\x3E', 'display:none');
+		dropdown.add('movePost1446', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmove_node&amp;node\x3D1446\" rel\x3D\"nofollow\"\x3EMove post\x3C/a\x3E', 'display:none');
+		dropdown.add('deletePost1446', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deletePost(1446)\" rel\x3D\"nofollow\"\x3EDelete this post\x3C/a\x3E', 'display:none');
+			dropdown.add('deleteRecursively1446', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"Nabble.deleteFromSite(1446)\" rel\x3D\"nofollow\"\x3EDelete this post and replies\x3C/a\x3E', 'display:none');
+		dropdown.add('changePostDate1446', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_post_date&amp;node\x3D1446\" rel\x3D\"nofollow\"\x3EChange post date\x3C/a\x3E', 'display:none');
+		dropdown.add('print1446', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dprint_post&amp;node\x3D1446\" rel\x3D\"nofollow\"\x3EPrint post\x3C/a\x3E');
+		dropdown.add('permalink1446', '\x3Ca href\x3D\"javascript: void(0)\" onclick\x3D\"prompt(\'Copy this:\',\'http://uos-forum.108.s1.nabble.com/Raspberry-pi3-error-tp1432p1446.html\')\"\x3EPermalink\x3C/a\x3E');
+		dropdown.add('rawMail1446', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Draw_mail&amp;node\x3D1446\" rel\x3D\"nofollow\"\x3ERaw mail\x3C/a\x3E', 'display:none');
+		dropdown.build('dd_postdropdown1446');
+		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=post_dropdown_later&node=1446&_=' + Math.floor(Math.random()*999999));
+	</script>
+				</div>
+				<div class="classic-subject-line">
+					<span id="red-arrow1446" class="float-left invisible" style="margin-top:.2em">
+		<img title="Selected post" width="15" height="15" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/arrow.png" alt="Selected post">
+	</span>
+					<span class="post-date float-left">
+		<span id="d1750261135779-550">Jun 18, 2025; 5:38pm</span><script type="text/javascript">
+		Nabble.get('d1750261135779-550').innerHTML= Nabble.formatDateLong(new Date(1750261135779));
+	</script>
+	</span>
+					<h2 class="post-subject float-left adbayes-content" style="width:30%;overflow:visible;font-family:inherit">
+		Re: Raspberry pi3 error
+	</h2>
+				</div>
+			</div>
+		</div>
+		<table class="classic-body">
+			<tbody><tr>
+				<td class="classic-author shaded-bg-color rounded-bottom">
+					<div class="avatar-outer">
+		<div class="avatar-inner">
+			<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=1" rel="nofollow" title="View profile of fredvs" class="nowrap no-decoration"><img class="avatar medium-border-color" src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/avatar100.png" height="100" width="100" alt="fredvs" title="fredvs"><img src="uos%20Forum%20-%20Raspberry%20pi3%20error_files/online.png" class="online1 online invisible" title="User is online" alt="online" style="display: inline;"></a>
+
+	
+	
+		</div>
+	</div>
+	<div class="avatar-label weak-color"><b>Administrator</b></div>
+	
+	<div class="post-count1 avatar-label weak-color">718 posts</div>
+	
+				</td>
+				<td class="classic-message">
+					
+	
+	<div id="message1446" class="message-text adbayes-content">
+		&gt;Is there any way to play wav format sound faster? 
+<br><br>Sorry, what example are you trying and what is a faster sound?
+<br>Are you taking about using the pluggin SoundTouch to change the tempo of the sound?
+<br><br>Or do you want to say "louder" ?
+
+	
+	
+	
+	</div>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+	
+		
+	</div>
+	</div>
+			<div id="topic-footer" class="weak-color" style="padding-top:1em">
+		«
+		<a href="http://uos-forum.108.s1.nabble.com/">Return to uos Forum</a>
+		&nbsp;|&nbsp;
+		<span id="v1432" style="">153 views</span>
+	
+	
+	</div>
+				
+			<table class="footer-table shaded-bg-color">
+		<tbody><tr>
+			<td class="footer-left weak-color">
+				<a href="http://www.nabble.com/" target="_top">Free forum by Nabble</a>
+			</td>
+			<td class="footer-right">
+				<script>
+		if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+			document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+		}
+	</script>
+				<a href="http://uos-forum.108.s1.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&amp;id=classic_forum_topic%21nabble%3Atopic.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">Edit this page</a>
+			</td>
+		</tr>
+	</tbody></table>
+			<script type="text/javascript">
+var scriptUrl = '/template/NamlServlet.jtp?macro=js_page&searchSpecial=1432&incViewCount=1432&newsflash=&visitorOnline=&avatarOnline=193|1&postCount=193|1&markVisited=1446&views=1432';
+scriptUrl += '&_=' + Math.floor(Math.random()*9999);
+$.getScript(scriptUrl, function() { Nabble.resizeFrames(); });
+</script>
+
+					<a id="not-visited" class="invisible" href="http://uos-forum.108.s1.nabble.com/any-url">x</a> <a id="visited" class="visited-link invisible" href="#">x</a></div>
+					
+					<!-- s1.nabble.com | Site ID = 108 -->
+				
+			</body></html>
