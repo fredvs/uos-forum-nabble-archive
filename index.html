@@ -198,63 +198,9 @@ td.pin-column img{display:none}
 	</form>
 			</div>
 		</div>
-			<div class="action-link">
-		<img src="images/icon_post_message.png" class="image16" />
-		<a href="template/namlservlet.jtp?macro=new_topic&amp;node=1" title="Post new message in uos Forum" rel="nofollow">New Topic</a>
-	</div>
+	
 			
-			<div class="action-link" style="margin-left:.6em">
-				<img src="images/people_sm.png" class="image16"/>
-				<a href="template/namlservlet.jtp?macro=app_people&amp;node=1" rel="nofollow">People</a>
-			</div>
-			<div class="action-link" style="margin-left:.6em">
-		<img src="images/gear.png" class="image16"/>
-		<span id="dd_appdropdown"></span>
-	<script type="text/javascript">
-		var dropdown = new NabbleDropdown("appdropdown", "Options","Click for more options");
 		
-		dropdown.add('subscriptionLink', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dsubscribe&amp;node\x3D1\" rel\x3D\"nofollow\"\x3ESubscribe via email\x3C/a\x3E');
-
-		dropdown.addSeparator();
-
-		dropdown.startGroup('Application');
-	dropdown.add('editNameDescription', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dedit_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EEdit name & description\x3C/a\x3E', 'display:none');
-			dropdown.add('changeType', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_app_type&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange application type\x3C/a\x3E', 'display:none');
-			dropdown.add('changeAppearance', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_appearance\" rel\x3D\"nofollow\"\x3EChange appearance\x3C/a\x3E', 'display:none');
-			dropdown.add('changeDomainName', '\x3Ca href\x3D\"/forum/ChangeDomainName.jtp?site\x3D108\" rel\x3D\"nofollow\"\x3EChange domain name\x3C/a\x3E', 'display:none');
-			dropdown.add('changeLanguage', '\x3Ca href\x3D\"/app/Languages.jtp\" rel\x3D\"nofollow\"\x3EChange language\x3C/a\x3E', 'display:none');
-			dropdown.add('changeMetaTags', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_title_and_meta_tags&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange title and meta tags\x3C/a\x3E', 'display:none');
-			dropdown.add('addons', '\x3Ca href\x3D\"/app/Addons.jtp\" rel\x3D\"nofollow\"\x3EExtras & add-ons\x3C/a\x3E', 'display:none');
-			dropdown.add('useGoogleAnalytics', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Duse_google_analytics\" rel\x3D\"nofollow\"\x3EUse Google Analytics\x3C/a\x3E', 'display:none');
-	dropdown.endGroup();
-
-		dropdown.startGroup('Structure');
-	dropdown.add('createChildForum', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dcreate_sub_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3ECreate new sub-forum\x3C/a\x3E', 'display:none');
-			dropdown.add('managePinnedTopics', '\x3Ca href\x3D\"/catalog/ChangePinOrder.jtp?forum\x3D1&amp;what\x3Dthreads\" rel\x3D\"nofollow\"\x3EManage pinned topics\x3C/a\x3E', 'display:none');
-			dropdown.add('manageSubApps', '\x3Ca href\x3D\"/catalog/ChangePinOrder.jtp?forum\x3D1&amp;what\x3Dforums\" rel\x3D\"nofollow\"\x3EManage sub-forums\x3C/a\x3E', 'display:none');
-			dropdown.add('parentOptions', '\x3Ca href\x3D\"/catalog/ChangeParent.jtp?forum\x3D1\" rel\x3D\"nofollow\"\x3EChange parent\x3C/a\x3E', 'display:none');
-	dropdown.endGroup();
-
-		dropdown.startGroup('Users');
-	dropdown.add('changePermissions', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dchange_permissions&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EChange permissions\x3C/a\x3E', 'display:none');
-			dropdown.add('manageGroups', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_users_and_groups\" rel\x3D\"nofollow\"\x3EManage users & groups\x3C/a\x3E', 'display:none');
-			dropdown.add('manageSubscribers', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_subscribers&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EManage subscribers\x3C/a\x3E', 'display:none');
-			dropdown.add('manageBannedUsers', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Dmanage_banned_users\" rel\x3D\"nofollow\"\x3EManage banned users\x3C/a\x3E', 'display:none');
-	dropdown.endGroup();
-
-		dropdown.addSeparator();
-
-		dropdown.add('embeddingOptions', '\x3Ca href\x3D\"/embed/EmbedOptions.jtp?node\x3D1\" rel\x3D\"nofollow\"\x3EEmbedding options\x3C/a\x3E', 'display:none');
-		dropdown.add('downloadBackup', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Ddownload_backup_page\" rel\x3D\"nofollow\"\x3EDownload backup\x3C/a\x3E', 'display:none');
-		dropdown.add('deleteApp', '\x3Ca href\x3D\"/template/NamlServlet.jtp?macro\x3Ddelete_app&amp;node\x3D1\" rel\x3D\"nofollow\"\x3EDelete\x3C/a\x3E', 'display:none');
-
-		
-
-		dropdown.add('openShell', null, 'display:none');
-		dropdown.build('dd_appdropdown');
-		dropdown.loadOnClick('/template/NamlServlet.jtp?macro=app_dropdown_later&node=1&_=' + Math.floor(Math.random()*999999));
-	</script>
-	</div>
 
 			<span class="pages" style="padding:.8em .3em .5em 0"><span class="current-page medium-border-color">1</span><span class="page"><a href="uos-forum-f1i35.html" title="Page 2">2</a></span><span class="page"><a href="uos-forum-f1i70.html" title="Page 3">3</a></span><span class="page"><a href="uos-forum-f1i105.html" title="Page 4">4</a></span></span>
 			<div style="clear:both"></div>
