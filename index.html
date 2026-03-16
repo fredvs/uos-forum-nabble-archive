@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 			<html>
 				<head>
+
+   <style>
+  html {
+    background-color: #D0F0C0; /* Applies color to the absolute base layer */
+    height: 100%;
+  }
+ 
+#nabble {
+    background-color: #F7FFF9 !important; /* This targets the specific ID */
+}
+
+#description-box {
+    background-color: #F7FFF9 !important; /* This targets the specific ID */
+}
+
+/* If there is a grid inside it (like a table), this covers that too */
+#description-box table, 
+#description-box td {
+    background-color: #F0FFF0 !important;
+}
+</style>
+
+
 					<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 					<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 					<link rel="stylesheet" href="nabble.css?v=29" type="text/css" />
@@ -141,11 +164,11 @@ td.pin-column img{display:none}
 				</head>
 				<body>
 					<div id="notice" class="notice rounded-bottom"></div>
-					<div class="nabble macro_view_standard" id="nabble">
+					<div class="nabble macro_view_standard" { background-color: #F0FFF0; } id="nabble">
 						
 			
 			<div class="top-bar">
-		<div class="breadcrumbs" style="float:left">
+		<div class="breadcrumbs"  { background-color: #F0FFF0; } style="float:left">
 			<span id="breadcrumbs" class="weak-color">
 		
 				<a href="">uos Forum</a>
@@ -174,7 +197,7 @@ td.pin-column img{display:none}
 	
 			<div id="forum-header">
 			<h1 id="forum-title" class="app-title-1 adbayes-content">uos Forum (archived from Nabble)</h1>
-			<div id="description-box" class="adbayes-content">
+			<div id="description-box"  class="adbayes-content">
 				<img src="images/uos2.png" border="0"/><br/><br/><a href="https://github.com/fredvs/uos/" target="_top" rel="nofollow" link="external">https://github.com/fredvs/uos/</a><br/><br/><b>United Open-libraries of Sound</b><br/>
 
 	
